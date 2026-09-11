@@ -186,67 +186,40 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
         </div>
       )}
 
-      {/* 2. MAIN HERO BODY — FULL-BLEED LUXURY BACKGROUND WALLPAPER WITH OVERLAID TEXT (EXACTLY LIKE IMAGE 2) */}
-      <div className="relative w-full min-h-[540px] sm:min-h-[600px] lg:min-h-[650px] flex flex-col justify-center bg-[#111722] overflow-hidden">
-        
-        {/* FULL-BLEED ROTATING BACKGROUND IMAGE */}
-        <div className="absolute inset-0 z-0">
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={activeStat.image}
-              src={activeStat.image}
-              alt={activeStat.subtitle}
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1.00 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full h-full object-cover object-center"
-            />
-          </AnimatePresence>
-        </div>
-
-        {/* HIGH-CONTRAST GRADIENT OVERLAY SCRIM FOR PERFECT TEXT READABILITY ON MOBILE & PC */}
-        {/* On Mobile: Bottom/Top gradient overlay; On Desktop: Left-to-right gradient overlay */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/60 to-black/40 lg:bg-gradient-to-r lg:from-black/90 lg:via-black/65 lg:to-black/25 pointer-events-none" />
-
-        {/* FLOATING ROTATION BADGE (TOP RIGHT ON PC, TOP LEFT ON MOBILE) */}
-        <div className="absolute top-4 right-4 sm:top-6 sm:right-8 z-20 bg-black/50 backdrop-blur-md border border-white/20 text-[#E5C158] text-[10px] sm:text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#E5C158] animate-pulse" />
-          <span>2.0S AUTOMATIC ROTATION</span>
-        </div>
-
-        {/* OVERLAID CONTENT CONTAINER */}
-        <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-12 py-10 sm:py-16">
-          <div className="max-w-2xl bg-black/40 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-none p-5 sm:p-6 lg:p-0 rounded-2xl border border-white/10 lg:border-none shadow-2xl lg:shadow-none space-y-4 sm:space-y-6">
-            
+      {/* 2. MAIN HERO BODY — 100% LIGHT WARM IVORY LUXURY LAYOUT (ZERO BLACK THEME / ZERO DARK CARDS) */}
+      <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-12 py-8 sm:py-12 lg:py-16 bg-[#F4F0E7]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* LEFT 6 COLUMNS: CLEAN CRISP TYPOGRAPHY ON LIGHT WARM IVORY BACKGROUND */}
+          <div className="lg:col-span-6 space-y-5">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStat.id}
-                initial={{ opacity: 0, y: 14 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -14 }}
+                exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.4 }}
-                className="space-y-2 sm:space-y-3"
+                className="space-y-3"
               >
                 {/* EYEBROW TAG */}
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#B18A4A]/30 border border-[#E5C158]/40 backdrop-blur-sm">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#E5C158]">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#8C6527]">
                     — {activeStat.tag}
                   </span>
                 </div>
 
                 {/* GRAND TITLE */}
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white uppercase leading-[1.05] drop-shadow-xl">
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#111722] uppercase leading-[1.05]">
                   ANTELIA GROVES
                 </h1>
 
                 {/* SUBTITLE */}
-                <h2 className="text-base sm:text-xl lg:text-2xl font-bold tracking-wider text-[#E5C158] uppercase drop-shadow-md">
+                <h2 className="text-base sm:text-xl font-bold tracking-wider text-[#8C6527] uppercase">
                   {activeStat.subtitle}
                 </h2>
 
                 {/* DESCRIPTION */}
-                <p className="text-xs sm:text-sm lg:text-base font-normal text-slate-100 leading-relaxed drop-shadow-md max-w-xl">
+                <p className="text-xs sm:text-sm font-normal text-[#374151] leading-relaxed max-w-lg">
                   {activeStat.desc}
                 </p>
               </motion.div>
@@ -256,31 +229,64 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 onClick={(e) => handleScrollTo(e, '#masterplan')}
-                className="px-6 py-3 bg-[#B18A4A] hover:bg-white hover:text-[#111722] text-white text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all shadow-xl rounded-xl cursor-pointer"
+                className="px-6 py-3 bg-[#B18A4A] text-white text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-[#111722] transition-all shadow-md group rounded-xl cursor-pointer"
               >
                 <span>EXPLORE MASTERPLAN</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
               </button>
 
               <button
                 onClick={(e) => handleScrollTo(e, '#location')}
-                className="px-5 py-3 bg-black/40 backdrop-blur-md text-white border border-white/30 hover:bg-white hover:text-[#111722] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-lg rounded-xl cursor-pointer"
+                className="px-5 py-3 bg-[#EFECE6] text-[#111722] border border-[#D5D0C6] hover:bg-[#111722] hover:text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs rounded-xl cursor-pointer"
               >
-                <MapPin className="w-4 h-4 text-[#E5C158]" />
+                <MapPin className="w-4 h-4 text-[#B18A4A]" />
                 <span>LOCATION MAP</span>
               </button>
 
               <button
                 onClick={(e) => handleScrollTo(e, '#villas')}
-                className="text-xs font-bold uppercase tracking-wider text-[#E5C158] hover:text-white transition-colors relative py-1 border-b border-[#E5C158] cursor-pointer ml-1"
+                className="text-xs font-bold uppercase tracking-wider text-[#8C6527] hover:text-[#111722] transition-colors relative py-1 border-b border-[#8C6527] cursor-pointer"
               >
                 3D VILLA TOUR →
               </button>
             </div>
-
           </div>
-        </div>
 
+          {/* RIGHT 6 COLUMNS: ELEGANT ROTATING PHOTO SHOWCASE (LIGHT BORDER & SHADOW, NO BLACK OVERLAYS) */}
+          <div className="lg:col-span-6 relative h-[300px] sm:h-[380px] lg:h-[440px] rounded-3xl overflow-hidden shadow-xl border border-[#D5D0C6] bg-[#EFECE6]">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={activeStat.image}
+                src={activeStat.image}
+                alt={activeStat.subtitle}
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1.00 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full h-full object-cover"
+              />
+            </AnimatePresence>
+
+            {/* LIGHT TOP ROTATION BADGE */}
+            <div className="absolute top-4 left-4 z-20 bg-[#F4F0E7]/95 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-[#D5D0C6] text-xs font-bold text-[#111722] shadow-sm flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#B18A4A] animate-pulse" />
+              <span>{activeStat.tag}</span>
+            </div>
+
+            {/* BOTTOM CAPTION BAR */}
+            <div className="absolute bottom-0 inset-x-0 z-20 bg-[#F4F0E7]/95 backdrop-blur-md p-4 border-t border-[#D5D0C6] flex items-center justify-between">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#8C6527] block">
+                  2.0S AUTOMATIC ROTATION
+                </span>
+                <h4 className="text-sm sm:text-base font-extrabold text-[#111722] leading-tight">
+                  {activeStat.subtitle}
+                </h4>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       {/* 3. 4-STAT BAR (WARM IVORY BANNER AT BOTTOM AS IN IMAGE 2) */}
