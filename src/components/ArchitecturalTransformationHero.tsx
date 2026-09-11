@@ -24,13 +24,13 @@ export default function ArchitecturalTransformationHero({ onOpenBooking }: Archi
     { id: '08', code: '08 / 08', title: 'THE LIVING COMMUNITY', desc: 'Antelia Groves is complete — architecture surrounded by nature' },
   ];
 
-  // Automatic Architectural Transformation Looper (1.5 Seconds Per Stage)
+  // Automatic Architectural Transformation Looper (2 Seconds Per Stage)
   useEffect(() => {
     if (!isPlaying) return;
 
     const timer = setInterval(() => {
       setCurrentStage((prev) => (prev < 7 ? prev + 1 : 0));
-    }, 1500);
+    }, 2000);
 
     return () => clearInterval(timer);
   }, [isPlaying]);

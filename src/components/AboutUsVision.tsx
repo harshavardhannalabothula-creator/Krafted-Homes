@@ -53,12 +53,12 @@ export default function AboutUsVision() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  // Automatic non-stop slideshow cycle every 1.5 seconds
+  // Automatic non-stop slideshow cycle every 2 seconds
   useEffect(() => {
     if (!isPlaying) return;
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % aboutSlides.length);
-    }, 1500);
+    }, 2000);
     return () => clearInterval(timer);
   }, [isPlaying, aboutSlides.length]);
 

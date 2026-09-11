@@ -47,7 +47,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
     { id: 6, name: 'TERRACE LOUNGE', desc: 'Open rooftop sky terrace with starlit pergola dining and 10-acre green views', image: '/images/room_terrace.jpg' },
   ];
 
-  // Non-stop automatic 1.5-second (1500ms) room transition cycle with auto-advance to next villa stage (facing & mood)
+  // Non-stop automatic 2-second (2000ms) room transition cycle with auto-advance to next villa stage (facing & mood)
   useEffect(() => {
     if (!isPlayingWalkthrough) return;
 
@@ -61,7 +61,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
         }
         return prev + 1;
       });
-    }, 1500);
+    }, 2000);
 
     return () => clearInterval(timer);
   }, [isPlayingWalkthrough, walkthruRooms.length]);

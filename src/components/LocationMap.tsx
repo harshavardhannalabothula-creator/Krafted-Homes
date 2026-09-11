@@ -105,12 +105,12 @@ export default function LocationMap({ onOpenBooking }: LocationMapProps) {
     (item) => activeCategory === 'ALL' || item.category === activeCategory
   );
 
-  // Automatic 1.5-second rotation through distance landmarks
+  // Automatic 2-second rotation through distance landmarks
   useEffect(() => {
     if (!isAutoCycling) return;
     const timer = setInterval(() => {
       setActiveLandmarkIndex((prev) => (prev + 1) % filteredLandmarks.length);
-    }, 1500);
+    }, 2000);
     return () => clearInterval(timer);
   }, [isAutoCycling, filteredLandmarks.length]);
 

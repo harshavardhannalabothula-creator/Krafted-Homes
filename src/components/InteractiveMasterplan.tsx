@@ -30,21 +30,21 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
   const [activeMetricIndex, setActiveMetricIndex] = useState<number>(0);
   const [isMetricAutoPlaying, setIsMetricAutoPlaying] = useState<boolean>(true);
 
-  // Auto-rotate top 4 metric cards every 1.5 seconds
+  // Auto-rotate top 4 metric cards every 2 seconds
   useEffect(() => {
     if (!isMetricAutoPlaying) return;
     const interval = setInterval(() => {
       setActiveMetricIndex((prev) => (prev + 1) % 4);
-    }, 1500);
+    }, 2000);
     return () => clearInterval(interval);
   }, [isMetricAutoPlaying]);
 
-  // Auto-rotate sector realistic HD photos every 1.5 seconds
+  // Auto-rotate sector realistic HD photos every 2 seconds
   useEffect(() => {
     if (!isSectorPhotoAutoPlay) return;
     const timer = setInterval(() => {
       setSectorPhotoIndex((prev) => (prev + 1) % 4);
-    }, 1500);
+    }, 2000);
     return () => clearInterval(timer);
   }, [isSectorPhotoAutoPlay, activeSector]);
 

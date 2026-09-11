@@ -68,12 +68,12 @@ export default function EvolutionStory() {
     },
   ];
 
-  // Auto Step Timer for 7-Step Development Chronicle (1.5 Seconds per Step)
+  // Auto Step Timer for 7-Step Development Chronicle (2 Seconds per Step)
   useEffect(() => {
     if (!isAutoLoop) return;
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev < creationSteps.length - 1 ? prev + 1 : 0));
-    }, 1500);
+    }, 2000);
     return () => clearInterval(interval);
   }, [isAutoLoop, creationSteps.length]);
 

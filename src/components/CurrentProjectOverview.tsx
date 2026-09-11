@@ -59,13 +59,13 @@ export default function CurrentProjectOverview({ onOpenBooking }: CurrentProject
     },
   ];
 
-  // Auto-play cycle through the 4 features every 1.5 seconds
+  // Auto-play cycle through the 4 features every 2 seconds
   useEffect(() => {
     if (isInteracting) return;
 
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % features.length);
-    }, 1500);
+    }, 2000);
 
     return () => clearInterval(timer);
   }, [isInteracting, features.length]);

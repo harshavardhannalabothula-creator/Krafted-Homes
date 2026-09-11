@@ -105,13 +105,13 @@ export default function LandToLivingJourney({ onOpenBooking }: LandToLivingJourn
     },
   ];
 
-  // Automatic slide cycle every 1.5 seconds
+  // Automatic slide cycle every 2 seconds
   useEffect(() => {
     if (!isPlaying) return;
 
     const timer = setInterval(() => {
       setCurrentStage((prev) => (prev + 1) % constructionStages.length);
-    }, 1500);
+    }, 2000);
 
     return () => clearInterval(timer);
   }, [isPlaying, constructionStages.length]);

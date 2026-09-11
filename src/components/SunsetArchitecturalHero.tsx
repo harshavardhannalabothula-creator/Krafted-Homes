@@ -64,11 +64,11 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
     },
   ];
 
-  // Auto-advance wallpaper every 1.5 seconds
+  // Auto-advance wallpaper every 2 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveStatIndex((prev) => (prev + 1) % quickStats.length);
-    }, 1500);
+    }, 2000);
     return () => clearInterval(timer);
   }, [quickStats.length]);
 
