@@ -186,30 +186,12 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
         </div>
       )}
 
-      {/* 2. MAIN HERO BODY */}
-      <div className="relative w-full min-h-[460px] lg:min-h-[500px] flex items-center overflow-hidden">
-        
-        {/* FULL-BLEED BACKGROUND IMAGE */}
-        <div className="absolute inset-0 z-0">
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={activeStat.image}
-              src={activeStat.image}
-              alt={activeStat.subtitle}
-              initial={{ opacity: 0, scale: 1.03 }}
-              animate={{ opacity: 1, scale: 1.00 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full h-full object-cover object-center brightness-100 contrast-[1.02]"
-            />
-          </AnimatePresence>
-
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F4F0E7] via-[#F4F0E7]/90 via-40% sm:via-45% to-transparent pointer-events-none z-10" />
-        </div>
-
-        {/* CONTENT CONTAINER */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-12 py-12 lg:py-16">
-          <div className="max-w-xl text-left space-y-5">
+      {/* 2. MAIN HERO BODY — CLEAN RESPONSIVE SPLIT LAYOUT (ZERO OVERLAP ON MOBILE & PC) */}
+      <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-12 py-8 sm:py-12 lg:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* LEFT 6 COLUMNS: CRISP TEXT CONTENT BOX */}
+          <div className="lg:col-span-6 space-y-5">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStat.id}
@@ -227,23 +209,23 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
                 </div>
 
                 {/* GRAND TITLE */}
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#111722] uppercase leading-[1.05]">
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#111722] uppercase leading-[1.05]">
                   ANTELIA GROVES
                 </h1>
 
                 {/* SUBTITLE */}
-                <h2 className="text-lg sm:text-xl font-bold tracking-wider text-[#8C6527] uppercase">
+                <h2 className="text-base sm:text-xl font-bold tracking-wider text-[#8C6527] uppercase">
                   {activeStat.subtitle}
                 </h2>
 
                 {/* DESCRIPTION */}
-                <p className="text-sm font-normal text-[#374151] leading-relaxed max-w-lg">
+                <p className="text-xs sm:text-sm font-normal text-[#374151] leading-relaxed max-w-lg">
                   {activeStat.desc}
                 </p>
               </motion.div>
             </AnimatePresence>
 
-            {/* CTA BUTTONS ROW WITH LOCATION BUTTON NEXT TO MASTERPLAN & VILLA TOUR */}
+            {/* CTA BUTTONS ROW */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 onClick={(e) => handleScrollTo(e, '#masterplan')}
@@ -269,8 +251,41 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
               </button>
             </div>
           </div>
-        </div>
 
+          {/* RIGHT 6 COLUMNS: DEDICATED HIGH-RES PHOTO SHOWCASE CARD (NO OVERLAP WITH TEXT) */}
+          <div className="lg:col-span-6 relative h-[300px] sm:h-[380px] lg:h-[440px] rounded-3xl overflow-hidden shadow-2xl border border-[#D5D0C6] bg-[#111722]">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={activeStat.image}
+                src={activeStat.image}
+                alt={activeStat.subtitle}
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1.00 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full h-full object-cover"
+              />
+            </AnimatePresence>
+
+            <div className="absolute inset-0 bg-gradient-to-t from-[#111722]/85 via-transparent to-transparent pointer-events-none z-10" />
+
+            {/* FLOATING TOP BADGE */}
+            <div className="absolute top-4 left-4 z-20 bg-[#F4F0E7]/95 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-[#D5D0C6] text-xs font-bold text-[#111722] shadow-sm">
+              {activeStat.tag}
+            </div>
+
+            {/* FLOATING BOTTOM CAPTION */}
+            <div className="absolute bottom-4 left-4 right-4 z-20 text-white p-2">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#B18A4A] block mb-1">
+                2.0S AUTOMATIC ROTATION
+              </span>
+              <h4 className="text-base sm:text-lg font-extrabold text-white leading-snug">
+                {activeStat.subtitle}
+              </h4>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       {/* 3. 4-STAT BAR */}
