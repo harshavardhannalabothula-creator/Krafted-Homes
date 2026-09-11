@@ -84,10 +84,10 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
   };
 
   return (
-    <section id="overview" className="relative w-full min-h-[90vh] lg:min-h-screen flex flex-col justify-between bg-[#F7F6F2] text-[#1D2421] overflow-hidden border-b border-[#EBE7DF]">
+    <section id="overview" className="relative w-full flex flex-col justify-between bg-[#F7F6F2] text-[#1D2421] overflow-hidden border-b border-[#EBE7DF]">
       
       {/* 1. TOP HEADER NAVIGATION */}
-      <header className="sticky top-0 z-50 w-full px-6 sm:px-12 py-4 bg-[#F7F6F2]/90 backdrop-blur-md border-b border-[#EBE7DF]">
+      <header className="sticky top-0 z-50 w-full px-6 sm:px-12 py-4 bg-[#F7F6F2]/95 backdrop-blur-md border-b border-[#EBE7DF]">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
           <a href="#overview" onClick={(e) => handleScrollTo(e, '#overview')} className="flex items-center gap-3 group">
             <div className="w-7 h-7 bg-[#B89553] flex items-center justify-center rounded-lg shadow-xs">
@@ -103,7 +103,7 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
             </div>
           </a>
 
-          {/* CENTERED NAVIGATION LINKS MATCHING TARGET SITE */}
+          {/* CENTERED NAVIGATION LINKS */}
           <nav className="hidden xl:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
@@ -167,87 +167,104 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
         </div>
       )}
 
-      {/* 2. FULL-HEIGHT BACKGROUND IMAGE LAYER WITH SMOOTH GRADIENT OVERLAYS (EXACT MATCH FOR BOTH DESKTOP IMAGE 1 & MOBILE IMAGE 2) */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={activeStat.image}
-            src={activeStat.image}
-            alt={activeStat.subtitle}
-            initial={{ opacity: 0, scale: 1.03 }}
-            animate={{ opacity: 1, scale: 1.00 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute bottom-0 right-0 w-full lg:w-[62%] h-[55%] sm:h-[60%] lg:h-full object-cover object-bottom lg:object-center"
-          />
-        </AnimatePresence>
+      {/* 2. MAIN HERO BODY — ULTRA-CLEAN 2-COLUMN RESPONSIVE LAYOUT (PERFECT ON PC & MOBILE) */}
+      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-12 py-8 sm:py-12 lg:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* LEFT 6 COLUMNS: CRISP TYPOGRAPHY & BUTTONS */}
+          <div className="lg:col-span-6 space-y-5">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeStat.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35 }}
+                className="space-y-3"
+              >
+                {/* EYEBROW TAG */}
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#B89553]">
+                    — {activeStat.tag}
+                  </span>
+                </div>
 
-        {/* MOBILE GRADIENT SCRIM: Fades top down into image */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F7F6F2] via-[#F7F6F2]/80 via-45% to-transparent lg:hidden pointer-events-none z-10" />
+                {/* SERIF GRAND TITLE */}
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-normal tracking-tight text-[#1D2421] uppercase leading-[1.05]">
+                  ANTELIA GROVES
+                </h1>
 
-        {/* DESKTOP GRADIENT SCRIM: Fades left-to-right into image */}
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-[#F7F6F2] via-[#F7F6F2] via-35% via-[#F7F6F2]/70 via-50% to-transparent pointer-events-none z-10" />
-      </div>
+                {/* SUBTITLE */}
+                <h2 className="text-sm sm:text-lg font-bold tracking-widest text-[#B89553] uppercase">
+                  {activeStat.subtitle}
+                </h2>
 
-      {/* 3. MAIN HERO CONTENT AREA */}
-      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-12 py-8 sm:py-14 lg:py-20 flex-1 flex flex-col justify-center">
-        <div className="max-w-xl space-y-5">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeStat.id}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.35 }}
-              className="space-y-3"
-            >
-              {/* EYEBROW TAG */}
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-widest text-[#B89553]">
-                  — {activeStat.tag}
-                </span>
-              </div>
+                {/* DESCRIPTION */}
+                <p className="text-xs sm:text-sm font-normal text-[#4B5563] leading-relaxed max-w-lg">
+                  {activeStat.desc}
+                </p>
+              </motion.div>
+            </AnimatePresence>
 
-              {/* SERIF GRAND TITLE */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-normal tracking-tight text-[#1D2421] uppercase leading-[1.05]">
-                ANTELIA GROVES
-              </h1>
+            {/* CTA BUTTONS ROW */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <button
+                onClick={(e) => handleScrollTo(e, '#villas')}
+                className="px-7 py-3.5 bg-[#B89553] hover:bg-[#1D2421] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md rounded-md cursor-pointer"
+              >
+                <span>EXPLORE THE VILLAS</span>
+                <ArrowRight className="w-4 h-4 text-white" />
+              </button>
 
-              {/* SUBTITLE */}
-              <h2 className="text-sm sm:text-lg font-bold tracking-widest text-[#B89553] uppercase">
-                {activeStat.subtitle}
-              </h2>
-
-              {/* DESCRIPTION */}
-              <p className="text-xs sm:text-sm font-normal text-[#4B5563] leading-relaxed max-w-md">
-                {activeStat.desc}
-              </p>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* CTA BUTTONS ROW */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-            <button
-              onClick={(e) => handleScrollTo(e, '#villas')}
-              className="px-6 py-3.5 bg-[#B89553] hover:bg-[#1D2421] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md rounded-md cursor-pointer"
-            >
-              <span>EXPLORE THE VILLAS</span>
-              <ArrowRight className="w-4 h-4 text-white" />
-            </button>
-
-            <button
-              onClick={(e) => handleScrollTo(e, '#masterplan')}
-              className="text-xs font-bold uppercase tracking-wider text-[#B89553] hover:text-[#1D2421] transition-colors text-center sm:text-left py-1 cursor-pointer underline border-b border-[#B89553]"
-            >
-              THE DEVELOPMENT JOURNEY →
-            </button>
+              <button
+                onClick={(e) => handleScrollTo(e, '#masterplan')}
+                className="text-xs font-bold uppercase tracking-wider text-[#B89553] hover:text-[#1D2421] transition-colors text-center sm:text-left py-1 cursor-pointer underline underline-offset-4"
+              >
+                THE DEVELOPMENT JOURNEY →
+              </button>
+            </div>
           </div>
+
+          {/* RIGHT 6 COLUMNS: CRISP HIGH-RES VILLA PHOTO SHOWCASE FRAME */}
+          <div className="lg:col-span-6 relative w-full h-[260px] sm:h-[360px] lg:h-[440px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl border border-[#EBE7DF] bg-[#EFECE6]">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={activeStat.image}
+                src={activeStat.image}
+                alt={activeStat.subtitle}
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1.00 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full h-full object-cover"
+              />
+            </AnimatePresence>
+
+            {/* FLOATING TOP ROTATION BADGE */}
+            <div className="absolute top-4 left-4 z-20 bg-[#F7F6F2]/95 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-[#EBE7DF] text-xs font-bold text-[#1D2421] shadow-xs flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#B89553] animate-pulse" />
+              <span>{activeStat.tag}</span>
+            </div>
+
+            {/* BOTTOM CAPTION BAR */}
+            <div className="absolute bottom-0 inset-x-0 z-20 bg-[#F7F6F2]/95 backdrop-blur-md px-4 py-3 border-t border-[#EBE7DF] flex items-center justify-between">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#B89553] block">
+                  2.0S AUTOMATIC ROTATION
+                </span>
+                <h4 className="text-xs sm:text-sm font-extrabold text-[#1D2421] leading-tight">
+                  {activeStat.subtitle}
+                </h4>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      {/* 4. 4-STAT GRID AT BOTTOM — EXACT REPLICA OF TARGET SITE */}
+      {/* 3. 4-STAT GRID AT BOTTOM (2X2 ON MOBILE, 4-COL ON PC) */}
       <div className="relative z-30 w-full bg-[#F7F6F2] border-t border-[#EBE7DF] py-6 px-6 sm:px-12">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-left">
           {quickStats.map((stat, idx) => {
             const isActive = idx === activeStatIndex;
             return (
@@ -256,7 +273,7 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
                 onClick={() => setActiveStatIndex(idx)}
                 className="text-left group focus:outline-none transition-all cursor-pointer p-1"
               >
-                <span className={`text-2xl sm:text-3xl font-extrabold block leading-none mb-1.5 transition-all ${
+                <span className={`text-xl sm:text-3xl font-extrabold block leading-none mb-1.5 transition-all ${
                   isActive ? 'text-[#B89553] scale-105 origin-left' : 'text-[#B89553]/85 group-hover:text-[#B89553]'
                 }`}>
                   {stat.value}
