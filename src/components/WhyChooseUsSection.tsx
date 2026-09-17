@@ -14,26 +14,26 @@ export default function WhyChooseUsSection({ onOpenBooking }: WhyChooseUsSection
   const features = [
     {
       id: 1,
-      title: 'Transparent Pricing',
+      title: 'Affordable Prices',
       desc: 'Best rates, no hidden fees',
       icon: DollarSign,
     },
     {
       id: 2,
       title: 'Fully RERA Approved',
-      desc: 'Clear titles & peace of mind',
+      desc: 'Live with complete peace of mind',
       icon: ShieldCheck,
     },
     {
       id: 3,
-      title: 'Prime IT Corridor',
-      desc: 'Whitefield & Sarjapur connectivity',
+      title: 'Multiple Locations',
+      desc: 'Whitefield & Sarjapur corridor',
       icon: MapPin,
     },
     {
       id: 4,
-      title: 'Flexible Payment Plans',
-      desc: 'Easy construction-linked plans',
+      title: 'Flexible Plans',
+      desc: 'Customized & construction-linked',
       icon: FileCheck2,
     },
   ];
@@ -45,30 +45,26 @@ export default function WhyChooseUsSection({ onOpenBooking }: WhyChooseUsSection
         {/* MAIN TWO-COLUMN CONTAINER MATCHING REFERENCE SCREENSHOT */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
-          {/* LEFT 6 COLUMNS: SLANTED TRAPEZOID IMAGE visual WITH VIDEO PLAY BUTTON */}
+          {/* LEFT 6 COLUMNS: SLANTED TRAPEZOID IMAGE CONTAINER WITH VIDEO PLAY BUTTON */}
           <div className="lg:col-span-6 relative">
             
-            <div className="relative w-full h-[360px] sm:h-[440px] rounded-3xl overflow-hidden shadow-2xl bg-slate-900 group">
+            {/* CONTAINER WITH CRISP SLANTED TRAPEZOID CUTOUT MASK (EXACT MATCH TO REFERENCE PHOTO) */}
+            <div 
+              className="relative w-full h-[360px] sm:h-[440px] rounded-3xl overflow-hidden shadow-2xl bg-slate-900 group"
+              style={{
+                clipPath: 'polygon(0% 0%, 86% 0%, 100% 100%, 0% 100%)',
+              }}
+            >
               
-              {/* HIGH QUALITY BACKGROUND PHOTO WITH SLANTED PARALLELOGRAM / TRAPEZOID MASK EFFECT */}
+              {/* HIGH QUALITY BACKGROUND PHOTO */}
               <img
                 src="/images/daylight_estate.jpg"
                 alt="Why Choose Krafted Homes"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95"
               />
 
-              {/* SLANTED ANGLED SVG CUTOUT OVERLAY ON RIGHT EDGE (EXACT MATCH TO REFERENCE PHOTO) */}
-              <svg
-                className="absolute top-0 right-0 h-full w-24 sm:w-32 text-white z-20 pointer-events-none hidden sm:block"
-                viewBox="0 0 100 400"
-                preserveAspectRatio="none"
-                fill="currentColor"
-              >
-                <path d="M100,0 L0,0 L80,400 L100,400 Z" />
-              </svg>
-
               {/* GRADIENT OVERLAY FOR TEXT READABILITY */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent z-10" />
 
               {/* FLOATING VIDEO PLAY BUTTON & CAPTION AT BOTTOM LEFT */}
               <div className="absolute bottom-6 left-6 z-30 flex items-center gap-4">
@@ -124,7 +120,7 @@ export default function WhyChooseUsSection({ onOpenBooking }: WhyChooseUsSection
                 return (
                   <div
                     key={feat.id}
-                    className="flex items-start gap-3.5 p-3.5 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:border-[#2563EB] hover:shadow-md transition-all group"
+                    className="flex items-start gap-3.5 p-3.5 rounded-2xl border border-slate-200 bg-slate-50/60 hover:bg-white hover:border-[#2563EB] hover:shadow-md transition-all group"
                   >
                     <div className="w-10 h-10 rounded-full bg-orange-100 border border-orange-200 text-[#F97316] flex items-center justify-center shrink-0 group-hover:bg-[#F97316] group-hover:text-white transition-colors shadow-2xs">
                       <Icon className="w-5 h-5" />
