@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import SunsetArchitecturalHero from '@/components/SunsetArchitecturalHero';
-import InteractiveMasterplan from '@/components/InteractiveMasterplan';
 import WhyChooseUsSection from '@/components/WhyChooseUsSection';
 import VillaShowcase from '@/components/VillaShowcase';
 import LocationMap from '@/components/LocationMap';
@@ -29,17 +28,12 @@ export default function Home() {
         <SunsetArchitecturalHero onOpenBooking={handleOpenBooking} />
       </section>
 
-      {/* 02 — 10-ACRE MASTERPLAN & 3D CAD ENGINE */}
+      {/* 02 — WHY CHOOSE KRAFTED HOMES (REPLACING OLD MASTERPLAN WITH EXACT MATCH TO SECOND IMAGE) */}
       <section id="masterplan">
-        <InteractiveMasterplan onOpenBooking={handleOpenBooking} />
-      </section>
-
-      {/* 03 — WHY CHOOSE KRAFTED HOMES */}
-      <section id="why-choose-us">
         <WhyChooseUsSection onOpenBooking={handleOpenBooking} />
       </section>
 
-      {/* 04 — VILLA ARCHITECTURE & 3D VILLA ENGINE */}
+      {/* 03 — VILLA ARCHITECTURE & 3D VILLA ENGINE */}
       <section id="villas">
         <VillaShowcase onOpenBooking={handleOpenBooking} />
       </section>
@@ -54,7 +48,7 @@ export default function Home() {
         <AboutUsVision />
       </section>
 
-      {/* 05 — CONTACT & FOOTER */}
+      {/* 06 — CONTACT & FOOTER */}
       <section id="contact">
         <Footer onOpenBooking={handleOpenBooking} />
         <BookingModal isOpen={bookingOpen} onClose={handleCloseBooking} />
