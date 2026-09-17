@@ -29,8 +29,9 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
       detail: 'Low-density planned enclave',
       image: '/images/hero_main_aerial.png',
       tag: '01 / OVERVIEW',
-      subtitle: 'INDEPENDENT LUXURY VILLAS',
-      desc: 'Beautiful 3 & 4 BHK independent villas set inside a 10-acre green gated community in Whitefield-Sarjapur Villa Corridor, Bengaluru. Designed for fresh air, private gardens, and peaceful family living.',
+      title: '10-ACRE GATED ESTATE',
+      subtitle: 'INDEPENDENT 3 & 4 BHK LUXURY VILLAS',
+      desc: 'An exclusive low-density enclave featuring 189 split-level independent villas surrounded by 70% open green corridors, tree-lined boulevards, and serene water features in Sarjapur-Whitefield Corridor, Bengaluru.',
     },
     {
       id: 1,
@@ -39,8 +40,9 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
       detail: 'Split-level private residences',
       image: '/images/hero_villa_facade.png',
       tag: '02 / VILLA ELEVATION',
-      subtitle: 'INDEPENDENT LUXURY VILLAS',
-      desc: 'Spacious independent villas with private 180 sq.ft lawn backyards, high ceilings, large glass windows, and open rooftop sky terraces.',
+      title: 'INDEPENDENT VILLAS',
+      subtitle: 'SPLIT-LEVEL ARCHITECTURE & PRIVATE LAWNS',
+      desc: 'Architecturally articulated 3 & 4 BHK residences with private 180 sq.ft backyard lawns, double-height ceilings, floor-to-ceiling glass, and private rooftop sky terraces.',
     },
     {
       id: 2,
@@ -49,8 +51,9 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
       detail: 'Articulated spatial layouts',
       image: '/images/hero_living_sanctuary.png',
       tag: '03 / INTERIORS',
-      subtitle: 'BRIGHT & SPACIOUS ROOMS',
-      desc: 'Large open living rooms with floor-to-ceiling glass paneling, natural sunlight, dining island, and private family bedrooms.',
+      title: 'BRIGHT & SPACIOUS ROOMS',
+      subtitle: 'FLOOR-TO-CEILING GLAZING & NATURAL SUNLIGHT',
+      desc: 'Expansive open-plan living sanctuaries filled with natural sunlight, dining island kitchens, private family lounges, and peaceful master bedroom suites.',
     },
     {
       id: 3,
@@ -59,8 +62,9 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
       detail: '25m heated pool & wellness',
       image: '/images/hero_resort_clubhouse.png',
       tag: '04 / CLUBHOUSE & POOL',
-      subtitle: 'RESORT CLUBHOUSE',
-      desc: 'Enjoy a crystal blue swimming pool, indoor badminton & squash courts, gym, yoga deck, and guest rooms right inside the community.',
+      title: 'RESORT CLUBHOUSE',
+      subtitle: '15,000+ SQ.FT. WELLNESS & LEISURE HUB',
+      desc: 'A grand 15,000 sq.ft resort clubhouse featuring a crystal swimming pool, indoor sports courts, modern fitness centre, zen yoga deck, and executive guest suites.',
     },
   ];
 
@@ -191,8 +195,8 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
       <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-12 py-10 sm:py-14 lg:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* LEFT 6 COLUMNS: SECTION LABEL, HEADLINE, DESCRIPTION & BUTTONS */}
-          <div className="lg:col-span-6 space-y-6">
+          {/* LEFT 6 COLUMNS: SECTION LABEL, HEADLINE, DESCRIPTION & BUTTONS (STRICT LEFT-MARGIN ALIGNMENT) */}
+          <div className="lg:col-span-6 flex flex-col items-start text-left space-y-5">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStat.id}
@@ -200,34 +204,38 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.35, ease: 'easeOut' }}
-                className="space-y-4"
+                className="space-y-3.5 w-full text-left"
               >
-                {/* SECTION LABEL */}
+                {/* BRAND EYEBROW & SECTION TAG */}
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#24483B]">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#24483B]">
+                    ANTELIA GROVES
+                  </span>
+                  <span className="text-xs text-[#8E958F] font-light">•</span>
+                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#202522]">
                     {activeStat.tag}
                   </span>
                 </div>
 
-                {/* PROJECT HEADLINE */}
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-normal tracking-tight text-[#202522] uppercase leading-[1.05]">
-                  ANTELIA GROVES
+                {/* MAIN DYNAMIC SECTION TITLE */}
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#202522] uppercase leading-[1.05] text-left">
+                  {activeStat.title}
                 </h1>
 
-                {/* SUPPORTING TITLE */}
-                <h2 className="text-sm sm:text-base font-bold tracking-[0.15em] text-[#202522] uppercase">
+                {/* ARCHITECTURAL SUBHEADER */}
+                <h2 className="text-xs sm:text-sm font-bold tracking-[0.15em] text-[#24483B] uppercase text-left">
                   {activeStat.subtitle}
                 </h2>
 
-                {/* SHORT DESCRIPTION */}
-                <p className="text-xs sm:text-sm font-normal text-[#3A423E] leading-relaxed max-w-lg">
+                {/* POLISHED PROGRAM COPY */}
+                <p className="text-xs sm:text-sm font-normal text-[#3A423E] leading-relaxed max-w-lg text-left">
                   {activeStat.desc}
                 </p>
               </motion.div>
             </AnimatePresence>
 
-            {/* CTA BUTTONS & TEXT LINK */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            {/* CTA BUTTONS & TEXT LINK (PERFECTLY ALIGNED ON THE LEFT MARGIN) */}
+            <div className="flex flex-wrap items-center gap-3 pt-2 w-full text-left">
               {/* PRIMARY CTA: DEEP FOREST GREEN WITH WHITE TEXT */}
               <button
                 onClick={(e) => handleScrollTo(e, '#masterplan')}

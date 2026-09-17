@@ -70,13 +70,6 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
     <section id="villas" className="py-16 sm:py-20 lg:py-24 bg-[#F8F7F2] text-[#202522] relative overflow-hidden border-b border-[#E4E5DF]">
       <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
 
-        {/* 1. SECTION LABEL */}
-        <div className="mb-6 sm:mb-8">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#24483B]">
-            02 / VILLA ELEVATION
-          </span>
-        </div>
-
         {/* 2. SOPHISTICATED 2-COLUMN EDITORIAL COMPOSITION */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-16 sm:mb-20">
           
@@ -86,23 +79,29 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 space-y-6"
+            className="lg:col-span-6 space-y-6 text-left"
           >
             <div>
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#24483B] block mb-2">
-                02 / VILLA ELEVATION
-              </span>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#24483B]">
+                  ANTELIA GROVES
+                </span>
+                <span className="text-xs text-[#8E958F] font-light">•</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#202522]">
+                  02 / VILLA ELEVATION
+                </span>
+              </div>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-normal text-[#202522] tracking-tight uppercase leading-[1.05] mb-3">
-                ANTELIA GROVES
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#202522] tracking-tight uppercase leading-[1.05] mb-3 text-left">
+                INDEPENDENT VILLAS
               </h2>
 
-              <h3 className="text-sm sm:text-base font-bold tracking-[0.15em] text-[#202522] uppercase mb-4">
-                INDEPENDENT LUXURY VILLAS
+              <h3 className="text-xs sm:text-sm font-bold tracking-[0.15em] text-[#24483B] uppercase mb-4 text-left">
+                SPLIT-LEVEL ARCHITECTURE & PRIVATE GARDEN LAWNS
               </h3>
 
-              <p className="text-xs sm:text-sm text-[#3A423E] font-normal leading-relaxed max-w-lg">
-                Spacious independent 3 & 4 BHK villas designed with private 180 sq.ft lawn backyards, high ceilings, large glass windows, and open rooftop sky terraces. Created for architectural clarity, fresh air, and quiet family sanctuary living in South Bengaluru.
+              <p className="text-xs sm:text-sm text-[#3A423E] font-normal leading-relaxed max-w-lg text-left">
+                Spacious independent 3 & 4 BHK villas designed with private 180 sq.ft lawn backyards, high ceilings, large glass windows, and open rooftop sky terraces. Created for architectural clarity, fresh air, and quiet family sanctuary living in Sarjapur-Whitefield Villa Corridor.
               </p>
             </div>
 
