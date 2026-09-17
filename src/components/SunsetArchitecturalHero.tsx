@@ -192,11 +192,11 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
       )}
 
       {/* 2. MAIN HERO BODY — REFINED TWO-COLUMN ARCHITECTURAL LAYOUT */}
-      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-12 py-10 sm:py-14 lg:py-16">
+      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-12 py-8 sm:py-10 lg:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* LEFT 6 COLUMNS: SECTION LABEL, HEADLINE, DESCRIPTION & BUTTONS (STRICT LEFT-MARGIN ALIGNMENT) */}
-          <div className="lg:col-span-6 flex flex-col items-start text-left space-y-5">
+          <div className="lg:col-span-6 flex flex-col items-start text-left space-y-4">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeStat.id}
@@ -204,7 +204,7 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.35, ease: 'easeOut' }}
-                className="space-y-3.5 w-full text-left"
+                className="space-y-3 w-full text-left"
               >
                 {/* BRAND EYEBROW & SECTION TAG */}
                 <div className="flex items-center gap-2">
@@ -218,7 +218,7 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
                 </div>
 
                 {/* MAIN DYNAMIC SECTION TITLE */}
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#202522] uppercase leading-[1.05] text-left">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#202522] uppercase leading-[1.08] text-left max-w-lg">
                   {activeStat.title}
                 </h1>
 
@@ -235,11 +235,11 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
             </AnimatePresence>
 
             {/* CTA BUTTONS & TEXT LINK (PERFECTLY ALIGNED ON THE LEFT MARGIN) */}
-            <div className="flex flex-wrap items-center gap-3 pt-2 w-full text-left">
+            <div className="flex flex-wrap items-center gap-3 pt-1 w-full text-left">
               {/* PRIMARY CTA: DEEP FOREST GREEN WITH WHITE TEXT */}
               <button
                 onClick={(e) => handleScrollTo(e, '#masterplan')}
-                className="px-6 py-3.5 bg-[#24483B] hover:bg-[#1A342A] text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-2xs rounded-md cursor-pointer"
+                className="px-5 py-3 bg-[#24483B] hover:bg-[#1A342A] text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-2xs rounded-md cursor-pointer"
               >
                 <span>EXPLORE MASTERPLAN</span>
                 <ArrowRight className="w-4 h-4 text-white" />
@@ -248,7 +248,7 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
               {/* SECONDARY CTA: OUTLINED / WARM STONE */}
               <button
                 onClick={(e) => handleScrollTo(e, '#location')}
-                className="px-5 py-3.5 bg-[#FFFFFF] text-[#202522] border border-[#E4E5DF] hover:border-[#24483B] hover:text-[#24483B] text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-2xs rounded-md cursor-pointer"
+                className="px-4 py-3 bg-[#FFFFFF] text-[#202522] border border-[#E4E5DF] hover:border-[#24483B] hover:text-[#24483B] text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-2xs rounded-md cursor-pointer"
               >
                 <MapPin className="w-4 h-4 text-[#24483B]" />
                 <span>LOCATION MAP</span>
@@ -265,7 +265,7 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
           </div>
 
           {/* RIGHT 6 COLUMNS: LARGE REALISTIC ARCHITECTURAL VILLA IMAGE (CLEAN FRAME) */}
-          <div className="lg:col-span-6 relative w-full h-[280px] sm:h-[360px] lg:h-[440px] rounded-xl overflow-hidden shadow-xs border border-[#E4E5DF] bg-[#FFFFFF]">
+          <div className="lg:col-span-6 relative w-full h-[260px] sm:h-[320px] lg:h-[380px] rounded-xl overflow-hidden shadow-xs border border-[#E4E5DF] bg-[#FFFFFF]">
             <AnimatePresence mode="wait">
               <motion.img
                 key={activeStat.image}
@@ -286,7 +286,7 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
             </div>
 
             {/* MINIMAL SUPPORTING INFO BAR */}
-            <div className="absolute bottom-0 inset-x-0 z-20 bg-[#F8F7F2]/95 backdrop-blur-xs px-4 py-3 border-t border-[#E4E4DF] flex items-center justify-between">
+            <div className="absolute bottom-0 inset-x-0 z-20 bg-[#F8F7F2]/95 backdrop-blur-xs px-4 py-2.5 border-t border-[#E4E4DF] flex items-center justify-between">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-widest text-[#24483B] block">
                   2.0S AUTOMATIC ROTATION
