@@ -21,7 +21,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F4F0E7] text-[#111827] selection:bg-[#B18A4A] selection:text-white relative font-sans">
+    <main className="min-h-screen bg-white text-slate-900 selection:bg-blue-600 selection:text-white relative font-sans">
       
       {/* 01 — HERO & LIVE STATS OVERVIEW */}
       <section id="overview">

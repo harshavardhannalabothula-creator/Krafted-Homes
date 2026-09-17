@@ -67,8 +67,8 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
   const currentSpecs = villaSpecs[facing];
 
   return (
-    <section id="villas" className="py-16 sm:py-20 lg:py-24 bg-[#F8F7F2] text-[#202522] relative overflow-hidden border-b border-[#E4E5DF]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
+    <section id="villas" className="py-16 sm:py-20 lg:py-24 bg-white text-[#0F172A] relative overflow-hidden border-b border-[#E2E8F0]">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 relative z-10">
 
         {/* 2. SOPHISTICATED 2-COLUMN EDITORIAL COMPOSITION */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-16 sm:mb-20">
@@ -82,63 +82,59 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
             className="lg:col-span-6 space-y-6 text-left"
           >
             <div>
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#24483B]">
-                  ANTELIA GROVES
-                </span>
-                <span className="text-xs text-[#8E958F] font-light">•</span>
-                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#202522]">
-                  02 / VILLA ELEVATION
-                </span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs font-bold uppercase tracking-wider mb-3">
+                <span>ANTELIA GROVES</span>
+                <span className="text-slate-300">•</span>
+                <span>02 / VILLA ELEVATION</span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#202522] tracking-tight uppercase leading-[1.05] mb-3 text-left">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight uppercase leading-[1.08] mb-3 text-left">
                 INDEPENDENT VILLAS
               </h2>
 
-              <h3 className="text-xs sm:text-sm font-bold tracking-[0.15em] text-[#24483B] uppercase mb-4 text-left">
+              <h3 className="text-xs sm:text-sm font-bold tracking-[0.15em] text-[#2563EB] uppercase mb-4 text-left">
                 SPLIT-LEVEL ARCHITECTURE & PRIVATE GARDEN LAWNS
               </h3>
 
-              <p className="text-xs sm:text-sm text-[#3A423E] font-normal leading-relaxed max-w-lg text-left">
+              <p className="text-xs sm:text-sm text-[#475569] font-normal leading-relaxed max-w-lg text-left">
                 Spacious independent 3 & 4 BHK villas designed with private 180 sq.ft lawn backyards, high ceilings, large glass windows, and open rooftop sky terraces. Created for architectural clarity, fresh air, and quiet family sanctuary living in Sarjapur-Whitefield Villa Corridor.
               </p>
             </div>
 
             {/* ORIENTATION TOGGLES */}
             <div className="flex flex-wrap items-center gap-3 pt-1">
-              <div className="inline-flex items-center gap-1 bg-[#FFFFFF] p-1 rounded-md border border-[#E4E5DF]">
+              <div className="inline-flex items-center gap-1 bg-[#F8FAFC] p-1.5 rounded-full border border-[#E2E8F0]">
                 <button
                   onClick={() => setFacing('East')}
-                  className={`px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider rounded-md transition-all cursor-pointer ${
-                    facing === 'East' ? 'bg-[#24483B] text-white' : 'text-[#202522] hover:text-[#24483B]'
+                  className={`px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider rounded-full transition-all cursor-pointer ${
+                    facing === 'East' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-[#0F172A] hover:text-[#2563EB]'
                   }`}
                 >
                   EAST FACING
                 </button>
                 <button
                   onClick={() => setFacing('West')}
-                  className={`px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider rounded-md transition-all cursor-pointer ${
-                    facing === 'West' ? 'bg-[#24483B] text-white' : 'text-[#202522] hover:text-[#24483B]'
+                  className={`px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider rounded-full transition-all cursor-pointer ${
+                    facing === 'West' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-[#0F172A] hover:text-[#2563EB]'
                   }`}
                 >
                   WEST FACING
                 </button>
               </div>
 
-              <div className="inline-flex items-center gap-1 bg-[#FFFFFF] p-1 rounded-md border border-[#E4E5DF]">
+              <div className="inline-flex items-center gap-1 bg-[#F8FAFC] p-1.5 rounded-full border border-[#E2E8F0]">
                 <button
                   onClick={() => setMode('DAY')}
-                  className={`px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider rounded-md transition-all cursor-pointer ${
-                    mode === 'DAY' ? 'bg-[#202522] text-white' : 'text-[#202522] hover:text-[#24483B]'
+                  className={`px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider rounded-full transition-all cursor-pointer ${
+                    mode === 'DAY' ? 'bg-[#0F172A] text-white shadow-2xs' : 'text-[#0F172A] hover:text-[#2563EB]'
                   }`}
                 >
                   ☀️ DAY
                 </button>
                 <button
                   onClick={() => setMode('NIGHT')}
-                  className={`px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider rounded-md transition-all cursor-pointer ${
-                    mode === 'NIGHT' ? 'bg-[#202522] text-[#ffc107]' : 'text-[#202522] hover:text-[#24483B]'
+                  className={`px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider rounded-full transition-all cursor-pointer ${
+                    mode === 'NIGHT' ? 'bg-[#0F172A] text-[#FFB800] shadow-2xs' : 'text-[#0F172A] hover:text-[#2563EB]'
                   }`}
                 >
                   🌙 NIGHT
@@ -146,22 +142,22 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
               </div>
             </div>
 
-            {/* CTA BUTTONS */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-3">
+            {/* CTA BUTTONS (PILL STYLING) */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <button
                 onClick={onOpenBooking}
-                className="px-7 py-3.5 bg-[#24483B] hover:bg-[#1A342A] text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-2xs rounded-md cursor-pointer"
+                className="px-6 py-3.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm rounded-full cursor-pointer"
               >
                 <span>EXPLORE THE VILLAS</span>
                 <ArrowRight className="w-4 h-4 text-white" />
               </button>
 
-              <a
-                href="#masterplan"
-                className="text-xs font-semibold uppercase tracking-wider text-[#202522] hover:text-[#24483B] transition-colors text-center sm:text-left py-1 cursor-pointer underline underline-offset-4"
+              <button
+                onClick={onOpenBooking}
+                className="px-5 py-3.5 bg-[#F97316] hover:bg-[#EA580C] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm rounded-full cursor-pointer"
               >
-                THE DEVELOPMENT JOURNEY →
-              </a>
+                <span>BOOK VILLA TOUR</span>
+              </button>
             </div>
           </motion.div>
 
@@ -171,15 +167,15 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 relative flex flex-col justify-between min-h-[460px] sm:min-h-[520px] bg-[#F8F7F2] border border-[#E4E5DF] rounded-xl p-6 sm:p-8 shadow-2xs"
+            className="lg:col-span-6 relative flex flex-col justify-between min-h-[460px] sm:min-h-[520px] bg-white border border-[#E2E8F0] rounded-3xl p-6 sm:p-8 shadow-md"
           >
             {/* TOP-RIGHT ARCHITECTURAL LABEL */}
-            <div className="flex items-center justify-between pb-4 border-b border-[#E4E5DF]">
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#202522]">
+            <div className="flex items-center justify-between pb-4 border-b border-[#E2E8F0]">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0F172A]">
                 3D VILLA PREVIEW
               </span>
 
-              <div className="flex items-center gap-2 text-[#24483B]">
+              <div className="flex items-center gap-2 text-[#2563EB]">
                 <RotateCw className="w-3.5 h-3.5 animate-spin-slow" />
                 <span className="text-[10px] font-bold uppercase tracking-[0.15em]">360° VIEW</span>
               </div>
@@ -191,52 +187,52 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
             </div>
 
             {/* BOTTOM ARCHITECTURAL INFORMATION & SPECIFICATION BLOCK */}
-            <div className="pt-4 border-t border-[#E4E5DF] space-y-4">
+            <div className="pt-4 border-t border-[#E2E8F0] space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-[0.15em] text-[#202522] block">
+                  <span className="text-xs font-bold uppercase tracking-[0.15em] text-[#0F172A] block">
                     VILLA 01
                   </span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#24483B] block">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#2563EB] block">
                     CONTEMPORARY RESIDENCE
                   </span>
                 </div>
 
                 <div className="text-right">
-                  <span className="text-[10px] font-semibold uppercase tracking-widest text-[#6B7280]">
+                  <span className="text-[10px] font-semibold uppercase tracking-widest text-[#64748B]">
                     {facing.toUpperCase()} FACING
                   </span>
                 </div>
               </div>
 
               {/* MINIMAL SPECIFICATION BLOCK WITH THIN 1PX DIVIDERS */}
-              <div className="grid grid-cols-3 gap-3 pt-3 border-t border-[#E4E5DF] text-left">
+              <div className="grid grid-cols-3 gap-3 pt-3 border-t border-[#E2E8F0] text-left">
                 {/* SPEC 1 */}
-                <div className="pr-2 border-r border-[#E4E5DF]">
-                  <span className="text-lg sm:text-2xl font-serif font-bold text-[#202522] block leading-none mb-1">
+                <div className="pr-2 border-r border-[#E2E8F0]">
+                  <span className="text-lg sm:text-2xl font-extrabold text-[#0F172A] block leading-none mb-1">
                     2,400+
                   </span>
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#24483B] block">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#2563EB] block">
                     SQ.FT BUILT AREA
                   </span>
                 </div>
 
                 {/* SPEC 2 */}
-                <div className="px-2 border-r border-[#E4E5DF]">
-                  <span className="text-lg sm:text-2xl font-serif font-bold text-[#202522] block leading-none mb-1">
+                <div className="px-2 border-r border-[#E2E8F0]">
+                  <span className="text-lg sm:text-2xl font-extrabold text-[#0F172A] block leading-none mb-1">
                     180
                   </span>
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#24483B] block">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#2563EB] block">
                     SQ.FT PRIVATE LAWN
                   </span>
                 </div>
 
                 {/* SPEC 3 */}
                 <div className="pl-2">
-                  <span className="text-lg sm:text-2xl font-serif font-bold text-[#202522] block leading-none mb-1">
+                  <span className="text-lg sm:text-2xl font-extrabold text-[#0F172A] block leading-none mb-1">
                     G+1
                   </span>
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#24483B] block">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#2563EB] block">
                     FLOOR CONFIGURATION
                   </span>
                 </div>
@@ -247,13 +243,13 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
 
         </div>
 
-        {/* 3. BOTTOM FULL-WIDTH EXISTING VILLA PHOTOGRAPH */}
+        {/* 3. BOTTOM FULL-WIDTH VILLA PHOTOGRAPH CARD */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full h-[360px] sm:h-[480px] lg:h-[560px] rounded-xl overflow-hidden border border-[#E4E5DF] shadow-xs group bg-[#202522] mb-16"
+          className="relative w-full h-[360px] sm:h-[480px] lg:h-[560px] rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-md group bg-[#0F172A] mb-16"
         >
           <img
             src="/images/hero_villa_facade.png"
@@ -261,21 +257,21 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
             className="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-1000 ease-out"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
           <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 text-white">
             <div>
-              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#24483B] block mb-1 bg-[#F8F7F2] px-2.5 py-1 rounded-md text-[#24483B] w-fit">
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] bg-white text-[#2563EB] px-3 py-1 rounded-full w-fit block mb-1">
                 REAL-WORLD ARCHITECTURAL EXECUTED RESULT
               </span>
-              <h4 className="text-xl sm:text-3xl font-serif font-normal text-white uppercase tracking-tight mt-2">
+              <h4 className="text-xl sm:text-3xl font-extrabold text-white uppercase tracking-tight mt-2">
                 ANTELIA GROVES VILLA ELEVATION
               </h4>
             </div>
 
             <button
               onClick={onOpenBooking}
-              className="px-5 py-2.5 rounded-md bg-[#24483B] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1A342A] transition-all flex items-center gap-2 cursor-pointer shadow-sm"
+              className="px-6 py-3 rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer shadow-sm"
             >
               <span>BOOK PRIVATE VILLA TOUR</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -284,31 +280,31 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
         </motion.div>
 
         {/* 4. VILLA ROOM TOUR SLIDESHOW & HIGHLIGHTS */}
-        <div className="mb-16 bg-[#FFFFFF] p-8 sm:p-12 rounded-xl border border-[#E4E5DF]">
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 border-b border-[#E4E5DF] pb-4">
+        <div className="mb-16 bg-white p-8 sm:p-12 rounded-3xl border border-[#E2E8F0] shadow-md">
+          <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 border-b border-[#E2E8F0] pb-4">
             <div>
               <div className="flex items-center gap-3 mb-1">
-                <span className="text-xs uppercase tracking-wider font-bold text-[#24483B] block">
-                  08 — VILLA ROOM TOUR
+                <span className="text-xs uppercase tracking-wider font-bold text-[#2563EB] block">
+                  08 / VILLA ROOM TOUR
                 </span>
                 <button
                   onClick={() => setIsPlayingWalkthrough(!isPlayingWalkthrough)}
-                  className="px-3 py-1 rounded-md bg-[#24483B] text-white text-[10px] font-semibold tracking-wider uppercase flex items-center gap-1.5 hover:bg-[#1A342A] transition-colors cursor-pointer"
+                  className="px-3 py-1 rounded-full bg-[#EFF6FF] text-[#1D4ED8] border border-[#BFDBFE] text-[10px] font-bold tracking-wider uppercase flex items-center gap-1.5 cursor-pointer"
                 >
                   {isPlayingWalkthrough ? (
                     <>
-                      <Pause className="w-3 h-3 text-white" />
+                      <Pause className="w-3 h-3 text-[#1D4ED8]" />
                       <span>2.0s ROOM SLIDESHOW: ON</span>
                     </>
                   ) : (
                     <>
-                      <Play className="w-3 h-3 text-white" />
+                      <Play className="w-3 h-3 text-[#1D4ED8]" />
                       <span>PAUSED</span>
                     </>
                   )}
                 </button>
               </div>
-              <h3 className="text-2xl sm:text-4xl font-serif font-normal text-[#202522] tracking-tight uppercase">
+              <h3 className="text-2xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight uppercase">
                 Explore Villa Rooms
               </h3>
             </div>
@@ -318,10 +314,10 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
                 <button
                   key={rm.name}
                   onClick={() => setActiveRoom(idx)}
-                  className={`px-3 py-1.5 rounded-md text-xs font-semibold uppercase transition-all whitespace-nowrap cursor-pointer ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase transition-all whitespace-nowrap cursor-pointer ${
                     activeRoom === idx
-                      ? 'bg-[#24483B] text-white shadow-2xs'
-                      : 'bg-[#F8F7F2] text-[#202522] border border-[#E4E5DF] hover:border-[#24483B]'
+                      ? 'bg-[#2563EB] text-white shadow-2xs'
+                      : 'bg-[#F8FAFC] text-[#0F172A] border border-[#E2E8F0] hover:border-[#2563EB]'
                   }`}
                 >
                   {rm.name}
@@ -331,7 +327,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8 relative h-[360px] sm:h-[400px] rounded-xl overflow-hidden border border-[#E4E5DF] bg-[#202522]">
+            <div className="lg:col-span-8 relative h-[360px] sm:h-[400px] rounded-2xl overflow-hidden border border-[#E2E8F0] bg-[#0F172A]">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeRoom}
@@ -345,8 +341,8 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
                 />
               </AnimatePresence>
               
-              <div className="absolute bottom-4 left-4 bg-[#F8F7F2]/95 backdrop-blur-xs px-4 py-2 border border-[#E4E5DF] rounded-md text-[#202522]">
-                <span className="text-xs uppercase text-[#24483B] font-bold">
+              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2 border border-[#E2E8F0] rounded-full text-[#0F172A] shadow-xs">
+                <span className="text-xs uppercase text-[#2563EB] font-bold">
                   ROOM {activeRoom + 1} OF {walkthruRooms.length}: {walkthruRooms[activeRoom].name}
                 </span>
               </div>
@@ -354,17 +350,17 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
 
             <div className="lg:col-span-4 flex flex-col justify-between h-[360px] sm:h-[400px]">
               <div>
-                <span className="text-xs font-bold text-[#24483B] uppercase block mb-2">
+                <span className="text-xs font-bold text-[#2563EB] uppercase block mb-2">
                   ROOM {walkthruRooms[activeRoom].id + 1}
                 </span>
-                <h4 className="text-2xl sm:text-3xl font-serif font-normal text-[#202522] mb-3 tracking-tight">
+                <h4 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] mb-3 tracking-tight uppercase">
                   {walkthruRooms[activeRoom].name}
                 </h4>
-                <p className="text-xs sm:text-sm font-normal text-[#3A423E] leading-relaxed mb-6">
+                <p className="text-xs sm:text-sm font-normal text-[#475569] leading-relaxed mb-6">
                   {walkthruRooms[activeRoom].desc}
                 </p>
-                <div className="p-4 bg-[#F8F7F2] border border-[#E4E5DF] rounded-md text-xs text-[#202522]">
-                  <span className="font-bold text-[#24483B] block mb-1">Villa Highlights:</span>
+                <div className="p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl text-xs text-[#0F172A]">
+                  <span className="font-bold text-[#2563EB] block mb-1">Villa Highlights:</span>
                   <span>{currentSpecs.orientation} — {currentSpecs.sunlight}</span>
                 </div>
               </div>
@@ -372,13 +368,13 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
               <div className="flex gap-3">
                 <button
                   onClick={() => setActiveRoom((prev) => (prev > 0 ? prev - 1 : walkthruRooms.length - 1))}
-                  className="flex-1 py-3 text-xs border border-[#E4E5DF] text-[#202522] uppercase font-semibold rounded-md hover:border-[#202522] bg-[#F8F7F2] cursor-pointer"
+                  className="flex-1 py-3 text-xs border border-[#E2E8F0] text-[#0F172A] uppercase font-semibold rounded-full hover:border-[#2563EB] bg-[#F8FAFC] cursor-pointer"
                 >
                   Previous Room
                 </button>
                 <button
                   onClick={() => setActiveRoom((prev) => (prev < walkthruRooms.length - 1 ? prev + 1 : 0))}
-                  className="flex-1 py-3 text-xs bg-[#24483B] text-white uppercase font-semibold rounded-md hover:bg-[#1A342A] transition-all cursor-pointer"
+                  className="flex-1 py-3 text-xs bg-[#2563EB] text-white uppercase font-bold rounded-full hover:bg-[#1D4ED8] transition-all cursor-pointer shadow-xs"
                 >
                   Next Room
                 </button>

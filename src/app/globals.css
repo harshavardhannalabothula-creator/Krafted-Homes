@@ -3,23 +3,26 @@
 
 @layer base {
   :root {
-    --primary-navy: #202522;
-    --bg-warm-ivory: #F8F7F2;
-    --secondary-stone: #E4E5DF;
-    --accent-green: #24483B;
-    --text-charcoal: #202522;
-    --border-grey: #E4E5DF;
+    --primary-navy: #0F172A;
+    --bg-white: #FFFFFF;
+    --bg-slate-light: #F8FAFC;
+    --secondary-slate: #E2E8F0;
+    --accent-blue: #2563EB;
+    --accent-orange: #F97316;
+    --text-navy: #0F172A;
+    --text-slate: #334155;
+    --border-slate: #E2E8F0;
 
-    --background: #F8F7F2;
-    --foreground: #202522;
-    --border: #E4E5DF;
+    --background: #FFFFFF;
+    --foreground: #0F172A;
+    --border: #E2E8F0;
 
     --font-primary: 'Plus Jakarta Sans', 'Outfit', system-ui, -apple-system, sans-serif;
   }
 
   body {
-    background-color: var(--bg-warm-ivory);
-    color: var(--text-charcoal);
+    background-color: var(--background);
+    color: var(--foreground);
     font-family: var(--font-primary);
     overflow-x: hidden;
     scroll-behavior: smooth;
@@ -32,7 +35,7 @@
   }
 }
 
-/* Global Modern Geometric & Architectural Typography System matching agds-pvt.vercel.app */
+/* Global Modern Geometric & Clean Sans Typography */
 .font-heading, .font-serif, .font-cormorant {
   font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif !important;
   font-weight: 800;
@@ -47,54 +50,17 @@
   font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 
-/* Color Utility Classes */
-.bg-warm-ivory {
-  background-color: #F8F7F2;
-}
-
-.bg-charcoal-navy {
-  background-color: #202522;
-}
-
-.bg-natural-stone {
-  background-color: #E4E5DF;
-}
-
-.bg-accent-green {
-  background-color: #24483B;
-}
-
-.text-charcoal-navy {
-  color: #202522;
-}
-
-.text-soft-charcoal {
-  color: #3A423E;
-}
-
-.text-accent-green {
-  color: #24483B;
-}
-
-.border-warm-grey {
-  border-color: #E4E5DF;
-}
-
-.border-accent-green {
-  border-color: #24483B;
-}
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #F8F7F2;
+  background: #F8FAFC;
 }
 ::-webkit-scrollbar-thumb {
-  background: #24483B;
-  border-radius: 4px;
+  background: #2563EB;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #202522;
+  background: #1D4ED8;
 }
