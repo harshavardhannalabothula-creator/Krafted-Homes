@@ -162,139 +162,147 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
         </div>
       )}
 
-      {/* 2. MAIN HERO BODY — EXACT MATCH TO REFERENCE SCREENSHOT LAYOUT */}
-      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-10 py-10 sm:py-14 lg:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      {/* 2. MAIN HERO SECTION (NO CONTAINER BOX AROUND RIGHT IMAGE, HALF SCREEN IMAGE WITH SMOOTH ARCH CURVE) */}
+      <div className="relative w-full min-h-[520px] lg:min-h-[580px] flex items-center bg-white overflow-hidden">
+        
+        {/* RIGHT HALF-SCREEN IMAGE CONTAINER (NO CARD BOX / NO BORDER / NO PADDING) */}
+        <div className="hidden lg:block absolute top-0 right-0 w-1/2 h-full z-10 overflow-hidden">
           
-          {/* LEFT 6 COLUMNS: TAG BADGE, DUAL-TONE HEADLINE, SUBTITLE, 3 CIRCULAR FEATURE HIGHLIGHTS */}
-          <div className="lg:col-span-6 flex flex-col items-start text-left space-y-6">
-            
-            {/* PILL TAG BADGE (EXACT MATCH TO REFERENCE BADGE) */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-bold uppercase tracking-wider shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#F97316]" />
-              <span>✦ Premium Villa Sales &amp; Living</span>
-            </div>
-
-            {/* DUAL-TONE MAIN HEADLINE */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#0F172A] leading-[1.05] text-left">
-              Your Next Villa <br />
-              <span className="text-[#F97316]">Is Waiting</span>
-            </h1>
-
-            {/* SUBTITLE DESCRIPTION */}
-            <p className="text-xs sm:text-sm font-normal text-slate-600 leading-relaxed max-w-xl text-left">
-              Buy your dream villa with KraftedHomes.com — premium 3 &amp; 4 BHK independent residences, 10-acre gated estate, private backyard gardens, and 15,000 sq.ft resort clubhouse.
-            </p>
-
-            {/* 3 FEATURE HIGHLIGHTS ROW WITH CIRCULAR ORANGE ICONS */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full pt-2">
-              
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
-                  <Check className="w-4 h-4" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-extrabold text-[#0F172A] uppercase leading-tight">Wide Selection</h4>
-                  <span className="text-[10px] text-slate-500 font-medium block">3 &amp; 4 BHK Villa Models</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
-                  <Check className="w-4 h-4" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-extrabold text-[#0F172A] uppercase leading-tight">Easy Booking</h4>
-                  <span className="text-[10px] text-slate-500 font-medium block">Quick &amp; simple process</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
-                  <Check className="w-4 h-4" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-extrabold text-[#0F172A] uppercase leading-tight">24/7 Support</h4>
-                  <span className="text-[10px] text-slate-500 font-medium block">Always here for you</span>
-                </div>
-              </div>
-
-            </div>
-
+          {/* HANDWRITTEN CURSIVE OVERLAY AT TOP OF CURVE */}
+          <div 
+            style={{ fontFamily: "'Caveat', 'Dancing Script', 'Brush Script MT', cursive" }} 
+            className="absolute top-10 left-14 z-30 text-3xl sm:text-4xl text-[#0F172A] font-bold -rotate-6 pointer-events-none drop-shadow-sm select-none"
+          >
+            Better Living, <br />
+            <span className="text-[#2563EB] pl-4">Bigger Luxury</span>
           </div>
 
-          {/* RIGHT 6 COLUMNS: HALF SCREEN IMAGE AREA WITH SIGNATURE CURVE SHAPE ARCH CUTOUT & HANDWRITTEN OVERLAY */}
-          <div className="lg:col-span-6 relative">
-            
-            {/* PLAYFUL HANDWRITTEN CURSIVE SCRIPT TEXT OVERLAY */}
-            <div 
-              style={{ fontFamily: "'Caveat', 'Dancing Script', 'Brush Script MT', cursive" }} 
-              className="text-3xl sm:text-4xl text-[#0F172A] font-bold -rotate-6 absolute -top-8 right-8 z-30 pointer-events-none drop-shadow-sm select-none"
+          {/* SMOOTH SVG ARCH / CURVE SHAPE CUTOUT MASKS THE LEFT EDGE OF THE RIGHT IMAGE */}
+          <svg 
+            className="absolute top-0 left-0 h-full w-36 text-white z-20 pointer-events-none" 
+            viewBox="0 0 100 400" 
+            preserveAspectRatio="none" 
+            fill="currentColor"
+          >
+            <path d="M0,0 L100,0 C30,70 10,180 80,320 L100,400 L0,400 Z" />
+          </svg>
+
+          {/* FULL HEIGHT HALF SCREEN IMAGE */}
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={activeStat.image}
+              src={activeStat.image}
+              alt={activeStat.subtitle}
+              initial={{ opacity: 0, scale: 1.04 }}
+              animate={{ opacity: 1, scale: 1.00 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              className="w-full h-full object-cover"
+            />
+          </AnimatePresence>
+
+          {/* FLOATING TOP-RIGHT BADGE */}
+          <div className="absolute top-6 right-8 z-30 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-slate-200 text-xs font-bold text-[#0F172A] shadow-sm flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#F97316] animate-pulse" />
+            <span>{activeStat.tag}</span>
+          </div>
+
+          {/* FLOATING BOTTOM CAPTION BAR */}
+          <div className="absolute bottom-16 right-8 z-30 bg-white/95 backdrop-blur-md px-5 py-3 rounded-2xl border border-slate-200 shadow-lg flex items-center gap-4">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#2563EB] block">
+                ANTELIA GROVES TOWNSHIP
+              </span>
+              <h4 className="text-xs sm:text-sm font-extrabold text-[#0F172A]">
+                {activeStat.subtitle}
+              </h4>
+            </div>
+            <button
+              onClick={onOpenBooking}
+              className="px-4 py-2 rounded-full bg-[#F97316] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#EA580C] transition-colors cursor-pointer shadow-xs whitespace-nowrap"
             >
-              Better Living, <br />
-              <span className="text-[#2563EB] pl-4">Bigger Luxury</span>
-            </div>
-
-            {/* CURVED ARCH IMAGE CONTAINER (WITH SVG ARCH SHAPE ON LEFT EDGE) */}
-            <div className="relative w-full h-[360px] sm:h-[440px] lg:h-[480px] rounded-[3rem] overflow-hidden border border-slate-200 shadow-xl bg-slate-100">
-              
-              {/* IMAGE SLIDESHOW */}
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={activeStat.image}
-                  src={activeStat.image}
-                  alt={activeStat.subtitle}
-                  initial={{ opacity: 0, scale: 1.03 }}
-                  animate={{ opacity: 1, scale: 1.00 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.6, ease: 'easeOut' }}
-                  className="w-full h-full object-cover"
-                />
-              </AnimatePresence>
-
-              {/* SIGNATURE CURVED ARCH OVERLAY CUTOUT (MATCHING REFERENCE IMAGE) */}
-              <svg 
-                className="absolute top-0 left-0 h-full w-28 text-white z-20 pointer-events-none hidden sm:block" 
-                viewBox="0 0 100 400" 
-                preserveAspectRatio="none" 
-                fill="currentColor"
-              >
-                <path d="M0,0 L100,0 C30,80 10,200 80,320 L100,400 L0,400 Z" />
-              </svg>
-
-              {/* TOP FLOATING TAG BADGE */}
-              <div className="absolute top-5 right-5 z-30 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-slate-200 text-xs font-bold text-[#0F172A] shadow-sm flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#F97316] animate-pulse" />
-                <span>{activeStat.tag}</span>
-              </div>
-
-              {/* BOTTOM FLOATING CAPTION BAR */}
-              <div className="absolute bottom-4 inset-x-4 z-30 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-slate-200 shadow-md flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#2563EB] block">
-                    ANTELIA GROVES TOWNSHIP
-                  </span>
-                  <h4 className="text-xs sm:text-sm font-extrabold text-[#0F172A] leading-tight">
-                    {activeStat.subtitle}
-                  </h4>
-                </div>
-
-                <button
-                  onClick={onOpenBooking}
-                  className="px-4 py-2 rounded-full bg-[#F97316] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#EA580C] transition-colors cursor-pointer whitespace-nowrap shadow-xs"
-                >
-                  View Details
-                </button>
-              </div>
-
-            </div>
-
+              View Villa
+            </button>
           </div>
 
         </div>
 
-        {/* 3. FLOATING HORIZONTAL SEARCH & VILLA SELECTOR BAR (EXACT MATCH TO REFERENCE BAR) */}
-        <div className="mt-10 w-full bg-white p-4 sm:p-5 rounded-3xl border border-slate-200 shadow-xl flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+        {/* LEFT 6 COLUMNS: HERO TEXT CONTENT */}
+        <div className="max-w-7xl mx-auto w-full px-6 sm:px-10 py-10 lg:py-16 relative z-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <div className="lg:col-span-6 flex flex-col items-start text-left space-y-6">
+              
+              {/* PILL TAG BADGE (EXACT MATCH TO REFERENCE BADGE) */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-bold uppercase tracking-wider shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-[#F97316]" />
+                <span>✦ Premium Villa Sales &amp; Living</span>
+              </div>
+
+              {/* DUAL-TONE MAIN HEADLINE */}
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#0F172A] leading-[1.05] text-left">
+                Your Next Villa <br />
+                <span className="text-[#F97316]">Is Waiting</span>
+              </h1>
+
+              {/* SUBTITLE DESCRIPTION */}
+              <p className="text-xs sm:text-sm font-normal text-slate-600 leading-relaxed max-w-xl text-left">
+                Buy your dream villa with KraftedHomes.com — premium 3 &amp; 4 BHK independent residences, 10-acre gated estate, private backyard gardens, and 15,000 sq.ft resort clubhouse.
+              </p>
+
+              {/* 3 FEATURE HIGHLIGHTS ROW WITH CIRCULAR ORANGE ICONS */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full pt-2">
+                
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
+                    <Check className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-extrabold text-[#0F172A] uppercase leading-tight">Wide Selection</h4>
+                    <span className="text-[10px] text-slate-500 font-medium block">3 &amp; 4 BHK Villa Models</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
+                    <Check className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-extrabold text-[#0F172A] uppercase leading-tight">Easy Booking</h4>
+                    <span className="text-[10px] text-slate-500 font-medium block">Quick &amp; simple process</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
+                    <Check className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-extrabold text-[#0F172A] uppercase leading-tight">24/7 Support</h4>
+                    <span className="text-[10px] text-slate-500 font-medium block">Always here for you</span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* MOBILE ONLY IMAGE VISUALIZER */}
+            <div className="lg:hidden w-full h-[280px] rounded-3xl overflow-hidden border border-slate-200 relative shadow-md">
+              <img src={activeStat.image} alt="Luxury Villa" className="w-full h-full object-cover" />
+              <div className="absolute top-3 left-3 bg-white/95 px-3 py-1 rounded-full text-[10px] font-bold text-[#0F172A]">
+                {activeStat.tag}
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      {/* 3. FLOATING HORIZONTAL SEARCH & VILLA SELECTOR BAR (EXACT MATCH TO REFERENCE BAR) */}
+      <div className="relative z-30 max-w-6xl mx-auto px-6 w-full -mt-6 lg:-mt-10 mb-10">
+        <div className="bg-white p-4 sm:p-5 rounded-3xl border border-slate-200 shadow-xl flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
           
           <div className="flex-1 flex items-center gap-3 px-3 py-1 border-b lg:border-b-0 lg:border-r border-slate-200">
             <MapPin className="w-5 h-5 text-[#F97316] shrink-0" />
@@ -328,7 +336,6 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
           </button>
 
         </div>
-
       </div>
 
       {/* 4. FEATURED VILLAS ROW ("Explore Our Featured Villas" LIKE REFERENCE SITE) */}
@@ -384,7 +391,6 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
                 id: 4,
                 title: 'Resort Pool Clubhouse Villa',
                 bua: '3,000 SQ.FT • 4 BHK',
-                price: '₹3,000 SQ.FT • 4 BHK',
                 priceVal: '₹2.75 Cr* Onwards',
                 image: '/images/hero_resort_clubhouse.png',
                 badge: 'POOL SIDE',
