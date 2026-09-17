@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Menu, X, ArrowUpRight, MapPin } from 'lucide-react';
+import { ArrowRight, Menu, X, MapPin, Search, Calendar, Home as HomeIcon, Check } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 interface SunsetArchitecturalHeroProps {
@@ -13,9 +13,9 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
   const [activeStatIndex, setActiveStatIndex] = useState(0);
 
   const navLinks = [
-    { label: 'OVERVIEW', href: '#overview' },
-    { label: 'MASTERPLAN', href: '#masterplan' },
+    { label: 'HOME', href: '#overview' },
     { label: 'VILLAS', href: '#villas' },
+    { label: 'MASTERPLAN', href: '#masterplan' },
     { label: 'LOCATION', href: '#location' },
     { label: 'ABOUT', href: '#about' },
     { label: 'CONTACT', href: '#contact' },
@@ -24,47 +24,27 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
   const quickStats = [
     {
       id: 0,
-      value: '10+ ACRES',
-      label: 'GATED COMMUNITY',
-      detail: 'Low-density planned enclave',
-      image: '/images/hero_main_aerial.png',
-      tag: '01 / OVERVIEW',
-      title: '10-ACRE GATED ESTATE',
-      subtitle: 'INDEPENDENT 3 & 4 BHK LUXURY VILLAS',
-      desc: 'An exclusive low-density enclave featuring 189 split-level independent villas surrounded by 70% open green corridors, tree-lined boulevards, and serene water features in Sarjapur-Whitefield Corridor, Bengaluru.',
+      image: '/images/hero_villa_facade.png',
+      tag: '01 / ELEVATION',
+      subtitle: 'Modern 3-Floor Villa Facade & Private Lawn',
     },
     {
       id: 1,
-      value: '3 & 4 BHK',
-      label: 'INDEPENDENT VILLAS',
-      detail: 'Split-level private residences',
-      image: '/images/hero_villa_facade.png',
-      tag: '02 / VILLA ELEVATION',
-      title: 'INDEPENDENT VILLAS',
-      subtitle: 'SPLIT-LEVEL ARCHITECTURE & PRIVATE LAWNS',
-      desc: 'Architecturally articulated 3 & 4 BHK residences with private 180 sq.ft backyard lawns, double-height ceilings, floor-to-ceiling glass, and private rooftop sky terraces.',
+      image: '/images/hero_main_aerial.png',
+      tag: '02 / MASTERPLAN',
+      subtitle: '10-Acre Gated Township Estate',
     },
     {
       id: 2,
-      value: '2262–3000 SQ.FT.',
-      label: 'BUA RANGE',
-      detail: 'Articulated spatial layouts',
       image: '/images/hero_living_sanctuary.png',
       tag: '03 / INTERIORS',
-      title: 'BRIGHT & SPACIOUS ROOMS',
-      subtitle: 'FLOOR-TO-CEILING GLAZING & NATURAL SUNLIGHT',
-      desc: 'Expansive open-plan living sanctuaries filled with natural sunlight, dining island kitchens, private family lounges, and peaceful master bedroom suites.',
+      subtitle: 'High Ceilings & Floor-to-Ceiling Glazing',
     },
     {
       id: 3,
-      value: '15,000+ SQ.FT.',
-      label: 'SIGNATURE CLUBHOUSE',
-      detail: '25m heated pool & wellness',
       image: '/images/hero_resort_clubhouse.png',
-      tag: '04 / CLUBHOUSE & POOL',
-      title: 'RESORT CLUBHOUSE',
-      subtitle: '15,000+ SQ.FT. WELLNESS & LEISURE HUB',
-      desc: 'A grand 15,000 sq.ft resort clubhouse featuring a crystal swimming pool, indoor sports courts, modern fitness centre, zen yoga deck, and executive guest suites.',
+      tag: '04 / CLUBHOUSE',
+      subtitle: '15,000 Sq.Ft Resort Pool & Amenities',
     },
   ];
 
@@ -90,32 +70,34 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
   return (
     <section id="overview" className="relative w-full flex flex-col justify-between bg-white text-[#0F172A] overflow-hidden border-b border-[#E2E8F0]">
       
-      {/* 1. TOP HEADER NAVIGATION (CLEAN WHITE NAVBAR WITH PILL BUTTONS) */}
+      {/* 1. TOP HEADER NAVIGATION (CLEAN WHITE NAVBAR WITH LOGO, NAV LINKS, SEARCH & BOOK NOW BUTTON) */}
       <header className="sticky top-0 z-50 w-full px-4 sm:px-8 py-3 bg-white/95 backdrop-blur-md border-b border-[#E2E8F0]">
-        <div className="max-w-6xl mx-auto w-full flex items-center justify-between">
-          <a href="#overview" onClick={(e) => handleScrollTo(e, '#overview')} className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 bg-[#2563EB] flex items-center justify-center rounded-xl shadow-xs">
-              <span className="text-white font-bold text-xs tracking-widest">▲</span>
+        <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
+          
+          {/* BRAND LOGO */}
+          <a href="#overview" onClick={(e) => handleScrollTo(e, '#overview')} className="flex items-center gap-3 group">
+            <div className="w-10 h-10 bg-gradient-to-tr from-[#2563EB] to-[#1D4ED8] flex items-center justify-center rounded-xl shadow-xs">
+              <span className="text-white font-extrabold text-base tracking-widest">K</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-extrabold tracking-wider text-[#0F172A] leading-tight group-hover:text-[#2563EB] transition-colors">
-                ANTELIA
+              <span className="text-base sm:text-lg font-extrabold tracking-tight text-[#0F172A] leading-tight group-hover:text-[#2563EB] transition-colors uppercase">
+                KraftedHomes.com
               </span>
-              <span className="text-[9px] font-bold tracking-widest text-[#2563EB] uppercase">
-                GROVES
+              <span className="text-[10px] font-bold tracking-widest text-[#F97316] uppercase">
+                Live Your Luxury
               </span>
             </div>
           </a>
 
           {/* CENTERED NAVIGATION LINKS */}
-          <nav className="hidden xl:flex items-center gap-6">
+          <nav className="hidden xl:flex items-center gap-8">
             {navLinks.map((link, idx) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleScrollTo(e, link.href)}
-                className={`text-xs font-semibold uppercase tracking-wider transition-colors py-1 relative cursor-pointer ${
-                  idx === 0 ? 'text-[#2563EB] font-bold border-b-2 border-[#2563EB]' : 'text-[#475569] hover:text-[#2563EB]'
+                className={`text-xs font-bold uppercase tracking-wider transition-colors py-1 relative cursor-pointer ${
+                  idx === 0 ? 'text-[#0F172A] font-extrabold border-b-2 border-[#F97316]' : 'text-[#64748B] hover:text-[#2563EB]'
                 }`}
               >
                 {link.label}
@@ -123,22 +105,21 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
             ))}
           </nav>
 
-          {/* RIGHT ACTION BUTTONS (PILL STYLING LIKE REFERENCE SITE) */}
-          <div className="hidden xl:flex items-center gap-3">
+          {/* RIGHT ACTION BUTTONS */}
+          <div className="hidden xl:flex items-center gap-4">
             <button
-              onClick={(e) => handleScrollTo(e, '#location')}
-              className="px-4 py-2 rounded-full bg-[#F1F5F9] border border-[#E2E8F0] text-[#0F172A] text-xs font-semibold uppercase tracking-wider hover:bg-[#E2E8F0] hover:text-[#2563EB] transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
+              onClick={onOpenBooking}
+              className="p-2.5 rounded-full hover:bg-slate-100 text-slate-600 transition-colors cursor-pointer"
+              title="Search"
             >
-              <MapPin className="w-3.5 h-3.5 text-[#2563EB]" />
-              <span>LOCATION</span>
+              <Search className="w-4 h-4" />
             </button>
 
             <button
               onClick={onOpenBooking}
-              className="px-5 py-2 rounded-full bg-[#2563EB] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#1D4ED8] transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+              className="px-6 py-2.5 rounded-full bg-[#F97316] hover:bg-[#EA580C] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md cursor-pointer"
             >
-              <span>SCHEDULE VISIT</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              Book Now
             </button>
           </div>
 
@@ -148,7 +129,7 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
             className="xl:hidden text-[#0F172A] p-1.5 focus:outline-none"
             aria-label="Toggle Menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5 text-[#2563EB]" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-6 h-6 text-[#2563EB]" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </header>
@@ -164,172 +145,216 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
                 setMobileMenuOpen(false);
                 handleScrollTo(e, link.href);
               }}
-              className="text-xs font-semibold uppercase tracking-wider text-[#0F172A] hover:text-[#2563EB] py-2 border-b border-[#E2E8F0] cursor-pointer"
+              className="text-xs font-bold uppercase tracking-wider text-[#0F172A] hover:text-[#2563EB] py-2 border-b border-[#E2E8F0] cursor-pointer"
             >
               {link.label}
             </a>
           ))}
           <button
-            onClick={(e) => {
-              setMobileMenuOpen(false);
-              handleScrollTo(e, '#location');
-            }}
-            className="mt-2 w-full py-3 bg-[#F1F5F9] border border-[#E2E8F0] text-[#0F172A] text-xs font-semibold uppercase tracking-wider hover:text-[#2563EB] transition-colors rounded-full text-center flex items-center justify-center gap-2 cursor-pointer"
-          >
-            <MapPin className="w-3.5 h-3.5 text-[#2563EB]" />
-            <span>LOCATION MAP</span>
-          </button>
-          <button
             onClick={() => {
               setMobileMenuOpen(false);
               onOpenBooking();
             }}
-            className="w-full py-3 bg-[#2563EB] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#1D4ED8] transition-colors rounded-full cursor-pointer"
+            className="mt-2 w-full py-3 bg-[#F97316] hover:bg-[#EA580C] text-white text-xs font-bold uppercase tracking-wider transition-colors rounded-full cursor-pointer text-center"
           >
-            SCHEDULE VISIT
+            Book Now
           </button>
         </div>
       )}
 
-      {/* 2. MAIN HERO BODY — EXACT MATCH TO REFERENCE UI LAYOUT */}
-      <div className="relative z-20 max-w-6xl mx-auto w-full px-6 sm:px-8 py-8 sm:py-12 lg:py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      {/* 2. MAIN HERO BODY — EXACT MATCH TO REFERENCE SCREENSHOT LAYOUT */}
+      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-10 py-10 sm:py-14 lg:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
-          {/* LEFT 6 COLUMNS: BADGE, DUAL-TONE HEADLINE, FEATURE BULLETS & FLOATING SEARCH BAR */}
-          <div className="lg:col-span-6 flex flex-col items-start text-left space-y-5">
+          {/* LEFT 6 COLUMNS: TAG BADGE, DUAL-TONE HEADLINE, SUBTITLE, 3 CIRCULAR FEATURE HIGHLIGHTS */}
+          <div className="lg:col-span-6 flex flex-col items-start text-left space-y-6">
             
-            {/* PILL TAG BADGE LIKE REFERENCE SITE */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs font-bold uppercase tracking-wider">
-              <span>✦ PREMIUM LUXURY VILLAS &amp; TOWNSHIP</span>
+            {/* PILL TAG BADGE (EXACT MATCH TO REFERENCE BADGE) */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-bold uppercase tracking-wider shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#F97316]" />
+              <span>✦ Premium Villa Sales &amp; Living</span>
             </div>
 
-            {/* DUAL-TONE MAIN HEADLINE (ORANGE HIGHLIGHT LIKE REFERENCE SITE) */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#0F172A] leading-[1.08] text-left max-w-lg">
-              Your Dream Villa <br />
+            {/* DUAL-TONE MAIN HEADLINE */}
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#0F172A] leading-[1.05] text-left">
+              Your Next Villa <br />
               <span className="text-[#F97316]">Is Waiting</span>
             </h1>
 
             {/* SUBTITLE DESCRIPTION */}
-            <p className="text-xs sm:text-sm font-normal text-[#475569] leading-relaxed max-w-lg text-left">
-              Exclusive 3 &amp; 4 BHK independent luxury villas set inside a 10-acre green gated community in Whitefield-Sarjapur Villa Corridor, Bengaluru. Designed for fresh air, private lawns, and quiet living.
+            <p className="text-xs sm:text-sm font-normal text-slate-600 leading-relaxed max-w-xl text-left">
+              Buy your dream villa with KraftedHomes.com — premium 3 &amp; 4 BHK independent residences, 10-acre gated estate, private backyard gardens, and 15,000 sq.ft resort clubhouse.
             </p>
 
-            {/* QUICK FEATURE BULLET BADGES (LIKE REFERENCE DESIGN) */}
-            <div className="flex flex-wrap items-center gap-2.5 pt-1">
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-bold text-[#0F172A]">
-                <span className="text-[#2563EB]">✓</span>
-                <span>10-Acre Gated Estate</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-bold text-[#0F172A]">
-                <span className="text-[#2563EB]">✓</span>
-                <span>Split-Level Design</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] text-xs font-bold text-[#0F172A]">
-                <span className="text-[#2563EB]">✓</span>
-                <span>24/7 Gated Security</span>
-              </div>
-            </div>
-
-            {/* FLOATING SEARCH & VILLA SELECTOR BAR (EXACT MATCH TO REFERENCE BAR) */}
-            <div className="w-full bg-white p-3 rounded-2xl border border-[#E2E8F0] shadow-md flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              <div className="flex-1 px-3 py-1 border-r border-[#E2E8F0]">
-                <span className="text-[10px] font-bold text-[#64748B] uppercase block">Location</span>
-                <span className="text-xs font-bold text-[#0F172A] block">Sarjapur-Whitefield, BLR</span>
+            {/* 3 FEATURE HIGHLIGHTS ROW WITH CIRCULAR ORANGE ICONS */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full pt-2">
+              
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
+                  <Check className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-extrabold text-[#0F172A] uppercase leading-tight">Wide Selection</h4>
+                  <span className="text-[10px] text-slate-500 font-medium block">3 &amp; 4 BHK Villa Models</span>
+                </div>
               </div>
 
-              <div className="flex-1 px-3 py-1 border-r border-[#E2E8F0]">
-                <span className="text-[10px] font-bold text-[#64748B] uppercase block">Villa Size</span>
-                <span className="text-xs font-bold text-[#0F172A] block">3 &amp; 4 BHK (2262-3000 Sq.Ft)</span>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
+                  <Check className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-extrabold text-[#0F172A] uppercase leading-tight">Easy Booking</h4>
+                  <span className="text-[10px] text-slate-500 font-medium block">Quick &amp; simple process</span>
+                </div>
               </div>
 
-              <button
-                onClick={onOpenBooking}
-                className="px-6 py-3 bg-[#F97316] hover:bg-[#EA580C] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-sm rounded-full cursor-pointer whitespace-nowrap"
-              >
-                Search Villas
-              </button>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
+                  <Check className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-extrabold text-[#0F172A] uppercase leading-tight">24/7 Support</h4>
+                  <span className="text-[10px] text-slate-500 font-medium block">Always here for you</span>
+                </div>
+              </div>
+
             </div>
 
           </div>
 
-          {/* RIGHT 6 COLUMNS: ULTRA-HIGH QUALITY VILLA SHOWCASE (WITH ARCH BACKDROP & HANDWRITTEN ACCENT) */}
+          {/* RIGHT 6 COLUMNS: HALF SCREEN IMAGE AREA WITH SIGNATURE CURVE SHAPE ARCH CUTOUT & HANDWRITTEN OVERLAY */}
           <div className="lg:col-span-6 relative">
-            {/* HANDWRITTEN TEXT OVERLAY LIKE REFERENCE DESIGN */}
-            <div className="font-handwritten text-2xl sm:text-3xl text-[#2563EB] -rotate-6 absolute -top-5 right-6 z-30 pointer-events-none drop-shadow-xs font-bold">
-              Better Living, Bigger Luxury
+            
+            {/* PLAYFUL HANDWRITTEN CURSIVE SCRIPT TEXT OVERLAY */}
+            <div 
+              style={{ fontFamily: "'Caveat', 'Dancing Script', 'Brush Script MT', cursive" }} 
+              className="text-3xl sm:text-4xl text-[#0F172A] font-bold -rotate-6 absolute -top-8 right-8 z-30 pointer-events-none drop-shadow-sm select-none"
+            >
+              Better Living, <br />
+              <span className="text-[#2563EB] pl-4">Bigger Luxury</span>
             </div>
 
-            {/* ARCH CONTAINER BACKDROP */}
-            <div className="w-full h-[320px] sm:h-[380px] lg:h-[440px] rounded-[2.5rem] bg-gradient-to-tr from-[#EFF6FF] via-[#F8FAFC] to-[#FFF7ED] p-3 border border-[#E2E8F0] shadow-md relative overflow-hidden flex items-center justify-center">
-              <div className="relative w-full h-full rounded-[2rem] overflow-hidden">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={activeStat.image}
-                    src={activeStat.image}
-                    alt={activeStat.subtitle}
-                    initial={{ opacity: 0, scale: 1.02 }}
-                    animate={{ opacity: 1, scale: 1.00 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
-                    className="w-full h-full object-cover"
-                  />
-                </AnimatePresence>
+            {/* CURVED ARCH IMAGE CONTAINER (WITH SVG ARCH SHAPE ON LEFT EDGE) */}
+            <div className="relative w-full h-[360px] sm:h-[440px] lg:h-[480px] rounded-[3rem] overflow-hidden border border-slate-200 shadow-xl bg-slate-100">
+              
+              {/* IMAGE SLIDESHOW */}
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={activeStat.image}
+                  src={activeStat.image}
+                  alt={activeStat.subtitle}
+                  initial={{ opacity: 0, scale: 1.03 }}
+                  animate={{ opacity: 1, scale: 1.00 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
+                  className="w-full h-full object-cover"
+                />
+              </AnimatePresence>
 
-                {/* TOP FLOATING PILL BADGE */}
-                <div className="absolute top-4 left-4 z-20 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#E2E8F0] text-xs font-bold text-[#0F172A] shadow-xs flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#2563EB]" />
-                  <span>{activeStat.tag}</span>
-                </div>
+              {/* SIGNATURE CURVED ARCH OVERLAY CUTOUT (MATCHING REFERENCE IMAGE) */}
+              <svg 
+                className="absolute top-0 left-0 h-full w-28 text-white z-20 pointer-events-none hidden sm:block" 
+                viewBox="0 0 100 400" 
+                preserveAspectRatio="none" 
+                fill="currentColor"
+              >
+                <path d="M0,0 L100,0 C30,80 10,200 80,320 L100,400 L0,400 Z" />
+              </svg>
 
-                {/* BOTTOM FLOATING CAPTION BAR */}
-                <div className="absolute bottom-3 inset-x-3 z-20 bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl border border-[#E2E8F0] shadow-xs flex items-center justify-between">
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#2563EB] block">
-                      2.0S AUTOMATIC ROTATION
-                    </span>
-                    <h4 className="text-xs sm:text-sm font-bold text-[#0F172A] leading-tight">
-                      {activeStat.subtitle}
-                    </h4>
-                  </div>
-
-                  <button
-                    onClick={onOpenBooking}
-                    className="px-3.5 py-1.5 rounded-full bg-[#2563EB] text-white text-[11px] font-bold uppercase tracking-wider hover:bg-[#1D4ED8] transition-colors cursor-pointer"
-                  >
-                    View Villa
-                  </button>
-                </div>
+              {/* TOP FLOATING TAG BADGE */}
+              <div className="absolute top-5 right-5 z-30 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-slate-200 text-xs font-bold text-[#0F172A] shadow-sm flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#F97316] animate-pulse" />
+                <span>{activeStat.tag}</span>
               </div>
+
+              {/* BOTTOM FLOATING CAPTION BAR */}
+              <div className="absolute bottom-4 inset-x-4 z-30 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-slate-200 shadow-md flex items-center justify-between">
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#2563EB] block">
+                    ANTELIA GROVES TOWNSHIP
+                  </span>
+                  <h4 className="text-xs sm:text-sm font-extrabold text-[#0F172A] leading-tight">
+                    {activeStat.subtitle}
+                  </h4>
+                </div>
+
+                <button
+                  onClick={onOpenBooking}
+                  className="px-4 py-2 rounded-full bg-[#F97316] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#EA580C] transition-colors cursor-pointer whitespace-nowrap shadow-xs"
+                >
+                  View Details
+                </button>
+              </div>
+
             </div>
+
           </div>
 
         </div>
+
+        {/* 3. FLOATING HORIZONTAL SEARCH & VILLA SELECTOR BAR (EXACT MATCH TO REFERENCE BAR) */}
+        <div className="mt-10 w-full bg-white p-4 sm:p-5 rounded-3xl border border-slate-200 shadow-xl flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+          
+          <div className="flex-1 flex items-center gap-3 px-3 py-1 border-b lg:border-b-0 lg:border-r border-slate-200">
+            <MapPin className="w-5 h-5 text-[#F97316] shrink-0" />
+            <div>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Pick-up Location</span>
+              <span className="text-xs sm:text-sm font-extrabold text-[#0F172A] block">Sarjapur, Bengaluru</span>
+            </div>
+          </div>
+
+          <div className="flex-1 flex items-center gap-3 px-3 py-1 border-b lg:border-b-0 lg:border-r border-slate-200">
+            <HomeIcon className="w-5 h-5 text-[#F97316] shrink-0" />
+            <div>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Villa Configuration</span>
+              <span className="text-xs sm:text-sm font-extrabold text-[#0F172A] block">3 &amp; 4 BHK Independent</span>
+            </div>
+          </div>
+
+          <div className="flex-1 flex items-center gap-3 px-3 py-1 border-b lg:border-b-0 lg:border-r border-slate-200">
+            <Calendar className="w-5 h-5 text-[#F97316] shrink-0" />
+            <div>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Select Date</span>
+              <span className="text-xs sm:text-sm font-extrabold text-[#0F172A] block">Schedule Site Visit</span>
+            </div>
+          </div>
+
+          <button
+            onClick={onOpenBooking}
+            className="px-8 py-4 bg-[#F97316] hover:bg-[#EA580C] text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-md rounded-full cursor-pointer whitespace-nowrap"
+          >
+            Search Villas
+          </button>
+
+        </div>
+
       </div>
 
-      {/* 3. FEATURED VILLAS ROW ("Explore Our Featured Villas" LIKE REFERENCE SITE) */}
-      <div className="relative z-30 w-full bg-[#F8FAFC] border-t border-[#E2E8F0] py-10 px-6 sm:px-8">
-        <div className="max-w-6xl mx-auto space-y-6">
+      {/* 4. FEATURED VILLAS ROW ("Explore Our Featured Villas" LIKE REFERENCE SITE) */}
+      <div className="relative z-30 w-full bg-slate-50 border-t border-slate-200 py-12 px-6 sm:px-10">
+        <div className="max-w-7xl mx-auto space-y-6">
           
           {/* SECTION TITLE WITH ORANGE INDICATOR BAR */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-1.5 h-6 bg-[#F97316] rounded-full" />
-              <h3 className="text-xl sm:text-2xl font-extrabold text-[#0F172A] tracking-tight uppercase">
+              <div className="w-2 h-7 bg-[#F97316] rounded-full" />
+              <h3 className="text-xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight uppercase">
                 Explore Our Featured Villas
               </h3>
             </div>
 
             <button
               onClick={(e) => handleScrollTo(e, '#villas')}
-              className="text-xs font-bold text-[#2563EB] hover:text-[#1D4ED8] uppercase tracking-wider cursor-pointer flex items-center gap-1"
+              className="text-xs font-bold text-[#2563EB] hover:text-[#1D4ED8] uppercase tracking-wider cursor-pointer flex items-center gap-1.5"
             >
               <span>View All Villas</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
           {/* 4-COLUMN HIGH-QUALITY VILLA CARDS GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 id: 1,
@@ -359,7 +384,8 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
                 id: 4,
                 title: 'Resort Pool Clubhouse Villa',
                 bua: '3,000 SQ.FT • 4 BHK',
-                price: '₹2.75 Cr* Onwards',
+                price: '₹3,000 SQ.FT • 4 BHK',
+                priceVal: '₹2.75 Cr* Onwards',
                 image: '/images/hero_resort_clubhouse.png',
                 badge: 'POOL SIDE',
               },
@@ -367,31 +393,31 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
               <div
                 key={v.id}
                 onClick={onOpenBooking}
-                className="bg-white rounded-2xl p-3 border border-[#E2E8F0] shadow-xs hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer flex flex-col justify-between group"
+                className="bg-white rounded-3xl p-3.5 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer flex flex-col justify-between group"
               >
-                <div className="relative h-44 rounded-xl overflow-hidden mb-3 bg-[#0F172A]">
+                <div className="relative h-48 rounded-2xl overflow-hidden mb-3 bg-slate-900">
                   <img
                     src={v.image}
                     alt={v.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full border border-[#E2E8F0] text-[10px] font-bold text-[#0F172A] shadow-2xs">
+                  <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-slate-200 text-[10px] font-bold text-[#0F172A] shadow-xs">
                     {v.badge}
                   </div>
                 </div>
 
-                <div>
-                  <h4 className="text-sm font-extrabold text-[#0F172A] leading-snug mb-1 group-hover:text-[#2563EB] transition-colors">
+                <div className="p-1">
+                  <h4 className="text-base font-extrabold text-[#0F172A] leading-snug mb-1 group-hover:text-[#2563EB] transition-colors">
                     {v.title}
                   </h4>
-                  <span className="text-[11px] font-semibold text-[#64748B] block mb-2">
+                  <span className="text-xs font-semibold text-slate-500 block mb-3">
                     {v.bua}
                   </span>
-                  <div className="flex items-center justify-between border-t border-[#E2E8F0] pt-2 mt-2">
+                  <div className="flex items-center justify-between border-t border-slate-100 pt-3">
                     <span className="text-xs font-extrabold text-[#F97316]">
-                      {v.price}
+                      {v.priceVal || v.price}
                     </span>
-                    <span className="px-3 py-1 rounded-full bg-[#EFF6FF] text-[#1D4ED8] text-[10px] font-bold uppercase hover:bg-[#2563EB] hover:text-white transition-colors">
+                    <span className="px-3.5 py-1.5 rounded-full bg-blue-50 text-[#2563EB] text-[10px] font-bold uppercase hover:bg-[#2563EB] hover:text-white transition-colors">
                       View Villa
                     </span>
                   </div>
