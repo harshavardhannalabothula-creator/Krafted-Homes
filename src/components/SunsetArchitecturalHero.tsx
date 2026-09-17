@@ -168,14 +168,7 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
         {/* RIGHT HALF-SCREEN IMAGE CONTAINER (NO CARD BOX / NO BORDER / NO PADDING) */}
         <div className="hidden lg:block absolute top-0 right-0 w-1/2 h-full z-10 overflow-hidden">
           
-          {/* HANDWRITTEN CURSIVE OVERLAY AT TOP OF CURVE */}
-          <div 
-            style={{ fontFamily: "'Caveat', 'Dancing Script', 'Brush Script MT', cursive" }} 
-            className="absolute top-10 left-14 z-30 text-3xl sm:text-4xl text-[#0F172A] font-bold -rotate-6 pointer-events-none drop-shadow-sm select-none"
-          >
-            Better Living, <br />
-            <span className="text-[#2563EB] pl-4">Bigger Luxury</span>
-          </div>
+
 
           {/* SMOOTH SVG ARCH / CURVE SHAPE CUTOUT MASKS THE LEFT EDGE OF THE RIGHT IMAGE */}
           <svg 
