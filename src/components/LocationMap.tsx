@@ -117,19 +117,19 @@ export default function LocationMap({ onOpenBooking }: LocationMapProps) {
   const activeLandmark = filteredLandmarks[activeLandmarkIndex] || landmarks[0];
 
   return (
-    <section id="location" className="py-20 sm:py-24 bg-[#F8F7F2] text-[#202522] relative overflow-hidden border-b border-[#E4E5DF]">
+    <section id="location" className="py-20 sm:py-24 bg-white text-[#0F172A] relative overflow-hidden border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
 
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#24483B] block mb-2">
+          <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#2563EB] block mb-2">
             04 / BENGALURU LOCATION &amp; CONNECTIVITY
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#202522] mb-3 tracking-tight leading-tight uppercase">
-            PRIME BENGALURU LOCATION <span className="text-[#24483B]">&amp; FAST CONNECTIVITY</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mb-3 tracking-tight leading-tight uppercase">
+            PRIME BENGALURU LOCATION <span className="text-[#2563EB]">&amp; FAST CONNECTIVITY</span>
           </h2>
-          <p className="text-xs sm:text-sm text-[#3A423E] font-normal leading-relaxed">
-            Antelia Groves is situated in a serene green villa corridor in Bengaluru with quick signal-free access to Kempegowda International Airport, Whitefield IT parks, top international schools, and multi-specialty hospitals via Outer Ring Road.
+          <p className="text-xs sm:text-sm text-[#475569] font-normal leading-relaxed">
+            Antelia Groves is situated in a serene villa corridor in Bengaluru with quick signal-free access to Kempegowda International Airport, Whitefield IT parks, top international schools, and multi-specialty hospitals via Outer Ring Road.
           </p>
         </div>
 
@@ -149,10 +149,10 @@ export default function LocationMap({ onOpenBooking }: LocationMapProps) {
                 setActiveCategory(cat.id as any);
                 setActiveLandmarkIndex(0);
               }}
-              className={`px-4 py-2 rounded-md text-xs font-semibold tracking-wider uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
+              className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'bg-[#24483B] text-white shadow-2xs'
-                  : 'bg-[#FFFFFF] text-[#202522] hover:text-[#24483B] border border-[#E4E5DF]'
+                  ? 'bg-[#2563EB] text-white shadow-xs'
+                  : 'bg-slate-50 text-[#0F172A] hover:text-[#2563EB] border border-slate-200'
               }`}
             >
               <span>{cat.label}</span>
@@ -164,38 +164,38 @@ export default function LocationMap({ onOpenBooking }: LocationMapProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
           {/* LEFT 7 COLUMNS: REAL BENGALURU MAP SHOWCASE CANVAS */}
-          <div className="lg:col-span-7 bg-[#FFFFFF] p-4 sm:p-6 rounded-xl border border-[#E4E5DF] shadow-2xs relative">
+          <div className="lg:col-span-7 bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm relative">
 
             {/* MAP MODE SWITCHER TOP BAR */}
-            <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-[#E4E5DF]">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-200">
               <div className="flex items-center gap-2">
-                <MapIcon className="w-4 h-4 text-[#24483B]" />
-                <span className="text-xs font-bold uppercase text-[#202522] tracking-wider">
+                <MapIcon className="w-4 h-4 text-[#2563EB]" />
+                <span className="text-xs font-bold uppercase text-[#0F172A] tracking-wider">
                   REAL BENGALURU TOWNSHIP MAP
                 </span>
               </div>
 
-              <div className="flex items-center gap-1 bg-[#F8F7F2] p-1 rounded-md border border-[#E4E5DF]">
+              <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-full border border-slate-200">
                 <button
                   onClick={() => setMapMode('SATELLITE')}
-                  className={`px-3 py-1 rounded-md text-[11px] font-semibold uppercase transition-all cursor-pointer ${
-                    mapMode === 'SATELLITE' ? 'bg-[#24483B] text-white' : 'text-[#202522] hover:text-[#24483B]'
+                  className={`px-3 py-1 rounded-full text-[11px] font-semibold uppercase transition-all cursor-pointer ${
+                    mapMode === 'SATELLITE' ? 'bg-[#2563EB] text-white' : 'text-[#0F172A] hover:text-[#2563EB]'
                   }`}
                 >
                   SATELLITE
                 </button>
                 <button
                   onClick={() => setMapMode('ROAD')}
-                  className={`px-3 py-1 rounded-md text-[11px] font-semibold uppercase transition-all cursor-pointer ${
-                    mapMode === 'ROAD' ? 'bg-[#24483B] text-white' : 'text-[#202522] hover:text-[#24483B]'
+                  className={`px-3 py-1 rounded-full text-[11px] font-semibold uppercase transition-all cursor-pointer ${
+                    mapMode === 'ROAD' ? 'bg-[#2563EB] text-white' : 'text-[#0F172A] hover:text-[#2563EB]'
                   }`}
                 >
                   ROADWAYS
                 </button>
                 <button
                   onClick={() => setMapMode('RADIAL')}
-                  className={`px-3 py-1 rounded-md text-[11px] font-semibold uppercase transition-all cursor-pointer ${
-                    mapMode === 'RADIAL' ? 'bg-[#24483B] text-white' : 'text-[#202522] hover:text-[#24483B]'
+                  className={`px-3 py-1 rounded-full text-[11px] font-semibold uppercase transition-all cursor-pointer ${
+                    mapMode === 'RADIAL' ? 'bg-[#2563EB] text-white' : 'text-[#0F172A] hover:text-[#2563EB]'
                   }`}
                 >
                   DISTANCE RADIAL
@@ -204,12 +204,12 @@ export default function LocationMap({ onOpenBooking }: LocationMapProps) {
             </div>
 
             {/* INTERACTIVE REAL BENGALURU MAP VIEWPORT CONTAINER */}
-            <div className="relative w-full h-[400px] sm:h-[460px] rounded-md overflow-hidden border border-[#E4E5DF] bg-[#202522]">
+            <div className="relative w-full h-[400px] sm:h-[460px] rounded-xl overflow-hidden border border-slate-200 bg-[#0F172A]">
 
-              {/* REAL GOOGLE BENGALURU SATELLITE MAP IFRAME (GREEN OPEN LAND SITE) */}
+              {/* REAL GOOGLE BENGALURU SATELLITE MAP IFRAME */}
               {mapMode === 'SATELLITE' && (
                 <iframe
-                  title="Antelia Groves Green Open Land Satellite Map"
+                  title="Antelia Groves Land Satellite Map"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15562.748720194857!2d77.7850!3d12.8645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae736181f08e45%3A0xb35a09c2a6327e57!2sSarjapur%2C%20Bengaluru%2C%20Karnataka!5e1!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
                   className="w-full h-full border-0 filter brightness-95 contrast-105"
                   loading="lazy"
@@ -228,16 +228,16 @@ export default function LocationMap({ onOpenBooking }: LocationMapProps) {
               )}
 
               {mapMode === 'RADIAL' && (
-                <div className="w-full h-full bg-[#202522] relative flex items-center justify-center overflow-hidden p-6">
+                <div className="w-full h-full bg-[#0F172A] relative flex items-center justify-center overflow-hidden p-6">
                   {/* CONCENTRIC DISTANCE RADIAL CIRCLES */}
-                  <div className="absolute w-[360px] h-[360px] rounded-full border border-[#24483B]/40 animate-pulse" />
-                  <div className="absolute w-[260px] h-[260px] rounded-full border border-[#24483B]/50" />
-                  <div className="absolute w-[160px] h-[160px] rounded-full border border-[#24483B]/70" />
+                  <div className="absolute w-[360px] h-[360px] rounded-full border border-[#2563EB]/40 animate-pulse" />
+                  <div className="absolute w-[260px] h-[260px] rounded-full border border-[#2563EB]/50" />
+                  <div className="absolute w-[160px] h-[160px] rounded-full border border-[#2563EB]/70" />
 
                   {/* RADIAL LABELS */}
-                  <span className="absolute text-[10px] font-bold text-[#24483B] top-6 bg-[#F8F7F2] px-2 py-0.5 rounded-xs">28 KM RADIAL — BLR AIRPORT &amp; CITY</span>
-                  <span className="absolute text-[10px] font-bold text-[#24483B] top-16 bg-[#F8F7F2] px-2 py-0.5 rounded-xs">10 KM RADIAL — WHITEFIELD IT HUBS</span>
-                  <span className="absolute text-[10px] font-bold text-[#24483B] top-28 bg-[#F8F7F2] px-2 py-0.5 rounded-xs">3 KM RADIAL — SCHOOLS &amp; HOSPITALS</span>
+                  <span className="absolute text-[10px] font-bold text-white top-6 bg-[#2563EB] px-2.5 py-1 rounded-full">28 KM RADIAL — BLR AIRPORT &amp; CITY</span>
+                  <span className="absolute text-[10px] font-bold text-white top-16 bg-[#2563EB] px-2.5 py-1 rounded-full">10 KM RADIAL — WHITEFIELD IT HUBS</span>
+                  <span className="absolute text-[10px] font-bold text-white top-28 bg-[#2563EB] px-2.5 py-1 rounded-full">3 KM RADIAL — SCHOOLS &amp; HOSPITALS</span>
 
                   {/* LANDMARK SYMBOL PINS ON RADIAL */}
                   {landmarks.map((lm) => {
@@ -265,32 +265,32 @@ export default function LocationMap({ onOpenBooking }: LocationMapProps) {
               )}
 
               {/* OVERLAY TOWNSHIP PIN CARD */}
-              <div className="absolute top-4 left-4 z-20 bg-[#F8F7F2]/95 backdrop-blur-md text-[#202522] p-3.5 rounded-md border border-[#E4E5DF] shadow-xs max-w-xs">
+              <div className="absolute top-4 left-4 z-20 bg-white/95 backdrop-blur-md text-[#0F172A] p-3.5 rounded-xl border border-slate-200 shadow-md max-w-xs">
                 <div className="flex items-center gap-2 mb-1">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#24483B] animate-ping" />
-                  <span className="text-[10px] uppercase font-bold tracking-wider text-[#24483B]">
-                    10-ACRE OPEN GREEN SITE
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#2563EB] animate-ping" />
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-[#2563EB]">
+                    10-ACRE TOWNSHIP SITE
                   </span>
                 </div>
-                <h4 className="text-sm font-extrabold text-[#202522] flex items-center gap-1.5 uppercase">
-                  <MapPin className="w-4 h-4 text-[#24483B]" />
+                <h4 className="text-sm font-extrabold text-[#0F172A] flex items-center gap-1.5 uppercase">
+                  <MapPin className="w-4 h-4 text-[#2563EB]" />
                   <span>ANTELIA GROVES</span>
                 </h4>
-                <p className="text-[11px] text-[#3A423E] mt-1 leading-snug">
+                <p className="text-[11px] text-[#475569] mt-1 leading-snug">
                   Sarjapur Villa Corridor, Bengaluru
                 </p>
               </div>
 
               {/* ACTIVE LANDMARK FLOATING HIGHLIGHT PIN */}
-              <div className="absolute bottom-4 right-4 z-20 bg-[#F8F7F2]/95 backdrop-blur-md text-[#202522] p-3.5 rounded-md border border-[#E4E5DF] shadow-xs flex items-center gap-3">
-                <div className="w-9 h-9 rounded-md bg-[#24483B] text-white flex items-center justify-center text-base font-bold">
+              <div className="absolute bottom-4 right-4 z-20 bg-white/95 backdrop-blur-md text-[#0F172A] p-3.5 rounded-xl border border-slate-200 shadow-md flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[#2563EB] text-white flex items-center justify-center text-base font-bold">
                   {activeLandmark.symbol}
                 </div>
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-[#24483B] block">
+                  <span className="text-[10px] uppercase font-bold text-[#2563EB] block">
                     HIGHLIGHTED DESTINATION
                   </span>
-                  <span className="text-xs font-bold text-[#202522]">
+                  <span className="text-xs font-bold text-[#0F172A]">
                     {activeLandmark.title} ({activeLandmark.time})
                   </span>
                 </div>
@@ -299,16 +299,16 @@ export default function LocationMap({ onOpenBooking }: LocationMapProps) {
             </div>
 
             {/* LIVE DIRECTION LINK BUTTON */}
-            <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#F8F7F2] p-3.5 rounded-md border border-[#E4E5DF]">
-              <div className="flex items-center gap-2 text-xs font-semibold text-[#3A423E]">
-                <Car className="w-4 h-4 text-[#24483B]" />
-                <span>GPS: 12.8645° N, 77.7850° E (Green Site)</span>
+            <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+              <div className="flex items-center gap-2 text-xs font-semibold text-[#475569]">
+                <Car className="w-4 h-4 text-[#2563EB]" />
+                <span>GPS: 12.8645° N, 77.7850° E</span>
               </div>
               <a
                 href="https://maps.google.com/?q=Sarjapur+Bengaluru"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-4 py-2 rounded-md bg-[#24483B] text-white hover:bg-[#1A342A] text-xs font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-2xs"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-[#2563EB] text-white hover:bg-[#1D4ED8] text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-xs"
               >
                 <span>OPEN IN GOOGLE MAPS</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -320,12 +320,12 @@ export default function LocationMap({ onOpenBooking }: LocationMapProps) {
           {/* RIGHT 5 COLUMNS: AUTO-ROTATING DISTANCE & LANDMARK CARDS */}
           <div className="lg:col-span-5 space-y-3">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#24483B]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
                 KEY BENGALURU DISTANCES (2.0S ROTATION)
               </span>
               <button
                 onClick={() => setIsAutoCycling(!isAutoCycling)}
-                className="text-[11px] font-semibold text-[#3A423E] hover:text-[#24483B] underline cursor-pointer"
+                className="text-[11px] font-semibold text-[#475569] hover:text-[#2563EB] underline cursor-pointer"
               >
                 {isAutoCycling ? 'Pause Rotation' : 'Resume Rotation'}
               </button>
@@ -341,19 +341,19 @@ export default function LocationMap({ onOpenBooking }: LocationMapProps) {
                     setActiveLandmarkIndex(idx);
                     setIsAutoCycling(false);
                   }}
-                  className={`p-4 rounded-md border transition-all cursor-pointer ${
+                  className={`p-4 rounded-xl border transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-[#24483B] text-white border-[#24483B] shadow-2xs transform translate-x-1'
-                      : 'bg-[#FFFFFF] text-[#202522] border-[#E4E5DF] hover:border-[#24483B]'
+                      ? 'bg-[#2563EB] text-white border-[#2563EB] shadow-md transform translate-x-1'
+                      : 'bg-white text-[#0F172A] border-slate-200 hover:border-[#2563EB]'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3">
                       <div
-                        className={`w-9 h-9 rounded-md flex items-center justify-center text-base font-bold transition-all ${
+                        className={`w-9 h-9 rounded-lg flex items-center justify-center text-base font-bold transition-all ${
                           isActive
-                            ? 'bg-[#FFFFFF] text-[#24483B]'
-                            : 'bg-[#F8F7F2] text-[#202522] border border-[#E4E5DF]'
+                            ? 'bg-white text-[#2563EB]'
+                            : 'bg-slate-100 text-[#0F172A] border border-slate-200'
                         }`}
                       >
                         <span>{lm.symbol}</span>
@@ -361,14 +361,14 @@ export default function LocationMap({ onOpenBooking }: LocationMapProps) {
                       <div>
                         <h4
                           className={`text-sm font-extrabold uppercase transition-colors ${
-                            isActive ? 'text-white' : 'text-[#202522]'
+                            isActive ? 'text-white' : 'text-[#0F172A]'
                           }`}
                         >
                           {lm.title}
                         </h4>
                         <span
                           className={`text-[11px] font-medium block mt-0.5 ${
-                            isActive ? 'text-white/90' : 'text-[#6B7280]'
+                            isActive ? 'text-white/90' : 'text-slate-500'
                           }`}
                         >
                           Distance: {lm.distance}
@@ -377,10 +377,10 @@ export default function LocationMap({ onOpenBooking }: LocationMapProps) {
                     </div>
 
                     <div
-                      className={`px-3 py-1.5 rounded-md text-xs font-bold flex items-center gap-1 whitespace-nowrap ${
+                      className={`px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1 whitespace-nowrap ${
                         isActive
-                          ? 'bg-[#FFFFFF] text-[#24483B]'
-                          : 'bg-[#F8F7F2] text-[#202522] border border-[#E4E5DF]'
+                          ? 'bg-white text-[#2563EB]'
+                          : 'bg-slate-100 text-[#0F172A] border border-slate-200'
                       }`}
                     >
                       <Clock className="w-3.5 h-3.5" />
@@ -403,19 +403,19 @@ export default function LocationMap({ onOpenBooking }: LocationMapProps) {
             })}
 
             {/* CALL TO ACTION BOX */}
-            <div className="bg-[#FFFFFF] p-4 rounded-md border border-[#E4E5DF] mt-4 flex items-center justify-between gap-3">
+            <div className="bg-white p-4 rounded-xl border border-slate-200 mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs">
               <div>
-                <span className="text-xs font-bold text-[#202522] block uppercase">
+                <span className="text-xs font-bold text-[#0F172A] block uppercase">
                   WANT A PERSONALIZED BENGALURU SITE TOUR?
                 </span>
-                <span className="text-[11px] text-[#3A423E] block">
+                <span className="text-[11px] text-[#475569] block">
                   Book a free site visit with pick-up facility.
                 </span>
               </div>
               {onOpenBooking && (
                 <button
                   onClick={onOpenBooking}
-                  className="px-4 py-2 rounded-md bg-[#24483B] hover:bg-[#1A342A] text-white text-xs font-semibold uppercase tracking-wider transition-all shadow-2xs whitespace-nowrap cursor-pointer"
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-[#F97316] hover:bg-[#EA580C] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-xs whitespace-nowrap cursor-pointer"
                 >
                   BOOK SITE VISIT
                 </button>
