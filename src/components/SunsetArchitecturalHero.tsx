@@ -90,31 +90,31 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
   return (
     <section id="overview" className="relative w-full flex flex-col justify-between bg-[#F8F7F2] text-[#202522] overflow-hidden border-b border-[#E4E5DF]">
       
-      {/* 1. TOP HEADER NAVIGATION */}
-      <header className="sticky top-0 z-50 w-full px-6 sm:px-12 py-4 bg-[#F8F7F2]/95 backdrop-blur-md border-b border-[#E4E5DF]">
-        <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
-          <a href="#overview" onClick={(e) => handleScrollTo(e, '#overview')} className="flex items-center gap-3 group">
-            <div className="w-7 h-7 bg-[#24483B] flex items-center justify-center rounded-md shadow-xs">
-              <span className="text-white font-bold text-xs tracking-widest">▲</span>
+      {/* 1. TOP HEADER NAVIGATION (COMPACT SLEEK WIDTH & HEIGHT) */}
+      <header className="sticky top-0 z-50 w-full px-4 sm:px-8 py-2.5 sm:py-3 bg-[#F8F7F2]/95 backdrop-blur-md border-b border-[#E4E5DF]">
+        <div className="max-w-6xl mx-auto w-full flex items-center justify-between">
+          <a href="#overview" onClick={(e) => handleScrollTo(e, '#overview')} className="flex items-center gap-2.5 group">
+            <div className="w-6.5 h-6.5 bg-[#24483B] flex items-center justify-center rounded-md shadow-2xs">
+              <span className="text-white font-bold text-[11px] tracking-widest">▲</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-extrabold tracking-wider text-[#202522] leading-tight group-hover:text-[#24483B] transition-colors">
+              <span className="text-xs font-extrabold tracking-wider text-[#202522] leading-tight group-hover:text-[#24483B] transition-colors">
                 ANTELIA
               </span>
-              <span className="text-[9px] font-bold tracking-widest text-[#24483B] uppercase">
+              <span className="text-[8.5px] font-bold tracking-widest text-[#24483B] uppercase">
                 GROVES
               </span>
             </div>
           </a>
 
           {/* CENTERED NAVIGATION LINKS */}
-          <nav className="hidden xl:flex items-center gap-8">
+          <nav className="hidden xl:flex items-center gap-6">
             {navLinks.map((link, idx) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleScrollTo(e, link.href)}
-                className={`text-xs font-semibold uppercase tracking-wider transition-colors py-1 relative cursor-pointer ${
+                className={`text-[11px] font-semibold uppercase tracking-wider transition-colors py-1 relative cursor-pointer ${
                   idx === 0 ? 'text-[#24483B] font-bold border-b-2 border-[#24483B]' : 'text-[#3A423E] hover:text-[#24483B]'
                 }`}
               >
@@ -124,10 +124,10 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
           </nav>
 
           {/* RIGHT ACTION BUTTONS */}
-          <div className="hidden xl:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-2.5">
             <button
               onClick={(e) => handleScrollTo(e, '#location')}
-              className="px-4 py-2 rounded-md bg-[#FFFFFF] border border-[#E4E5DF] text-[#202522] text-xs font-semibold uppercase tracking-wider hover:border-[#24483B] hover:text-[#24483B] transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
+              className="px-3.5 py-1.5 rounded-md bg-[#FFFFFF] border border-[#E4E5DF] text-[#202522] text-[11px] font-semibold uppercase tracking-wider hover:border-[#24483B] hover:text-[#24483B] transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
             >
               <MapPin className="w-3.5 h-3.5 text-[#24483B]" />
               <span>LOCATION</span>
@@ -135,7 +135,7 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
 
             <button
               onClick={onOpenBooking}
-              className="px-5 py-2 rounded-md bg-[#24483B] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#1A342A] transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
+              className="px-4 py-1.5 rounded-md bg-[#24483B] text-white text-[11px] font-semibold uppercase tracking-wider hover:bg-[#1A342A] transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
             >
               <span>SCHEDULE VISIT</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -145,10 +145,10 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
           {/* MOBILE MENU TRIGGER */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden text-[#202522] p-2 focus:outline-none"
+            className="xl:hidden text-[#202522] p-1.5 focus:outline-none"
             aria-label="Toggle Menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6 text-[#24483B]" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 text-[#24483B]" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </header>

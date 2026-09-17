@@ -14,7 +14,6 @@ import {
   Play,
   Pause,
 } from 'lucide-react';
-import Masterplan3DEngine from './Masterplan3DEngine';
 
 interface InteractiveMasterplanProps {
   onOpenBooking: () => void;
@@ -325,9 +324,90 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
           {/* 3D Masterplan Engine Viewport + Sector Info & Realistic HD Photo Panel */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
-            {/* 3D Three.js WebGL Model Canvas */}
-            <div className="lg:col-span-7 h-[480px] sm:h-[540px]">
-              <Masterplan3DEngine activeSector={activeSector} />
+            {/* INTERACTIVE 2D MASTERPLAN BLUEPRINT VIEWPORT */}
+            <div className="lg:col-span-7 relative h-[480px] sm:h-[540px] rounded-xl overflow-hidden border border-[#E4E5DF] bg-[#202522] flex flex-col justify-between shadow-2xs group">
+              {/* MASTERPLAN BACKGROUND IMAGE WITH SECTOR DYNAMIC OVERLAY */}
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={activeSector}
+                  src={
+                    activeSector === 'NORTH'
+                      ? '/images/hero_villa_facade.png'
+                      : activeSector === 'CLUBHOUSE'
+                      ? '/images/hero_resort_clubhouse.png'
+                      : activeSector === 'SOUTH'
+                      ? '/images/private_garden_sanctuary.jpg'
+                      : '/images/hero_main_aerial.png'
+                  }
+                  alt="Antelia Groves Masterplan View"
+                  initial={{ opacity: 0, scale: 1.03 }}
+                  animate={{ opacity: 1, scale: 1.00 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: 'easeOut' }}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </AnimatePresence>
+
+              {/* OVERLAY GRADIENT */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 pointer-events-none z-10" />
+
+              {/* TOP MASTERPLAN OVERLAY HEADER */}
+              <div className="relative z-20 p-5 flex items-center justify-between">
+                <div className="bg-[#F8F7F2]/95 backdrop-blur-md px-3.5 py-1.5 rounded-md border border-[#E4E5DF] text-xs font-bold text-[#202522] flex items-center gap-2">
+                  <Compass className="w-4 h-4 text-[#24483B] animate-spin-slow" />
+                  <span className="uppercase tracking-wider">10-ACRE CAD MASTERPLAN • {activeSector} ZONE</span>
+                </div>
+
+                <div className="bg-[#202522]/90 backdrop-blur-md px-3 py-1.5 rounded-md border border-white/20 text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#24483B]" />
+                  <span>189 PLOTS</span>
+                </div>
+              </div>
+
+              {/* DYNAMIC HOTSPOT PINS ON THE MASTERPLAN */}
+              <div className="relative z-20 p-6 flex-1 flex items-center justify-center">
+                <div className="relative w-full max-w-md h-64 border-2 border-dashed border-white/30 rounded-xl p-4 flex flex-col justify-between bg-black/30 backdrop-blur-xs">
+                  <div className="flex items-center justify-between text-[10px] font-bold text-white/80 uppercase tracking-widest">
+                    <span>NORTH ENTRANCE GATE</span>
+                    <span>40-FT MAIN BOULEVARD</span>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-3 text-center">
+                    <div className={`p-3 rounded-md border transition-all ${activeSector === 'NORTH' || activeSector === 'ALL' ? 'bg-[#24483B] text-white border-white/40 shadow-md' : 'bg-black/50 text-white/60 border-white/10'}`}>
+                      <span className="text-[10px] font-bold block uppercase">NORTH GROVE</span>
+                      <span className="text-xs font-extrabold">Villas 001–065</span>
+                    </div>
+
+                    <div className={`p-3 rounded-md border transition-all ${activeSector === 'CLUBHOUSE' || activeSector === 'ALL' ? 'bg-[#24483B] text-white border-white/40 shadow-md' : 'bg-black/50 text-white/60 border-white/10'}`}>
+                      <span className="text-[10px] font-bold block uppercase">CLUBHOUSE</span>
+                      <span className="text-xs font-extrabold">15,000 Sq.Ft</span>
+                    </div>
+
+                    <div className={`p-3 rounded-md border transition-all ${activeSector === 'SOUTH' || activeSector === 'ALL' ? 'bg-[#24483B] text-white border-white/40 shadow-md' : 'bg-black/50 text-white/60 border-white/10'}`}>
+                      <span className="text-[10px] font-bold block uppercase">SOUTH GROVE</span>
+                      <span className="text-xs font-extrabold">Villas 066–189</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between text-[10px] font-bold text-white/80 uppercase tracking-widest">
+                    <span>70% OPEN GREEN CORRIDOR</span>
+                    <span>SOUTH PARK & ZEN PATH</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* BOTTOM CAPTION BAR */}
+              <div className="relative z-20 p-4 bg-[#F8F7F2]/95 backdrop-blur-md border-t border-[#E4E5DF] flex items-center justify-between text-[#202522]">
+                <div className="flex items-center gap-2">
+                  <Trees className="w-4 h-4 text-[#24483B]" />
+                  <span className="text-xs font-bold uppercase tracking-wider">
+                    {currentSectorInfo.title}
+                  </span>
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#24483B]">
+                  70% BOTANICAL LANDSCAPE
+                </span>
+              </div>
             </div>
 
             {/* Sector Information & REALISTIC HD PHOTO SHOWCASE Sidebar Card */}
