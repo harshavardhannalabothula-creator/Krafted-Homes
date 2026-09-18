@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Star, Quote, CheckCircle2 } from 'lucide-react';
+import { Star, CheckCircle2 } from 'lucide-react';
 
 interface Testimonial {
   text: string;
@@ -57,6 +57,73 @@ const testimonials: Testimonial[] = [
   },
 ];
 
+const col1 = [testimonials[0], testimonials[3]];
+const col2 = [testimonials[1], testimonials[4]];
+const col3 = [testimonials[2], testimonials[5]];
+
+const TestimonialCard = ({ item }: { item: Testimonial }) => (
+  <div className="p-6 sm:p-7 rounded-[28px] border border-slate-200/90 bg-white shadow-sm hover:shadow-xl hover:border-[#F97316]/50 transition-all duration-300 flex flex-col justify-between group my-3">
+    <div>
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-1 text-[#F97316]">
+          {[...Array(5)].map((_, starIdx) => (
+            <Star key={starIdx} className="w-4 h-4 fill-current" />
+          ))}
+        </div>
+
+        <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-orange-50 text-[#F97316] border border-orange-100 flex items-center gap-1">
+          <CheckCircle2 className="w-3 h-3 text-emerald-500" />
+          Verified Owner
+        </span>
+      </div>
+
+      <p className="text-slate-600 leading-relaxed font-medium text-[13px] sm:text-[14px] mb-6 italic">
+        &ldquo;{item.text}&rdquo;
+      </p>
+    </div>
+
+    <div className="pt-4 border-t border-slate-100 flex items-center gap-3.5">
+      <img
+        src={item.image}
+        alt={item.name}
+        className="h-11 w-11 rounded-full object-cover ring-2 ring-orange-100 group-hover:ring-[#F97316] transition-all shrink-0"
+      />
+      <div className="flex flex-col min-w-0">
+        <h4 className="font-extrabold text-[#0F172A] text-sm tracking-tight truncate leading-snug">
+          {item.name}
+        </h4>
+        <span className="text-[11px] font-bold text-[#F97316] leading-tight mt-0.5">
+          {item.role}
+        </span>
+        <span className="text-[10px] font-medium text-slate-400 leading-tight">
+          {item.villaNo}
+        </span>
+      </div>
+    </div>
+  </div>
+);
+
+const AnimatedColumn = ({ items, duration = 30, className = '' }: { items: Testimonial[]; duration?: number; className?: string }) => {
+  return (
+    <div className={`overflow-hidden ${className}`}>
+      <motion.div
+        animate={{ translateY: ['0%', '-50%'] }}
+        transition={{
+          duration: duration,
+          repeat: Infinity,
+          ease: 'linear',
+          repeatType: 'loop',
+        }}
+        className="flex flex-col"
+      >
+        {[...items, ...items].map((item, idx) => (
+          <TestimonialCard key={idx} item={item} />
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
 export function TestimonialsSection() {
   return (
     <section 
@@ -67,7 +134,7 @@ export function TestimonialsSection() {
       <div className="max-w-7xl px-4 sm:px-6 lg:px-8 z-10 mx-auto">
         
         {/* SECTION HEADER */}
-        <div className="flex flex-col items-center justify-center max-w-[620px] mx-auto mb-12 text-center">
+        <div className="flex flex-col items-center justify-center max-w-[620px] mx-auto mb-10 text-center">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-50 text-[#F97316] text-[11px] font-extrabold uppercase tracking-widest border border-orange-100 mb-3">
             ✦ WHAT OUR CUSTOMERS SAY
           </div>
@@ -82,59 +149,13 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        {/* 6 VILLA OWNERS GRID (3 COLUMNS x 2 ROWS - FULLY VISIBLE & UNCLIPPED) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {testimonials.map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="p-6 sm:p-7 rounded-[28px] border border-slate-200/90 bg-white shadow-sm hover:shadow-xl hover:border-[#F97316]/50 transition-all duration-300 flex flex-col justify-between group"
-            >
-              <div>
-                {/* TOP BAR: 5 STARS + VERIFIED VILLA BADGE */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-1 text-[#F97316]">
-                    {[...Array(5)].map((_, starIdx) => (
-                      <Star key={starIdx} className="w-4 h-4 fill-current" />
-                    ))}
-                  </div>
-
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-orange-50 text-[#F97316] border border-orange-100 flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3 text-emerald-500" />
-                    Verified Owner
-                  </span>
-                </div>
-
-                {/* TESTIMONIAL QUOTE TEXT */}
-                <p className="text-slate-600 leading-relaxed font-medium text-[13px] sm:text-[14px] mb-6 italic">
-                  &ldquo;{item.text}&rdquo;
-                </p>
-              </div>
-
-              {/* FOOTER: AVATAR + NAME + ROLE + VILLA NUMBER */}
-              <div className="pt-4 border-t border-slate-100 flex items-center gap-3.5">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="h-11 w-11 rounded-full object-cover ring-2 ring-orange-100 group-hover:ring-[#F97316] transition-all shrink-0"
-                />
-                <div className="flex flex-col min-w-0">
-                  <h4 className="font-extrabold text-[#0F172A] text-sm tracking-tight truncate leading-snug">
-                    {item.name}
-                  </h4>
-                  <span className="text-[11px] font-bold text-[#F97316] leading-tight mt-0.5">
-                    {item.role}
-                  </span>
-                  <span className="text-[10px] font-medium text-slate-400 leading-tight">
-                    {item.villaNo}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+        {/* 3 COLUMNS SMOOTH SLOW UPWARD SCROLLING CONTAINER */}
+        <div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-h-[580px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_8%,black_92%,transparent)]"
+        >
+          <AnimatedColumn items={col1} duration={32} />
+          <AnimatedColumn items={col2} duration={38} className="hidden md:block" />
+          <AnimatedColumn items={col3} duration={34} className="hidden lg:block" />
         </div>
 
       </div>
