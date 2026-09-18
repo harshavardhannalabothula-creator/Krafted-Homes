@@ -61,11 +61,12 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
   return (
     <section id="overview" className="relative w-full bg-white font-sans flex flex-col justify-between overflow-hidden pb-8 pt-2">
       
-      {/* SVG DEFINITION FOR IMAGE C-CURVE */}
+      {/* SVG DEFINITION FOR IMAGE DEEP C-CURVE ARCH */}
       <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
         <defs>
           <clipPath id="hero-image-c-curve" clipPathUnits="objectBoundingBox">
-            <path d="M 0.15 0 C 0.01 0.25, 0.01 0.75, 0.15 1 L 1 1 L 1 0 Z" />
+            {/* Deep, smooth, pronounced C-curve arch on left edge */}
+            <path d="M 0.20 0 C -0.04 0.28, -0.04 0.72, 0.20 1 L 1 1 L 1 0 Z" />
           </clipPath>
         </defs>
       </svg>
@@ -222,7 +223,7 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
         </div>
 
         {/* RIGHT 50%: VILLA IMAGE CONTAINER WITH EXACT C-CURVE ON ITS LEFT EDGE */}
-        <div className="w-[50%] sm:w-[50%] lg:w-[52%] h-[240px] sm:h-[420px] lg:h-[560px] relative overflow-hidden bg-transparent group shrink-0">
+        <div className="w-[50%] sm:w-[50%] lg:w-[52%] h-[260px] sm:h-[420px] lg:h-[560px] relative overflow-hidden bg-transparent group shrink-0">
           
           {/* THE IMAGE WITH C-CURVE CLIP-PATH (EXACTLY LIKE PC) */}
           <div 
