@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Check, ArrowRight } from 'lucide-react';
+import { Search, Check, ArrowRight, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 interface SunsetArchitecturalHeroProps {
@@ -10,6 +10,7 @@ interface SunsetArchitecturalHeroProps {
 
 export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchitecturalHeroProps) {
   const [activeStatIndex, setActiveStatIndex] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { label: 'Home', href: '#overview' },
@@ -33,7 +34,7 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
   const quickStats = [
     {
       id: 0,
-      image: '/images/daylight_estate.jpg',
+      image: '/images/bengaluru_daylight_villa.png',
       tag: 'Premium Villa Community',
     },
     {
@@ -64,7 +65,6 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
       <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
         <defs>
           <clipPath id="hero-image-c-curve" clipPathUnits="objectBoundingBox">
-            {/* Smooth C-curve on left edge of the image container: starts inset (0.15, 0), curves outward to (0.01, 0.5), curves back to (0.15, 1) */}
             <path d="M 0.15 0 C 0.01 0.25, 0.01 0.75, 0.15 1 L 1 1 L 1 0 Z" />
           </clipPath>
         </defs>
@@ -87,6 +87,7 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
           </a>
         </div>
         
+        {/* DESKTOP NAV LINKS */}
         <nav className="hidden xl:flex items-center justify-center gap-5 xl:gap-6">
           {navLinks.map((link) => (
             <a
@@ -100,72 +101,119 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <button 
             onClick={onOpenBooking}
-            className="text-slate-400 hover:text-[#0F172A] transition-colors p-2 rounded-full hover:bg-slate-50 cursor-pointer"
+            className="text-slate-400 hover:text-[#0F172A] transition-colors p-2 rounded-full hover:bg-slate-50 cursor-pointer hidden sm:block"
             aria-label="Search"
           >
             <Search className="w-4 h-4" />
           </button>
+          
           <button
             onClick={onOpenBooking}
-            className="px-5 py-2.5 rounded-full bg-[#F97316] hover:bg-[#EA580C] text-white text-xs sm:text-[13px] font-extrabold transition-all shadow-md active:scale-95 cursor-pointer shrink-0"
+            className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#F97316] hover:bg-[#EA580C] text-white text-xs sm:text-[13px] font-extrabold transition-all shadow-md active:scale-95 cursor-pointer shrink-0"
           >
-            Schedule a Visit
+            Schedule Visit
+          </button>
+
+          {/* MOBILE MENU TOGGLE BUTTON */}
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="xl:hidden text-[#0F172A] p-2 rounded-xl bg-slate-50 hover:bg-slate-100 transition-colors border border-slate-200"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5 text-[#F97316]" /> : <Menu className="w-5 h-5 text-[#0F172A]" />}
           </button>
         </div>
+
+        {/* MOBILE NAVIGATION DRAWER */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="xl:hidden absolute top-full left-0 w-full bg-white border-b border-slate-200 shadow-2xl z-50 px-6 py-6 flex flex-col space-y-3 overflow-hidden"
+            >
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => {
+                    setMobileMenuOpen(false);
+                    handleNavClick(e, link.href);
+                  }}
+                  className="text-sm font-extrabold text-[#0F172A] hover:text-[#F97316] py-2 border-b border-slate-100 flex items-center justify-between"
+                >
+                  <span>{link.label}</span>
+                  <ArrowRight className="w-4 h-4 text-slate-400" />
+                </a>
+              ))}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenBooking();
+                }}
+                className="w-full py-3 rounded-full bg-[#F97316] hover:bg-[#EA580C] text-white font-extrabold text-xs uppercase tracking-wider shadow-md mt-2 flex items-center justify-center gap-2"
+              >
+                <span>Book Site Tour Now</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* MAIN HERO BODY */}
-      <div className="relative w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-8 my-2 gap-8 lg:gap-10 z-10">
+      <div className="relative w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-8 my-4 lg:my-2 gap-6 lg:gap-10 z-10">
         
         {/* LEFT 50%: TEXT CONTENT */}
-        <div className="w-full lg:w-[48%] flex flex-col justify-center py-4 pr-0 lg:pr-4 z-20">
+        <div className="w-full lg:w-[48%] flex flex-col justify-center py-2 lg:py-4 pr-0 lg:pr-4 z-20 text-left">
           
-          <div className="inline-flex items-center gap-2 mb-4">
-             <span className="text-[#F97316] text-[11px] font-extrabold uppercase tracking-widest bg-orange-50 px-3.5 py-1 rounded-full border border-orange-100">✦ PREMIUM VILLA COMMUNITY</span>
+          <div className="inline-flex items-center gap-2 mb-3">
+             <span className="text-[#F97316] text-[10px] sm:text-[11px] font-extrabold uppercase tracking-widest bg-orange-50 px-3 sm:px-3.5 py-1 rounded-full border border-orange-100">✦ PREMIUM VILLA COMMUNITY</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-[52px] xl:text-[58px] font-extrabold tracking-tight text-[#0F172A] leading-[1.08] mb-6">
+          <h1 className="text-3xl sm:text-5xl lg:text-[52px] xl:text-[58px] font-extrabold tracking-tight text-[#0F172A] leading-[1.1] mb-4 sm:mb-6">
             Your Next Chapter <br />
             <span className="text-[#F97316]">Begins at Antelia Groves</span>
           </h1>
 
-          <p className="text-[15px] sm:text-[16px] text-slate-700 leading-relaxed max-w-lg font-semibold mb-8">
+          <p className="text-[14px] sm:text-[16px] text-slate-700 leading-relaxed max-w-lg font-semibold mb-6 sm:mb-8">
             Discover Antelia Groves by Krafted Homes — a thoughtfully planned villa community across approximately 10 acres, featuring independent 3 and 4 BHK villas, distinctive architecture, private gardens and connected community living.
           </p>
 
-          {/* 3 CHECKMARKS IN A HORIZONTAL ROW */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 lg:gap-8 pt-1">
+          {/* 3 CHECKMARKS IN A RESPONSIVE ROW */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-1">
             
             <div className="flex items-center gap-3">
-              <div className="w-7.5 h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
-                <Check className="w-4 h-4 stroke-[3]" />
+              <div className="w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
+                <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[3]" />
               </div>
               <div>
-                <h4 className="text-[14px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Distinctive Villas</h4>
-                <span className="text-[12px] text-slate-700 font-semibold block leading-tight">Thoughtfully planned 3 & 4 BHK homes</span>
+                <h4 className="text-[13px] sm:text-[14px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Distinctive Villas</h4>
+                <span className="text-[11px] sm:text-[12px] text-slate-700 font-semibold block leading-tight">3 &amp; 4 BHK split-level</span>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-7.5 h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
-                <Check className="w-4 h-4 stroke-[3]" />
+              <div className="w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
+                <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[3]" />
               </div>
               <div>
-                <h4 className="text-[14px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Private Gardens</h4>
-                <span className="text-[12px] text-slate-700 font-semibold block leading-tight">Green spaces connected to everyday living</span>
+                <h4 className="text-[13px] sm:text-[14px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Private Gardens</h4>
+                <span className="text-[11px] sm:text-[12px] text-slate-700 font-semibold block leading-tight">Private teak wood deck</span>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-7.5 h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
-                <Check className="w-4 h-4 stroke-[3]" />
+              <div className="w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
+                <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[3]" />
               </div>
               <div>
-                <h4 className="text-[14px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Premium Community</h4>
-                <span className="text-[12px] text-slate-700 font-semibold block leading-tight">Clubhouse, wellness and lifestyle spaces</span>
+                <h4 className="text-[13px] sm:text-[14px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Resort Clubhouse</h4>
+                <span className="text-[11px] sm:text-[12px] text-slate-700 font-semibold block leading-tight">15,000 sq.ft pool hub</span>
               </div>
             </div>
 
@@ -173,13 +221,11 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
 
         </div>
 
-        {/* RIGHT 52%: VILLA IMAGE CONTAINER WITH EXACT C-CURVE ON ITS LEFT EDGE */}
-        <div className="w-full lg:w-[52%] h-[400px] sm:h-[480px] lg:h-[560px] relative rounded-r-[36px] lg:rounded-r-[48px] overflow-hidden bg-transparent group shrink-0">
+        {/* RIGHT 52%: VILLA IMAGE CONTAINER */}
+        <div className="w-full lg:w-[52%] h-[280px] sm:h-[420px] lg:h-[560px] relative rounded-3xl lg:rounded-r-[48px] overflow-hidden bg-slate-100 group shrink-0 shadow-md">
           
-          {/* THE IMAGE WITH C-CURVE CLIP-PATH */}
           <div 
-            className="w-full h-full drop-shadow-md"
-            style={{ clipPath: 'url(#hero-image-c-curve)', WebkitClipPath: 'url(#hero-image-c-curve)' }}
+            className="w-full h-full drop-shadow-md lg:[clip-path:url(#hero-image-c-curve)]"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -200,9 +246,9 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
           </div>
 
           {/* FLOATING IMAGE BADGE */}
-          <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-md px-5 py-2.5 rounded-full shadow-lg border border-white/50 flex items-center gap-2.5 z-20">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#F97316] animate-pulse"></span>
-            <span className="text-[12px] font-extrabold text-[#0F172A]">{activeStat.tag}</span>
+          <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 bg-white/95 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-2.5 rounded-full shadow-lg border border-white/50 flex items-center gap-2 z-20">
+            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#F97316] animate-pulse"></span>
+            <span className="text-[11px] sm:text-[12px] font-extrabold text-[#0F172A]">{activeStat.tag}</span>
           </div>
 
         </div>
@@ -210,31 +256,31 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
       </div>
 
       {/* FLOATING SEARCH BAR PILL AT BOTTOM */}
-      <div className="w-[95%] lg:w-[80%] max-w-5xl mx-auto h-20 bg-white rounded-full flex items-center px-4 z-30 shadow-[0_15px_40px_-10px_rgba(0,0,0,0.12)] border border-slate-100 mt-2">
-          <div className="flex items-center justify-between w-full h-full">
+      <div className="w-[92%] sm:w-[95%] lg:w-[80%] max-w-5xl mx-auto min-h-[72px] bg-white rounded-3xl sm:rounded-full p-4 sm:p-2 sm:h-20 z-30 shadow-[0_15px_40px_-10px_rgba(0,0,0,0.12)] border border-slate-100 mt-2 sm:mt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between w-full h-full gap-3 sm:gap-0">
             
-            <div className="flex-1 flex flex-col justify-center px-6 lg:px-8">
+            <div className="w-full sm:w-auto flex-1 flex flex-col justify-center px-4 sm:px-6 lg:px-8 text-center sm:text-left">
               <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest mb-0.5">PROJECT LOCATION</span>
-              <span className="text-[13px] font-extrabold text-[#0F172A]">Antelia Groves</span>
+              <span className="text-[13px] font-extrabold text-[#0F172A]">Antelia Groves • Sarjapur</span>
             </div>
 
             <div className="hidden md:block w-px h-9 bg-slate-200"></div>
 
-            <div className="flex-1 flex flex-col justify-center px-6 lg:px-8">
+            <div className="w-full sm:w-auto flex-1 flex flex-col justify-center px-4 sm:px-6 lg:px-8 text-center sm:text-left">
               <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest mb-0.5">VILLA TYPE</span>
-              <span className="text-[13px] font-extrabold text-[#0F172A]">3 & 4 BHK Villas</span>
+              <span className="text-[13px] font-extrabold text-[#0F172A]">3 &amp; 4 BHK Luxury Villas</span>
             </div>
 
             <div className="hidden md:block w-px h-9 bg-slate-200"></div>
 
-            <div className="flex-1 flex flex-col justify-center px-6 lg:px-8">
+            <div className="w-full sm:w-auto flex-1 flex flex-col justify-center px-4 sm:px-6 lg:px-8 text-center sm:text-left">
               <span className="text-[9px] text-slate-400 font-bold uppercase tracking-widest mb-0.5">PROJECT HIGHLIGHTS</span>
-              <span className="text-[13px] font-extrabold text-[#0F172A]">10 Acres - 189 Villas</span>
+              <span className="text-[13px] font-extrabold text-[#0F172A]">10 Acres • 189 Villas</span>
             </div>
 
             <button
               onClick={onOpenBooking}
-              className="px-8 h-14 bg-[#F97316] hover:bg-[#EA580C] text-white text-[13px] font-extrabold rounded-full transition-all shadow-md flex items-center gap-2 shrink-0 active:scale-95"
+              className="w-full sm:w-auto px-6 sm:px-8 h-12 sm:h-14 bg-[#F97316] hover:bg-[#EA580C] text-white text-[13px] font-extrabold rounded-full transition-all shadow-md flex items-center justify-center gap-2 shrink-0 active:scale-95"
             >
               <span>Explore Villas</span>
               <ArrowRight className="w-4 h-4" />

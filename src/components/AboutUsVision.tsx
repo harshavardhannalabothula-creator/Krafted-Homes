@@ -15,7 +15,7 @@ export default function AboutUsVision() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-4 flex flex-col justify-between items-start bg-white p-6 sm:p-8 rounded-[28px] border border-slate-200/80 shadow-sm h-[420px] sm:h-[450px]"
+            className="lg:col-span-4 flex flex-col justify-between items-start bg-white p-6 sm:p-8 rounded-[28px] border border-slate-200/80 shadow-sm h-auto min-h-[360px] lg:h-[450px]"
           >
             <div>
               <span className="text-[#F97316] text-[11px] font-extrabold uppercase tracking-[0.2em] mb-3 block">
@@ -24,12 +24,12 @@ export default function AboutUsVision() {
               <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-extrabold text-[#0F172A] leading-[1.15] mb-4 tracking-tight">
                 A Vision Built on <br />Better Living
               </h2>
-              <p className="text-[13px] sm:text-[14px] text-slate-600 leading-relaxed font-medium">
+              <p className="text-[13px] sm:text-[14px] text-slate-700 leading-relaxed font-semibold">
                 Antelia Groves is the next chapter of Krafted Homes — evolving from individual luxury homes into a thoughtfully planned 10-acre gated sanctuary where architectural clarity, serene nature and everyday living come together.
               </p>
             </div>
             
-            <div className="pt-4">
+            <div className="pt-6">
               <a 
                 href="#masterplan"
                 className="bg-[#0F172A] hover:bg-[#1E293B] text-white text-[13px] font-extrabold px-6 py-3 rounded-full flex items-center gap-2 transition-all shadow-md group"
@@ -46,7 +46,7 @@ export default function AboutUsVision() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-4 relative h-[420px] sm:h-[450px] rounded-[28px] overflow-hidden group shadow-md border border-slate-200/60"
+            className="lg:col-span-4 relative h-[280px] sm:h-[420px] lg:h-[450px] rounded-[28px] overflow-hidden group shadow-md border border-slate-200/60"
           >
             <img 
               src="/images/hero_resort_clubhouse.png" 
@@ -77,7 +77,7 @@ export default function AboutUsVision() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-4 bg-[#0F172A] text-white rounded-[28px] p-6 sm:p-8 flex flex-col justify-center h-[420px] sm:h-[450px] shadow-md border border-slate-800"
+            className="lg:col-span-4 bg-[#0F172A] text-white rounded-[28px] p-6 sm:p-8 flex flex-col justify-center h-auto min-h-[360px] lg:h-[450px] shadow-md border border-slate-800"
           >
             <div className="grid grid-cols-2 gap-x-6 gap-y-6">
               
