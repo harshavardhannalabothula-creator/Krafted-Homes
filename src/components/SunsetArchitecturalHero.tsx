@@ -221,11 +221,16 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
 
         </div>
 
-        {/* RIGHT 52%: VILLA IMAGE CONTAINER */}
-        <div className="w-full lg:w-[52%] h-[280px] sm:h-[420px] lg:h-[560px] relative rounded-3xl lg:rounded-r-[48px] overflow-hidden bg-slate-100 group shrink-0 shadow-md">
+        {/* RIGHT 52%: VILLA IMAGE CONTAINER WITH EXACT C-CURVE ON ITS LEFT EDGE */}
+        <div className="w-full lg:w-[52%] h-[320px] sm:h-[440px] lg:h-[560px] relative overflow-hidden bg-transparent group shrink-0">
           
+          {/* THE IMAGE WITH C-CURVE CLIP-PATH (NO GREY BOX OR SHADOW BEHIND CURVE) */}
           <div 
-            className="w-full h-full drop-shadow-md lg:[clip-path:url(#hero-image-c-curve)]"
+            className="w-full h-full"
+            style={{ 
+              clipPath: 'url(#hero-image-c-curve)', 
+              WebkitClipPath: 'url(#hero-image-c-curve)' 
+            }}
           >
             <AnimatePresence mode="wait">
               <motion.div
