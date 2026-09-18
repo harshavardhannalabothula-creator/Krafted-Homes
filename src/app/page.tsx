@@ -3,15 +3,16 @@
 import { useState } from 'react';
 import SunsetArchitecturalHero from '@/components/SunsetArchitecturalHero';
 import AboutUsVision from '@/components/AboutUsVision';
-import InteractiveMasterplan from '@/components/InteractiveMasterplan';
-import LandToLivingJourney from '@/components/LandToLivingJourney';
 import ExploreFeaturedVillas from '@/components/ExploreFeaturedVillas';
 import PastDeliveredProjectsSection from '@/components/PastDeliveredProjectsSection';
-import AmenityStory from '@/components/AmenityStory';
 import PopularBrandsSection from '@/components/PopularBrandsSection';
+import SpecialOfferBanner from '@/components/SpecialOfferBanner';
 import TestimonialSection from '@/components/TestimonialSection';
 import ThreeStepsSection from '@/components/ThreeStepsSection';
 import LocationConnectivitySection from '@/components/LocationConnectivitySection';
+import LuxurySliderSection from '@/components/LuxurySliderSection';
+import TrustedStatsSection from '@/components/TrustedStatsSection';
+import LatestArticlesSection from '@/components/LatestArticlesSection';
 import ContactSection from '@/components/ContactSection';
 import BottomCTABanner from '@/components/BottomCTABanner';
 import Footer from '@/components/Footer';
@@ -31,32 +32,49 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white text-slate-900 selection:bg-orange-500 selection:text-white relative font-sans overflow-x-hidden">
       
-      {/* SECTION 01 — HERO (PRESERVED 100% AS APPROVED) */}
+      {/* 1. HERO SECTION */}
       <SunsetArchitecturalHero onOpenBooking={handleOpenBooking} />
 
-      {/* SECTION 02 — PROJECT VISION / ABOUT (3-COLUMN BALANCED LAYOUT) */}
+      {/* 2. VISION / ABOUT SECTION (3-COLUMN BALANCED LAYOUT) */}
       <AboutUsVision />
 
-      {/* SECTION 03 — THE 10-ACRE COMMUNITY & MASTERPLAN */}
-      <InteractiveMasterplan onOpenBooking={handleOpenBooking} />
-
-      {/* SECTION 04 — FROM LAND TO HOME (STEP-BY-STEP CONSTRUCTION STORYTELLING) */}
-      <LandToLivingJourney onOpenBooking={handleOpenBooking} />
-
-      {/* SECTION 05 — HOMES COLLECTION (FUTURE VILLA PLANS & PAST DELIVERED WORK) */}
+      {/* 3. FUTURE VILLA PLANS & MASTERPLAN */}
       <ExploreFeaturedVillas onOpenBooking={handleOpenBooking} />
+
+      {/* 4. PAST COMPLETED WORK & DELIVERED GALLERY */}
       <PastDeliveredProjectsSection onOpenBooking={handleOpenBooking} />
 
-      {/* SECTION 06 — LIFESTYLE / COMMUNITY EXPERIENCE & APPROVED BANKING PARTNERS */}
-      <AmenityStory onOpenBooking={handleOpenBooking} />
+      {/* 5. POPULAR BRANDS / PARTNERS */}
       <PopularBrandsSection />
+
+      {/* 6. SPECIAL OFFER BANNER */}
+      <SpecialOfferBanner onOpenBooking={handleOpenBooking} />
+
+      {/* 7. WHAT OUR CUSTOMERS SAY */}
       <TestimonialSection />
 
-      {/* SECTION 07 — ABOUT US / CONTACT / BOOK A VISIT & FOOTER */}
+      {/* 8. 3 EASY STEPS */}
       <ThreeStepsSection onOpenBooking={handleOpenBooking} />
+
+      {/* 9. LIVE MAP & LOCATION CONNECTIVITY */}
       <LocationConnectivitySection onOpenBooking={handleOpenBooking} />
+
+      {/* 10. LUXURY VILLAS SLIDER */}
+      <LuxurySliderSection />
+
+      {/* 11. TRUSTED STATS */}
+      <TrustedStatsSection />
+
+      {/* 12. LATEST ARTICLES */}
+      <LatestArticlesSection />
+
+      {/* 13. CONTACT US SECTION */}
       <ContactSection onOpenBooking={handleOpenBooking} />
+
+      {/* 14. BOTTOM CTA BANNER */}
       <BottomCTABanner onOpenBooking={handleOpenBooking} />
+
+      {/* 15. FOOTER */}
       <Footer onOpenBooking={handleOpenBooking} />
 
       <BookingModal isOpen={bookingOpen} onClose={handleCloseBooking} />
