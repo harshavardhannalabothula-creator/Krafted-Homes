@@ -1,521 +1,350 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Sparkles,
-  Sliders,
-  Check,
-  Building,
-  Trees,
-  Compass,
+import { 
+  Home, 
+  Trees, 
+  Sparkles, 
+  Compass, 
   ArrowRight,
-  Camera,
-  Play,
-  Pause,
+  Layers,
+  MapPin
 } from 'lucide-react';
 
 interface InteractiveMasterplanProps {
-  onOpenBooking: () => void;
+  onOpenBooking?: () => void;
 }
 
 export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMasterplanProps) {
-  // Sector Filter for 3D CAD Engine & Sector Photo Gallery
-  const [activeSector, setActiveSector] = useState<'ALL' | 'NORTH' | 'CLUBHOUSE' | 'SOUTH'>('ALL');
-  const [sectorPhotoIndex, setSectorPhotoIndex] = useState<number>(0);
-  const [isSectorPhotoAutoPlay, setIsSectorPhotoAutoPlay] = useState<boolean>(true);
+  // Active feature row index (null = Default Complete Community view)
+  const [selectedFeature, setSelectedFeature] = useState<number | null>(null);
 
-  // Top 4 Metric Cards & Automatic Rotating Slideshow State (1.5s fast rotation)
-  const [activeMetricIndex, setActiveMetricIndex] = useState<number>(0);
-  const [isMetricAutoPlaying, setIsMetricAutoPlaying] = useState<boolean>(true);
-
-  // Auto-rotate top 4 metric cards every 2 seconds
-  useEffect(() => {
-    if (!isMetricAutoPlaying) return;
-    const interval = setInterval(() => {
-      setActiveMetricIndex((prev) => (prev + 1) % 4);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [isMetricAutoPlaying]);
-
-  // Auto-rotate sector realistic HD photos every 2 seconds
-  useEffect(() => {
-    if (!isSectorPhotoAutoPlay) return;
-    const timer = setInterval(() => {
-      setSectorPhotoIndex((prev) => (prev + 1) % 4);
-    }, 2000);
-    return () => clearInterval(timer);
-  }, [isSectorPhotoAutoPlay, activeSector]);
-
-  // Reset sector photo index when activeSector changes
-  useEffect(() => {
-    setSectorPhotoIndex(0);
-  }, [activeSector]);
-
-  // Top 4 Metric Cards Data
-  const metricCards = [
+  const features = [
     {
       id: 0,
-      metric: '10 ACRES',
-      label: 'COMMUNITY LAND AREA',
-      title: '10-Acre Master Planned Gated Township',
-      desc: 'Master planned gated community with 70% open space, tree-lined avenues, water features, and botanical gardens.',
-      image: '/images/hero_main_aerial.png',
-      badge: '10-ACRE AERIAL MASTERPLAN',
+      num: '01',
+      title: 'VILLA NEIGHBOURHOODS',
+      desc: 'Thoughtfully arranged residential zones',
+      labelKey: 'VILLA COMMUNITY',
+      image: '/images/hero_villa_facade.png',
+      badge: 'Residential Enclaves',
+      icon: Home,
     },
     {
       id: 1,
-      metric: '189 HOMES',
-      label: 'INDEPENDENT VILLAS',
-      title: '189 Independent Luxury Villas',
-      desc: '3 & 4 BHK independent villas with private backyard gardens, high ceilings, glass balconies, and rooftop sky terraces.',
-      image: '/images/hero_villa_facade.png',
-      badge: 'INDEPENDENT VILLA ELEVATION',
+      num: '02',
+      title: 'OPEN LANDSCAPE',
+      desc: 'Green spaces, gardens and peaceful pathways',
+      labelKey: 'GREEN OPEN SPACES',
+      image: '/images/journey_03_masterplan.jpg',
+      badge: '70% Open Sanctuary',
+      icon: Trees,
     },
     {
       id: 2,
-      metric: '15,000 SQ.FT',
-      label: 'RESORT CLUBHOUSE',
-      title: '5-Star Resort Clubhouse & Amenities',
-      desc: 'Resort clubhouse featuring a swimming pool, indoor sports courts, gym, yoga deck, banquet hall, and guest suites.',
+      num: '03',
+      title: 'CLUBHOUSE EXPERIENCE',
+      desc: 'A central place for recreation and community',
+      labelKey: 'CLUBHOUSE',
       image: '/images/hero_resort_clubhouse.png',
-      badge: '5-STAR CLUBHOUSE & POOL',
+      badge: '15K Sq.Ft Resort Hub',
+      icon: Sparkles,
     },
     {
       id: 3,
-      metric: '40 & 30 FT',
-      label: 'PAVED BOULEVARDS',
-      title: '40-Ft & 30-Ft Paved Tree-Lined Roads',
-      desc: 'Wide internal roads with underground utilities, solar streetlights, pedestrian walking paths, and green borders.',
+      num: '04',
+      title: 'CONNECTED MOVEMENT',
+      desc: 'Clear internal roads and walkable connections',
+      labelKey: 'MAIN ENTRY',
       image: '/images/hero_community.png',
-      badge: 'WIDE PAVED BOULEVARDS',
+      badge: 'Wide Paved Boulevards',
+      icon: Compass,
     },
   ];
 
-  // Sector Data with Realistic HD Photos (4 Photos per Sector)
-  const sectorData = {
-    ALL: {
-      title: 'Entire 10-Acre Masterplan',
-      villas: '189 Independent Villas • Full Site Overview',
-      desc: 'Explore the complete 10-acre gated villa community layout featuring split-level villas, central clubhouse, resort pool, and tree-lined boulevards.',
-      highlights: [
-        '70% Open Space & Botanical Landscape Corridors',
-        '15,000+ Sq.Ft Resort Clubhouse with Blue Swimming Pool',
-        '40-Ft & 30-Ft Wide Internal Paved Roads with Underground Cabling',
-        '24/7 Multi-Tier Gated Security with Smart Entrance Plaza',
-      ],
-      photos: [
-        { title: '10-Acre Masterplan Aerial View', image: '/images/hero_main_aerial.png', badge: '10-ACRE AERIAL' },
-        { title: 'Wide Tree-Lined Boulevards', image: '/images/hero_community.png', badge: '40-FT PAVED ROADS' },
-        { title: 'Botanical Landscape Corridors', image: '/images/journey_03_masterplan.jpg', badge: 'ECO CORRIDORS' },
-        { title: 'Grand Entrance & Security Plaza', image: '/images/botanical_courtyard.jpg', badge: 'SECURE GATED ENTRY' },
-      ],
+  const projectFacts = [
+    {
+      label: 'COMMUNITY SCALE',
+      value: '10+ ACRES',
+      desc: 'Community scale',
     },
-    NORTH: {
-      title: 'North Grove Villa Enclave',
-      villas: 'Villas 001 to 065 • North Sector',
-      desc: 'North Facing premium independent villas situated next to the main entry boulevard with morning sunlight and private gardens.',
-      highlights: [
-        'Direct Access to Main Entry Gate & Security Plaza',
-        'East & North Facing Vastu-Compliant Villa Plots',
-        'Tree-Lined Walking Trails & Children Play Lawn',
-        'Morning Sunlight across Private Lawn Backyards',
-      ],
-      photos: [
-        { title: 'North Grove Split-Level Villa Elevation', image: '/images/hero_villa_facade.png', badge: 'NORTH VILLA FACADE' },
-        { title: 'Private Garden Deck & Lawn', image: '/images/contemporary_garden_deck.jpg', badge: 'PRIVATE BACKYARD' },
-        { title: 'North Tree-Lined Walking Trail', image: '/images/green_mindfulness.jpg', badge: 'GREEN BOULEVARD' },
-        { title: 'Bright Morning Sun Entrance Plaza', image: '/images/daylight_estate.jpg', badge: 'DAYLIGHT ELEVATION' },
-      ],
+    {
+      label: 'PLANNED HOMES',
+      value: '189 VILLAS',
+      desc: 'Planned homes',
     },
-    CLUBHOUSE: {
-      title: 'Central Resort Clubhouse & Pool Zone',
-      villas: '15,000 Sq.Ft Clubhouse • Central Zone',
-      desc: 'The social heart of Antelia Groves featuring a crystal swimming pool, indoor badminton courts, gym, yoga deck, and banquet hall.',
-      highlights: [
-        'Crystal Blue Swimming Pool & Sun Deck Loungers',
-        'Air-Conditioned Gym, Yoga Pavilion & Indoor Sports',
-        'Banquet Hall & Guest Rooms for Community Events',
-        'Lush Botanical Courtyard surrounding Clubhouse',
-      ],
-      photos: [
-        { title: 'Resort Swimming Pool & Sun Deck', image: '/images/hero_resort_clubhouse.png', badge: 'BLUE RESORT POOL' },
-        { title: 'Grand 5-Star Resort Clubhouse Exterior', image: '/images/clubhouse.jpg', badge: '15,000 SQ.FT CLUB' },
-        { title: 'Air-Conditioned Sports & Gym Facility', image: '/images/amenity_sports.jpg', badge: 'INDOOR SPORTS & GYM' },
-        { title: 'Community Banquet & Event Hall', image: '/images/banquet_hall.jpg', badge: 'BANQUET HALL' },
-      ],
+    {
+      label: 'GREEN SPACES',
+      value: '70% OPEN',
+      desc: 'Green and open spaces',
     },
-    SOUTH: {
-      title: 'South Grove Garden Enclave',
-      villas: 'Villas 066 to 189 • South Sector',
-      desc: 'Quiet residential villa enclave surrounded by native flowering trees, private backyard gardens, and peaceful zen walking paths.',
-      highlights: [
-        'Quiet & Peaceful Living Environment',
-        'Spacious Private Garden Backyards for Every Villa',
-        'Close Access to South Park & Zen Meditation Courtyard',
-        'Rooftop Sky Terraces with Sunset Views',
-      ],
-      photos: [
-        { title: 'South Grove Private Garden Sanctuary', image: '/images/private_garden_sanctuary.jpg', badge: 'PRIVATE GARDEN' },
-        { title: 'Rooftop Sky Terrace & Pergola Dining', image: '/images/room_terrace.jpg', badge: 'SKY TERRACE' },
-        { title: 'South Zen Meditation & Reflection Deck', image: '/images/amenity_zen.jpg', badge: 'ZEN COURTYARD' },
-        { title: 'Open Living Room facing Garden Lawn', image: '/images/room_living.jpg', badge: 'LIVING ROOM LAWN' },
-      ],
+    {
+      label: 'CLUBHOUSE AREA',
+      value: '15K SQ.FT',
+      desc: 'Clubhouse area',
     },
-  };
+  ];
 
-  const activeMetric = metricCards[activeMetricIndex];
-  const currentSectorInfo = sectorData[activeSector];
-  const activeSectorPhoto = currentSectorInfo.photos[sectorPhotoIndex] || currentSectorInfo.photos[0];
+  const currentFeature = selectedFeature !== null ? features[selectedFeature] : null;
 
   return (
-    <section id="masterplan" className="py-10 sm:py-8 bg-[#F8FAFC] text-[#0F172A] relative overflow-hidden border-b border-[#E2E8F0]">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 relative z-10">
+    <section id="masterplan" className="w-full bg-white py-16 lg:py-24 relative overflow-hidden border-t border-slate-100">
+      
+      {/* Background Subtle Accent Gradients */}
+      <div className="absolute top-1/4 right-10 w-96 h-96 bg-orange-100/30 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-96 h-96 bg-amber-100/20 rounded-full blur-3xl pointer-events-none" />
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
         {/* SECTION HEADER */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-[#E2E8F0] pb-8">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EFF6FF] border border-[#BFDBFE] text-[#1D4ED8] text-xs font-bold uppercase tracking-wider mb-2">
-              <span>02 / MASTERPLAN &amp; COMMUNITY LAYOUT</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-tight uppercase">
-              10-ACRE <span className="text-[#F97316]">3D MASTERPLAN</span>
-            </h2>
-          </div>
-          <p className="text-xs sm:text-sm text-[#475569] max-w-lg font-normal leading-relaxed">
-            Explore our 10-acre gated villa layout featuring 189 independent villas, 40-ft paved boulevards, central resort clubhouse, and 70% open green corridors.
-          </p>
+        <div className="max-w-3xl mb-12 lg:mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-orange-50 text-[#F97316] text-[11px] font-extrabold uppercase tracking-widest border border-orange-200/80 mb-3"
+          >
+            <span>02 — THE MASTERPLAN</span>
+          </motion.div>
+
+          <motion.h2 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0F172A] leading-[1.18] tracking-tight mb-4"
+          >
+            A Community Designed <br />
+            <span className="text-[#F97316]">Around Better Living</span>
+          </motion.h2>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-slate-600 text-sm sm:text-base font-medium leading-relaxed max-w-2xl"
+          >
+            Discover how villas, landscape, roads, clubhouse spaces and everyday experiences come together across the 10-acre Antelia Groves community.
+          </motion.p>
         </div>
 
-        {/* 50/50 SPLIT: METRIC CARDS LIST ON LEFT + AUTOMATIC SHOWCASE PHOTO ON RIGHT */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-14">
-
-          {/* LEFT 5 COLUMNS: 4 KEY METRIC SELECTOR CARDS */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-3">
-            {metricCards.map((card) => {
-              const isActive = card.id === activeMetricIndex;
-              return (
-                <div
-                  key={card.id}
-                  onClick={() => {
-                    setActiveMetricIndex(card.id);
-                    setIsMetricAutoPlaying(false);
-                  }}
-                  className={`p-5 rounded-2xl border transition-all cursor-pointer ${
-                    isActive
-                      ? 'bg-[#F97316] text-white border-[#F97316] shadow-md transform translate-x-1'
-                      : 'bg-white text-[#0F172A] border-[#E2E8F0] hover:border-[#F97316]'
-                  }`}
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <span className={`text-[10px] font-bold uppercase tracking-wider block mb-1 ${isActive ? 'text-white/90' : 'text-[#F97316]'}`}>
-                        {card.label}
-                      </span>
-                      <h3 className={`text-2xl font-extrabold tracking-tight ${isActive ? 'text-white' : 'text-[#0F172A]'}`}>
-                        {card.metric}
-                      </h3>
-                      <p className={`text-xs font-medium mt-1 leading-snug ${isActive ? 'text-white/90' : 'text-[#475569]'}`}>
-                        {card.title}
-                      </p>
-                    </div>
-
-                    <div className={`px-3 py-1 rounded-full text-[10px] font-bold tracking-widest ${isActive ? 'bg-white text-[#F97316]' : 'bg-[#F8FAFC] text-[#0F172A] border border-[#E2E8F0]'}`}>
-                      0{card.id + 1} / 04
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* RIGHT 7 COLUMNS: AUTOMATIC ROTATING SHOWCASE PHOTO */}
-          <div className="lg:col-span-7 relative min-h-[380px] sm:min-h-[420px] rounded-3xl overflow-hidden shadow-md border border-[#E2E8F0] bg-[#0F172A] flex flex-col justify-between">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={activeMetric.image}
-                src={activeMetric.image}
-                alt={activeMetric.title}
-                initial={{ opacity: 0, scale: 1.04 }}
-                animate={{ opacity: 1, scale: 1.00 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6 }}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </AnimatePresence>
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent pointer-events-none z-10" />
-
-            {/* Top Floating Badge */}
-            <div className="relative z-20 p-5 flex items-center justify-between">
-              <div className="bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#E2E8F0] text-xs font-bold text-[#0F172A] shadow-xs">
-                {activeMetric.badge}
-              </div>
-
-              <div className="bg-[#0F172A]/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-white border border-white/20">
-                2.0S ROTATION
-              </div>
-            </div>
-
-            {/* Bottom Floating Title & Description */}
-            <div className="relative z-20 p-6 text-white flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-              <div>
-                <span className="text-xs font-bold text-[#F97316] uppercase tracking-wider block mb-1 bg-white px-2.5 py-0.5 rounded-full w-fit">
-                  {activeMetric.label} • {activeMetric.metric}
-                </span>
-                <h4 className="text-xl sm:text-2xl font-extrabold tracking-tight mb-1 text-white uppercase">
-                  {activeMetric.title}
-                </h4>
-                <p className="text-xs sm:text-sm text-white/90 font-normal max-w-lg leading-relaxed">
-                  {activeMetric.desc}
-                </p>
-              </div>
-
-              {/* Step Indicator Dots */}
-              <div className="flex items-center gap-2 shrink-0">
-                {metricCards.map((m) => (
-                  <button
-                    key={m.id}
-                    onClick={() => {
-                      setActiveMetricIndex(m.id);
-                      setIsMetricAutoPlaying(false);
-                    }}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      m.id === activeMetricIndex ? 'w-6 bg-[#F97316]' : 'w-2 bg-white/40 hover:bg-white'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* INTERACTIVE CAD MASTERPLAN VIEWPORT & SECTOR HIGHLIGHT FILTER */}
-        <div className="space-y-8">
+        {/* MAIN COMPOSITION: 2 COLUMNS (LEFT: MASTERPLAN VISUAL, RIGHT: COMMUNITY STORY) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center mb-14 lg:mb-18">
           
-          {/* Sector Highlight Filter Pill Buttons */}
-          <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-[#E2E8F0] shadow-sm">
-            <div className="flex items-center gap-2">
-              <Sliders className="w-4 h-4 text-[#F97316]" />
-              <span className="text-xs font-bold uppercase text-[#0F172A] tracking-wider">
-                HIGHLIGHT SECTOR ZONE &amp; REAL PHOTOS:
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2 flex-wrap">
-              {(['ALL', 'NORTH', 'CLUBHOUSE', 'SOUTH'] as const).map((sector) => (
-                <button
-                  key={sector}
-                  onClick={() => setActiveSector(sector)}
-                  className={`px-4 py-2 rounded-full text-xs font-bold uppercase transition-all cursor-pointer ${
-                    activeSector === sector
-                      ? 'bg-[#F97316] text-white shadow-xs'
-                      : 'bg-[#F8FAFC] text-[#0F172A] border border-[#E2E8F0] hover:border-[#F97316]'
-                  }`}
-                >
-                  {sector === 'ALL' ? 'ALL SECTORS' : `${sector} GROVE`}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Masterplan Engine Viewport + Sector Info & Realistic HD Photo Panel */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            
-            {/* INTERACTIVE 2D MASTERPLAN BLUEPRINT VIEWPORT */}
-            <div className="lg:col-span-7 relative h-[480px] sm:h-[540px] rounded-3xl overflow-hidden border border-[#E2E8F0] bg-[#0F172A] flex flex-col justify-between shadow-md group">
-              {/* MASTERPLAN BACKGROUND IMAGE WITH SECTOR DYNAMIC OVERLAY */}
+          {/* LEFT SIDE — MASTERPLAN VISUAL PRESENTATION BOARD (Span 7) */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 relative"
+          >
+            <div className="relative w-full h-[400px] sm:h-[480px] lg:h-[520px] rounded-[32px] overflow-hidden shadow-xl border-4 border-white bg-slate-900 group">
               <AnimatePresence mode="wait">
                 <motion.img
-                  key={activeSector}
-                  src={
-                    activeSector === 'NORTH'
-                      ? '/images/hero_villa_facade.png'
-                      : activeSector === 'CLUBHOUSE'
-                      ? '/images/hero_resort_clubhouse.png'
-                      : activeSector === 'SOUTH'
-                      ? '/images/private_garden_sanctuary.jpg'
-                      : '/images/hero_main_aerial.png'
-                  }
-                  alt="Antelia Groves Masterplan View"
-                  initial={{ opacity: 0, scale: 1.03 }}
+                  key={currentFeature ? currentFeature.image : 'default_masterplan'}
+                  src={currentFeature ? currentFeature.image : '/images/hero_main_aerial.png'}
+                  alt="Antelia Groves 10-Acre Masterplan Layout"
+                  initial={{ opacity: 0, scale: 1.04 }}
                   animate={{ opacity: 1, scale: 1.00 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, ease: 'easeOut' }}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
+                  className="w-full h-full object-cover"
                 />
               </AnimatePresence>
 
-              {/* OVERLAY GRADIENT */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 pointer-events-none z-10" />
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/30 pointer-events-none" />
 
-              {/* TOP MASTERPLAN OVERLAY HEADER */}
-              <div className="relative z-20 p-5 flex items-center justify-between">
-                <div className="bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#E2E8F0] text-xs font-bold text-[#0F172A] flex items-center gap-2 shadow-xs">
-                  <Compass className="w-4 h-4 text-[#F97316] animate-spin-slow" />
-                  <span className="uppercase tracking-wider">10-ACRE CAD MASTERPLAN • {activeSector} ZONE</span>
+              {/* Top Board Badge */}
+              <div className="absolute top-6 left-6 right-6 flex items-center justify-between z-10">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#0F172A] text-[11px] font-extrabold uppercase tracking-wider border border-white/60 shadow-sm">
+                  <Layers className="w-3.5 h-3.5 text-[#F97316]" />
+                  <span>{currentFeature ? currentFeature.badge : 'THE COMPLETE 10-ACRE COMMUNITY'}</span>
                 </div>
 
-                <div className="bg-[#0F172A]/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#F97316]" />
-                  <span>189 PLOTS</span>
+                {selectedFeature !== null && (
+                  <button
+                    onClick={() => setSelectedFeature(null)}
+                    className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] font-extrabold uppercase tracking-wider border border-white/30 hover:bg-white hover:text-[#0F172A] transition-all cursor-pointer"
+                  >
+                    Reset View
+                  </button>
+                )}
+              </div>
+
+              {/* ELEGANT SUBTLE LABELS DIRECTLY ON VISUAL */}
+              <div className="absolute inset-0 pointer-events-none z-10 p-6 flex flex-col justify-between">
+                <div className="mt-14 flex items-center justify-between">
+                  <div className={`px-3 py-1 rounded-lg backdrop-blur-md border text-[10px] font-extrabold uppercase tracking-wider transition-all ${
+                    selectedFeature === 3 ? 'bg-[#F97316] text-white border-orange-400 shadow-lg scale-105' : 'bg-slate-950/70 text-white/90 border-white/20'
+                  }`}>
+                    MAIN ENTRY
+                  </div>
+                  <div className={`px-3 py-1 rounded-lg backdrop-blur-md border text-[10px] font-extrabold uppercase tracking-wider transition-all ${
+                    selectedFeature === 0 ? 'bg-[#F97316] text-white border-orange-400 shadow-lg scale-105' : 'bg-slate-950/70 text-white/90 border-white/20'
+                  }`}>
+                    VILLA COMMUNITY
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between mb-8">
+                  <div className={`px-3 py-1 rounded-lg backdrop-blur-md border text-[10px] font-extrabold uppercase tracking-wider transition-all ${
+                    selectedFeature === 1 ? 'bg-[#F97316] text-white border-orange-400 shadow-lg scale-105' : 'bg-slate-950/70 text-white/90 border-white/20'
+                  }`}>
+                    GREEN OPEN SPACES &amp; WALKING PATHS
+                  </div>
+                  <div className={`px-3 py-1 rounded-lg backdrop-blur-md border text-[10px] font-extrabold uppercase tracking-wider transition-all ${
+                    selectedFeature === 2 ? 'bg-[#F97316] text-white border-orange-400 shadow-lg scale-105' : 'bg-slate-950/70 text-white/90 border-white/20'
+                  }`}>
+                    CLUBHOUSE
+                  </div>
                 </div>
               </div>
 
-              {/* DYNAMIC HOTSPOT PINS ON THE MASTERPLAN */}
-              <div className="relative z-20 p-6 flex-1 flex items-center justify-center">
-                <div className="relative w-full max-w-md h-64 border-2 border-dashed border-white/30 rounded-2xl p-4 flex flex-col justify-between bg-black/30 backdrop-blur-xs">
-                  <div className="flex items-center justify-between text-[10px] font-bold text-white/80 uppercase tracking-widest">
-                    <span>NORTH ENTRANCE GATE</span>
-                    <span>40-FT MAIN BOULEVARD</span>
+              {/* Bottom Caption Pill on Visual */}
+              <div className="absolute bottom-6 left-6 right-6 z-10 p-4 rounded-2xl bg-slate-950/80 backdrop-blur-md border border-white/20 text-white flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-[#F97316] flex items-center justify-center text-white shrink-0">
+                    <MapPin className="w-4 h-4" />
                   </div>
-
-                  <div className="grid grid-cols-3 gap-3 text-center">
-                    <div className={`p-3 rounded-xl border transition-all ${activeSector === 'NORTH' || activeSector === 'ALL' ? 'bg-[#F97316] text-white border-white/40 shadow-md' : 'bg-black/50 text-white/60 border-white/10'}`}>
-                      <span className="text-[10px] font-bold block uppercase">NORTH GROVE</span>
-                      <span className="text-xs font-extrabold">Villas 001–065</span>
+                  <div>
+                    <div className="text-xs font-bold text-white">
+                      {currentFeature ? currentFeature.title : 'THE COMPLETE COMMUNITY PLAN'}
                     </div>
-
-                    <div className={`p-3 rounded-xl border transition-all ${activeSector === 'CLUBHOUSE' || activeSector === 'ALL' ? 'bg-[#F97316] text-white border-white/40 shadow-md' : 'bg-black/50 text-white/60 border-white/10'}`}>
-                      <span className="text-[10px] font-bold block uppercase">CLUBHOUSE</span>
-                      <span className="text-xs font-extrabold">15,000 Sq.Ft</span>
+                    <div className="text-[10px] text-slate-300 font-medium">
+                      {currentFeature ? currentFeature.desc : '10-Acre Master Planned Gated Sanctuary'}
                     </div>
-
-                    <div className={`p-3 rounded-xl border transition-all ${activeSector === 'SOUTH' || activeSector === 'ALL' ? 'bg-[#F97316] text-white border-white/40 shadow-md' : 'bg-black/50 text-white/60 border-white/10'}`}>
-                      <span className="text-[10px] font-bold block uppercase">SOUTH GROVE</span>
-                      <span className="text-xs font-extrabold">Villas 066–189</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between text-[10px] font-bold text-white/80 uppercase tracking-widest">
-                    <span>70% OPEN GREEN CORRIDOR</span>
-                    <span>SOUTH PARK & ZEN PATH</span>
                   </div>
                 </div>
-              </div>
 
-              {/* BOTTOM CAPTION BAR */}
-              <div className="relative z-20 p-4 bg-white/95 backdrop-blur-md border-t border-[#E2E8F0] flex items-center justify-between text-[#0F172A]">
-                <div className="flex items-center gap-2">
-                  <Trees className="w-4 h-4 text-[#F97316]" />
-                  <span className="text-xs font-bold uppercase tracking-wider">
-                    {currentSectorInfo.title}
-                  </span>
-                </div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#F97316]">
-                  70% BOTANICAL LANDSCAPE
+                <span className="text-[10px] font-bold bg-white/10 px-2.5 py-1 rounded-full text-white border border-white/20">
+                  RERA Approved
                 </span>
               </div>
             </div>
+          </motion.div>
 
-            {/* Sector Information & REALISTIC HD PHOTO SHOWCASE Sidebar Card */}
-            <div className="lg:col-span-5 bg-white p-6 rounded-3xl border border-[#E2E8F0] flex flex-col justify-between shadow-md space-y-5">
-              
-              {/* REALISTIC HD SECTOR PHOTO SHOWCASE CARD WITH ROTATION */}
-              <div className="relative h-[220px] rounded-2xl overflow-hidden border border-[#E2E8F0] bg-[#0F172A] flex flex-col justify-between">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={activeSectorPhoto.image}
-                    src={activeSectorPhoto.image}
-                    alt={activeSectorPhoto.title}
-                    initial={{ opacity: 0, scale: 1.04 }}
-                    animate={{ opacity: 1, scale: 1.00 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                </AnimatePresence>
+          {/* RIGHT SIDE — COMMUNITY STORY EDITORIAL PANEL (Span 5) */}
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 flex flex-col justify-between"
+          >
+            <div>
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#F97316] block mb-2">
+                THE COMMUNITY PLAN
+              </span>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none z-10" />
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight mb-3">
+                Everything Has Its Place
+              </h3>
 
-                {/* Top Badge & Auto Play Controller */}
-                <div className="relative z-20 p-3 flex items-center justify-between">
-                  <div className="bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-[#E2E8F0] text-[10px] font-bold text-[#0F172A]">
-                    {activeSectorPhoto.badge}
-                  </div>
+              <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed mb-6">
+                From the arrival experience to quiet garden paths and shared community spaces, Antelia Groves is planned to make everyday living feel connected, calm and convenient.
+              </p>
 
-                  <button
-                    onClick={() => setIsSectorPhotoAutoPlay(!isSectorPhotoAutoPlay)}
-                    className="px-3 py-1 bg-[#0F172A]/85 backdrop-blur-md border border-white/20 text-white rounded-full text-[10px] font-bold tracking-wider uppercase flex items-center gap-1 hover:bg-[#F97316] transition-all cursor-pointer"
-                  >
-                    {isSectorPhotoAutoPlay ? <Pause className="w-3 h-3 text-[#F97316]" /> : <Play className="w-3 h-3 text-white" />}
-                    <span>2.0S HD PHOTO</span>
-                  </button>
-                </div>
+              {/* 4 INTERACTIVE FEATURE ROWS */}
+              <div className="space-y-3">
+                {features.map((item, idx) => {
+                  const IconComponent = item.icon;
+                  const isSelected = selectedFeature === idx;
 
-                {/* Bottom Caption & 4 Thumbnail Selector Buttons */}
-                <div className="relative z-20 p-4 text-white flex items-end justify-between gap-3">
-                  <div>
-                    <span className="text-[10px] font-bold text-[#F97316] uppercase tracking-wider block bg-white px-2 py-0.5 rounded-full w-fit mb-1">
-                      {activeSector === 'ALL' ? 'ALL SECTORS' : `${activeSector} GROVE`} REAL PHOTO {sectorPhotoIndex + 1}/4
-                    </span>
-                    <h4 className="text-sm font-extrabold text-white leading-snug">
-                      {activeSectorPhoto.title}
-                    </h4>
-                  </div>
+                  return (
+                    <div
+                      key={item.num}
+                      onClick={() => setSelectedFeature(isSelected ? null : idx)}
+                      className={`p-4 rounded-2xl border transition-all duration-300 cursor-pointer ${
+                        isSelected 
+                          ? 'bg-white border-[#F97316] shadow-md ring-1 ring-[#F97316]' 
+                          : 'bg-slate-50/60 hover:bg-white border-slate-200/80 hover:border-slate-300'
+                      }`}
+                    >
+                      <div className="flex items-start gap-3.5">
+                        <div className={`p-2 rounded-xl shrink-0 transition-colors duration-300 ${
+                          isSelected ? 'bg-[#F97316] text-white' : 'bg-white text-slate-700 border border-slate-200/80'
+                        }`}>
+                          <IconComponent className="w-4 h-4" />
+                        </div>
 
-                  {/* 4 Thumbnail Dots */}
-                  <div className="flex items-center gap-1.5 shrink-0">
-                    {currentSectorInfo.photos.map((p, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => {
-                          setSectorPhotoIndex(idx);
-                          setIsSectorPhotoAutoPlay(false);
-                        }}
-                        className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
-                          idx === sectorPhotoIndex ? 'bg-[#F97316] scale-125' : 'bg-white/50 hover:bg-white'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* SECTOR DETAILS & FEATURES */}
-              <div>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#EFF6FF] border border-[#BFDBFE] text-[11px] font-bold text-[#1D4ED8] uppercase tracking-wider mb-2">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>{currentSectorInfo.villas}</span>
-                </div>
-
-                <h3 className="text-xl font-extrabold text-[#0F172A] mb-2 tracking-tight uppercase">
-                  {currentSectorInfo.title}
-                </h3>
-
-                <p className="text-[#475569] text-xs font-normal leading-relaxed mb-4">
-                  {currentSectorInfo.desc}
-                </p>
-
-                <div className="space-y-2 mb-4">
-                  <span className="text-[11px] uppercase tracking-widest text-[#F97316] font-bold block">
-                    Sector Key Features:
-                  </span>
-                  {currentSectorInfo.highlights.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs text-[#0F172A] font-semibold">
-                      <Check className="w-3.5 h-3.5 text-[#F97316] shrink-0 mt-0.5" />
-                      <span className="leading-snug">{item}</span>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-2 mb-0.5">
+                            <span className="text-[11px] font-extrabold text-[#0F172A] tracking-tight uppercase">
+                              {item.num} — {item.title}
+                            </span>
+                            {isSelected && (
+                              <span className="text-[10px] font-extrabold text-[#F97316]">Active</span>
+                            )}
+                          </div>
+                          <p className="text-xs text-slate-600 font-medium leading-normal">
+                            {item.desc}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                  ))}
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+
+        {/* CLEAN HORIZONTAL INFORMATION STRIP BELOW MASTERPLAN */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="w-full bg-white rounded-[28px] p-6 sm:p-8 border border-slate-200/90 shadow-sm mb-12"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-slate-200/90 gap-6 md:gap-0">
+            {projectFacts.map((fact, idx) => (
+              <div 
+                key={fact.label}
+                className={`flex flex-col justify-center ${
+                  idx === 0 ? 'md:pr-6' : idx === projectFacts.length - 1 ? 'md:pl-6' : 'md:px-6'
+                } ${idx > 1 ? 'pt-4 md:pt-0' : idx > 0 ? 'pt-4 md:pt-0' : ''}`}
+              >
+                <span className="text-[10px] font-extrabold text-[#F97316] uppercase tracking-widest">
+                  {fact.label}
+                </span>
+                <div className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight mt-1 mb-0.5">
+                  {fact.value}
+                </div>
+                <div className="text-xs font-semibold text-slate-600">
+                  {fact.desc}
                 </div>
               </div>
-
-              <button
-                onClick={onOpenBooking}
-                className="w-full py-3.5 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-[#F97316] hover:bg-[#EA580C] transition-all shadow-sm cursor-pointer"
-              >
-                Schedule Site Tour &amp; Plot Selection
-              </button>
-
-            </div>
-
+            ))}
           </div>
-        </div>
+        </motion.div>
+
+        {/* SINGLE CTA BUTTON */}
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-center"
+        >
+          <a
+            href="#featured-villas"
+            className="bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-extrabold uppercase tracking-wider px-8 py-4 rounded-full inline-flex items-center gap-3 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 group"
+          >
+            <span>Explore Villa Collections</span>
+            <ArrowRight className="w-4 h-4 text-[#F97316] group-hover:translate-x-1 transition-transform" />
+          </a>
+        </motion.div>
 
       </div>
     </section>
   );
 }
+
 
