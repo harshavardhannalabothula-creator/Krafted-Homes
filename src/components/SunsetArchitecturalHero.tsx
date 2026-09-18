@@ -132,7 +132,7 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
             <span className="text-[#F97316]">Begins at Antelia Groves</span>
           </h1>
 
-          <p className="text-[14px] sm:text-[15px] text-slate-500 leading-relaxed max-w-lg font-medium mb-8">
+          <p className="text-[15px] sm:text-[16px] text-slate-700 leading-relaxed max-w-lg font-semibold mb-8">
             Discover Antelia Groves by Krafted Homes — a thoughtfully planned villa community across approximately 10 acres, featuring independent 3 and 4 BHK villas, distinctive architecture, private gardens and connected community living.
           </p>
 
@@ -140,32 +140,32 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 lg:gap-8 pt-1">
             
             <div className="flex items-center gap-3">
-              <div className="w-7 h-7 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
-                <Check className="w-3.5 h-3.5" />
+              <div className="w-7.5 h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
+                <Check className="w-4 h-4 stroke-[3]" />
               </div>
               <div>
-                <h4 className="text-[13px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Distinctive Villas</h4>
-                <span className="text-[11px] text-slate-500 block leading-tight">Thoughtfully planned 3 & 4 BHK homes</span>
+                <h4 className="text-[14px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Distinctive Villas</h4>
+                <span className="text-[12px] text-slate-700 font-semibold block leading-tight">Thoughtfully planned 3 & 4 BHK homes</span>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-7 h-7 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
-                <Check className="w-3.5 h-3.5" />
+              <div className="w-7.5 h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
+                <Check className="w-4 h-4 stroke-[3]" />
               </div>
               <div>
-                <h4 className="text-[13px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Private Gardens</h4>
-                <span className="text-[11px] text-slate-500 block leading-tight">Green spaces connected to everyday living</span>
+                <h4 className="text-[14px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Private Gardens</h4>
+                <span className="text-[12px] text-slate-700 font-semibold block leading-tight">Green spaces connected to everyday living</span>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-7 h-7 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
-                <Check className="w-3.5 h-3.5" />
+              <div className="w-7.5 h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
+                <Check className="w-4 h-4 stroke-[3]" />
               </div>
               <div>
-                <h4 className="text-[13px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Premium Community</h4>
-                <span className="text-[11px] text-slate-500 block leading-tight">Clubhouse, wellness and lifestyle spaces</span>
+                <h4 className="text-[14px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Premium Community</h4>
+                <span className="text-[12px] text-slate-700 font-semibold block leading-tight">Clubhouse, wellness and lifestyle spaces</span>
               </div>
             </div>
 

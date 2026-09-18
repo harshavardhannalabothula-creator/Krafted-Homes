@@ -104,7 +104,7 @@ export default function PastDeliveredProjectsSection({ onOpenBooking }: PastDeli
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight mb-2">
               Our Past Delivered Projects &amp; Work
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 font-medium max-w-2xl">
+            <p className="text-xs sm:text-sm text-slate-700 font-semibold max-w-2xl">
               Explore our proven track record of delivered luxury villas, high-grade construction engineering, and key handovers to happy families.
             </p>
           </div>
@@ -186,7 +186,7 @@ export default function PastDeliveredProjectsSection({ onOpenBooking }: PastDeli
                     <div className="text-xs font-bold text-slate-700 mb-2">
                       {item.specs}
                     </div>
-                    <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                    <p className="text-[13px] text-slate-700 font-medium leading-relaxed">
                       {item.desc}
                     </p>
                   </div>

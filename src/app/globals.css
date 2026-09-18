@@ -38,6 +38,15 @@
   .font-serif, .font-heading, .font-cormorant, .font-manrope, .font-sans, .font-mono, .font-handwritten {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
   }
+
+  /* Enhanced High-Contrast Legibility for Body & Subtext */
+  .text-slate-500 {
+    color: #334155 !important; /* Upgrades light slate-500 to rich high-contrast slate-700 */
+  }
+
+  .text-slate-400 {
+    color: #475569 !important; /* Upgrades faint slate-400 to solid slate-600 */
+  }
 }
 
 /* Global Clean Unified Typography System */

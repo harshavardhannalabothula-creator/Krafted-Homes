@@ -77,7 +77,7 @@ const TestimonialCard = ({ item }: { item: Testimonial }) => (
         </span>
       </div>
 
-      <p className="text-slate-600 leading-relaxed font-medium text-[12px] sm:text-[13px] mb-4 italic">
+      <p className="text-slate-800 leading-relaxed font-semibold text-[13px] sm:text-[14px] mb-4 italic">
         &ldquo;{item.text}&rdquo;
       </p>
     </div>
