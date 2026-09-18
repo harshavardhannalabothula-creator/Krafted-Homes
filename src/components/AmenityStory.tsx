@@ -2,223 +2,274 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Dumbbell, Users, BookOpen, Coffee, Sun, Heart, MapPin, Check, ArrowRight, ShieldCheck, Sparkles, Activity } from 'lucide-react';
-import Clubhouse3DEngine from './Clubhouse3DEngine';
+import { Dumbbell, Users, BookOpen, Coffee, Sun, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
 
 interface AmenityStoryProps {
   onOpenBooking?: () => void;
 }
 
 export default function AmenityStory({ onOpenBooking }: AmenityStoryProps) {
-  const [activeHotspot, setActiveHotspot] = useState<number>(0);
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
 
-  const clubhouseHotspots = [
+  const amenityCategories = [
     {
       id: 0,
       code: 'MOVE',
-      title: 'Sports + Fitness Wing',
-      tagline: 'High-Performance Indoor Athletics & Aerobics',
-      x: '25%',
-      y: '35%',
+      title: 'Sports & Fitness',
       icon: Dumbbell,
-      desc: 'Wooden double-court badminton arena, international regulation glass-backed squash court, state-of-the-art gym equipment, and zumba aerobics floor.',
+      badge: 'MOVE • SPORTS & FITNESS',
+      headingTitle: 'Sports & Fitness Wing',
+      tagline: 'HIGH-PERFORMANCE MOVEMENT SPACES',
+      desc: 'A thoughtfully designed fitness and recreation wing with spaces for active living, indoor sports, and everyday wellness.',
       features: [
-        'Wooden indoor badminton courts',
-        'Glass-backed squash arena',
-        'High-tech cardio & strength gym',
-        'Spring-floor Zumba & aerobics studio',
+        'Indoor sports & fitness zones',
+        'Dedicated movement & training spaces',
+        'Premium materials & natural ventilation',
       ],
-      stats: '4,000 SQ.FT ATHLETICS WING • HARDWOOD FLOORING',
       image: '/images/sports_wing.jpg',
-      badgeColor: '#c5a059',
     },
     {
       id: 1,
       code: 'GATHER',
-      title: 'Party + Social Pavilion',
-      tagline: 'Celebrations, Banquet Events & Guest Suites',
-      x: '70%',
-      y: '30%',
+      title: 'Social Spaces',
       icon: Users,
-      desc: 'Grand indoor banquet hall connected to garden patios, paired with boutique hotel-style guest rooms for your visiting family and friends.',
+      badge: 'GATHER • SOCIAL SPACES',
+      headingTitle: 'Party & Social Pavilion',
+      tagline: 'CELEBRATIONS & COMMUNITY BANQUETS',
+      desc: 'A grand social pavilion connected to garden patios, designed for community gatherings, private celebrations, and evening events.',
       features: [
-        'Grand air-conditioned banquet hall',
-        'Boutique hotel guest suites',
-        'Spacious welcome reception lobby',
-        'Event catering staging area',
+        'Air-conditioned banquet & event lounge',
+        'Boutique hotel-style guest suites',
+        'Garden patio & celebration staging area',
       ],
-      stats: '300-GUEST BANQUET HALL • 6 GUEST SUITES',
       image: '/images/banquet_hall.jpg',
-      badgeColor: '#1e242b',
     },
     {
       id: 2,
       code: 'UNWIND',
-      title: 'Reading + Hobby Nooks',
-      tagline: 'Acoustic Solitude & Creative Expression',
-      x: '50%',
-      y: '65%',
+      title: 'Reading & Relaxation',
       icon: BookOpen,
-      desc: 'Acoustically treated quiet reading rooms with natural light, alongside dedicated studio space for pottery, painting, and arts.',
+      badge: 'UNWIND • READING & RELAXATION',
+      headingTitle: 'Reading & Hobby Nooks',
+      tagline: 'ACOUSTIC SOLITUDE & CREATIVE LOUNGES',
+      desc: 'Acoustically insulated quiet reading nooks and creative studio lounges designed for solitude, reading, and artistic pursuits.',
       features: [
-        'Quiet acoustic library & reading nooks',
-        'Creative arts & painting studio',
-        'Co-working executive desks',
-        'Private conversation lounges',
+        'Quiet acoustic library & reading lounges',
+        'Creative studio & painting workspace',
+        'Private conversation & co-working nooks',
       ],
-      stats: '-50dB ACOUSTIC LIBRARY • 2,000+ BOOK ARCHIVE',
       image: '/images/library_nook.jpg',
-      badgeColor: '#5e6951',
     },
     {
       id: 3,
       code: 'CONNECT',
-      title: 'Café + Al-Fresco Terrace',
-      tagline: 'Poolside BBQ Patio & Live Culinary Counters',
-      x: '75%',
-      y: '70%',
+      title: 'Café & Community',
       icon: Coffee,
-      desc: 'Al-fresco dining terrace overlooking the water court, featuring live food preparation counters and starlit fire pit lounges.',
+      badge: 'CONNECT • CAFÉ & COMMUNITY',
+      headingTitle: 'Café & Al-Fresco Terrace',
+      tagline: 'POOLSIDE BBQ PATIO & CULINARY COUNTERS',
+      desc: 'Al-fresco terrace overlooking the water courts, featuring live culinary counters, coffee lounges, and starlit fire pit seating.',
       features: [
-        'Poolside BBQ patio & fire pit',
-        'Live food counter & juice bar',
-        'Shaded pergola seating',
-        'Sunset cocktail terrace',
+        'Poolside BBQ patio & fire pit lounge',
+        'Shaded pergola al-fresco seating',
+        'Live beverage counter & sunset deck',
       ],
-      stats: '60-SEAT AL-FRESCO PATIO • STARLIT FIRE PIT',
       image: '/images/cafe_terrace.jpg',
-      badgeColor: '#a9785b',
     },
     {
       id: 4,
       code: 'PLAY',
-      title: 'Kids + Recreation Zone',
-      tagline: 'Indoor Games Room & Adventure Playground',
-      x: '30%',
-      y: '70%',
+      title: 'Kids & Family',
       icon: Sun,
-      desc: 'Indoor games lounge with table tennis, foosball, and billiards, plus rubberized outdoor adventure play parks for children.',
+      badge: 'PLAY • KIDS & FAMILY',
+      headingTitle: 'Kids & Family Zone',
+      tagline: 'INDOOR GAMES ROOM & ADVENTURE PARK',
+      desc: 'Indoor recreation lounge with table tennis and billiards, paired with rubber-paved adventure play parks for children.',
       features: [
-        'Table tennis & billiards lounge',
-        'Board games & video room',
-        'Rubber-paved kids play park',
-        'Parent observation seating',
+        'Indoor games lounge with table tennis',
+        'Rubberized safety-padded kids play park',
+        'Shaded seating area for parents',
       ],
-      stats: 'RUBBER-PADDED PLAY PARK • GAMES LOUNGE',
       image: '/images/kids_play.jpg',
-      badgeColor: '#0284c7',
     },
     {
       id: 5,
       code: 'RESET',
-      title: 'Meditation + Nature Deck',
-      tagline: 'Lap Swimming Pool, Water Courts & Zen Yoga',
-      x: '45%',
-      y: '25%',
-      icon: Heart,
-      desc: 'Temperature-controlled lap swimming pool bordered by soothing water courts, zen stone meditation nooks, and morning yoga decks.',
+      title: 'Wellness & Meditation',
+      icon: Sparkles,
+      badge: 'RESET • WELLNESS & MEDITATION',
+      headingTitle: 'Wellness & Meditation Deck',
+      tagline: 'ZEN YOGA DECK & REFLECTION PONDS',
+      desc: 'Temperature-controlled lap swimming pool bordered by soothing water courts, zen stone meditation decks, and palm gardens.',
       features: [
-        'Resort lap swimming pool',
-        'Cascading water courts',
-        'Zen yoga deck under palm shade',
-        'Quiet reflection ponds',
+        'Resort lap swimming pool & sun deck',
+        'Zen meditation deck under palm shade',
+        'Cascading water courts & lotus ponds',
       ],
-      stats: '25M LAP POOL • LOTUS REFLECTION PONDS',
       image: '/images/zen_yoga.jpg',
-      badgeColor: '#5e6951',
     },
   ];
 
-  const active = clubhouseHotspots[activeHotspot];
-  const Icon = active.icon;
+  const active = amenityCategories[activeCategoryIndex];
 
   return (
-    <section id="amenities" className="py-12 bg-[#F4F0E7] text-[#0F172A] relative overflow-hidden border-b border-[slate-200]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="amenities" className="py-12 sm:py-16 bg-white text-[#0F172A] relative overflow-hidden border-t border-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
 
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8">
-          <span className="text-xs uppercase tracking-[0.35em] font-mono font-bold text-[#F97316] block mb-3">
-            15,000+ SQ.FT ANCHOR
+        {/* SECTION HEADER */}
+        <div className="text-center max-w-3xl mx-auto">
+          <span className="text-[#F97316] text-[11px] font-extrabold uppercase tracking-widest bg-orange-50 px-3.5 py-1 rounded-full border border-orange-100 mb-3 inline-block">
+            04 — COMMUNITY &amp; LIFESTYLE
           </span>
-          <h2 className="text-4xl sm:text-6xl font-serif font-bold text-[#0F172A] mb-4 leading-tight">
-            THE SOCIAL <span className="text-[#F97316] italic font-normal">HEART</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] mb-3 tracking-tight">
+            The Social <span className="text-[#F97316]">Heart</span>
           </h2>
-          <p className="text-[#0F172A]/80 text-base font-light leading-relaxed max-w-xl mx-auto">
-            Not just amenities—a living 3D architectural sanctuary where sports, celebrations, quiet reflection, and community converge.
+          <p className="text-slate-700 text-xs sm:text-sm font-semibold leading-relaxed max-w-2xl mx-auto">
+            More than amenities — a thoughtfully designed community where movement, connection, celebration and quiet moments come together.
           </p>
         </div>
 
-        {/* Hotspot Buttons */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 mb-8">
-          {clubhouseHotspots.map((hs, index) => {
-            const HIcon = hs.icon;
-            const isSelected = activeHotspot === index;
+        {/* 6 AMENITY CATEGORY NAVIGATION CARDS (EQUAL HEIGHT & WIDTH) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          {amenityCategories.map((cat, idx) => {
+            const CatIcon = cat.icon;
+            const isSelected = activeCategoryIndex === idx;
             return (
               <button
-                key={hs.code}
-                onClick={() => setActiveHotspot(index)}
-                className={`p-4 rounded-xs border flex flex-col items-center justify-center gap-2 transition-all duration-300 ${
+                key={cat.code}
+                onClick={() => setActiveCategoryIndex(idx)}
+                className={`p-4 rounded-2xl border transition-all duration-300 flex flex-col items-center justify-center text-center cursor-pointer group ${
                   isSelected
-                    ? 'bg-[#0F172A] text-white border-[#0F172A] font-bold shadow-md scale-105'
-                    : 'bg-[slate-100]/60 text-[#0F172A] border-[slate-200] hover:border-[#F97316]'
+                    ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-lg scale-[1.03]'
+                    : 'bg-[#F8FAFC] text-[#0F172A] border-slate-200/80 hover:border-orange-200 hover:bg-slate-100 shadow-sm'
                 }`}
               >
-                <HIcon className="w-4 h-4 text-[#F97316]" />
-                <span className="text-xs font-mono font-bold uppercase tracking-wider">{hs.code}</span>
-                <span className="text-[10px] font-sans font-light opacity-80 line-clamp-1">{hs.title.split(' ')[0]}</span>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-110 ${
+                  isSelected ? 'bg-[#F97316] text-white' : 'bg-orange-50 text-[#F97316]'
+                }`}>
+                  <CatIcon className="w-4 h-4" />
+                </div>
+                
+                <span className={`text-[11px] font-extrabold uppercase tracking-wider block mb-0.5 ${
+                  isSelected ? 'text-[#F97316]' : 'text-[#0F172A]'
+                }`}>
+                  {cat.code}
+                </span>
+
+                <span className={`text-[11px] font-bold block leading-tight ${
+                  isSelected ? 'text-slate-200' : 'text-slate-500'
+                }`}>
+                  {cat.title}
+                </span>
               </button>
             );
           })}
         </div>
 
-        {/* Spatial Viewport & Details Panel */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        {/* MAIN TWO-COLUMN CONTENT LAYOUT */}
+        <div className="bg-white rounded-[32px] border border-slate-200/90 shadow-xl p-5 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
-          {/* Real-Time Interactive 3D WebGL Clubhouse Viewport */}
-          <div className="lg:col-span-8 relative min-h-[480px] rounded-xl overflow-hidden border border-[slate-200] shadow-lg">
-            <Clubhouse3DEngine activeHotspot={activeHotspot} />
+          {/* LEFT 7-COLS: MAIN ARCHITECTURAL VISUAL PANEL */}
+          <div className="lg:col-span-7 relative rounded-[24px] overflow-hidden min-h-[320px] sm:min-h-[420px] bg-[#0F172A] shadow-inner group flex flex-col justify-between p-4">
+            
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={active.image}
+                src={active.image}
+                alt={active.headingTitle}
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1.00 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+            </AnimatePresence>
+
+            {/* TOP FLOATING BADGES */}
+            <div className="relative z-10 flex items-center justify-between">
+              <span className="bg-slate-950/80 backdrop-blur-md text-white text-[10px] font-extrabold px-3.5 py-1 rounded-full border border-white/20">
+                ANTELIA GROVES / COMMUNITY EXPERIENCE
+              </span>
+
+              <span className="bg-[#F97316] text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-sm">
+                0{active.id + 1} / 06 {active.code}
+              </span>
+            </div>
+
+            {/* BOTTOM FLOATING TITLE BADGE */}
+            <div className="relative z-10 bg-slate-950/85 backdrop-blur-md p-4 rounded-2xl border border-white/15 text-white mt-auto max-w-md">
+              <span className="text-[10px] font-extrabold text-[#F97316] uppercase tracking-wider block mb-0.5">
+                ✦ {active.badge}
+              </span>
+              <h4 className="text-sm font-extrabold leading-snug">
+                {active.headingTitle}
+              </h4>
+            </div>
           </div>
 
-          {/* Hotspot Wing Detail Panel */}
-          <div className="lg:col-span-4 bg-[slate-100]/40 p-8 rounded-xs border border-[slate-200] flex flex-col justify-between">
+          {/* RIGHT 5-COLS: AMENITY INFORMATION PANEL */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+            
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xs bg-[#F4F0E7] border border-[slate-200] text-xs font-mono text-[#F97316] uppercase tracking-wider mb-4 font-bold">
-                <Icon className="w-3.5 h-3.5" />
-                <span>HOTSPOT: {active.code}</span>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-extrabold text-[#F97316] uppercase tracking-widest bg-orange-50 px-3 py-0.5 rounded-full border border-orange-100">
+                  {active.code} • {active.title}
+                </span>
+                <span className="text-[10px] font-extrabold text-slate-400">
+                  0{active.id + 1} / 06
+                </span>
               </div>
 
-              <h3 className="text-3xl font-serif font-bold text-[#0F172A] mb-2">{active.title}</h3>
-              <p className="text-xs uppercase font-mono tracking-wider text-[#F97316] font-bold mb-4">{active.tagline}</p>
-              <p className="text-[#0F172A]/80 text-xs font-light leading-relaxed mb-6">{active.desc}</p>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] mb-2 leading-tight tracking-tight">
+                {active.headingTitle}
+              </h3>
 
-              <div className="space-y-2 mb-6 bg-[#F4F0E7] p-4 rounded-xs border border-[slate-200]">
-                <span className="text-[11px] font-mono text-[#F97316] font-bold uppercase block mb-2">
-                  Wing Infrastructure Specs:
+              <p className="text-xs font-extrabold uppercase tracking-wider text-[#F97316] mb-3">
+                {active.tagline}
+              </p>
+
+              <p className="text-xs sm:text-sm text-slate-700 font-semibold leading-relaxed mb-6">
+                {active.desc}
+              </p>
+
+              {/* ARCHITECTURAL FEATURE POINTS */}
+              <div className="space-y-2.5 pt-4 border-t border-slate-100">
+                <span className="text-[10px] font-extrabold text-[#0F172A] uppercase tracking-wider block mb-2">
+                  KEY ARCHITECTURAL FEATURES:
                 </span>
-                {active.features.map((f, i) => (
-                  <div key={i} className="flex items-center gap-2 text-xs text-[#0F172A] font-light">
-                    <Check className="w-3.5 h-3.5 text-[#F97316] shrink-0" />
-                    <span>{f}</span>
+                {active.features.map((feature, i) => (
+                  <div key={i} className="flex items-start gap-2.5 text-xs sm:text-[13px] font-semibold text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <span>{feature}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {onOpenBooking && (
+            {/* EXPLORE SPACE CTA BUTTON */}
+            <div className="pt-4 border-t border-slate-100">
               <button
                 onClick={onOpenBooking}
-                className="w-full py-3.5 rounded-xs text-xs font-mono font-bold uppercase tracking-widest text-white bg-[#0F172A] hover:bg-[#F97316] hover:text-[#0F172A] transition-colors flex items-center justify-center gap-2"
+                className="w-full py-3.5 bg-[#0F172A] hover:bg-[#F97316] text-white text-xs font-extrabold uppercase tracking-widest rounded-full transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer active:scale-95 group"
               >
-                <span>Request Clubhouse Layouts</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <span>Explore Space</span>
+                <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
               </button>
-            )}
+            </div>
+
           </div>
 
+        </div>
+
+        {/* BOTTOM TAGLINE SUMMARY */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200/80 text-center">
+          <p className="text-xs sm:text-sm text-slate-700 font-semibold italic">
+            &ldquo;A place where residents do not just live — they move, gather, unwind, connect, play and reset.&rdquo;
+          </p>
         </div>
 
       </div>
     </section>
   );
 }
+
