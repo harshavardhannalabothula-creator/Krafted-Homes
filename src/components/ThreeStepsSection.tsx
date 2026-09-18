@@ -48,7 +48,7 @@ export default function ThreeStepsSection({ onOpenBooking }: ThreeStepsSectionPr
   ];
 
   return (
-    <section id="steps" className="w-full bg-[#FBFBFA] py-16 lg:py-24 relative overflow-hidden border-t border-slate-200/60">
+    <section id="steps" className="w-full bg-white py-16 lg:py-24 relative overflow-hidden border-t border-slate-100">
       {/* Background Subtle Accent Gradients */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-orange-100/40 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-10 w-96 h-96 bg-amber-100/30 rounded-full blur-3xl pointer-events-none" />

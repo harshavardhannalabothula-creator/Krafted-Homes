@@ -113,7 +113,7 @@ export default function TrustedStatsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.7, delay: i * 0.1 }}
-                className="group relative p-7 rounded-3xl bg-[#FBFBFA] border border-slate-200/90 hover:border-[#F97316] hover:bg-white transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
+                className="group relative p-7 rounded-3xl bg-white border border-slate-200/90 hover:border-[#F97316] transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div>
                   {/* Top Bar: Icon + Badge */}

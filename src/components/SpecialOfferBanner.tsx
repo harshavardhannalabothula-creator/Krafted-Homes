@@ -29,7 +29,7 @@ export default function SpecialOfferBanner({ onOpenBooking }: SpecialOfferBanner
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* LUXURY LIGHT LAUNCH OFFER CONTAINER */}
-        <div className="relative w-full rounded-[36px] overflow-hidden shadow-xl bg-gradient-to-br from-[#FFFDF9] via-[#FAF6EE] to-[#FFF9EE] border border-amber-200/70 p-8 sm:p-12 lg:p-14">
+        <div className="relative w-full rounded-[36px] overflow-hidden shadow-lg bg-white border border-slate-200/90 p-8 sm:p-12 lg:p-14">
           
           <div className="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             

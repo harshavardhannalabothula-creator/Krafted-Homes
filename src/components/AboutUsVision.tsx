@@ -5,7 +5,7 @@ import { ArrowRight, Play, MapPin, Home, Layout, ShieldCheck } from 'lucide-reac
 
 export default function AboutUsVision() {
   return (
-    <section id="about" className="w-full bg-[#F8F7F2] py-10 lg:py-14 relative overflow-hidden border-t border-slate-100">
+    <section id="about" className="w-full bg-white py-10 lg:py-14 relative overflow-hidden border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           

@@ -131,7 +131,7 @@ export default function LocationConnectivitySection({ onOpenBooking }: LocationC
     : nearbyPlaces.filter(p => p.category === activeCategory);
 
   return (
-    <section id="location" className="w-full bg-[#FBFBFA] py-16 lg:py-24 px-6 sm:px-12 relative overflow-hidden border-t border-slate-200/80">
+    <section id="location" className="w-full bg-white py-16 lg:py-24 relative overflow-hidden border-t border-slate-100">
       
       {/* Background Subtle Accent Gradients */}
       <div className="absolute top-10 left-10 w-96 h-96 bg-orange-100/40 rounded-full blur-3xl pointer-events-none" />

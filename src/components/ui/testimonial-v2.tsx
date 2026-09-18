@@ -154,7 +154,7 @@ export function TestimonialsSection() {
     <section 
       id="testimonials"
       aria-labelledby="testimonials-heading"
-      className="bg-[#F8F7F2] py-12 lg:py-16 relative overflow-hidden border-t border-slate-100"
+      className="bg-white py-12 lg:py-16 relative overflow-hidden border-t border-slate-100"
     >
       <motion.div 
         initial={{ opacity: 0, y: 25 }}
