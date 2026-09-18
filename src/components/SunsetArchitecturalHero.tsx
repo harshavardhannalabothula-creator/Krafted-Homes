@@ -16,7 +16,6 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
     { label: 'About', href: '#about' },
     { label: 'Villas', href: '#villas' },
     { label: 'Past Work', href: '#past-work' },
-    { label: 'Amenities', href: '#services' },
     { label: 'Steps', href: '#steps' },
     { label: 'Location', href: '#location' },
     { label: 'Articles', href: '#articles' },

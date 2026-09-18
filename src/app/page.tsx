@@ -8,7 +8,6 @@ import PastDeliveredProjectsSection from '@/components/PastDeliveredProjectsSect
 import PopularBrandsSection from '@/components/PopularBrandsSection';
 import SpecialOfferBanner from '@/components/SpecialOfferBanner';
 import TestimonialSection from '@/components/TestimonialSection';
-import OurServicesSection from '@/components/OurServicesSection';
 import ThreeStepsSection from '@/components/ThreeStepsSection';
 import LocationConnectivitySection from '@/components/LocationConnectivitySection';
 import LuxurySliderSection from '@/components/LuxurySliderSection';
@@ -53,9 +52,6 @@ export default function Home() {
 
       {/* 6. WHAT OUR CUSTOMERS SAY */}
       <TestimonialSection />
-
-      {/* 7. OUR SERVICES / AMENITIES */}
-      <OurServicesSection />
 
       {/* 8. 3 EASY STEPS */}
       <ThreeStepsSection onOpenBooking={handleOpenBooking} />
