@@ -4,6 +4,7 @@ import { useState } from 'react';
 import SunsetArchitecturalHero from '@/components/SunsetArchitecturalHero';
 import AboutUsVision from '@/components/AboutUsVision';
 import ExploreFeaturedVillas from '@/components/ExploreFeaturedVillas';
+import PastDeliveredProjectsSection from '@/components/PastDeliveredProjectsSection';
 import PopularBrandsSection from '@/components/PopularBrandsSection';
 import SpecialOfferBanner from '@/components/SpecialOfferBanner';
 import TestimonialSection from '@/components/TestimonialSection';
@@ -38,8 +39,11 @@ export default function Home() {
       {/* 2. VISION / ABOUT SECTION (3-COLUMN BALANCED LAYOUT) */}
       <AboutUsVision />
 
-      {/* 3. FEATURED VILLAS */}
+      {/* 3. FUTURE VILLA PLANS & MASTERPLAN */}
       <ExploreFeaturedVillas onOpenBooking={handleOpenBooking} />
+
+      {/* 4. PAST COMPLETED WORK & DELIVERED GALLERY */}
+      <PastDeliveredProjectsSection onOpenBooking={handleOpenBooking} />
 
       {/* 5. POPULAR BRANDS / PARTNERS */}
       <PopularBrandsSection />
