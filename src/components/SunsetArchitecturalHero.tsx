@@ -165,55 +165,55 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
         </AnimatePresence>
       </header>
 
-      {/* MAIN HERO BODY */}
-      <div className="relative w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-8 my-4 lg:my-2 gap-6 lg:gap-10 z-10">
+      {/* MAIN HERO BODY — SIDE-BY-SIDE (FLEX-ROW) ON ALL SCREENS MATCHING PC */}
+      <div className="relative w-full max-w-7xl mx-auto flex flex-row items-center justify-between px-3 sm:px-6 lg:px-8 my-3 lg:my-2 gap-2 sm:gap-6 lg:gap-10 z-10">
         
         {/* LEFT 50%: TEXT CONTENT */}
-        <div className="w-full lg:w-[48%] flex flex-col justify-center py-2 lg:py-4 pr-0 lg:pr-4 z-20 text-left">
+        <div className="w-[50%] sm:w-[50%] lg:w-[48%] flex flex-col justify-center py-1 sm:py-2 lg:py-4 pr-1 sm:pr-4 z-20 text-left shrink-0">
           
-          <div className="inline-flex items-center gap-2 mb-3">
-             <span className="text-[#F97316] text-[10px] sm:text-[11px] font-extrabold uppercase tracking-widest bg-orange-50 px-3 sm:px-3.5 py-1 rounded-full border border-orange-100">✦ PREMIUM VILLA COMMUNITY</span>
+          <div className="inline-flex items-center gap-1.5 mb-2 sm:mb-3">
+             <span className="text-[#F97316] text-[8px] sm:text-[11px] font-extrabold uppercase tracking-widest bg-orange-50 px-2 sm:px-3.5 py-0.5 sm:py-1 rounded-full border border-orange-100">✦ PREMIUM VILLAS</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-[52px] xl:text-[58px] font-extrabold tracking-tight text-[#0F172A] leading-[1.1] mb-4 sm:mb-6">
+          <h1 className="text-lg sm:text-4xl md:text-5xl lg:text-[52px] xl:text-[58px] font-extrabold tracking-tight text-[#0F172A] leading-[1.1] mb-2 sm:mb-6">
             Your Next Chapter <br />
             <span className="text-[#F97316]">Begins at Antelia Groves</span>
           </h1>
 
-          <p className="text-[14px] sm:text-[16px] text-slate-700 leading-relaxed max-w-lg font-semibold mb-6 sm:mb-8">
-            Discover Antelia Groves by Krafted Homes — a thoughtfully planned villa community across approximately 10 acres, featuring independent 3 and 4 BHK villas, distinctive architecture, private gardens and connected community living.
+          <p className="text-[10px] sm:text-[15px] text-slate-700 leading-snug sm:leading-relaxed max-w-lg font-semibold mb-3 sm:mb-8 line-clamp-3 sm:line-clamp-none">
+            Discover Antelia Groves by Krafted Homes — a 10-acre gated sanctuary featuring independent 3 &amp; 4 BHK villas, private gardens and connected community living.
           </p>
 
-          {/* 3 CHECKMARKS IN A RESPONSIVE ROW */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-1">
+          {/* 3 CHECKMARKS */}
+          <div className="flex flex-col gap-2 sm:gap-4 pt-0.5">
             
-            <div className="flex items-center gap-3">
-              <div className="w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
-                <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[3]" />
+            <div className="flex items-center gap-1.5 sm:gap-3">
+              <div className="w-5 h-5 sm:w-7.5 sm:h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
+                <Check className="w-3 h-3 sm:w-4 sm:h-4 stroke-[3]" />
               </div>
               <div>
-                <h4 className="text-[13px] sm:text-[14px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Distinctive Villas</h4>
-                <span className="text-[11px] sm:text-[12px] text-slate-700 font-semibold block leading-tight">3 &amp; 4 BHK split-level</span>
+                <h4 className="text-[11px] sm:text-[14px] font-extrabold text-[#0F172A] leading-tight">Distinctive Villas</h4>
+                <span className="hidden sm:block text-[12px] text-slate-700 font-semibold leading-tight">3 &amp; 4 BHK split-level</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
-                <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[3]" />
+            <div className="flex items-center gap-1.5 sm:gap-3">
+              <div className="w-5 h-5 sm:w-7.5 sm:h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
+                <Check className="w-3 h-3 sm:w-4 sm:h-4 stroke-[3]" />
               </div>
               <div>
-                <h4 className="text-[13px] sm:text-[14px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Private Gardens</h4>
-                <span className="text-[11px] sm:text-[12px] text-slate-700 font-semibold block leading-tight">Private teak wood deck</span>
+                <h4 className="text-[11px] sm:text-[14px] font-extrabold text-[#0F172A] leading-tight">Private Gardens</h4>
+                <span className="hidden sm:block text-[12px] text-slate-700 font-semibold leading-tight">Private teak wood deck</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
-                <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[3]" />
+            <div className="flex items-center gap-1.5 sm:gap-3">
+              <div className="w-5 h-5 sm:w-7.5 sm:h-7.5 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
+                <Check className="w-3 h-3 sm:w-4 sm:h-4 stroke-[3]" />
               </div>
               <div>
-                <h4 className="text-[13px] sm:text-[14px] font-extrabold text-[#0F172A] leading-tight mb-0.5">Resort Clubhouse</h4>
-                <span className="text-[11px] sm:text-[12px] text-slate-700 font-semibold block leading-tight">15,000 sq.ft pool hub</span>
+                <h4 className="text-[11px] sm:text-[14px] font-extrabold text-[#0F172A] leading-tight">Resort Clubhouse</h4>
+                <span className="hidden sm:block text-[12px] text-slate-700 font-semibold leading-tight">15,000 sq.ft pool hub</span>
               </div>
             </div>
 
@@ -221,10 +221,10 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
 
         </div>
 
-        {/* RIGHT 52%: VILLA IMAGE CONTAINER WITH EXACT C-CURVE ON ITS LEFT EDGE */}
-        <div className="w-full lg:w-[52%] h-[320px] sm:h-[440px] lg:h-[560px] relative overflow-hidden bg-transparent group shrink-0">
+        {/* RIGHT 50%: VILLA IMAGE CONTAINER WITH EXACT C-CURVE ON ITS LEFT EDGE */}
+        <div className="w-[50%] sm:w-[50%] lg:w-[52%] h-[240px] sm:h-[420px] lg:h-[560px] relative overflow-hidden bg-transparent group shrink-0">
           
-          {/* THE IMAGE WITH C-CURVE CLIP-PATH (NO GREY BOX OR SHADOW BEHIND CURVE) */}
+          {/* THE IMAGE WITH C-CURVE CLIP-PATH (EXACTLY LIKE PC) */}
           <div 
             className="w-full h-full"
             style={{ 
@@ -251,9 +251,9 @@ export default function SunsetArchitecturalHero({ onOpenBooking }: SunsetArchite
           </div>
 
           {/* FLOATING IMAGE BADGE */}
-          <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 bg-white/95 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-2.5 rounded-full shadow-lg border border-white/50 flex items-center gap-2 z-20">
-            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#F97316] animate-pulse"></span>
-            <span className="text-[11px] sm:text-[12px] font-extrabold text-[#0F172A]">{activeStat.tag}</span>
+          <div className="absolute bottom-2 right-2 sm:bottom-6 sm:right-6 bg-white/95 backdrop-blur-md px-2.5 py-1 sm:px-5 sm:py-2.5 rounded-full shadow-lg border border-white/50 flex items-center gap-1.5 sm:gap-2 z-20">
+            <span className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-[#F97316] animate-pulse"></span>
+            <span className="text-[9px] sm:text-[12px] font-extrabold text-[#0F172A]">{activeStat.tag}</span>
           </div>
 
         </div>
