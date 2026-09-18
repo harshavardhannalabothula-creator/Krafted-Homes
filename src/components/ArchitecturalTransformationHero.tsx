@@ -65,7 +65,7 @@ export default function ArchitecturalTransformationHero({ onOpenBooking }: Archi
               <span className="text-[#101722] font-serif font-bold text-sm">AG</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-[9px] uppercase tracking-[0.25em] text-[#B89452] font-manrope font-semibold">
+              <span className="text-[9px] uppercase tracking-[0.25em] text-[#F97316] font-manrope font-semibold">
                 KRAFTED HOMES
               </span>
               <span className="text-sm font-serif tracking-wider text-[#F3EFE6] font-bold leading-tight">
@@ -80,7 +80,7 @@ export default function ArchitecturalTransformationHero({ onOpenBooking }: Archi
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-[11px] font-manrope font-semibold uppercase tracking-widest text-[#B8B0A1] hover:text-[#B89452] transition-colors"
+                className="text-[11px] font-manrope font-semibold uppercase tracking-widest text-[#B8B0A1] hover:text-[#F97316] transition-colors"
               >
                 {item}
               </a>
@@ -90,7 +90,7 @@ export default function ArchitecturalTransformationHero({ onOpenBooking }: Archi
           {/* Primary CTA */}
           <button
             onClick={onOpenBooking}
-            className="px-5 py-2 rounded-xs text-xs font-manrope font-bold uppercase tracking-wider text-[#101722] bg-[#F3EFE6] hover:bg-[#B89452] hover:text-[#101722] transition-all shadow-sm"
+            className="px-5 py-2 rounded-xs text-xs font-manrope font-bold uppercase tracking-wider text-[#101722] bg-[#F3EFE6] hover:bg-[#F97316] hover:text-[#101722] transition-all shadow-sm"
           >
             BOOK A VISIT
           </button>
@@ -110,7 +110,7 @@ export default function ArchitecturalTransformationHero({ onOpenBooking }: Archi
           <h1 className="text-6xl sm:text-8xl lg:text-[110px] font-serif font-bold text-[#F3EFE6] tracking-tight leading-none drop-shadow-2xl">
             ANTELIA
           </h1>
-          <h1 className="text-6xl sm:text-8xl lg:text-[110px] font-serif font-bold text-[#B89452] tracking-tight leading-none drop-shadow-2xl">
+          <h1 className="text-6xl sm:text-8xl lg:text-[110px] font-serif font-bold text-[#F97316] tracking-tight leading-none drop-shadow-2xl">
             GROVES
           </h1>
         </motion.div>
@@ -132,10 +132,10 @@ export default function ArchitecturalTransformationHero({ onOpenBooking }: Archi
             >
               <button
                 onClick={scrollToCommunity}
-                className="inline-flex items-center gap-2 text-xs font-manrope font-bold uppercase tracking-[0.2em] text-[#B89452] hover:text-[#F3EFE6] transition-colors py-2 px-4 group"
+                className="inline-flex items-center gap-2 text-xs font-manrope font-bold uppercase tracking-[0.2em] text-[#F97316] hover:text-[#F3EFE6] transition-colors py-2 px-4 group"
               >
                 <span>EXPLORE THE COMMUNITY</span>
-                <ArrowRight className="w-4 h-4 text-[#B89452] group-hover:translate-x-1.5 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-[#F97316] group-hover:translate-x-1.5 transition-transform" />
               </button>
             </motion.div>
           )}
@@ -153,11 +153,11 @@ export default function ArchitecturalTransformationHero({ onOpenBooking }: Archi
               onClick={() => setIsPlaying(!isPlaying)}
               className={`px-3 py-1.5 rounded-xs text-[10px] font-manrope font-bold uppercase tracking-wider flex items-center gap-1.5 border transition-all ${
                 isPlaying
-                  ? 'bg-[#27382D]/40 text-[#B89452] border-[#B89452]/40'
+                  ? 'bg-[#27382D]/40 text-[#F97316] border-[#F97316]/40'
                   : 'bg-[#101722] text-[#B8B0A1] border-white/20'
               }`}
             >
-              {isPlaying ? <Pause className="w-3 h-3 text-[#B89452] animate-pulse" /> : <Play className="w-3 h-3 text-[#F3EFE6]" />}
+              {isPlaying ? <Pause className="w-3 h-3 text-[#F97316] animate-pulse" /> : <Play className="w-3 h-3 text-[#F3EFE6]" />}
               <span>{isPlaying ? 'AUTO FILM: ON' : 'PAUSED'}</span>
             </button>
 
@@ -182,7 +182,7 @@ export default function ArchitecturalTransformationHero({ onOpenBooking }: Archi
           {/* Lower-Right Dynamic Stage Indicator & Thin Gold Progress Bar */}
           <div className="flex flex-col items-end text-right shrink-0">
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs font-manrope font-bold text-[#B89452] tracking-widest uppercase">
+              <span className="text-xs font-manrope font-bold text-[#F97316] tracking-widest uppercase">
                 {active.code}
               </span>
               <span className="text-xs font-serif font-bold text-[#F3EFE6]">
@@ -197,7 +197,7 @@ export default function ArchitecturalTransformationHero({ onOpenBooking }: Archi
             {/* Thin Muted Champagne Gold Progress Line */}
             <div className="w-48 sm:w-64 h-0.5 bg-white/10 rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-[#B89452]"
+                className="h-full bg-[#F97316]"
                 initial={{ width: 0 }}
                 animate={{ width: `${progressPercent}%` }}
                 transition={{ duration: 0.3 }}

@@ -67,7 +67,7 @@ export default function Transformation3DEngine({ stageIndex }: Transformation3DE
     sunLight.shadow.mapSize.height = 1024;
     scene.add(sunLight);
 
-    const goldPointLight = new THREE.PointLight('#B89452', 2.0, 60);
+    const goldPointLight = new THREE.PointLight('#F97316', 2.0, 60);
     goldPointLight.position.set(-15, 20, -15);
     scene.add(goldPointLight);
 
@@ -78,11 +78,11 @@ export default function Transformation3DEngine({ stageIndex }: Transformation3DE
     // Color Palette Materials
     const terrainMat = new THREE.MeshStandardMaterial({ color: '#27382D', roughness: 0.8, metalness: 0.1 });
     const clearedTerrainMat = new THREE.MeshStandardMaterial({ color: '#101722', roughness: 0.7, metalness: 0.1 });
-    const boundaryMat = new THREE.MeshBasicMaterial({ color: '#B89452', wireframe: true, transparent: true, opacity: 0.6 });
+    const boundaryMat = new THREE.MeshBasicMaterial({ color: '#F97316', wireframe: true, transparent: true, opacity: 0.6 });
     const roadMat = new THREE.MeshStandardMaterial({ color: '#1e293b', roughness: 0.5 });
-    const lineMat = new THREE.MeshBasicMaterial({ color: '#B89452' });
+    const lineMat = new THREE.MeshBasicMaterial({ color: '#F97316' });
     const foundationMat = new THREE.MeshStandardMaterial({ color: '#B8B0A1', roughness: 0.5 });
-    const structureMat = new THREE.MeshStandardMaterial({ color: '#B89452', roughness: 0.3, metalness: 0.5 });
+    const structureMat = new THREE.MeshStandardMaterial({ color: '#F97316', roughness: 0.3, metalness: 0.5 });
     const villaWallMat = new THREE.MeshStandardMaterial({ color: '#F3EFE6', roughness: 0.3 });
     const villaRoofMat = new THREE.MeshStandardMaterial({ color: '#101722', roughness: 0.4 });
     const treeTopMat = new THREE.MeshStandardMaterial({ color: '#27382D', roughness: 0.7 });
@@ -115,7 +115,7 @@ export default function Transformation3DEngine({ stageIndex }: Transformation3DE
     boundaryGroupRef.current = boundaryGroup;
     masterGroup.add(boundaryGroup);
 
-    const gridHelper = new THREE.GridHelper(32, 32, '#B89452', '#27382D');
+    const gridHelper = new THREE.GridHelper(32, 32, '#F97316', '#27382D');
     gridHelper.position.y = 0.02;
     boundaryGroup.add(gridHelper);
 
@@ -127,7 +127,7 @@ export default function Transformation3DEngine({ stageIndex }: Transformation3DE
       beacon.position.set(cx, 1.75, cz);
       boundaryGroup.add(beacon);
 
-      const light = new THREE.PointLight('#B89452', 1.5, 12);
+      const light = new THREE.PointLight('#F97316', 1.5, 12);
       light.position.set(cx, 3.5, cz);
       boundaryGroup.add(light);
     });

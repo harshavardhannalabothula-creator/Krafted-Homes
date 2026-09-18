@@ -117,29 +117,29 @@ export default function EvolutionStory() {
   ];
 
   return (
-    <section id="overview" className="py-24 bg-[#F4F0E7] text-[#202631] relative overflow-hidden border-b border-[#D5D0C6]">
+    <section id="overview" className="py-12 bg-[#F4F0E7] text-[#0F172A] relative overflow-hidden border-b border-[slate-200]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Brand Evolution Banner */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-[0.35em] font-mono font-bold text-[#B18A4A] block mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-8">
+          <span className="text-xs uppercase tracking-[0.35em] font-mono font-bold text-[#F97316] block mb-3">
             THE EVOLUTION OF KRAFTED HOMES
           </span>
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#111722] mb-4 leading-tight">
-            From Building Homes → <span className="text-[#B18A4A] italic font-normal">To Crafting Communities</span>
+          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#0F172A] mb-4 leading-tight">
+            From Building Homes → <span className="text-[#F97316] italic font-normal">To Crafting Communities</span>
           </h2>
-          <p className="text-[#202631]/80 font-light text-base leading-relaxed">
+          <p className="text-[#0F172A]/80 font-light text-base leading-relaxed">
             Krafted Homes started with a focus on individual residences. Today, Antelia Groves represents our pinnacle vision: a master-planned 10-acre estate where architecture, nature, and community intertwine seamlessly.
           </p>
         </div>
 
         {/* Master Planning Chronicle */}
-        <div className="mb-20 bg-[#DED8CC]/40 p-6 sm:p-10 rounded-xl border border-[#D5D0C6] shadow-xl relative">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 border-b border-[#D5D0C6] pb-4">
+        <div className="mb-10 bg-[slate-100]/40 p-6 sm:p-10 rounded-xl border border-[slate-200] shadow-xl relative">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 border-b border-[slate-200] pb-4">
             <div>
-              <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#B18A4A] font-bold block mb-1">
+              <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#F97316] font-bold block mb-1">
                 MASTER PLANNING 3D CHRONICLE (7 STEP PROCESS)
               </span>
-              <blockquote className="text-lg sm:text-2xl font-serif text-[#111722] italic font-light">
+              <blockquote className="text-lg sm:text-2xl font-serif text-[#0F172A] italic font-light">
                 &ldquo;First we cleared the land &rarr; then surveyed &rarr; roads &rarr; infrastructure &rarr; foundations &rarr; villas &rarr; life…&rdquo;
               </blockquote>
             </div>
@@ -149,10 +149,10 @@ export default function EvolutionStory() {
               className={`px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 border self-start sm:self-auto transition-all ${
                 isAutoLoop
                   ? 'bg-[#66705A]/20 text-[#66705A] border-[#66705A]/40'
-                  : 'bg-[#F4F0E7] text-[#202631] border-[#D5D0C6]'
+                  : 'bg-[#F4F0E7] text-[#0F172A] border-[slate-200]'
               }`}
             >
-              {isAutoLoop ? <Pause className="w-3.5 h-3.5 text-[#66705A] animate-pulse" /> : <Play className="w-3.5 h-3.5 text-[#202631]" />}
+              {isAutoLoop ? <Pause className="w-3.5 h-3.5 text-[#66705A] animate-pulse" /> : <Play className="w-3.5 h-3.5 text-[#0F172A]" />}
               <span>{isAutoLoop ? '3D AUTO STORY: ON' : 'PAUSED'}</span>
             </button>
           </div>
@@ -171,15 +171,15 @@ export default function EvolutionStory() {
                   }}
                   className={`p-3.5 rounded-lg text-left transition-all duration-300 relative border ${
                     isSelected
-                      ? 'bg-[#111722] text-white border-[#111722] font-bold shadow-md scale-102'
-                      : 'bg-[#F4F0E7] border-[#D5D0C6] text-[#202631] hover:border-[#B18A4A]'
+                      ? 'bg-[#0F172A] text-white border-[#0F172A] font-bold shadow-md scale-102'
+                      : 'bg-[#F4F0E7] border-[slate-200] text-[#0F172A] hover:border-[#F97316]'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className={`text-xs font-mono font-bold ${isSelected ? 'text-[#B18A4A]' : 'text-[#202631]/60'}`}>
+                    <span className={`text-xs font-mono font-bold ${isSelected ? 'text-[#F97316]' : 'text-[#0F172A]/60'}`}>
                       {step.step}
                     </span>
-                    <Icon className={`w-3.5 h-3.5 ${isSelected ? 'text-[#B18A4A]' : 'text-[#202631]/60'}`} />
+                    <Icon className={`w-3.5 h-3.5 ${isSelected ? 'text-[#F97316]' : 'text-[#0F172A]/60'}`} />
                   </div>
                   <div className="text-[11px] font-semibold tracking-wider uppercase line-clamp-1">{step.phrase}</div>
                 </button>
@@ -191,37 +191,37 @@ export default function EvolutionStory() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left 3D WebGL Interactive Development Engine */}
-            <div className="lg:col-span-7 relative h-[380px] sm:h-[440px] rounded-xl overflow-hidden shadow-2xl border border-[#D5D0C6]">
+            <div className="lg:col-span-7 relative h-[380px] sm:h-[440px] rounded-xl overflow-hidden shadow-2xl border border-[slate-200]">
               <Evolution3DEngine stepIndex={activeStep} />
             </div>
 
             {/* Right Step Detail Card */}
-            <div className="lg:col-span-5 bg-[#F4F0E7] border border-[#D5D0C6] p-6 sm:p-8 rounded-xl flex flex-col justify-between h-[380px] sm:h-[440px]">
+            <div className="lg:col-span-5 bg-[#F4F0E7] border border-[slate-200] p-6 sm:p-8 rounded-xl flex flex-col justify-between h-[380px] sm:h-[440px]">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#DED8CC]/60 border border-[#D5D0C6] text-xs font-mono text-[#B18A4A] uppercase tracking-widest mb-3 font-bold">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[slate-100]/60 border border-[slate-200] text-xs font-mono text-[#F97316] uppercase tracking-widest mb-3 font-bold">
                   <span>STEP {creationSteps[activeStep].step} OF 07</span>
                   <span>•</span>
                   <span className="italic">{creationSteps[activeStep].phrase}</span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#111722] mb-3">
+                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#0F172A] mb-3">
                   {creationSteps[activeStep].title}
                 </h3>
-                <p className="text-[#202631]/80 text-xs sm:text-sm leading-relaxed mb-3 font-light">
+                <p className="text-[#0F172A]/80 text-xs sm:text-sm leading-relaxed mb-3 font-light">
                   {creationSteps[activeStep].desc}
                 </p>
-                <p className="text-[#202631]/70 text-xs leading-relaxed font-light bg-[#DED8CC]/40 p-4 rounded-lg border border-[#D5D0C6]">
+                <p className="text-[#0F172A]/70 text-xs leading-relaxed font-light bg-[slate-100]/40 p-4 rounded-lg border border-[slate-200]">
                   {creationSteps[activeStep].detail}
                 </p>
               </div>
 
-              <div className="flex items-center gap-3 pt-4 border-t border-[#D5D0C6]">
+              <div className="flex items-center gap-3 pt-4 border-t border-[slate-200]">
                 <button
                   onClick={() => {
                     setActiveStep((prev) => (prev > 0 ? prev - 1 : creationSteps.length - 1));
                     setIsAutoLoop(false);
                   }}
-                  className="flex-1 py-3 text-xs border border-[#D5D0C6] text-[#202631] hover:border-[#111722] font-mono uppercase font-bold bg-[#F4F0E7]"
+                  className="flex-1 py-3 text-xs border border-[slate-200] text-[#0F172A] hover:border-[#0F172A] font-mono uppercase font-bold bg-[#F4F0E7]"
                 >
                   Previous
                 </button>
@@ -230,7 +230,7 @@ export default function EvolutionStory() {
                     setActiveStep((prev) => (prev < creationSteps.length - 1 ? prev + 1 : 0));
                     setIsAutoLoop(false);
                   }}
-                  className="flex-1 py-3 text-xs bg-[#111722] text-white font-mono font-bold uppercase tracking-wider hover:bg-[#B18A4A] hover:text-[#111722] transition-colors flex items-center justify-center gap-1.5"
+                  className="flex-1 py-3 text-xs bg-[#0F172A] text-white font-mono font-bold uppercase tracking-wider hover:bg-[#F97316] hover:text-[#0F172A] transition-colors flex items-center justify-center gap-1.5"
                 >
                   <span>Next Phase</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -242,12 +242,12 @@ export default function EvolutionStory() {
         </div>
 
         {/* 6 Lifestyle Positioning Pillars with 4K HD Realistic Visuals */}
-        <div className="mt-20">
+        <div className="mt-10">
           <div className="text-center mb-12">
-            <span className="text-xs uppercase tracking-[0.25em] font-mono font-bold text-[#B18A4A] block mb-2">
+            <span className="text-xs uppercase tracking-[0.25em] font-mono font-bold text-[#F97316] block mb-2">
               LIFESTYLE POSITIONING
             </span>
-            <h3 className="text-2xl sm:text-4xl font-serif font-bold text-[#111722]">
+            <h3 className="text-2xl sm:text-4xl font-serif font-bold text-[#0F172A]">
               Designed Around What Truly Matters
             </h3>
           </div>
@@ -260,7 +260,7 @@ export default function EvolutionStory() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative min-h-[380px] rounded-xl overflow-hidden shadow-xl border border-[#D5D0C6] flex flex-col justify-between p-6 transition-all duration-500 hover:shadow-2xl"
+                className="group relative min-h-[380px] rounded-xl overflow-hidden shadow-xl border border-[slate-200] flex flex-col justify-between p-6 transition-all duration-500 hover:shadow-2xl"
               >
                 {/* 4K HD Real Architectural Visual Background */}
                 <div
@@ -273,16 +273,16 @@ export default function EvolutionStory() {
 
                 {/* Top Badge */}
                 <div className="relative z-20 flex items-center justify-between">
-                  <div className="w-9 h-9 rounded-full bg-[#F4F0E7]/90 backdrop-blur-md border border-[#D5D0C6] flex items-center justify-center text-[#111722] font-mono font-bold text-xs shadow-md">
+                  <div className="w-9 h-9 rounded-full bg-[#F4F0E7]/90 backdrop-blur-md border border-[slate-200] flex items-center justify-center text-[#0F172A] font-mono font-bold text-xs shadow-md">
                     0{index + 1}
                   </div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#B18A4A] font-bold bg-[#111722]/80 px-3 py-1 rounded-full border border-[#B18A4A]/40 backdrop-blur-md">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#F97316] font-bold bg-[#0F172A]/80 px-3 py-1 rounded-full border border-[#F97316]/40 backdrop-blur-md">
                     {pillar.tag}
                   </span>
                 </div>
 
                 {/* Bottom Content Card */}
-                <div className="relative z-20 mt-auto bg-[#111722]/80 backdrop-blur-md p-5 rounded-xl border border-white/15">
+                <div className="relative z-20 mt-auto bg-[#0F172A]/80 backdrop-blur-md p-5 rounded-xl border border-white/15">
                   <h4 className="text-xl font-serif font-bold text-white mb-2">{pillar.title}</h4>
                   <p className="text-gray-300 text-xs leading-relaxed font-light">{pillar.desc}</p>
                 </div>

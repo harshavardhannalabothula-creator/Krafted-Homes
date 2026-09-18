@@ -26,8 +26,8 @@ export default function Masterplan3DConstructionCanvas({ currentStage }: Masterp
     // 1. Scene setup (Deep Charcoal Navy Background matching palette)
     const scene = new THREE.Scene();
     sceneRef.current = scene;
-    scene.background = new THREE.Color('#111722');
-    scene.fog = new THREE.FogExp2('#111722', 0.012);
+    scene.background = new THREE.Color('#0F172A');
+    scene.fog = new THREE.FogExp2('#0F172A', 0.012);
 
     // 2. Consistent Elevated Architectural Camera Position (Isometric perspective)
     const camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 1000);
@@ -39,7 +39,7 @@ export default function Masterplan3DConstructionCanvas({ currentStage }: Masterp
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
-      renderer.setClearColor('#111722', 1);
+      renderer.setClearColor('#0F172A', 1);
       renderer.setSize(width, height);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.shadowMap.enabled = true;
@@ -69,7 +69,7 @@ export default function Masterplan3DConstructionCanvas({ currentStage }: Masterp
     fillLight.position.set(-20, 20, -20);
     scene.add(fillLight);
 
-    const goldPoint = new THREE.PointLight('#B18A4A', 2.0, 50);
+    const goldPoint = new THREE.PointLight('#F97316', 2.0, 50);
     goldPoint.position.set(0, 12, 0);
     scene.add(goldPoint);
 
@@ -82,15 +82,15 @@ export default function Masterplan3DConstructionCanvas({ currentStage }: Masterp
     const terrainGreenMat = new THREE.MeshStandardMaterial({ color: '#345844', roughness: 0.7 }); // Rich Deep Olive Green
     const terrainGradedMat = new THREE.MeshStandardMaterial({ color: '#6B5B49', roughness: 0.85 }); // Warm Soil
     const asphaltRoadMat = new THREE.MeshStandardMaterial({ color: '#1E2430', roughness: 0.35 }); // Sleek Slate Road
-    const roadLineMat = new THREE.MeshBasicMaterial({ color: '#B18A4A' }); // Muted Gold Center Lines
+    const roadLineMat = new THREE.MeshBasicMaterial({ color: '#F97316' }); // Muted Gold Center Lines
     const villaWallMat = new THREE.MeshStandardMaterial({ color: '#F4F0E7', roughness: 0.3 }); // Warm Ivory
-    const villaRoofMat = new THREE.MeshStandardMaterial({ color: '#111722', roughness: 0.4 }); // Deep Navy
+    const villaRoofMat = new THREE.MeshStandardMaterial({ color: '#0F172A', roughness: 0.4 }); // Deep Navy
     const glassMat = new THREE.MeshStandardMaterial({ color: '#38BDF8', roughness: 0.1, metalness: 0.9, transparent: true, opacity: 0.75 });
-    const goldMat = new THREE.MeshStandardMaterial({ color: '#B18A4A', roughness: 0.3, metalness: 0.6 }); // Antique Gold
+    const goldMat = new THREE.MeshStandardMaterial({ color: '#F97316', roughness: 0.3, metalness: 0.6 }); // Antique Gold
     const treeTrunkMat = new THREE.MeshStandardMaterial({ color: '#4A3525' });
     const treeFoliageMat = new THREE.MeshStandardMaterial({ color: '#446E52', roughness: 0.5 });
     const poolWaterMat = new THREE.MeshStandardMaterial({ color: '#0284C7', roughness: 0.1, metalness: 0.85 });
-    const boundaryLineMat = new THREE.MeshBasicMaterial({ color: '#B18A4A' });
+    const boundaryLineMat = new THREE.MeshBasicMaterial({ color: '#F97316' });
 
     // Build Project Sign Post (Stays on corner across all stages)
     const signGroup = new THREE.Group();
@@ -102,7 +102,7 @@ export default function Masterplan3DConstructionCanvas({ currentStage }: Masterp
     signGroup.add(postMesh);
 
     const boardGeo = new THREE.BoxGeometry(3.8, 1.9, 0.2);
-    const boardMesh = new THREE.Mesh(boardGeo, new THREE.MeshStandardMaterial({ color: '#111722', roughness: 0.3 }));
+    const boardMesh = new THREE.Mesh(boardGeo, new THREE.MeshStandardMaterial({ color: '#0F172A', roughness: 0.3 }));
     boardMesh.position.y = 2.5;
     signGroup.add(boardMesh);
 
@@ -178,7 +178,7 @@ export default function Masterplan3DConstructionCanvas({ currentStage }: Masterp
         stageGroup.add(peg);
       });
 
-      const gridHelper = new THREE.GridHelper(32, 16, '#B18A4A', '#38BDF8');
+      const gridHelper = new THREE.GridHelper(32, 16, '#F97316', '#38BDF8');
       gridHelper.position.y = 0.08;
       stageGroup.add(gridHelper);
     }

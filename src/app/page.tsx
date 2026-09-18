@@ -2,10 +2,19 @@
 
 import { useState } from 'react';
 import SunsetArchitecturalHero from '@/components/SunsetArchitecturalHero';
-import WhyChooseUsSection from '@/components/WhyChooseUsSection';
-import VillaShowcase from '@/components/VillaShowcase';
-import LocationMap from '@/components/LocationMap';
 import AboutUsVision from '@/components/AboutUsVision';
+import ExploreFeaturedVillas from '@/components/ExploreFeaturedVillas';
+import PopularBrandsSection from '@/components/PopularBrandsSection';
+import SpecialOfferBanner from '@/components/SpecialOfferBanner';
+import TestimonialSection from '@/components/TestimonialSection';
+import OurServicesSection from '@/components/OurServicesSection';
+import ThreeStepsSection from '@/components/ThreeStepsSection';
+import LocationConnectivitySection from '@/components/LocationConnectivitySection';
+import LuxurySliderSection from '@/components/LuxurySliderSection';
+import TrustedStatsSection from '@/components/TrustedStatsSection';
+import LatestArticlesSection from '@/components/LatestArticlesSection';
+import ContactSection from '@/components/ContactSection';
+import BottomCTABanner from '@/components/BottomCTABanner';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 
@@ -21,39 +30,54 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-white text-slate-900 selection:bg-blue-600 selection:text-white relative font-sans">
+    <main className="min-h-screen bg-white text-slate-900 selection:bg-orange-500 selection:text-white relative font-sans">
       
-      {/* 01 — HERO & LIVE STATS OVERVIEW */}
-      <section id="overview">
-        <SunsetArchitecturalHero onOpenBooking={handleOpenBooking} />
-      </section>
+      {/* 1. HERO SECTION */}
+      <SunsetArchitecturalHero onOpenBooking={handleOpenBooking} />
 
-      {/* 02 — WHY CHOOSE KRAFTED HOMES (REPLACING OLD MASTERPLAN WITH EXACT MATCH TO SECOND IMAGE) */}
-      <section id="masterplan">
-        <WhyChooseUsSection onOpenBooking={handleOpenBooking} />
-      </section>
+      {/* 2. VISION / ABOUT SECTION (3-COLUMN BALANCED LAYOUT) */}
+      <AboutUsVision />
 
-      {/* 03 — VILLA ARCHITECTURE & 3D VILLA ENGINE */}
-      <section id="villas">
-        <VillaShowcase onOpenBooking={handleOpenBooking} />
-      </section>
+      {/* 3. FEATURED VILLAS */}
+      <ExploreFeaturedVillas onOpenBooking={handleOpenBooking} />
 
-      {/* 04 — REAL LOCATION MAP & CONNECTIVITY */}
-      <section id="location">
-        <LocationMap onOpenBooking={handleOpenBooking} />
-      </section>
+      {/* 5. POPULAR BRANDS / PARTNERS */}
+      <PopularBrandsSection />
 
-      {/* 05 — BRAND PHILOSOPHY & ABOUT KRAFTED HOMES */}
-      <section id="about">
-        <AboutUsVision />
-      </section>
+      {/* 6. SPECIAL OFFER BANNER */}
+      <SpecialOfferBanner onOpenBooking={handleOpenBooking} />
 
-      {/* 06 — CONTACT & FOOTER */}
-      <section id="contact">
-        <Footer onOpenBooking={handleOpenBooking} />
-        <BookingModal isOpen={bookingOpen} onClose={handleCloseBooking} />
-      </section>
+      {/* 6. WHAT OUR CUSTOMERS SAY */}
+      <TestimonialSection />
 
+      {/* 7. OUR SERVICES / AMENITIES */}
+      <OurServicesSection />
+
+      {/* 8. 3 EASY STEPS */}
+      <ThreeStepsSection onOpenBooking={handleOpenBooking} />
+
+      {/* 9. LIVE MAP & LOCATION CONNECTIVITY */}
+      <LocationConnectivitySection onOpenBooking={handleOpenBooking} />
+
+      {/* 10. LUXURY VILLAS SLIDER */}
+      <LuxurySliderSection />
+
+      {/* 11. TRUSTED STATS */}
+      <TrustedStatsSection />
+
+      {/* 12. LATEST ARTICLES */}
+      <LatestArticlesSection />
+
+      {/* 13. CONTACT US SECTION */}
+      <ContactSection onOpenBooking={handleOpenBooking} />
+
+      {/* 14. BOTTOM CTA BANNER */}
+      <BottomCTABanner onOpenBooking={handleOpenBooking} />
+
+      {/* 15. FOOTER */}
+      <Footer onOpenBooking={handleOpenBooking} />
+
+      <BookingModal isOpen={bookingOpen} onClose={handleCloseBooking} />
     </main>
   );
 }

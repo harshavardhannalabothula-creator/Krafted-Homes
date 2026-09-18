@@ -67,11 +67,11 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
   const currentSpecs = villaSpecs[facing];
 
   return (
-    <section id="villas" className="py-16 sm:py-20 lg:py-24 bg-white text-[#0F172A] relative overflow-hidden border-b border-[#E2E8F0]">
+    <section id="villas" className="py-8 sm:py-10 lg:py-12 bg-white text-[#0F172A] relative overflow-hidden border-b border-[#E2E8F0]">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 relative z-10">
 
         {/* 2. SOPHISTICATED 2-COLUMN EDITORIAL COMPOSITION */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-16 sm:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-8 sm:mb-10">
           
           {/* LEFT COLUMN: EDITORIAL TYPOGRAPHY, SPECIFICATIONS & CTAS */}
           <motion.div
@@ -92,7 +92,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
                 INDEPENDENT VILLAS
               </h2>
 
-              <h3 className="text-xs sm:text-sm font-bold tracking-[0.15em] text-[#2563EB] uppercase mb-4 text-left">
+              <h3 className="text-xs sm:text-sm font-bold tracking-[0.15em] text-[#F97316] uppercase mb-4 text-left">
                 SPLIT-LEVEL ARCHITECTURE & PRIVATE GARDEN LAWNS
               </h3>
 
@@ -107,7 +107,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
                 <button
                   onClick={() => setFacing('East')}
                   className={`px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider rounded-full transition-all cursor-pointer ${
-                    facing === 'East' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-[#0F172A] hover:text-[#2563EB]'
+                    facing === 'East' ? 'bg-[#F97316] text-white shadow-2xs' : 'text-[#0F172A] hover:text-[#F97316]'
                   }`}
                 >
                   EAST FACING
@@ -115,7 +115,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
                 <button
                   onClick={() => setFacing('West')}
                   className={`px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider rounded-full transition-all cursor-pointer ${
-                    facing === 'West' ? 'bg-[#2563EB] text-white shadow-2xs' : 'text-[#0F172A] hover:text-[#2563EB]'
+                    facing === 'West' ? 'bg-[#F97316] text-white shadow-2xs' : 'text-[#0F172A] hover:text-[#F97316]'
                   }`}
                 >
                   WEST FACING
@@ -126,7 +126,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
                 <button
                   onClick={() => setMode('DAY')}
                   className={`px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider rounded-full transition-all cursor-pointer ${
-                    mode === 'DAY' ? 'bg-[#0F172A] text-white shadow-2xs' : 'text-[#0F172A] hover:text-[#2563EB]'
+                    mode === 'DAY' ? 'bg-[#0F172A] text-white shadow-2xs' : 'text-[#0F172A] hover:text-[#F97316]'
                   }`}
                 >
                   ☀️ DAY
@@ -134,7 +134,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
                 <button
                   onClick={() => setMode('NIGHT')}
                   className={`px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider rounded-full transition-all cursor-pointer ${
-                    mode === 'NIGHT' ? 'bg-[#0F172A] text-[#FFB800] shadow-2xs' : 'text-[#0F172A] hover:text-[#2563EB]'
+                    mode === 'NIGHT' ? 'bg-[#0F172A] text-[#FFB800] shadow-2xs' : 'text-[#0F172A] hover:text-[#F97316]'
                   }`}
                 >
                   🌙 NIGHT
@@ -146,7 +146,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <button
                 onClick={onOpenBooking}
-                className="px-6 py-3.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm rounded-full cursor-pointer"
+                className="px-6 py-3.5 bg-[#F97316] hover:bg-[#1D4ED8] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm rounded-full cursor-pointer"
               >
                 <span>EXPLORE THE VILLAS</span>
                 <ArrowRight className="w-4 h-4 text-white" />
@@ -175,7 +175,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
                 3D VILLA PREVIEW
               </span>
 
-              <div className="flex items-center gap-2 text-[#2563EB]">
+              <div className="flex items-center gap-2 text-[#F97316]">
                 <RotateCw className="w-3.5 h-3.5 animate-spin-slow" />
                 <span className="text-[10px] font-bold uppercase tracking-[0.15em]">360° VIEW</span>
               </div>
@@ -193,7 +193,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
                   <span className="text-xs font-bold uppercase tracking-[0.15em] text-[#0F172A] block">
                     VILLA 01
                   </span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#2563EB] block">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#F97316] block">
                     CONTEMPORARY RESIDENCE
                   </span>
                 </div>
@@ -212,7 +212,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
                   <span className="text-lg sm:text-2xl font-extrabold text-[#0F172A] block leading-none mb-1">
                     2,400+
                   </span>
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#2563EB] block">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#F97316] block">
                     SQ.FT BUILT AREA
                   </span>
                 </div>
@@ -222,7 +222,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
                   <span className="text-lg sm:text-2xl font-extrabold text-[#0F172A] block leading-none mb-1">
                     180
                   </span>
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#2563EB] block">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#F97316] block">
                     SQ.FT PRIVATE LAWN
                   </span>
                 </div>
@@ -232,7 +232,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
                   <span className="text-lg sm:text-2xl font-extrabold text-[#0F172A] block leading-none mb-1">
                     G+1
                   </span>
-                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#2563EB] block">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-[#F97316] block">
                     FLOOR CONFIGURATION
                   </span>
                 </div>
@@ -249,7 +249,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full h-[360px] sm:h-[480px] lg:h-[560px] rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-md group bg-[#0F172A] mb-16"
+          className="relative w-full h-[360px] sm:h-[480px] lg:h-[560px] rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-md group bg-[#0F172A] mb-8"
         >
           <img
             src="/images/hero_villa_facade.png"
@@ -261,7 +261,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
 
           <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 text-white">
             <div>
-              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] bg-white text-[#2563EB] px-3 py-1 rounded-full w-fit block mb-1">
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] bg-white text-[#F97316] px-3 py-1 rounded-full w-fit block mb-1">
                 REAL-WORLD ARCHITECTURAL EXECUTED RESULT
               </span>
               <h4 className="text-xl sm:text-3xl font-extrabold text-white uppercase tracking-tight mt-2">
@@ -271,7 +271,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
 
             <button
               onClick={onOpenBooking}
-              className="px-6 py-3 rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer shadow-sm"
+              className="px-6 py-3 rounded-full bg-[#F97316] hover:bg-[#1D4ED8] text-white text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer shadow-sm"
             >
               <span>BOOK PRIVATE VILLA TOUR</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -280,11 +280,11 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
         </motion.div>
 
         {/* 4. VILLA ROOM TOUR SLIDESHOW & HIGHLIGHTS */}
-        <div className="mb-16 bg-white p-8 sm:p-12 rounded-3xl border border-[#E2E8F0] shadow-md">
+        <div className="mb-8 bg-white p-8 sm:p-12 rounded-3xl border border-[#E2E8F0] shadow-md">
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4 border-b border-[#E2E8F0] pb-4">
             <div>
               <div className="flex items-center gap-3 mb-1">
-                <span className="text-xs uppercase tracking-wider font-bold text-[#2563EB] block">
+                <span className="text-xs uppercase tracking-wider font-bold text-[#F97316] block">
                   08 / VILLA ROOM TOUR
                 </span>
                 <button
@@ -316,8 +316,8 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
                   onClick={() => setActiveRoom(idx)}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase transition-all whitespace-nowrap cursor-pointer ${
                     activeRoom === idx
-                      ? 'bg-[#2563EB] text-white shadow-2xs'
-                      : 'bg-[#F8FAFC] text-[#0F172A] border border-[#E2E8F0] hover:border-[#2563EB]'
+                      ? 'bg-[#F97316] text-white shadow-2xs'
+                      : 'bg-[#F8FAFC] text-[#0F172A] border border-[#E2E8F0] hover:border-[#F97316]'
                   }`}
                 >
                   {rm.name}
@@ -342,7 +342,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
               </AnimatePresence>
               
               <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2 border border-[#E2E8F0] rounded-full text-[#0F172A] shadow-xs">
-                <span className="text-xs uppercase text-[#2563EB] font-bold">
+                <span className="text-xs uppercase text-[#F97316] font-bold">
                   ROOM {activeRoom + 1} OF {walkthruRooms.length}: {walkthruRooms[activeRoom].name}
                 </span>
               </div>
@@ -350,7 +350,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
 
             <div className="lg:col-span-4 flex flex-col justify-between h-[360px] sm:h-[400px]">
               <div>
-                <span className="text-xs font-bold text-[#2563EB] uppercase block mb-2">
+                <span className="text-xs font-bold text-[#F97316] uppercase block mb-2">
                   ROOM {walkthruRooms[activeRoom].id + 1}
                 </span>
                 <h4 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] mb-3 tracking-tight uppercase">
@@ -360,7 +360,7 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
                   {walkthruRooms[activeRoom].desc}
                 </p>
                 <div className="p-4 bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl text-xs text-[#0F172A]">
-                  <span className="font-bold text-[#2563EB] block mb-1">Villa Highlights:</span>
+                  <span className="font-bold text-[#F97316] block mb-1">Villa Highlights:</span>
                   <span>{currentSpecs.orientation} — {currentSpecs.sunlight}</span>
                 </div>
               </div>
@@ -368,13 +368,13 @@ export default function VillaShowcase({ onOpenBooking }: VillaShowcaseProps) {
               <div className="flex gap-3">
                 <button
                   onClick={() => setActiveRoom((prev) => (prev > 0 ? prev - 1 : walkthruRooms.length - 1))}
-                  className="flex-1 py-3 text-xs border border-[#E2E8F0] text-[#0F172A] uppercase font-semibold rounded-full hover:border-[#2563EB] bg-[#F8FAFC] cursor-pointer"
+                  className="flex-1 py-3 text-xs border border-[#E2E8F0] text-[#0F172A] uppercase font-semibold rounded-full hover:border-[#F97316] bg-[#F8FAFC] cursor-pointer"
                 >
                   Previous Room
                 </button>
                 <button
                   onClick={() => setActiveRoom((prev) => (prev < walkthruRooms.length - 1 ? prev + 1 : 0))}
-                  className="flex-1 py-3 text-xs bg-[#2563EB] text-white uppercase font-bold rounded-full hover:bg-[#1D4ED8] transition-all cursor-pointer shadow-xs"
+                  className="flex-1 py-3 text-xs bg-[#F97316] text-white uppercase font-bold rounded-full hover:bg-[#1D4ED8] transition-all cursor-pointer shadow-xs"
                 >
                   Next Room
                 </button>

@@ -59,7 +59,7 @@ export default function LuxuryArchitecturalHero({ onOpenBooking }: LuxuryArchite
   };
 
   return (
-    <section className="relative h-screen w-full bg-[#F4F0E7] text-[#202631] overflow-hidden flex items-center justify-between select-none pt-16">
+    <section className="relative h-screen w-full bg-[#F4F0E7] text-[#0F172A] overflow-hidden flex items-center justify-between select-none pt-8">
       
       {/* Right HD Architectural Background Image with Smooth Left Fade into Warm Ivory */}
       <div className="absolute inset-0 z-0">
@@ -92,8 +92,8 @@ export default function LuxuryArchitecturalHero({ onOpenBooking }: LuxuryArchite
             transition={{ duration: 0.6 }}
             className="flex items-center gap-3 mb-4"
           >
-            <span className="w-8 h-px bg-[#B18A4A]" />
-            <span className="text-[11px] uppercase tracking-[0.25em] text-[#B18A4A] font-manrope font-semibold">
+            <span className="w-8 h-px bg-[#F97316]" />
+            <span className="text-[11px] uppercase tracking-[0.25em] text-[#F97316] font-manrope font-semibold">
               KRAFTED HOMES PRESENTS
             </span>
           </motion.div>
@@ -105,10 +105,10 @@ export default function LuxuryArchitecturalHero({ onOpenBooking }: LuxuryArchite
             transition={{ duration: 0.8, delay: 0.1 }}
             className="flex flex-col mb-4"
           >
-            <h1 className="text-6xl sm:text-8xl lg:text-[105px] font-serif font-bold text-[#111722] tracking-tight leading-none">
+            <h1 className="text-6xl sm:text-8xl lg:text-[105px] font-serif font-bold text-[#0F172A] tracking-tight leading-none">
               ANTELIA
             </h1>
-            <h1 className="text-6xl sm:text-8xl lg:text-[105px] font-serif font-bold text-[#B18A4A] tracking-tight leading-none">
+            <h1 className="text-6xl sm:text-8xl lg:text-[105px] font-serif font-bold text-[#F97316] tracking-tight leading-none">
               GROVES
             </h1>
           </motion.div>
@@ -119,7 +119,7 @@ export default function LuxuryArchitecturalHero({ onOpenBooking }: LuxuryArchite
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-base sm:text-xl font-manrope font-light text-[#202631]/80 max-w-md mb-8 leading-relaxed"
+            className="text-base sm:text-xl font-manrope font-light text-[#0F172A]/80 max-w-md mb-8 leading-relaxed"
           >
             {current.subtitle}
           </motion.p>
@@ -133,17 +133,17 @@ export default function LuxuryArchitecturalHero({ onOpenBooking }: LuxuryArchite
           >
             <button
               onClick={scrollToJourney}
-              className="px-8 py-4 rounded-xs text-xs font-bold font-manrope uppercase tracking-[0.2em] text-white bg-[#111722] hover:bg-[#B18A4A] hover:text-[#111722] transition-all shadow-md"
+              className="px-8 py-4 rounded-xs text-xs font-bold font-manrope uppercase tracking-[0.2em] text-white bg-[#0F172A] hover:bg-[#F97316] hover:text-[#0F172A] transition-all shadow-md"
             >
               EXPLORE ANTELIA
             </button>
 
             <button
               onClick={scrollToVilla}
-              className="group text-xs font-manrope font-bold uppercase tracking-[0.15em] text-[#111722] hover:text-[#B18A4A] transition-colors inline-flex items-center gap-2 py-4 px-2"
+              className="group text-xs font-manrope font-bold uppercase tracking-[0.15em] text-[#0F172A] hover:text-[#F97316] transition-colors inline-flex items-center gap-2 py-4 px-2"
             >
               <span>DISCOVER THE VILLAS</span>
-              <ArrowRight className="w-4 h-4 text-[#B18A4A] group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 text-[#F97316] group-hover:translate-x-1 transition-transform" />
             </button>
           </motion.div>
 
@@ -155,15 +155,15 @@ export default function LuxuryArchitecturalHero({ onOpenBooking }: LuxuryArchite
       <div className="absolute bottom-8 right-8 z-20 hidden sm:flex items-center gap-4">
         
         {/* Gallery Viewport Switcher */}
-        <div className="flex items-center gap-1.5 bg-[#F4F0E7]/90 backdrop-blur-md p-1.5 rounded-xs border border-[#D5D0C6] shadow-sm">
+        <div className="flex items-center gap-1.5 bg-[#F4F0E7]/90 backdrop-blur-md p-1.5 rounded-xs border border-[slate-200] shadow-sm">
           {heroSlides.map((slide, idx) => (
             <button
               key={slide.id}
               onClick={() => setActiveSlide(idx)}
               className={`px-3 py-1.5 rounded-xs text-[10px] font-manrope font-bold uppercase tracking-wider transition-all ${
                 activeSlide === idx
-                  ? 'bg-[#111722] text-white shadow-xs'
-                  : 'text-[#202631]/70 hover:text-[#111722] hover:bg-[#DED8CC]'
+                  ? 'bg-[#0F172A] text-white shadow-xs'
+                  : 'text-[#0F172A]/70 hover:text-[#0F172A] hover:bg-[slate-100]'
               }`}
             >
               0{idx + 1}. {slide.label}
@@ -172,7 +172,7 @@ export default function LuxuryArchitecturalHero({ onOpenBooking }: LuxuryArchite
         </div>
 
         {/* Floating Architectural Badge */}
-        <div className="bg-[#F4F0E7]/90 backdrop-blur-md border border-[#D5D0C6] px-4 py-2 text-[10px] font-manrope font-bold uppercase tracking-widest text-[#202631] rounded-xs shadow-sm">
+        <div className="bg-[#F4F0E7]/90 backdrop-blur-md border border-[slate-200] px-4 py-2 text-[10px] font-manrope font-bold uppercase tracking-widest text-[#0F172A] rounded-xs shadow-sm">
           {current.badge}
         </div>
 

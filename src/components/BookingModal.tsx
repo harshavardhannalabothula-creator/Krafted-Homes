@@ -52,8 +52,8 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           {!submitted ? (
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <Sparkles className="w-4 h-4 text-[#2563EB]" />
-                <span className="text-xs uppercase tracking-widest text-[#2563EB] font-bold">
+                <Sparkles className="w-4 h-4 text-[#F97316]" />
+                <span className="text-xs uppercase tracking-widest text-[#F97316] font-bold">
                   EXCLUSIVE VIP INQUIRY
                 </span>
               </div>
@@ -77,7 +77,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       placeholder="e.g. Mahesh Kumar"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-xs text-[#0F172A] placeholder-slate-400 focus:outline-none focus:border-[#2563EB]"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-xs text-[#0F172A] placeholder-slate-400 focus:outline-none focus:border-[#F97316]"
                     />
                   </div>
                 </div>
@@ -94,7 +94,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-xs text-[#0F172A] placeholder-slate-400 focus:outline-none focus:border-[#2563EB]"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-xs text-[#0F172A] placeholder-slate-400 focus:outline-none focus:border-[#F97316]"
                     />
                   </div>
                 </div>
@@ -110,7 +110,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       placeholder="mahesh@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-xs text-[#0F172A] placeholder-slate-400 focus:outline-none focus:border-[#2563EB]"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-xs text-[#0F172A] placeholder-slate-400 focus:outline-none focus:border-[#F97316]"
                     />
                   </div>
                 </div>
@@ -122,7 +122,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   <select
                     value={formData.facing}
                     onChange={(e) => setFormData({ ...formData, facing: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB]"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-3 text-xs text-[#0F172A] focus:outline-none focus:border-[#F97316]"
                   >
                     <option value="Type A East Facing (2,262 sq.ft BUA)">Type A East Facing (2,262 sq.ft BUA)</option>
                     <option value="Type A West Facing (2,262 sq.ft BUA)">Type A West Facing (2,262 sq.ft BUA)</option>
@@ -140,7 +140,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       type="date"
                       value={formData.date}
                       onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-xs text-[#0F172A] focus:outline-none focus:border-[#2563EB]"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-xs text-[#0F172A] focus:outline-none focus:border-[#F97316]"
                     />
                   </div>
                 </div>
@@ -155,16 +155,16 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             </div>
           ) : (
             <div className="text-center py-8">
-              <div className="w-16 h-16 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center mx-auto mb-4">
-                <CheckCircle2 className="w-8 h-8 text-[#2563EB]" />
+              <div className="w-16 h-16 rounded-full bg-orange-50 border border-orange-200 flex items-center justify-center mx-auto mb-4">
+                <CheckCircle2 className="w-8 h-8 text-[#F97316]" />
               </div>
               <h3 className="text-2xl font-extrabold text-[#0F172A] mb-2 uppercase tracking-wide">Tour Reserved!</h3>
               <p className="text-slate-600 text-xs font-normal mb-6">
-                Thank you, <span className="text-[#2563EB] font-bold">{formData.name}</span>. Our estate manager will contact you at {formData.phone} shortly to finalize your private tour of Antelia Groves.
+                Thank you, <span className="text-[#F97316] font-bold">{formData.name}</span>. Our estate manager will contact you at {formData.phone} shortly to finalize your private tour of Antelia Groves.
               </p>
               <button
                 onClick={handleReset}
-                className="px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest bg-[#2563EB] text-white hover:bg-[#1D4ED8] transition-colors cursor-pointer"
+                className="px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest bg-[#F97316] text-white hover:bg-[#1D4ED8] transition-colors cursor-pointer"
               >
                 Close
               </button>

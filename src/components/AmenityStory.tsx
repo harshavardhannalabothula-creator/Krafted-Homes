@@ -133,18 +133,18 @@ export default function AmenityStory({ onOpenBooking }: AmenityStoryProps) {
   const Icon = active.icon;
 
   return (
-    <section id="amenities" className="py-24 bg-[#F4F0E7] text-[#202631] relative overflow-hidden border-b border-[#D5D0C6]">
+    <section id="amenities" className="py-12 bg-[#F4F0E7] text-[#0F172A] relative overflow-hidden border-b border-[slate-200]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-[0.35em] font-mono font-bold text-[#B18A4A] block mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-8">
+          <span className="text-xs uppercase tracking-[0.35em] font-mono font-bold text-[#F97316] block mb-3">
             15,000+ SQ.FT ANCHOR
           </span>
-          <h2 className="text-4xl sm:text-6xl font-serif font-bold text-[#111722] mb-4 leading-tight">
-            THE SOCIAL <span className="text-[#B18A4A] italic font-normal">HEART</span>
+          <h2 className="text-4xl sm:text-6xl font-serif font-bold text-[#0F172A] mb-4 leading-tight">
+            THE SOCIAL <span className="text-[#F97316] italic font-normal">HEART</span>
           </h2>
-          <p className="text-[#202631]/80 text-base font-light leading-relaxed max-w-xl mx-auto">
+          <p className="text-[#0F172A]/80 text-base font-light leading-relaxed max-w-xl mx-auto">
             Not just amenities—a living 3D architectural sanctuary where sports, celebrations, quiet reflection, and community converge.
           </p>
         </div>
@@ -160,11 +160,11 @@ export default function AmenityStory({ onOpenBooking }: AmenityStoryProps) {
                 onClick={() => setActiveHotspot(index)}
                 className={`p-4 rounded-xs border flex flex-col items-center justify-center gap-2 transition-all duration-300 ${
                   isSelected
-                    ? 'bg-[#111722] text-white border-[#111722] font-bold shadow-md scale-105'
-                    : 'bg-[#DED8CC]/60 text-[#202631] border-[#D5D0C6] hover:border-[#B18A4A]'
+                    ? 'bg-[#0F172A] text-white border-[#0F172A] font-bold shadow-md scale-105'
+                    : 'bg-[slate-100]/60 text-[#0F172A] border-[slate-200] hover:border-[#F97316]'
                 }`}
               >
-                <HIcon className="w-4 h-4 text-[#B18A4A]" />
+                <HIcon className="w-4 h-4 text-[#F97316]" />
                 <span className="text-xs font-mono font-bold uppercase tracking-wider">{hs.code}</span>
                 <span className="text-[10px] font-sans font-light opacity-80 line-clamp-1">{hs.title.split(' ')[0]}</span>
               </button>
@@ -176,29 +176,29 @@ export default function AmenityStory({ onOpenBooking }: AmenityStoryProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
           {/* Real-Time Interactive 3D WebGL Clubhouse Viewport */}
-          <div className="lg:col-span-8 relative min-h-[480px] rounded-xl overflow-hidden border border-[#D5D0C6] shadow-lg">
+          <div className="lg:col-span-8 relative min-h-[480px] rounded-xl overflow-hidden border border-[slate-200] shadow-lg">
             <Clubhouse3DEngine activeHotspot={activeHotspot} />
           </div>
 
           {/* Hotspot Wing Detail Panel */}
-          <div className="lg:col-span-4 bg-[#DED8CC]/40 p-8 rounded-xs border border-[#D5D0C6] flex flex-col justify-between">
+          <div className="lg:col-span-4 bg-[slate-100]/40 p-8 rounded-xs border border-[slate-200] flex flex-col justify-between">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xs bg-[#F4F0E7] border border-[#D5D0C6] text-xs font-mono text-[#B18A4A] uppercase tracking-wider mb-4 font-bold">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xs bg-[#F4F0E7] border border-[slate-200] text-xs font-mono text-[#F97316] uppercase tracking-wider mb-4 font-bold">
                 <Icon className="w-3.5 h-3.5" />
                 <span>HOTSPOT: {active.code}</span>
               </div>
 
-              <h3 className="text-3xl font-serif font-bold text-[#111722] mb-2">{active.title}</h3>
-              <p className="text-xs uppercase font-mono tracking-wider text-[#B18A4A] font-bold mb-4">{active.tagline}</p>
-              <p className="text-[#202631]/80 text-xs font-light leading-relaxed mb-6">{active.desc}</p>
+              <h3 className="text-3xl font-serif font-bold text-[#0F172A] mb-2">{active.title}</h3>
+              <p className="text-xs uppercase font-mono tracking-wider text-[#F97316] font-bold mb-4">{active.tagline}</p>
+              <p className="text-[#0F172A]/80 text-xs font-light leading-relaxed mb-6">{active.desc}</p>
 
-              <div className="space-y-2 mb-6 bg-[#F4F0E7] p-4 rounded-xs border border-[#D5D0C6]">
-                <span className="text-[11px] font-mono text-[#B18A4A] font-bold uppercase block mb-2">
+              <div className="space-y-2 mb-6 bg-[#F4F0E7] p-4 rounded-xs border border-[slate-200]">
+                <span className="text-[11px] font-mono text-[#F97316] font-bold uppercase block mb-2">
                   Wing Infrastructure Specs:
                 </span>
                 {active.features.map((f, i) => (
-                  <div key={i} className="flex items-center gap-2 text-xs text-[#202631] font-light">
-                    <Check className="w-3.5 h-3.5 text-[#B18A4A] shrink-0" />
+                  <div key={i} className="flex items-center gap-2 text-xs text-[#0F172A] font-light">
+                    <Check className="w-3.5 h-3.5 text-[#F97316] shrink-0" />
                     <span>{f}</span>
                   </div>
                 ))}
@@ -208,7 +208,7 @@ export default function AmenityStory({ onOpenBooking }: AmenityStoryProps) {
             {onOpenBooking && (
               <button
                 onClick={onOpenBooking}
-                className="w-full py-3.5 rounded-xs text-xs font-mono font-bold uppercase tracking-widest text-white bg-[#111722] hover:bg-[#B18A4A] hover:text-[#111722] transition-colors flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-xs text-xs font-mono font-bold uppercase tracking-widest text-white bg-[#0F172A] hover:bg-[#F97316] hover:text-[#0F172A] transition-colors flex items-center justify-center gap-2"
               >
                 <span>Request Clubhouse Layouts</span>
                 <ArrowRight className="w-3.5 h-3.5" />

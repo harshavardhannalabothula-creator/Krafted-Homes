@@ -338,13 +338,13 @@ export default function ConstructionHeroMotion({ onOpenBooking }: ConstructionHe
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#0b0f12_95%)] pointer-events-none z-10" />
 
       {/* Top Telemetry Header Bar */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
         
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-4">
           
           {/* Telemetry Sensor Specs */}
           <div className="flex items-center gap-3 font-mono text-[10px] sm:text-xs text-gray-400 tracking-widest">
-            <span className="text-[#B18A4A] font-bold">AERIAL SENSOR: 12.8946° N 77.5946° E</span>
+            <span className="text-[#F97316] font-bold">AERIAL SENSOR: 12.8946° N 77.5946° E</span>
             <span>|</span>
             <span>ELEVATION: 924M AMSL</span>
             <span className="hidden sm:inline">|</span>
@@ -359,7 +359,7 @@ export default function ConstructionHeroMotion({ onOpenBooking }: ConstructionHe
                 onClick={() => setActiveTab(item)}
                 className={`px-3 py-1 rounded-xs text-[10px] font-mono uppercase tracking-widest transition-all ${
                   activeTab === item
-                    ? 'bg-[#F4F0E7] text-[#111722] font-bold shadow-sm'
+                    ? 'bg-[#F4F0E7] text-[#0F172A] font-bold shadow-sm'
                     : 'text-gray-400 hover:text-white border border-transparent hover:border-white/20'
                 }`}
               >
@@ -372,14 +372,14 @@ export default function ConstructionHeroMotion({ onOpenBooking }: ConstructionHe
               onClick={() => setSoundOn(!soundOn)}
               className="px-3 py-1 rounded-xs text-[10px] font-mono uppercase tracking-widest text-gray-300 border border-white/20 hover:border-white flex items-center gap-1.5 shrink-0"
             >
-              {soundOn ? <Volume2 className="w-3 h-3 text-[#B18A4A]" /> : <VolumeX className="w-3 h-3 text-gray-400" />}
+              {soundOn ? <Volume2 className="w-3 h-3 text-[#F97316]" /> : <VolumeX className="w-3 h-3 text-gray-400" />}
               <span>{soundOn ? 'SOUND ON' : 'SOUND OFF'}</span>
             </button>
 
             {/* Inquire CTA */}
             <button
               onClick={onOpenBooking}
-              className="px-4 py-1.5 rounded-xs text-[10px] font-mono font-bold uppercase tracking-widest text-[#111722] bg-[#B18A4A] hover:bg-[#F4F0E7] transition-all shrink-0"
+              className="px-4 py-1.5 rounded-xs text-[10px] font-mono font-bold uppercase tracking-widest text-[#0F172A] bg-[#F97316] hover:bg-[#F4F0E7] transition-all shrink-0"
             >
               INQUIRE ↗
             </button>
@@ -393,7 +393,7 @@ export default function ConstructionHeroMotion({ onOpenBooking }: ConstructionHe
         
         {/* Monograph Tag */}
         <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-black/60 border border-white/15 backdrop-blur-md mb-4">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#B18A4A] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#F97316] animate-pulse" />
           <span className="text-[10px] sm:text-xs font-mono tracking-[0.3em] uppercase text-gray-300 font-bold">
             ARCHITECTURAL MONOGRAPH &amp; MASTER DEVELOPMENT
           </span>
@@ -405,7 +405,7 @@ export default function ConstructionHeroMotion({ onOpenBooking }: ConstructionHe
         </h1>
 
         {/* Subtitle */}
-        <p className="text-xs sm:text-sm font-mono tracking-[0.35em] text-[#B18A4A] uppercase font-bold mb-8">
+        <p className="text-xs sm:text-sm font-mono tracking-[0.35em] text-[#F97316] uppercase font-bold mb-8">
           10 ACRES. ONE VISION. A LIVING LANDSCAPE.
         </p>
 
@@ -441,10 +441,10 @@ export default function ConstructionHeroMotion({ onOpenBooking }: ConstructionHe
         <div className="mt-8">
           <button
             onClick={scrollToLand}
-            className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-[#111722]/90 hover:bg-[#B18A4A] hover:text-[#111722] text-xs font-mono font-bold uppercase tracking-[0.25em] text-white border border-white/20 hover:border-[#B18A4A] transition-all shadow-xl backdrop-blur-md group"
+            className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-[#0F172A]/90 hover:bg-[#F97316] hover:text-[#0F172A] text-xs font-mono font-bold uppercase tracking-[0.25em] text-white border border-white/20 hover:border-[#F97316] transition-all shadow-xl backdrop-blur-md group"
           >
             <span>ENTER THE MASTER DEVELOPMENT</span>
-            <ArrowDown className="w-4 h-4 text-[#B18A4A] group-hover:text-[#111722] transition-colors animate-bounce" />
+            <ArrowDown className="w-4 h-4 text-[#F97316] group-hover:text-[#0F172A] transition-colors animate-bounce" />
           </button>
         </div>
 

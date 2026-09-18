@@ -49,7 +49,7 @@ export default function CleanCinematicHero({ onOpenBooking }: CleanCinematicHero
   const currentView = heroViews[activeView];
 
   return (
-    <section className="relative h-screen w-full bg-white text-[#111827] overflow-hidden flex items-center justify-center pt-16">
+    <section className="relative h-screen w-full bg-white text-[#111827] overflow-hidden flex items-center justify-center pt-8">
       {/* Background Architectural Canvas with Smooth Transition */}
       <AnimatePresence mode="wait">
         <motion.div

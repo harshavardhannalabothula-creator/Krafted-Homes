@@ -360,7 +360,7 @@ export default function Evolution3DEngine({ stepIndex }: Evolution3DEngineProps)
   }, [stepIndex]);
 
   return (
-    <div className="relative w-full h-full min-h-[380px] sm:min-h-[460px] bg-[#0a101d] rounded-xl overflow-hidden border border-amber-500/30 shadow-2xl">
+    <div className="relative w-full h-full min-h-[380px] sm:min-h-[460px] bg-[#0a101d] rounded-xl overflow-hidden border border-orange-500/30 shadow-2xl">
       <div ref={mountRef} className="w-full h-full min-h-[380px] sm:min-h-[460px] cursor-grab active:cursor-grabbing" />
     </div>
   );

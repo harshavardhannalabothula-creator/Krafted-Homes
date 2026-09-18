@@ -82,24 +82,24 @@ export default function CurrentProjectOverview({ onOpenBooking }: CurrentProject
   const activeFeature = features[activeIndex];
 
   return (
-    <section id="current-project" className="py-20 sm:py-24 bg-[#F4F0E7] text-[#111722] relative overflow-hidden border-b border-[#D5D0C6]">
+    <section id="current-project" className="py-10 sm:py-8 bg-white text-[#0F172A] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* EDITORIAL SECTION HEADER */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 pb-8 border-b border-[#D5D0C6]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-8 pb-8">
           <div>
             <div className="flex items-center gap-3 mb-3">
-              <span className="text-[11px] font-manrope font-semibold tracking-[0.35em] text-[#B18A4A] uppercase">
-                03 — MASTERPLAN & CURRENT PROJECT
+              <span className="text-sm font-medium text-[#F97316]">
+                03 — Masterplan & Current Project
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B18A4A]" />
-              <span className="text-[11px] font-manrope font-semibold uppercase tracking-widest text-[#66705A]">
-                FLAGSHIP ESTATE
+              <span className="w-1.5 h-1.5 rounded-full bg-[#F97316]" />
+              <span className="text-sm font-medium text-slate-500">
+                Flagship Estate
               </span>
             </div>
 
-            <h2 className="text-4xl sm:text-6xl font-serif font-normal text-[#111722] tracking-[0.02em] leading-tight">
-              ANTELIA <span className="text-[#B18A4A] font-normal">GROVES</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-[#0F172A] leading-tight tracking-tight">
+              Antelia <span className="text-[#F97316]">Groves</span>
             </h2>
           </div>
 
@@ -107,8 +107,8 @@ export default function CurrentProjectOverview({ onOpenBooking }: CurrentProject
             <p className="text-[#1A212D] text-xs sm:text-sm font-manrope font-semibold leading-relaxed mb-3">
               A landmark 10-acre residential villa community by Krafted Homes, blending contemporary luxury architecture with organic living landscapes.
             </p>
-            <div className="flex items-center gap-2 text-xs font-manrope font-semibold text-[#B18A4A] uppercase tracking-wider">
-              <MapPin className="w-4 h-4 text-[#B18A4A]" />
+            <div className="flex items-center gap-2 text-xs font-manrope font-semibold text-[#F97316] uppercase tracking-wider">
+              <MapPin className="w-4 h-4 text-[#F97316]" />
               <span>Whitefield-Sarjapur Villa Corridor, Bengaluru</span>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function CurrentProjectOverview({ onOpenBooking }: CurrentProject
           <div className="lg:col-span-5 space-y-6">
             
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-manrope font-semibold uppercase tracking-[0.25em] text-[#B18A4A]">
+              <span className="text-[10px] font-manrope font-semibold uppercase tracking-[0.25em] text-[#F97316]">
                 SELECT FEATURE TO EXPLORE
               </span>
               <span className="text-[10px] font-mono text-[#1A212D] font-bold">
@@ -137,26 +137,26 @@ export default function CurrentProjectOverview({ onOpenBooking }: CurrentProject
                   <button
                     key={feat.eyebrow}
                     onClick={() => handleManualSelect(feat.id)}
-                    className={`p-4 rounded-xs text-left transition-all duration-500 border flex flex-col justify-between relative overflow-hidden group ${
+                    className={`p-4 rounded-2xl text-left transition-all duration-500 flex flex-col justify-between relative overflow-hidden group ${
                       isActive
-                        ? 'bg-[#111722] text-white border-[#B18A4A] shadow-xl scale-[1.02]'
-                        : 'bg-white text-[#111722] border-[#D5D0C6] hover:border-[#B18A4A] hover:bg-[#F4F0E7]/60'
+                        ? 'bg-[#0F172A] text-white shadow-2xl scale-[1.02]'
+                        : 'bg-white text-[#0F172A] shadow-md hover:shadow-xl hover:bg-slate-50'
                     }`}
                   >
                     {/* Subtle Gold Accent Bar on Active */}
                     {isActive && (
-                      <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-[#B18A4A]" />
+                      <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-[#F97316]" />
                     )}
 
                     <div className="flex items-center justify-between mb-2">
                       <span className={`text-[9px] font-manrope font-semibold uppercase tracking-[0.18em] block ${
-                        isActive ? 'text-[#B18A4A]' : 'text-[#8C6527]'
+                        isActive ? 'text-[#F97316]' : 'text-[#8C6527]'
                       }`}>
                         {feat.eyebrow}
                       </span>
 
                       {/* DISTINCT THUMBNAIL PREVIEW */}
-                      <div className="w-7 h-7 rounded-xs overflow-hidden border border-[#D5D0C6] shrink-0 bg-[#111722]">
+                      <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0 bg-[#0F172A] shadow-sm">
                         <img
                           src={feat.image}
                           alt={feat.eyebrow}
@@ -167,7 +167,7 @@ export default function CurrentProjectOverview({ onOpenBooking }: CurrentProject
 
                     <div>
                       <span className={`text-lg sm:text-xl font-serif font-bold block mb-0.5 ${
-                        isActive ? 'text-white' : 'text-[#111722]'
+                        isActive ? 'text-white' : 'text-[#0F172A]'
                       }`}>
                         {feat.value}
                       </span>
@@ -183,7 +183,7 @@ export default function CurrentProjectOverview({ onOpenBooking }: CurrentProject
             </div>
 
             {/* INFORMATION PANEL (UPDATES SMOOTHLY) */}
-            <div className="p-6 bg-white border border-[#D5D0C6] rounded-xs shadow-xs min-h-[200px] flex flex-col justify-between">
+            <div className="p-6 bg-white rounded-3xl shadow-xl min-h-[200px] flex flex-col justify-between">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeFeature.id}
@@ -193,13 +193,13 @@ export default function CurrentProjectOverview({ onOpenBooking }: CurrentProject
                   transition={{ duration: 0.4 }}
                 >
                   <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#B18A4A]" />
-                    <span className="text-[10px] font-manrope font-semibold uppercase tracking-widest text-[#B18A4A]">
+                    <CheckCircle2 className="w-4 h-4 text-[#F97316]" />
+                    <span className="text-[10px] font-manrope font-semibold uppercase tracking-widest text-[#F97316]">
                       {activeFeature.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-serif font-bold text-[#111722] mb-2">
+                  <h3 className="text-xl font-serif font-bold text-[#0F172A] mb-2">
                     {activeFeature.title}
                   </h3>
 
@@ -211,7 +211,7 @@ export default function CurrentProjectOverview({ onOpenBooking }: CurrentProject
 
               <button
                 onClick={onOpenBooking}
-                className="w-full py-3.5 bg-[#B18A4A] text-white text-xs font-manrope font-bold uppercase tracking-[0.2em] hover:bg-[#111722] transition-colors flex items-center justify-center gap-2 shadow-xs group rounded-xs"
+                className="w-full py-3.5 bg-[#F97316] text-white text-xs font-manrope font-bold uppercase tracking-[0.2em] hover:bg-[#EA580C] transition-colors flex items-center justify-center gap-2 shadow-md group rounded-full"
               >
                 <span>BOOK A SITE VISIT</span>
                 <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
@@ -222,7 +222,7 @@ export default function CurrentProjectOverview({ onOpenBooking }: CurrentProject
 
           {/* RIGHT COLUMN: LARGE 16:9 TOPIC-SPECIFIC REALISTIC IMAGE WITH FADE + SCALE */}
           <div className="lg:col-span-7">
-            <div className="relative rounded-xs overflow-hidden shadow-2xl border border-[#D5D0C6] aspect-[16/10] bg-[#111722] group">
+            <div className="relative rounded-[32px] overflow-hidden shadow-2xl aspect-[16/10] bg-[#0F172A] group">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeFeature.image}
@@ -237,12 +237,12 @@ export default function CurrentProjectOverview({ onOpenBooking }: CurrentProject
               </AnimatePresence>
 
               {/* TOPIC CAPTION STRIP AT BOTTOM */}
-              <div className="absolute bottom-5 left-5 right-5 p-4 bg-[#F4F0E7]/95 backdrop-blur-md border border-[#D5D0C6] rounded-xs text-[#111722] flex items-center justify-between shadow-lg">
+              <div className="absolute bottom-5 left-5 right-5 p-5 bg-white/95 backdrop-blur-md rounded-2xl text-[#0F172A] flex items-center justify-between shadow-xl">
                 <div>
                   <span className="text-[9.5px] font-manrope font-extrabold uppercase tracking-[0.25em] text-[#8C6527] block mb-1">
                     {activeFeature.caption}
                   </span>
-                  <p className="text-xs sm:text-sm font-serif font-extrabold text-[#111722]">
+                  <p className="text-xs sm:text-sm font-serif font-extrabold text-[#0F172A]">
                     {activeFeature.title}
                   </p>
                 </div>
@@ -252,7 +252,7 @@ export default function CurrentProjectOverview({ onOpenBooking }: CurrentProject
                     <span
                       key={f.id}
                       className={`h-1.5 rounded-full transition-all duration-500 ${
-                        f.id === activeIndex ? 'w-5 bg-[#B18A4A]' : 'w-1.5 bg-white/40'
+                        f.id === activeIndex ? 'w-5 bg-[#F97316]' : 'w-1.5 bg-white/40'
                       }`}
                     />
                   ))}

@@ -113,7 +113,7 @@ export default function ContinuousCameraHero({ onOpenBooking }: ContinuousCamera
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/75 to-black/60" />
 
           {/* Aerial Content */}
-          <div className="relative z-10 max-w-5xl mx-auto h-full px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center pt-16">
+          <div className="relative z-10 max-w-5xl mx-auto h-full px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center pt-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

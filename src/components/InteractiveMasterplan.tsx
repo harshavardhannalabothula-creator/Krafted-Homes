@@ -169,7 +169,7 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
   const activeSectorPhoto = currentSectorInfo.photos[sectorPhotoIndex] || currentSectorInfo.photos[0];
 
   return (
-    <section id="masterplan" className="py-20 sm:py-24 bg-[#F8FAFC] text-[#0F172A] relative overflow-hidden border-b border-[#E2E8F0]">
+    <section id="masterplan" className="py-10 sm:py-8 bg-[#F8FAFC] text-[#0F172A] relative overflow-hidden border-b border-[#E2E8F0]">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 relative z-10">
 
         {/* SECTION HEADER */}
@@ -179,7 +179,7 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
               <span>02 / MASTERPLAN &amp; COMMUNITY LAYOUT</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-tight uppercase">
-              10-ACRE <span className="text-[#2563EB]">3D MASTERPLAN</span>
+              10-ACRE <span className="text-[#F97316]">3D MASTERPLAN</span>
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-[#475569] max-w-lg font-normal leading-relaxed">
@@ -203,13 +203,13 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
                   }}
                   className={`p-5 rounded-2xl border transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-[#2563EB] text-white border-[#2563EB] shadow-md transform translate-x-1'
-                      : 'bg-white text-[#0F172A] border-[#E2E8F0] hover:border-[#2563EB]'
+                      ? 'bg-[#F97316] text-white border-[#F97316] shadow-md transform translate-x-1'
+                      : 'bg-white text-[#0F172A] border-[#E2E8F0] hover:border-[#F97316]'
                   }`}
                 >
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <span className={`text-[10px] font-bold uppercase tracking-wider block mb-1 ${isActive ? 'text-white/90' : 'text-[#2563EB]'}`}>
+                      <span className={`text-[10px] font-bold uppercase tracking-wider block mb-1 ${isActive ? 'text-white/90' : 'text-[#F97316]'}`}>
                         {card.label}
                       </span>
                       <h3 className={`text-2xl font-extrabold tracking-tight ${isActive ? 'text-white' : 'text-[#0F172A]'}`}>
@@ -220,7 +220,7 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
                       </p>
                     </div>
 
-                    <div className={`px-3 py-1 rounded-full text-[10px] font-bold tracking-widest ${isActive ? 'bg-white text-[#2563EB]' : 'bg-[#F8FAFC] text-[#0F172A] border border-[#E2E8F0]'}`}>
+                    <div className={`px-3 py-1 rounded-full text-[10px] font-bold tracking-widest ${isActive ? 'bg-white text-[#F97316]' : 'bg-[#F8FAFC] text-[#0F172A] border border-[#E2E8F0]'}`}>
                       0{card.id + 1} / 04
                     </div>
                   </div>
@@ -260,7 +260,7 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
             {/* Bottom Floating Title & Description */}
             <div className="relative z-20 p-6 text-white flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
-                <span className="text-xs font-bold text-[#2563EB] uppercase tracking-wider block mb-1 bg-white px-2.5 py-0.5 rounded-full w-fit">
+                <span className="text-xs font-bold text-[#F97316] uppercase tracking-wider block mb-1 bg-white px-2.5 py-0.5 rounded-full w-fit">
                   {activeMetric.label} • {activeMetric.metric}
                 </span>
                 <h4 className="text-xl sm:text-2xl font-extrabold tracking-tight mb-1 text-white uppercase">
@@ -281,7 +281,7 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
                       setIsMetricAutoPlaying(false);
                     }}
                     className={`h-2 rounded-full transition-all duration-300 ${
-                      m.id === activeMetricIndex ? 'w-6 bg-[#2563EB]' : 'w-2 bg-white/40 hover:bg-white'
+                      m.id === activeMetricIndex ? 'w-6 bg-[#F97316]' : 'w-2 bg-white/40 hover:bg-white'
                     }`}
                   />
                 ))}
@@ -298,7 +298,7 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
           {/* Sector Highlight Filter Pill Buttons */}
           <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-[#E2E8F0] shadow-sm">
             <div className="flex items-center gap-2">
-              <Sliders className="w-4 h-4 text-[#2563EB]" />
+              <Sliders className="w-4 h-4 text-[#F97316]" />
               <span className="text-xs font-bold uppercase text-[#0F172A] tracking-wider">
                 HIGHLIGHT SECTOR ZONE &amp; REAL PHOTOS:
               </span>
@@ -311,8 +311,8 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
                   onClick={() => setActiveSector(sector)}
                   className={`px-4 py-2 rounded-full text-xs font-bold uppercase transition-all cursor-pointer ${
                     activeSector === sector
-                      ? 'bg-[#2563EB] text-white shadow-xs'
-                      : 'bg-[#F8FAFC] text-[#0F172A] border border-[#E2E8F0] hover:border-[#2563EB]'
+                      ? 'bg-[#F97316] text-white shadow-xs'
+                      : 'bg-[#F8FAFC] text-[#0F172A] border border-[#E2E8F0] hover:border-[#F97316]'
                   }`}
                 >
                   {sector === 'ALL' ? 'ALL SECTORS' : `${sector} GROVE`}
@@ -354,12 +354,12 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
               {/* TOP MASTERPLAN OVERLAY HEADER */}
               <div className="relative z-20 p-5 flex items-center justify-between">
                 <div className="bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#E2E8F0] text-xs font-bold text-[#0F172A] flex items-center gap-2 shadow-xs">
-                  <Compass className="w-4 h-4 text-[#2563EB] animate-spin-slow" />
+                  <Compass className="w-4 h-4 text-[#F97316] animate-spin-slow" />
                   <span className="uppercase tracking-wider">10-ACRE CAD MASTERPLAN • {activeSector} ZONE</span>
                 </div>
 
                 <div className="bg-[#0F172A]/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-[10px] font-bold text-white uppercase tracking-widest flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
+                  <span className="w-2 h-2 rounded-full bg-[#F97316]" />
                   <span>189 PLOTS</span>
                 </div>
               </div>
@@ -373,17 +373,17 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
                   </div>
 
                   <div className="grid grid-cols-3 gap-3 text-center">
-                    <div className={`p-3 rounded-xl border transition-all ${activeSector === 'NORTH' || activeSector === 'ALL' ? 'bg-[#2563EB] text-white border-white/40 shadow-md' : 'bg-black/50 text-white/60 border-white/10'}`}>
+                    <div className={`p-3 rounded-xl border transition-all ${activeSector === 'NORTH' || activeSector === 'ALL' ? 'bg-[#F97316] text-white border-white/40 shadow-md' : 'bg-black/50 text-white/60 border-white/10'}`}>
                       <span className="text-[10px] font-bold block uppercase">NORTH GROVE</span>
                       <span className="text-xs font-extrabold">Villas 001–065</span>
                     </div>
 
-                    <div className={`p-3 rounded-xl border transition-all ${activeSector === 'CLUBHOUSE' || activeSector === 'ALL' ? 'bg-[#2563EB] text-white border-white/40 shadow-md' : 'bg-black/50 text-white/60 border-white/10'}`}>
+                    <div className={`p-3 rounded-xl border transition-all ${activeSector === 'CLUBHOUSE' || activeSector === 'ALL' ? 'bg-[#F97316] text-white border-white/40 shadow-md' : 'bg-black/50 text-white/60 border-white/10'}`}>
                       <span className="text-[10px] font-bold block uppercase">CLUBHOUSE</span>
                       <span className="text-xs font-extrabold">15,000 Sq.Ft</span>
                     </div>
 
-                    <div className={`p-3 rounded-xl border transition-all ${activeSector === 'SOUTH' || activeSector === 'ALL' ? 'bg-[#2563EB] text-white border-white/40 shadow-md' : 'bg-black/50 text-white/60 border-white/10'}`}>
+                    <div className={`p-3 rounded-xl border transition-all ${activeSector === 'SOUTH' || activeSector === 'ALL' ? 'bg-[#F97316] text-white border-white/40 shadow-md' : 'bg-black/50 text-white/60 border-white/10'}`}>
                       <span className="text-[10px] font-bold block uppercase">SOUTH GROVE</span>
                       <span className="text-xs font-extrabold">Villas 066–189</span>
                     </div>
@@ -399,12 +399,12 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
               {/* BOTTOM CAPTION BAR */}
               <div className="relative z-20 p-4 bg-white/95 backdrop-blur-md border-t border-[#E2E8F0] flex items-center justify-between text-[#0F172A]">
                 <div className="flex items-center gap-2">
-                  <Trees className="w-4 h-4 text-[#2563EB]" />
+                  <Trees className="w-4 h-4 text-[#F97316]" />
                   <span className="text-xs font-bold uppercase tracking-wider">
                     {currentSectorInfo.title}
                   </span>
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#2563EB]">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#F97316]">
                   70% BOTANICAL LANDSCAPE
                 </span>
               </div>
@@ -438,9 +438,9 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
 
                   <button
                     onClick={() => setIsSectorPhotoAutoPlay(!isSectorPhotoAutoPlay)}
-                    className="px-3 py-1 bg-[#0F172A]/85 backdrop-blur-md border border-white/20 text-white rounded-full text-[10px] font-bold tracking-wider uppercase flex items-center gap-1 hover:bg-[#2563EB] transition-all cursor-pointer"
+                    className="px-3 py-1 bg-[#0F172A]/85 backdrop-blur-md border border-white/20 text-white rounded-full text-[10px] font-bold tracking-wider uppercase flex items-center gap-1 hover:bg-[#F97316] transition-all cursor-pointer"
                   >
-                    {isSectorPhotoAutoPlay ? <Pause className="w-3 h-3 text-[#2563EB]" /> : <Play className="w-3 h-3 text-white" />}
+                    {isSectorPhotoAutoPlay ? <Pause className="w-3 h-3 text-[#F97316]" /> : <Play className="w-3 h-3 text-white" />}
                     <span>2.0S HD PHOTO</span>
                   </button>
                 </div>
@@ -448,7 +448,7 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
                 {/* Bottom Caption & 4 Thumbnail Selector Buttons */}
                 <div className="relative z-20 p-4 text-white flex items-end justify-between gap-3">
                   <div>
-                    <span className="text-[10px] font-bold text-[#2563EB] uppercase tracking-wider block bg-white px-2 py-0.5 rounded-full w-fit mb-1">
+                    <span className="text-[10px] font-bold text-[#F97316] uppercase tracking-wider block bg-white px-2 py-0.5 rounded-full w-fit mb-1">
                       {activeSector === 'ALL' ? 'ALL SECTORS' : `${activeSector} GROVE`} REAL PHOTO {sectorPhotoIndex + 1}/4
                     </span>
                     <h4 className="text-sm font-extrabold text-white leading-snug">
@@ -466,7 +466,7 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
                           setIsSectorPhotoAutoPlay(false);
                         }}
                         className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
-                          idx === sectorPhotoIndex ? 'bg-[#2563EB] scale-125' : 'bg-white/50 hover:bg-white'
+                          idx === sectorPhotoIndex ? 'bg-[#F97316] scale-125' : 'bg-white/50 hover:bg-white'
                         }`}
                       />
                     ))}
@@ -490,12 +490,12 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
                 </p>
 
                 <div className="space-y-2 mb-4">
-                  <span className="text-[11px] uppercase tracking-widest text-[#2563EB] font-bold block">
+                  <span className="text-[11px] uppercase tracking-widest text-[#F97316] font-bold block">
                     Sector Key Features:
                   </span>
                   {currentSectorInfo.highlights.map((item, idx) => (
                     <div key={idx} className="flex items-start gap-2 text-xs text-[#0F172A] font-semibold">
-                      <Check className="w-3.5 h-3.5 text-[#2563EB] shrink-0 mt-0.5" />
+                      <Check className="w-3.5 h-3.5 text-[#F97316] shrink-0 mt-0.5" />
                       <span className="leading-snug">{item}</span>
                     </div>
                   ))}

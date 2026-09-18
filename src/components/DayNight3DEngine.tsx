@@ -315,7 +315,7 @@ export default function DayNight3DEngine({ isNightMode }: DayNight3DEngineProps)
   }, [isNightMode]);
 
   return (
-    <div className="relative w-full h-full min-h-[440px] sm:min-h-[500px] bg-[#050b1a] rounded-xl overflow-hidden border border-amber-500/30 shadow-2xl">
+    <div className="relative w-full h-full min-h-[440px] sm:min-h-[500px] bg-[#050b1a] rounded-xl overflow-hidden border border-orange-500/30 shadow-2xl">
       <div ref={mountRef} className="w-full h-full min-h-[440px] sm:min-h-[500px] cursor-grab active:cursor-grabbing" />
     </div>
   );

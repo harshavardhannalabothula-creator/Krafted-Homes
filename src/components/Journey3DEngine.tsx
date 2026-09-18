@@ -52,7 +52,7 @@ export default function Journey3DEngine({ stageIndex }: Journey3DEngineProps) {
     mainLight.castShadow = true;
     scene.add(mainLight);
 
-    const goldPointLight = new THREE.PointLight('#B18A4A', 1.5, 50);
+    const goldPointLight = new THREE.PointLight('#F97316', 1.5, 50);
     goldPointLight.position.set(-10, 15, -10);
     scene.add(goldPointLight);
 
@@ -64,11 +64,11 @@ export default function Journey3DEngine({ stageIndex }: Journey3DEngineProps) {
     const terrainMat = new THREE.MeshStandardMaterial({ color: '#162235', roughness: 0.8, metalness: 0.1 });
     const stoneWallMat = new THREE.MeshStandardMaterial({ color: '#475569', roughness: 0.6, metalness: 0.2 });
     const cadGridMat = new THREE.MeshBasicMaterial({ color: '#38bdf8', wireframe: true, transparent: true, opacity: 0.4 });
-    const goldMat = new THREE.MeshStandardMaterial({ color: '#B18A4A', roughness: 0.3, metalness: 0.5 });
+    const goldMat = new THREE.MeshStandardMaterial({ color: '#F97316', roughness: 0.3, metalness: 0.5 });
     const greenMat = new THREE.MeshStandardMaterial({ color: '#66705A', roughness: 0.7 });
     const waterMat = new THREE.MeshStandardMaterial({ color: '#0284c7', roughness: 0.1, metalness: 0.8 });
     const villaMat = new THREE.MeshStandardMaterial({ color: '#F4F0E7', roughness: 0.3 });
-    const roofMat = new THREE.MeshStandardMaterial({ color: '#111722', roughness: 0.4 });
+    const roofMat = new THREE.MeshStandardMaterial({ color: '#0F172A', roughness: 0.4 });
     const poleMat = new THREE.MeshStandardMaterial({ color: '#1e293b', metalness: 0.8 });
     const lampMat = new THREE.MeshBasicMaterial({ color: '#fef08a' });
 
@@ -97,7 +97,7 @@ export default function Journey3DEngine({ stageIndex }: Journey3DEngineProps) {
 
       // Laser Scanner Beam Plane
       const scannerGeo = new THREE.BoxGeometry(36, 0.1, 0.2);
-      const scannerMat = new THREE.MeshBasicMaterial({ color: '#B18A4A', transparent: true, opacity: 0.8 });
+      const scannerMat = new THREE.MeshBasicMaterial({ color: '#F97316', transparent: true, opacity: 0.8 });
       const scannerMesh = new THREE.Mesh(scannerGeo, scannerMat);
       scannerMesh.position.set(0, 1.5, -18);
       stageGroup.add(scannerMesh);
@@ -106,7 +106,7 @@ export default function Journey3DEngine({ stageIndex }: Journey3DEngineProps) {
       stageGroup.userData.scanner = scannerMesh;
     } else if (stageIndex === 1) {
       // STAGE 02: CAD LASER GRID & TOPOGRAPHY SURVEY
-      const gridHelper = new THREE.GridHelper(36, 36, '#B18A4A', '#38bdf8');
+      const gridHelper = new THREE.GridHelper(36, 36, '#F97316', '#38bdf8');
       gridHelper.position.y = 0.02;
       stageGroup.add(gridHelper);
 
@@ -120,7 +120,7 @@ export default function Journey3DEngine({ stageIndex }: Journey3DEngineProps) {
         pillar.position.set(cx, 2, cz);
         stageGroup.add(pillar);
 
-        const beacon = new THREE.PointLight('#B18A4A', 2, 10);
+        const beacon = new THREE.PointLight('#F97316', 2, 10);
         beacon.position.set(cx, 4, cz);
         stageGroup.add(beacon);
       });
@@ -159,7 +159,7 @@ export default function Journey3DEngine({ stageIndex }: Journey3DEngineProps) {
 
       // Gold Road Centerline
       const lineTubeGeo = new THREE.TubeGeometry(roadCurve, 64, 0.1, 6, false);
-      const lineMesh = new THREE.Mesh(lineTubeGeo, new THREE.MeshBasicMaterial({ color: '#B18A4A' }));
+      const lineMesh = new THREE.Mesh(lineTubeGeo, new THREE.MeshBasicMaterial({ color: '#F97316' }));
       stageGroup.add(lineMesh);
 
       // 3D Street Light Poles along Road
@@ -394,9 +394,9 @@ export default function Journey3DEngine({ stageIndex }: Journey3DEngineProps) {
   }, [stageIndex]);
 
   return (
-    <div className="relative w-full h-full min-h-[300px] bg-[#0b1320] rounded-xl overflow-hidden shadow-2xl border border-[#D5D0C6]">
+    <div className="relative w-full h-full min-h-[300px] bg-[#0b1320] rounded-xl overflow-hidden shadow-2xl border border-[slate-200]">
       <div ref={mountRef} className="absolute inset-0 cursor-grab active:cursor-grabbing" />
-      <div className="absolute bottom-3 right-3 z-10 bg-[#111722]/80 backdrop-blur-md px-3 py-1 rounded-xs border border-[#B18A4A]/40 text-[9px] font-mono text-[#B18A4A] font-bold uppercase tracking-widest pointer-events-none">
+      <div className="absolute bottom-3 right-3 z-10 bg-[#0F172A]/80 backdrop-blur-md px-3 py-1 rounded-xs border border-[#F97316]/40 text-[9px] font-mono text-[#F97316] font-bold uppercase tracking-widest pointer-events-none">
         3D WEBGL INTERACTIVE MODEL • STAGE 0{stageIndex + 1}
       </div>
     </div>

@@ -152,7 +152,7 @@ export default function StageVisualizer({ stageIndex, imageSrc, blueprintStep = 
   // STAGE 06 (Index 5): ARCHITECTURAL SPLIT-LEVEL VERTICAL CROSS-SECTION CUT
   if (stageIndex === 5) {
     return (
-      <div className="relative w-full h-full bg-[#0F172A] text-white flex flex-col justify-between p-4 font-mono overflow-hidden select-none border border-amber-500/30">
+      <div className="relative w-full h-full bg-[#0F172A] text-white flex flex-col justify-between p-4 font-mono overflow-hidden select-none border border-orange-500/30">
         {/* Grid Background */}
         <div
           className="absolute inset-0 opacity-15 pointer-events-none"
@@ -166,7 +166,7 @@ export default function StageVisualizer({ stageIndex, imageSrc, blueprintStep = 
         />
 
         {/* Header Bar */}
-        <div className="relative z-10 flex items-center justify-between border-b border-amber-500/30 pb-2 text-[10px] text-amber-400">
+        <div className="relative z-10 flex items-center justify-between border-b border-orange-500/30 pb-2 text-[10px] text-amber-400">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
             <span className="font-bold tracking-widest uppercase">VERTICAL SPLIT-LEVEL SECTION CUT ARCHITECTURE</span>
@@ -222,7 +222,7 @@ export default function StageVisualizer({ stageIndex, imageSrc, blueprintStep = 
         </div>
 
         {/* Footer Tag */}
-        <div className="relative z-10 border border-amber-500/30 bg-[#1E293B] p-2 rounded-xs flex items-center justify-between text-[9px] text-amber-300">
+        <div className="relative z-10 border border-orange-500/30 bg-[#1E293B] p-2 rounded-xs flex items-center justify-between text-[9px] text-amber-300">
           <span className="font-bold">SIGNATURE SPLIT-LEVEL VERTICAL SPATIAL ARCHITECTURE</span>
           <span className="text-gray-400">3 FLOATING LEVELS • ZERO STAIR FATIGUE</span>
         </div>
@@ -232,7 +232,7 @@ export default function StageVisualizer({ stageIndex, imageSrc, blueprintStep = 
 
   // DEFAULT / OTHER STAGES: DYNAMIC 3D WEBGL ENGINE WITH OPTIONAL HD ARCHITECTURAL PHOTO VIEW
   return (
-    <div className="relative w-full h-full bg-[#0b1320] overflow-hidden group rounded-xl border border-[#D5D0C6]">
+    <div className="relative w-full h-full bg-[#0b1320] overflow-hidden group rounded-xl border border-[slate-200]">
       {viewMode === '3D' ? (
         <Journey3DEngine stageIndex={stageIndex} />
       ) : (
@@ -287,8 +287,8 @@ export default function StageVisualizer({ stageIndex, imageSrc, blueprintStep = 
             )}
 
             {stageIndex === 7 && (
-              <div className="w-full h-full border-4 border-[#B18A4A]/40 m-2 flex items-center justify-center">
-                <span className="text-[9px] font-mono text-[#B18A4A] uppercase tracking-[0.3em] font-bold bg-[#111722]/80 px-4 py-1 rounded-full border border-[#B18A4A]">
+              <div className="w-full h-full border-4 border-[#F97316]/40 m-2 flex items-center justify-center">
+                <span className="text-[9px] font-mono text-[#F97316] uppercase tracking-[0.3em] font-bold bg-[#0F172A]/80 px-4 py-1 rounded-full border border-[#F97316]">
                   COMPLETED 10-ACRE ESTATE DESTINATION
                 </span>
               </div>
@@ -300,17 +300,17 @@ export default function StageVisualizer({ stageIndex, imageSrc, blueprintStep = 
       {/* View Mode & Telemetry Header Bar */}
       <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-auto">
         <div className="flex items-center gap-2">
-          <span className="px-3 py-1 rounded-full bg-[#111722]/90 backdrop-blur-md text-[#B18A4A] text-xs font-mono font-bold border border-[#B18A4A]/40">
+          <span className="px-3 py-1 rounded-full bg-[#0F172A]/90 backdrop-blur-md text-[#F97316] text-xs font-mono font-bold border border-[#F97316]/40">
             STAGE 0{stageIndex + 1}
           </span>
         </div>
 
-        <div className="flex items-center gap-1 bg-[#111722]/90 p-1 rounded-full border border-[#D5D0C6]/30 backdrop-blur-md">
+        <div className="flex items-center gap-1 bg-[#0F172A]/90 p-1 rounded-full border border-[slate-200]/30 backdrop-blur-md">
           <button
             onClick={() => setViewMode('3D')}
             className={`px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all ${
               viewMode === '3D'
-                ? 'bg-[#B18A4A] text-[#111722] shadow-sm'
+                ? 'bg-[#F97316] text-[#0F172A] shadow-sm'
                 : 'text-gray-300 hover:text-white'
             }`}
           >
@@ -322,7 +322,7 @@ export default function StageVisualizer({ stageIndex, imageSrc, blueprintStep = 
             onClick={() => setViewMode('HD')}
             className={`px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all ${
               viewMode === 'HD'
-                ? 'bg-[#B18A4A] text-[#111722] shadow-sm'
+                ? 'bg-[#F97316] text-[#0F172A] shadow-sm'
                 : 'text-gray-300 hover:text-white'
             }`}
           >

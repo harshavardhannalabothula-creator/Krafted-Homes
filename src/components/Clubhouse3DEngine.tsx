@@ -60,7 +60,7 @@ export default function Clubhouse3DEngine({ activeHotspot }: Clubhouse3DEnginePr
 
     // Materials
     const baseMat = new THREE.MeshStandardMaterial({ color: '#F4F0E7', roughness: 0.3 });
-    const accentMat = new THREE.MeshStandardMaterial({ color: '#B18A4A', roughness: 0.3, metalness: 0.4 });
+    const accentMat = new THREE.MeshStandardMaterial({ color: '#F97316', roughness: 0.3, metalness: 0.4 });
     const poolMat = new THREE.MeshStandardMaterial({ color: '#0284c7', roughness: 0.1, metalness: 0.8 });
     const woodMat = new THREE.MeshStandardMaterial({ color: '#9a3412', roughness: 0.6 });
     const glassMat = new THREE.MeshPhysicalMaterial({ color: '#38bdf8', transparent: true, opacity: 0.3, transmission: 0.7 });
@@ -113,12 +113,12 @@ export default function Clubhouse3DEngine({ activeHotspot }: Clubhouse3DEnginePr
 
     const targetPos = hotspotPositions[activeHotspot] || hotspotPositions[0];
 
-    const marker = new THREE.Mesh(new THREE.SphereGeometry(0.5, 16, 16), new THREE.MeshBasicMaterial({ color: '#B18A4A' }));
+    const marker = new THREE.Mesh(new THREE.SphereGeometry(0.5, 16, 16), new THREE.MeshBasicMaterial({ color: '#F97316' }));
     marker.position.copy(targetPos);
     marker.position.y += 1.5;
     clubGroup.add(marker);
 
-    const markerLight = new THREE.PointLight('#B18A4A', 3, 15);
+    const markerLight = new THREE.PointLight('#F97316', 3, 15);
     markerLight.position.copy(marker.position);
     clubGroup.add(markerLight);
 
@@ -180,9 +180,9 @@ export default function Clubhouse3DEngine({ activeHotspot }: Clubhouse3DEnginePr
   }, [activeHotspot]);
 
   return (
-    <div className="relative w-full h-full min-h-[380px] bg-[#070d18] rounded-xl overflow-hidden shadow-2xl border border-[#D5D0C6]">
+    <div className="relative w-full h-full min-h-[380px] bg-[#070d18] rounded-xl overflow-hidden shadow-2xl border border-[slate-200]">
       <div ref={mountRef} className="absolute inset-0 cursor-grab active:cursor-grabbing" />
-      <div className="absolute bottom-3 right-3 z-10 bg-[#111722]/80 backdrop-blur-md px-3 py-1 rounded-xs border border-[#B18A4A]/40 text-[9px] font-mono text-[#B18A4A] font-bold uppercase tracking-widest pointer-events-none">
+      <div className="absolute bottom-3 right-3 z-10 bg-[#0F172A]/80 backdrop-blur-md px-3 py-1 rounded-xs border border-[#F97316]/40 text-[9px] font-mono text-[#F97316] font-bold uppercase tracking-widest pointer-events-none">
         3D RESORT CLUBHOUSE ENGINE • HOTSPOT #{activeHotspot + 1}
       </div>
     </div>

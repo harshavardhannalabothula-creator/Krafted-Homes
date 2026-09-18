@@ -123,20 +123,20 @@ export default function LandToLivingJourney({ onOpenBooking }: LandToLivingJourn
   const activeStage = constructionStages[currentStage];
 
   return (
-    <section id="process" className="py-20 sm:py-24 bg-[#F4F0E7] text-[#111722] relative overflow-hidden border-b border-[#D5D0C6]">
+    <section id="process" className="py-10 sm:py-8 bg-white text-[#0F172A] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* EDITORIAL SECTION HEADER */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 pb-6 border-b border-[#D5D0C6]">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 pb-6">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-5 h-[1.5px] bg-[#B18A4A]" />
-              <span className="text-[11px] font-manrope font-bold tracking-[0.3em] text-[#B18A4A] uppercase">
-                03 — SITE PROGRESSION
+              <span className="w-5 h-[1.5px] bg-[#F97316]" />
+              <span className="text-sm font-medium text-[#F97316]">
+                03 — Site Progression
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-serif font-normal text-[#111722] tracking-[0.02em] leading-tight uppercase">
-              THE 10-ACRE <span className="text-[#B18A4A] font-normal">TRANSFORMATION</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-[#0F172A] leading-tight tracking-tight">
+              The 10-Acre <span className="text-[#F97316]">Transformation</span>
             </h2>
           </div>
 
@@ -153,38 +153,38 @@ export default function LandToLivingJourney({ onOpenBooking }: LandToLivingJourn
               <button
                 key={stg.cardTitle}
                 onClick={() => handleStageSelect(idx)}
-                className={`p-3.5 text-left border rounded-xs transition-all relative overflow-hidden flex flex-col justify-between ${
+                className={`p-4 text-left rounded-2xl transition-all relative overflow-hidden flex flex-col justify-between ${
                   isActive
-                    ? 'border-[#B18A4A] bg-[#B18A4A]/10 shadow-sm'
-                    : 'border-[#D5D0C6] bg-white hover:border-[#B18A4A]/50 hover:bg-[#F4F0E7]/60'
+                    ? 'bg-[#0F172A] text-white shadow-lg scale-[1.02]'
+                    : 'bg-white shadow-sm hover:shadow-md hover:bg-slate-50'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
                   <span className={`text-xs font-mono font-bold ${
-                    isActive ? 'text-[#B18A4A]' : 'text-[#111722]/50'
+                    isActive ? 'text-[#F97316]' : 'text-[#0F172A]/50'
                   }`}>
                     {stg.stageNumber}
                   </span>
                   {isActive && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#B18A4A] animate-ping" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#F97316] animate-ping" />
                   )}
                 </div>
 
                 <span className={`text-[10px] font-manrope font-bold tracking-[0.15em] uppercase block truncate ${
-                  isActive ? 'text-[#B18A4A]' : 'text-[#111722]'
+                  isActive ? 'text-[#F97316]' : 'text-[#0F172A]'
                 }`}>
                   {stg.cardTitle}
                 </span>
 
                 {/* Animated Progress Bar at bottom of active card */}
                 {isActive && (
-                  <div className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#B18A4A]/20 overflow-hidden">
+                  <div className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#F97316]/20 overflow-hidden">
                     <motion.div
                       key={currentStage}
                       initial={{ width: '0%' }}
                       animate={{ width: '100%' }}
                       transition={{ duration: 4.5, ease: 'linear' }}
-                      className="h-full bg-[#B18A4A]"
+                      className="h-full bg-[#F97316]"
                     />
                   </div>
                 )}
@@ -194,10 +194,10 @@ export default function LandToLivingJourney({ onOpenBooking }: LandToLivingJourn
         </div>
 
         {/* MAIN CONTENT AREA: LARGE REALISTIC PHOTO ON LEFT + STAGE INFO ON RIGHT */}
-        <div className="bg-white rounded-xs border border-[#D5D0C6] shadow-md p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="bg-white rounded-[32px] shadow-2xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
           {/* LEFT: LARGE REALISTIC CONSTRUCTION PHOTOGRAPH */}
-          <div className="lg:col-span-7 relative rounded-xs overflow-hidden aspect-[16/10] bg-[#111722] border border-[#D5D0C6] group shadow-inner">
+          <div className="lg:col-span-7 relative rounded-[32px] overflow-hidden aspect-[16/10] bg-[#0F172A] shadow-xl group">
             <AnimatePresence mode="wait">
               <motion.img
                 key={activeStage.image}
@@ -214,11 +214,11 @@ export default function LandToLivingJourney({ onOpenBooking }: LandToLivingJourn
             {/* PLAY / PAUSE CONTROLLER BADGE */}
             <button
               onClick={() => setIsPlaying(!isPlaying)}
-              className="absolute top-4 right-4 z-20 px-3.5 py-1.5 bg-[#111722]/85 backdrop-blur-md border border-white/20 text-white rounded-full text-[10px] font-manrope font-semibold tracking-wider uppercase flex items-center gap-2 hover:bg-[#B18A4A] transition-all shadow-md"
+              className="absolute top-4 right-4 z-20 px-3.5 py-1.5 bg-[#0F172A]/85 backdrop-blur-md border border-white/20 text-white rounded-full text-[10px] font-manrope font-semibold tracking-wider uppercase flex items-center gap-2 hover:bg-[#F97316] transition-all shadow-md"
             >
               {isPlaying ? (
                 <>
-                  <Pause className="w-3 h-3 text-[#B18A4A]" />
+                  <Pause className="w-3 h-3 text-[#F97316]" />
                   <span>PLAYING THROUGH THE PROCESS</span>
                 </>
               ) : (
@@ -230,7 +230,7 @@ export default function LandToLivingJourney({ onOpenBooking }: LandToLivingJourn
             </button>
 
             {/* OVERLAY BADGE (LEFT) */}
-            <div className="absolute bottom-4 left-4 z-20 px-3 py-1 bg-[#111722]/80 backdrop-blur-md border border-white/10 rounded-xs text-[9px] font-mono tracking-widest text-[#B18A4A] uppercase">
+            <div className="absolute bottom-4 left-4 z-20 px-4 py-2 bg-[#0F172A]/80 backdrop-blur-md rounded-2xl text-[9px] font-mono tracking-widest text-[#F97316] uppercase shadow-md">
               REAL-TIME DEVELOPMENT LOG — STAGE {activeStage.stageCode}
             </div>
           </div>
@@ -241,16 +241,16 @@ export default function LandToLivingJourney({ onOpenBooking }: LandToLivingJourn
             <div>
               {/* STAGE CODE BADGE */}
               <div className="flex items-center justify-between mb-3">
-                <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#B18A4A] uppercase">
+                <span className="text-[11px] font-mono font-bold tracking-[0.25em] text-[#F97316] uppercase">
                   STAGE {activeStage.stageCode}
                 </span>
-                <span className="text-[9.5px] font-manrope font-semibold tracking-widest text-[#B18A4A] px-2.5 py-0.5 bg-[#F4F0E7] rounded-xs border border-[#D5D0C6]">
+                <span className="text-[9.5px] font-manrope font-semibold tracking-widest text-[#0F172A] px-3 py-1 bg-slate-100 rounded-full shadow-sm">
                   ANTELIA GROVES
                 </span>
               </div>
 
               {/* TITLE */}
-              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#111722] mb-3">
+              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#0F172A] mb-3">
                 {activeStage.fullTitle}
               </h3>
 
@@ -265,8 +265,8 @@ export default function LandToLivingJourney({ onOpenBooking }: LandToLivingJourn
               </p>
 
               {/* MILESTONE CHECKMARKS */}
-              <div className="space-y-2.5 pt-4 border-t border-[#D5D0C6]">
-                <span className="text-[10px] font-manrope font-bold uppercase tracking-wider text-[#111722] block mb-1">
+              <div className="space-y-2.5 pt-4 mt-2">
+                <span className="text-[10px] font-manrope font-bold uppercase tracking-wider text-[#0F172A] block mb-1">
                   STAGE ARCHITECTURAL MILESTONES:
                 </span>
                 {activeStage.milestones.map((ms, i) => (
@@ -279,28 +279,28 @@ export default function LandToLivingJourney({ onOpenBooking }: LandToLivingJourn
             </div>
 
             {/* METADATA COLUMN & CTA BUTTON */}
-            <div className="pt-4 border-t border-[#D5D0C6] space-y-4">
-              <div className="grid grid-cols-3 gap-2 text-left bg-[#F4F0E7]/60 p-3 rounded-xs border border-[#D5D0C6]">
+            <div className="pt-6 space-y-5">
+              <div className="grid grid-cols-3 gap-2 text-left bg-slate-50 p-4 rounded-2xl shadow-inner">
                 <div>
-                  <span className="text-[9px] font-manrope font-bold text-[#111722]/50 block uppercase">PROJECT</span>
-                  <span className="text-[10px] font-manrope font-bold text-[#111722]">ANTELIA GROVES</span>
+                  <span className="text-[9px] font-manrope font-bold text-[#0F172A]/50 block uppercase">PROJECT</span>
+                  <span className="text-[10px] font-manrope font-bold text-[#0F172A]">ANTELIA GROVES</span>
                 </div>
                 <div>
-                  <span className="text-[9px] font-manrope font-bold text-[#111722]/50 block uppercase">LOCATION</span>
-                  <span className="text-[10px] font-manrope font-bold text-[#111722]">BENGALURU</span>
+                  <span className="text-[9px] font-manrope font-bold text-[#0F172A]/50 block uppercase">LOCATION</span>
+                  <span className="text-[10px] font-manrope font-bold text-[#0F172A]">BENGALURU</span>
                 </div>
                 <div>
-                  <span className="text-[9px] font-manrope font-bold text-[#111722]/50 block uppercase">STAGE</span>
-                  <span className="text-[10px] font-manrope font-bold text-[#B18A4A]">{activeStage.stageCode}</span>
+                  <span className="text-[9px] font-manrope font-bold text-[#0F172A]/50 block uppercase">STAGE</span>
+                  <span className="text-[10px] font-manrope font-bold text-[#F97316]">{activeStage.stageCode}</span>
                 </div>
               </div>
 
               <button
                 onClick={onOpenBooking}
-                className="w-full py-3.5 bg-[#B18A4A] text-white text-xs font-manrope font-bold uppercase tracking-[0.2em] hover:bg-[#111722] transition-colors flex items-center justify-center gap-2 shadow-xs group rounded-xs"
+                className="w-full py-4 bg-[#F97316] text-white text-xs font-manrope font-bold uppercase tracking-[0.2em] hover:bg-[#EA580C] transition-colors flex items-center justify-center gap-2 shadow-lg group rounded-full"
               >
                 <span>SCHEDULE SITE VISIT</span>
-                <ArrowUpRight className="w-4 h-4 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight className="w-4 h-4 text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </button>
             </div>
 

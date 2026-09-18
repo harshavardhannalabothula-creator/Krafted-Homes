@@ -36,16 +36,16 @@ export default function LifestyleExplorer() {
   ];
 
   return (
-    <section id="lifestyle" className="py-24 bg-[#F4F0E7] text-[#202631] relative overflow-hidden border-b border-[#D5D0C6]">
+    <section id="lifestyle" className="py-12 bg-white text-[#0F172A] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-[0.35em] font-mono font-bold text-[#B18A4A] block mb-3">
-            HOLISTIC LIVING PHILOSOPHY
+        <div className="text-center max-w-3xl mx-auto mb-8">
+          <span className="text-sm font-medium text-[#F97316] block mb-3">
+            Holistic Living Philosophy
           </span>
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#111722] mb-4 leading-tight">
-            Designed for <span className="text-[#B18A4A] italic font-normal">Privacy + Connection</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-medium text-[#0F172A] leading-tight tracking-tight mb-4">
+            Designed for <span className="text-[#F97316] italic font-normal">Privacy + Connection</span>
           </h2>
           <p className="text-[#1A212D] text-base font-manrope font-semibold leading-relaxed">
             Every square foot at Antelia Groves is calibrated to balance personal sanctuary with rich natural surroundings.
@@ -63,10 +63,10 @@ export default function LifestyleExplorer() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="bg-white rounded-xs overflow-hidden border border-[#D5D0C6] shadow-sm flex flex-col justify-between group hover:border-[#B18A4A] hover:shadow-xl transition-all duration-500"
+                className="bg-white rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between group hover:shadow-2xl transition-all duration-500"
               >
                 {/* Image Container - Clean & Crisp (No White Fade Overlay) */}
-                <div className="relative h-64 sm:h-72 overflow-hidden bg-[#111722]">
+                <div className="relative h-64 sm:h-72 overflow-hidden bg-[#0F172A]">
                   <img
                     src={card.image}
                     alt={card.title}
@@ -74,18 +74,18 @@ export default function LifestyleExplorer() {
                   />
                   
                   {/* Subtle Top Left Icon Badge */}
-                  <div className="absolute top-4 left-4 bg-[#111722]/85 backdrop-blur-md p-2.5 rounded-xs border border-[#B18A4A]/40 shadow-md">
-                    <Icon className="w-4 h-4 text-[#B18A4A]" />
+                  <div className="absolute top-5 left-5 bg-[#0F172A]/85 backdrop-blur-md p-3 rounded-2xl shadow-lg">
+                    <Icon className="w-4 h-4 text-[#F97316]" />
                   </div>
                 </div>
 
                 {/* Content Container */}
                 <div className="p-8 flex-1 flex flex-col justify-between bg-white">
                   <div>
-                    <h3 className="text-2xl font-serif font-bold text-[#111722] mb-2 group-hover:text-[#B18A4A] transition-colors">
+                    <h3 className="text-2xl font-serif font-bold text-[#0F172A] mb-2 group-hover:text-[#F97316] transition-colors">
                       {card.title}
                     </h3>
-                    <p className="text-xs uppercase tracking-wider text-[#B18A4A] font-manrope font-semibold mb-3">
+                    <p className="text-xs uppercase tracking-wider text-[#F97316] font-manrope font-semibold mb-3">
                       {card.tagline}
                     </p>
                     <p className="text-[#1A212D] text-xs font-manrope font-semibold leading-relaxed">

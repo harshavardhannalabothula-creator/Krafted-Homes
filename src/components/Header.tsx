@@ -25,11 +25,14 @@ export default function Header({ onOpenBooking }: HeaderProps) {
   }, []);
 
   const navItems = [
-    { label: 'OVERVIEW', href: '#overview' },
-    { label: 'MASTERPLAN', href: '#masterplan' },
-    { label: 'VILLA DESIGN', href: '#villas' },
-    { label: 'REAL LOCATION', href: '#location' },
+    { label: 'HOME', href: '#hero' },
+    { label: 'STATS', href: '#stats' },
     { label: 'ABOUT US', href: '#about' },
+    { label: 'JOURNEY', href: '#journey' },
+    { label: 'PROCESS', href: '#construction-process' },
+    { label: 'LIFESTYLE', href: '#lifestyle' },
+    { label: 'LOCATION', href: '#location' },
+    { label: 'WHY US', href: '#why-krafted' },
   ];
 
   return (
@@ -44,14 +47,14 @@ export default function Header({ onOpenBooking }: HeaderProps) {
         <div className="flex items-center justify-between">
           {/* Brand Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-xl bg-[#2563EB] flex items-center justify-center p-0.5 shadow-xs">
+            <div className="w-9 h-9 rounded-xl bg-[#F97316] flex items-center justify-center p-0.5 shadow-xs">
               <span className="text-white font-extrabold text-base">AG</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-[10px] uppercase tracking-[0.25em] text-[#2563EB] font-bold">
+              <span className="text-[10px] uppercase tracking-[0.25em] text-[#F97316] font-bold">
                 KRAFTED HOMES
               </span>
-              <span className="text-base font-extrabold tracking-wider text-[#0F172A] group-hover:text-[#2563EB] transition-colors uppercase leading-tight">
+              <span className="text-base font-extrabold tracking-wider text-[#0F172A] group-hover:text-[#F97316] transition-colors uppercase leading-tight">
                 ANTELIA GROVES
               </span>
             </div>
@@ -68,7 +71,7 @@ export default function Header({ onOpenBooking }: HeaderProps) {
                   const targetId = item.href.replace('#', '');
                   document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="text-xs font-bold uppercase tracking-widest text-[#0F172A] hover:text-[#2563EB] transition-colors relative py-1 cursor-pointer"
+                className="text-xs font-bold uppercase tracking-widest text-[#0F172A] hover:text-[#F97316] transition-colors relative py-1 cursor-pointer"
               >
                 {item.label}
               </a>
@@ -79,9 +82,9 @@ export default function Header({ onOpenBooking }: HeaderProps) {
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="tel:+919876543210"
-              className="text-xs font-bold text-[#0F172A] hover:text-[#2563EB] flex items-center gap-1.5 transition-colors"
+              className="text-xs font-bold text-[#0F172A] hover:text-[#F97316] flex items-center gap-1.5 transition-colors"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-[#2563EB]" />
+              <PhoneCall className="w-3.5 h-3.5 text-[#F97316]" />
               <span>Inquiries</span>
             </a>
             <button
@@ -95,7 +98,7 @@ export default function Header({ onOpenBooking }: HeaderProps) {
           {/* Mobile Menu Trigger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden text-[#0F172A] hover:text-[#2563EB] p-2 focus:outline-none"
+            className="lg:hidden text-[#0F172A] hover:text-[#F97316] p-2 focus:outline-none"
             aria-label="Toggle Menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -118,8 +121,13 @@ export default function Header({ onOpenBooking }: HeaderProps) {
                 <a
                   key={item.label}
                   href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-xs font-bold tracking-wider uppercase text-[#0F172A] hover:text-[#2563EB] py-2 border-b border-slate-100"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMobileMenuOpen(false);
+                    const targetId = item.href.replace('#', '');
+                    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-xs font-bold tracking-wider uppercase text-[#0F172A] hover:text-[#F97316] py-2 border-b border-slate-100"
                 >
                   {item.label}
                 </a>

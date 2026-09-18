@@ -479,7 +479,7 @@ export default function Masterplan3DEngine({
   }, [activeSector]);
 
   return (
-    <div className="relative w-full h-full min-h-[460px] sm:min-h-[540px] bg-[#F5F2EA] rounded-2xl overflow-hidden border border-[#D5D0C6] shadow-xl select-none flex flex-col justify-between">
+    <div className="relative w-full h-full min-h-[460px] sm:min-h-[540px] bg-[#F5F2EA] rounded-2xl overflow-hidden border border-[slate-200] shadow-xl select-none flex flex-col justify-between">
       {/* 3D WebGL Canvas Container */}
       <div
         ref={mountRef}
@@ -488,28 +488,28 @@ export default function Masterplan3DEngine({
 
       {/* Top Floating HUD Indicator Bar */}
       <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
-        <div className="flex items-center gap-2 bg-[#F4F0E7]/90 backdrop-blur-md px-4 py-2 rounded-full border border-[#B18A4A]/40 shadow-sm">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#B18A4A] animate-ping" />
-          <span className="font-mono text-xs font-bold text-[#111722] tracking-wider uppercase flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-[#B18A4A]" />
+        <div className="flex items-center gap-2 bg-[#F4F0E7]/90 backdrop-blur-md px-4 py-2 rounded-full border border-[#F97316]/40 shadow-sm">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#F97316] animate-ping" />
+          <span className="font-mono text-xs font-bold text-[#0F172A] tracking-wider uppercase flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-[#F97316]" />
             3D CAD MASTERPLAN • {activeSector === 'ALL' ? 'FULL 10-ACRE ESTATE' : `${activeSector} SECTOR`}
           </span>
         </div>
 
-        <div className="hidden sm:flex items-center gap-2 bg-[#F4F0E7]/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#D5D0C6] text-xs font-mono text-[#202631]">
-          <RotateCw className={`w-3.5 h-3.5 text-[#B18A4A] ${!isInteracting ? 'animate-spin' : ''}`} />
+        <div className="hidden sm:flex items-center gap-2 bg-[#F4F0E7]/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[slate-200] text-xs font-mono text-[#0F172A]">
+          <RotateCw className={`w-3.5 h-3.5 text-[#F97316] ${!isInteracting ? 'animate-spin' : ''}`} />
           <span>{isInteracting ? 'MANUAL ORBIT DRAG' : 'AUTOMATIC 360° TURNTABLE'}</span>
         </div>
       </div>
 
       {/* Bottom Floating Interaction Help Badge */}
       <div className="absolute bottom-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
-        <div className="bg-[#111722]/95 backdrop-blur-md px-4 py-2 rounded-lg border border-[#B18A4A]/30 text-white font-mono text-xs flex items-center gap-2 shadow-lg">
-          <Move className="w-4 h-4 text-[#B18A4A] animate-bounce" />
+        <div className="bg-[#0F172A]/95 backdrop-blur-md px-4 py-2 rounded-lg border border-[#F97316]/30 text-white font-mono text-xs flex items-center gap-2 shadow-lg">
+          <Move className="w-4 h-4 text-[#F97316] animate-bounce" />
           <span>DRAG MOUSE OR TOUCH TO MANUALLY ROTATE 360°</span>
         </div>
 
-        <div className="bg-[#F4F0E7]/90 backdrop-blur-md px-3 py-1.5 rounded-md border border-[#D5D0C6] text-[11px] font-mono text-[#B18A4A] font-bold">
+        <div className="bg-[#F4F0E7]/90 backdrop-blur-md px-3 py-1.5 rounded-md border border-[slate-200] text-[11px] font-mono text-[#F97316] font-bold">
           189 VILLAS • 15,000 SQ.FT CLUBHOUSE
         </div>
       </div>
