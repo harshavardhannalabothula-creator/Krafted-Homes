@@ -62,40 +62,40 @@ const col2 = [testimonials[1], testimonials[4]];
 const col3 = [testimonials[2], testimonials[5]];
 
 const TestimonialCard = ({ item }: { item: Testimonial }) => (
-  <div className="p-6 sm:p-7 rounded-[28px] border border-slate-200/90 bg-white shadow-sm hover:shadow-xl hover:border-[#F97316]/50 transition-all duration-300 flex flex-col justify-between group my-3">
+  <div className="p-4 sm:p-5 rounded-2xl border border-slate-200/90 bg-white shadow-sm hover:shadow-lg hover:border-[#F97316]/40 transition-all duration-300 flex flex-col justify-between group my-2">
     <div>
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-1 text-[#F97316]">
+      <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center gap-0.5 text-[#F97316]">
           {[...Array(5)].map((_, starIdx) => (
-            <Star key={starIdx} className="w-4 h-4 fill-current" />
+            <Star key={starIdx} className="w-3.5 h-3.5 fill-current" />
           ))}
         </div>
 
-        <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-orange-50 text-[#F97316] border border-orange-100 flex items-center gap-1">
-          <CheckCircle2 className="w-3 h-3 text-emerald-500" />
+        <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-orange-50 text-[#F97316] border border-orange-100 flex items-center gap-1">
+          <CheckCircle2 className="w-2.5 h-2.5 text-emerald-500" />
           Verified Owner
         </span>
       </div>
 
-      <p className="text-slate-600 leading-relaxed font-medium text-[13px] sm:text-[14px] mb-6 italic">
+      <p className="text-slate-600 leading-relaxed font-medium text-[12px] sm:text-[13px] mb-4 italic">
         &ldquo;{item.text}&rdquo;
       </p>
     </div>
 
-    <div className="pt-4 border-t border-slate-100 flex items-center gap-3.5">
+    <div className="pt-3 border-t border-slate-100 flex items-center gap-3">
       <img
         src={item.image}
         alt={item.name}
-        className="h-11 w-11 rounded-full object-cover ring-2 ring-orange-100 group-hover:ring-[#F97316] transition-all shrink-0"
+        className="h-9 w-9 rounded-full object-cover ring-2 ring-orange-100 group-hover:ring-[#F97316] transition-all shrink-0"
       />
       <div className="flex flex-col min-w-0">
-        <h4 className="font-extrabold text-[#0F172A] text-sm tracking-tight truncate leading-snug">
+        <h4 className="font-extrabold text-[#0F172A] text-[13px] tracking-tight truncate leading-tight">
           {item.name}
         </h4>
-        <span className="text-[11px] font-bold text-[#F97316] leading-tight mt-0.5">
+        <span className="text-[10px] font-bold text-[#F97316] leading-tight mt-0.5">
           {item.role}
         </span>
-        <span className="text-[10px] font-medium text-slate-400 leading-tight">
+        <span className="text-[9px] font-medium text-slate-400 leading-tight">
           {item.villaNo}
         </span>
       </div>
@@ -129,29 +129,29 @@ export function TestimonialsSection() {
     <section 
       id="testimonials"
       aria-labelledby="testimonials-heading"
-      className="bg-white py-14 lg:py-20 relative overflow-hidden border-t border-slate-100"
+      className="bg-white py-10 lg:py-14 relative overflow-hidden border-t border-slate-100"
     >
       <div className="max-w-7xl px-4 sm:px-6 lg:px-8 z-10 mx-auto">
         
         {/* SECTION HEADER */}
-        <div className="flex flex-col items-center justify-center max-w-[620px] mx-auto mb-10 text-center">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-50 text-[#F97316] text-[11px] font-extrabold uppercase tracking-widest border border-orange-100 mb-3">
+        <div className="flex flex-col items-center justify-center max-w-[620px] mx-auto mb-8 text-center">
+          <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-orange-50 text-[#F97316] text-[10px] font-extrabold uppercase tracking-widest border border-orange-100 mb-2.5">
             ✦ WHAT OUR CUSTOMERS SAY
           </div>
 
-          <h2 id="testimonials-heading" className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0F172A] leading-[1.12]">
+          <h2 id="testimonials-heading" className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0F172A] leading-[1.12]">
             Loved by Homeowners &amp; <br />
             <span className="text-[#F97316]">Antelia Groves Residents</span>
           </h2>
 
-          <p className="text-center mt-3 text-slate-500 text-[14px] font-medium leading-relaxed max-w-md">
+          <p className="text-center mt-2.5 text-slate-500 text-[13px] font-medium leading-relaxed max-w-md">
             Discover why over 150+ resident families chose Krafted Homes for their split-level luxury villa in Bengaluru.
           </p>
         </div>
 
         {/* 3 COLUMNS SMOOTH SLOW UPWARD SCROLLING CONTAINER */}
         <div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-h-[580px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_8%,black_92%,transparent)]"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-h-[440px] sm:max-h-[480px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_6%,black_94%,transparent)]"
         >
           <AnimatedColumn items={col1} duration={32} />
           <AnimatedColumn items={col2} duration={38} className="hidden md:block" />
