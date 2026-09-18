@@ -49,7 +49,7 @@ export default function PastDeliveredProjectsSection({ onOpenBooking }: PastDeli
       location: 'Villa #14, Antelia',
       specs: '100% On-Time Handover • RERA Compliant',
       desc: 'Seamless possession ceremony with clear documentation and zero hidden costs.',
-      image: '/images/handing_keys.png',
+      image: '/images/villa_keys_handover_ceremony.png',
       badge: 'On-Time Possession',
     },
     {
@@ -82,7 +82,7 @@ export default function PastDeliveredProjectsSection({ onOpenBooking }: PastDeli
       location: 'Villa #22, Antelia',
       specs: 'Custom Modular Interiors Fitted',
       desc: 'Welcoming our 100th resident family into their dream Krafted Home.',
-      image: '/images/indian_family_villa.png',
+      image: '/images/happy_villa_family_lawn.png',
       badge: 'Satisfied Customer',
     },
   ];
