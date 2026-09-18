@@ -65,47 +65,37 @@ export default function ThreeStepsSection({ onOpenBooking }: ThreeStepsSectionPr
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative w-full h-[460px] sm:h-[540px] rounded-[36px] overflow-hidden shadow-2xl border-4 border-white group">
+            <div className="relative w-full h-[460px] sm:h-[540px] rounded-[36px] overflow-hidden shadow-xl border-4 border-white group">
               <img 
-                src="/images/indian_family_villa.png" 
-                alt="Happy Indian family outside their luxury villa at Antelia Groves" 
+                src="/images/teak_backyard_deck.jpg" 
+                alt="Sunken Courtyard & Private Teak Deck at Antelia Groves" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
               
-              {/* Gradient Overlays */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
+              {/* Subtle Bottom Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
               
               {/* Top Pill Badge */}
-              <div className="absolute top-6 left-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#0F172A] text-[11px] font-extrabold uppercase tracking-wider shadow-lg border border-white/50">
+              <div className="absolute top-6 left-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#0F172A] text-[11px] font-extrabold uppercase tracking-wider shadow-md border border-white/50">
                 <Sparkles className="w-3.5 h-3.5 text-[#F97316]" />
-                <span>Live Better, Live Bigger</span>
+                <span>Sunken Courtyard &amp; Private Deck</span>
               </div>
 
-              {/* Bottom Image Overlay Content */}
-              <div className="absolute bottom-0 inset-x-0 p-7 sm:p-8 text-white">
-                <div className="flex items-center gap-2 text-orange-400 text-xs font-bold uppercase tracking-wider mb-2">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>Krafted Homes Promise</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight tracking-tight mb-3">
-                  Your Family's Sanctuary Awaits
-                </h3>
-                <p className="text-slate-300 text-xs sm:text-sm font-medium leading-relaxed">
-                  Join 150+ happy families living in Sarjapur Road's premier split-level villa township.
-                </p>
-                
-                {/* Floating Micro-Stat Card */}
-                <div className="mt-5 p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-[#F97316] flex items-center justify-center text-white shrink-0 shadow-md">
-                      <CheckCircle2 className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-white">RERA Approved PRM/KA/RERA/...</div>
-                      <div className="text-[10px] text-slate-300 font-medium">100% Transparent Documentation</div>
-                    </div>
+              {/* Bottom Clean Overlay Badge */}
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-slate-950/80 backdrop-blur-md border border-white/20 text-white flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-[#F97316] flex items-center justify-center text-white shrink-0 shadow-md">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-white">Private Lawn &amp; Sunken Deck</div>
+                    <div className="text-[10px] text-slate-300 font-medium">Included with Every 3 &amp; 4 BHK Villa</div>
                   </div>
                 </div>
+
+                <span className="text-[10px] font-bold bg-white/10 px-2.5 py-1 rounded-full text-white border border-white/20">
+                  RERA Approved
+                </span>
               </div>
             </div>
           </motion.div>
