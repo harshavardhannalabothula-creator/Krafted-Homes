@@ -29,7 +29,7 @@ export default function ExploreFeaturedVillas({ onOpenBooking }: ExploreFeatured
       tag: 'West Facing • Glass Atrium',
       phase: 'UPCOMING PHASE 1',
       highlights: 'Sunken private garden & dual sky terrace',
-      image: '/images/daylight_estate.jpg',
+      image: '/images/bengaluru_daylight_villa.png',
       icon: Trees,
     },
     {

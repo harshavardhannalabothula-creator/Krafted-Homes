@@ -38,7 +38,7 @@ export default function PastDeliveredProjectsSection({ onOpenBooking }: PastDeli
       location: 'Antelia Enclave',
       specs: 'M35 Grade Concrete • German Waterproofing',
       desc: 'Heavy-duty foundation engineering built to withstand 50+ years of durability.',
-      image: '/images/stage_04_structure.jpg',
+      image: '/images/villa_rcc_construction.png',
       badge: 'Quality Milestone',
     },
     {
@@ -60,7 +60,7 @@ export default function PastDeliveredProjectsSection({ onOpenBooking }: PastDeli
       location: 'Whitefield Corridor',
       specs: '2,800 SQ.FT • 3 BHK Garden',
       desc: 'Floor-to-ceiling glass paneling and energy-efficient thermal insulation.',
-      image: '/images/daylight_estate.jpg',
+      image: '/images/bengaluru_daylight_villa.png',
       badge: 'Completed Architecture',
     },
     {
