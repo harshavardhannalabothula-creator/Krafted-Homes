@@ -2,73 +2,85 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Home, Trees, Sparkles, Compass, ArrowRight } from 'lucide-react';
+import { MapPin, Home, Trees, Sparkles, Compass, ArrowRight, Layers } from 'lucide-react';
 
 interface InteractiveMasterplanProps {
   onOpenBooking?: () => void;
 }
 
 export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMasterplanProps) {
-  const [activeMarker, setActiveMarker] = useState<number | null>(null);
+  const [activeMarker, setActiveMarker] = useState<number>(0);
 
-  const markers = [
+  const zones = [
     {
       id: 0,
       num: '01',
-      code: '01 ARRIVAL',
-      title: 'GRAND GATED ENTRANCE & BOULEVARD',
-      badge: '40ft Wide Boulevard & 24/7 RFID Portal',
-      x: 20, // Percentage X
-      y: 68, // Percentage Y
+      code: '01 — ARRIVAL',
+      title: 'Grand Gated Entrance',
+      desc: 'A clear arrival experience with a 40ft wide landscaped boulevard leading smoothly into the community.',
+      highlightTag: 'MAIN ENTRY BOULEVARD',
+      stats: '40ft Wide Boulevard',
+      x: 18, // SVG percentage X
+      y: 70, // SVG percentage Y
     },
     {
       id: 1,
       num: '02',
-      code: '02 VILLAS',
-      title: '189 LUXURY VILLA PLOTS',
-      badge: 'Split-Level 3 & 4 BHK Vastu Residences',
-      x: 42,
+      code: '02 — VILLA NEIGHBOURHOODS',
+      title: 'Thoughtfully Planned Homes',
+      desc: 'Residential clusters arranged around landscape and internal streets with 189 split-level vastu-compliant plots.',
+      highlightTag: '189 VILLA PLOTS',
+      stats: 'North & South Enclaves',
+      x: 44,
       y: 32,
     },
     {
       id: 2,
       num: '03',
-      code: '03 CLUBHOUSE',
-      title: '15,000 SQ.FT CLUBHOUSE',
-      badge: 'Resort Swimming Pool & Wellness Wing',
+      code: '03 — CLUBHOUSE',
+      title: 'Community & Recreation',
+      desc: 'A central destination for recreation, gathering and everyday experiences spanning 15,000 sq.ft with lap pool.',
+      highlightTag: '15,000 SQ.FT CLUBHOUSE',
+      stats: 'Resort Hub & Pool',
       x: 78,
       y: 44,
     },
     {
       id: 3,
       num: '04',
-      code: '04 LANDSCAPE',
-      title: '70% OPEN GREENERY',
-      badge: 'Botanical Gardens & Lotus Reflection Ponds',
+      code: '04 — LANDSCAPE',
+      title: 'Open Green Spaces',
+      desc: 'Gardens, greenery and quiet outdoor spaces woven throughout the 70% open green community.',
+      highlightTag: '70% OPEN GREENERY',
+      stats: 'Botanical Parks & Ponds',
       x: 62,
       y: 76,
     },
     {
       id: 4,
       num: '05',
-      code: '05 WALKWAYS',
-      title: 'PEDESTRIAN TRAILS & JOGGING LOOPS',
-      badge: 'Car-Free Shaded Walkability Network',
+      code: '05 — WALKWAYS',
+      title: 'Connected Everyday Living',
+      desc: 'Pedestrian paths connecting homes, landscape and shared spaces without vehicle interference.',
+      highlightTag: 'PEDESTRIAN TRAILS',
+      stats: 'Car-Free Jogging Loops',
       x: 28,
       y: 22,
     },
   ];
 
-  return (
-    <section id="masterplan" className="w-full bg-white py-6 md:py-9 relative overflow-hidden border-t border-slate-100 text-[#0F172A]">
-      
-      {/* Ambient Background Light */}
-      <div className="absolute top-1/3 right-12 w-80 h-80 bg-orange-100/25 rounded-full blur-3xl pointer-events-none" />
+  const activeZone = zones[activeMarker];
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
+  return (
+    <section id="masterplan" className="w-full bg-white py-6 md:py-10 relative overflow-hidden border-t border-slate-100 text-[#0F172A]">
+      
+      {/* Subtle Ambient Background Light */}
+      <div className="absolute top-1/4 right-10 w-72 h-72 bg-orange-100/30 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-5">
         
         {/* ================================================================= */}
-        {/* COMPACT LEFT-ALIGNED SECTION INTRO                                 */}
+        {/* COMPACT ARCHITECTURAL SECTION HEADER                              */}
         {/* ================================================================= */}
         <div className="max-w-3xl">
           <motion.div 
@@ -88,7 +100,7 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
             transition={{ duration: 0.3, delay: 0.1 }}
             className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-[#0F172A] leading-[1.16] tracking-tight mb-1.5"
           >
-            One Community. <span className="text-[#F97316]">Everything Connected.</span>
+            Designed as a Community. <span className="text-[#F97316]">Planned as a Landscape.</span>
           </motion.h2>
 
           <motion.p 
@@ -98,168 +110,268 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
             transition={{ duration: 0.3, delay: 0.15 }}
             className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed max-w-2xl"
           >
-            Antelia Groves brings villas, landscape, wellness and everyday experiences together across 10 thoughtfully planned acres.
+            Explore how villas, open landscape, roads, gardens, clubhouse spaces and everyday experiences come together across the 10-acre Antelia Groves community.
           </motion.p>
         </div>
 
         {/* ================================================================= */}
-        {/* HERO VISUAL — THE 10-ACRE WORLD PANORAMIC 3D AERIAL MASTERPLAN    */}
+        {/* MAIN ARCHITECTURAL SITE-PLAN DIAGRAM BOARD (CLEAN & NEAT)         */}
         {/* ================================================================= */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.99 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="relative w-full rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-slate-950 group select-none min-h-[360px] sm:min-h-[460px] lg:min-h-[490px]"
-        >
-          {/* Panoramic Aerial Photography */}
-          <img 
-            src="/images/hero_main_aerial.png" 
-            alt="Antelia Groves 10-Acre World Aerial Masterplan"
-            className={`w-full h-full object-cover transition-all duration-700 ease-out ${
-              activeMarker !== null ? 'scale-102 brightness-95' : 'group-hover:scale-101'
-            }`}
-          />
+        <div className="bg-slate-50/90 rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-5 space-y-4">
+          
+          {/* TOP DIAGRAM CONTROL TOOLBAR */}
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-200/80 text-xs">
+            <div className="flex items-center gap-2">
+              <Layers className="w-4 h-4 text-[#F97316]" />
+              <span className="font-extrabold text-[#0F172A] uppercase tracking-wider text-[11px]">
+                10-ACRE SITE PLAN DRAWING
+              </span>
+            </div>
 
-          {/* Dark Overlay Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/15 to-slate-950/30 pointer-events-none" />
-
-          {/* TOP CONCEPT LABEL */}
-          <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between">
-            <span className="bg-slate-950/80 backdrop-blur-md text-white text-[10px] font-extrabold uppercase px-3.5 py-1 rounded-full border border-white/20 tracking-wider">
-              THE 10-ACRE WORLD • PANORAMIC MASTERPLAN
-            </span>
-
-            <span className="bg-[#F97316] text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-xs">
-              RERA APPROVED
-            </span>
+            {/* Zone Selector Pills */}
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+              {zones.map((z) => {
+                const isSelected = activeMarker === z.id;
+                return (
+                  <button
+                    key={z.num}
+                    onClick={() => setActiveMarker(z.id)}
+                    className={`px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider transition-all cursor-pointer shrink-0 ${
+                      isSelected
+                        ? 'bg-[#F97316] text-white shadow-xs'
+                        : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'
+                    }`}
+                  >
+                    {z.num} {z.code.replace(/^\d+\s*—\s*/, '')}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          {/* CINEMATIC JOURNEY LINE OVERLAY (01 ARRIVAL -> 02 VILLAS -> 03 CLUBHOUSE -> 04 LANDSCAPE -> 05 WALKWAYS) */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none z-20" fill="none">
-            <motion.path 
-              d="M 20% 68% L 42% 32% L 78% 44% L 62% 76% L 28% 22%" 
-              stroke="#F97316" 
-              strokeWidth="2" 
-              strokeDasharray="6 4"
-              initial={{ pathLength: 0, opacity: 0 }}
-              whileInView={{ pathLength: 1, opacity: 0.85 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.8, ease: 'easeInOut' }}
-            />
-          </svg>
+          {/* ARCHITECTURAL TOP-DOWN BLUEPRINT CANVAS */}
+          <div className="relative w-full rounded-xl overflow-hidden bg-white border border-slate-200 shadow-inner select-none min-h-[340px] sm:min-h-[420px] lg:min-h-[450px]">
+            
+            {/* VECTOR ARCHITECTURAL SITE PLAN SVG */}
+            <svg className="w-full h-full min-h-[340px] sm:min-h-[420px] lg:min-h-[450px]" viewBox="0 0 1000 560" fill="none">
+              
+              {/* Architectural Grid Pattern */}
+              <defs>
+                <pattern id="cleanArchGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#E2E8F0" strokeWidth="0.7" strokeDasharray="3 3" />
+                </pattern>
+              </defs>
+              <rect width="1000" height="560" fill="url(#cleanArchGrid)" />
 
-          {/* 5 ELEGANT NUMBERED LOCATION MARKERS DIRECTLY ON AERIAL SCENE */}
-          {markers.map((m) => {
-            const isActive = activeMarker === m.id;
+              {/* 10-Acre Perimeter Outer Boundary Drawing */}
+              <path 
+                d="M 90 70 L 890 60 L 930 490 L 110 500 Z" 
+                fill="#FAFAFC" 
+                stroke="#0F172A" 
+                strokeWidth="2.5" 
+              />
 
-            return (
-              <div
-                key={m.num}
-                style={{ left: `${m.x}%`, top: `${m.y}%` }}
-                className="absolute -translate-x-1/2 -translate-y-1/2 z-30"
-              >
-                <div className="relative flex flex-col items-center">
-                  
-                  {/* Numbered Marker Button (White Label + Orange Number) */}
+              {/* Topographic Elevation Curves */}
+              <path d="M 110 150 Q 500 110 880 160" stroke="#CBD5E1" strokeWidth="1" strokeDasharray="4 4" />
+              <path d="M 120 270 Q 480 230 890 280" stroke="#CBD5E1" strokeWidth="1" strokeDasharray="4 4" />
+              <path d="M 100 400 Q 510 370 910 410" stroke="#CBD5E1" strokeWidth="1" strokeDasharray="4 4" />
+
+              {/* GREEN OPEN LANDSCAPE ZONES (70% OPEN) */}
+              <path 
+                d="M 520 330 Q 640 280 740 350 Q 690 450 540 440 Z" 
+                fill={activeMarker === 3 ? '#DCFCE7' : '#F0FDF4'} 
+                stroke={activeMarker === 3 ? '#22C55E' : '#86EFAC'} 
+                strokeWidth={activeMarker === 3 ? '2.5' : '1.5'} 
+                className="transition-colors duration-300"
+              />
+              <path 
+                d="M 210 110 Q 340 100 390 180 Q 280 200 190 160 Z" 
+                fill="#F0FDF4" 
+                stroke="#86EFAC" 
+                strokeWidth="1.5" 
+              />
+              
+              {/* Lotus Reflection Pond */}
+              <path 
+                d="M 610 370 Q 660 350 690 380 Q 650 410 600 390 Z" 
+                fill="#EFF6FF" 
+                stroke="#93C5FD" 
+                strokeWidth="1.5" 
+              />
+
+              {/* 40FT WIDE MAIN BOULEVARD ROAD */}
+              <path 
+                d="M 90 390 L 320 380 L 450 180 L 780 180 L 890 250" 
+                stroke={activeMarker === 0 ? '#FED7AA' : '#E2E8F0'} 
+                strokeWidth="24" 
+                strokeLinecap="round" 
+              />
+              <path 
+                d="M 90 390 L 320 380 L 450 180 L 780 180 L 890 250" 
+                stroke={activeMarker === 0 ? '#F97316' : '#94A3B8'} 
+                strokeWidth="20" 
+                strokeLinecap="round" 
+              />
+              <path 
+                d="M 90 390 L 320 380 L 450 180 L 780 180 L 890 250" 
+                stroke="#FFFFFF" 
+                strokeWidth="2" 
+                strokeDasharray="6 6" 
+              />
+
+              {/* 189 VILLA PLOTS ARCHITECTURAL NEIGHBOURHOOD GRID */}
+              <g stroke="#0F172A" strokeWidth="1.2" fill={activeMarker === 1 ? '#FFEDD5' : '#F8FAFC'}>
+                {/* North Grove Villa Enclaves */}
+                <rect x="360" y="110" width="36" height="46" rx="3" stroke={activeMarker === 1 ? '#F97316' : '#64748B'} />
+                <rect x="402" y="110" width="36" height="46" rx="3" stroke={activeMarker === 1 ? '#F97316' : '#64748B'} />
+                <rect x="444" y="110" width="36" height="46" rx="3" stroke={activeMarker === 1 ? '#F97316' : '#64748B'} />
+                <rect x="486" y="110" width="36" height="46" rx="3" stroke={activeMarker === 1 ? '#F97316' : '#64748B'} />
+                <rect x="528" y="110" width="36" height="46" rx="3" stroke={activeMarker === 1 ? '#F97316' : '#64748B'} />
+
+                {/* South Grove Villa Enclaves */}
+                <rect x="250" y="240" width="40" height="50" rx="3" stroke={activeMarker === 1 ? '#F97316' : '#64748B'} />
+                <rect x="296" y="240" width="40" height="50" rx="3" stroke={activeMarker === 1 ? '#F97316' : '#64748B'} />
+                <rect x="342" y="240" width="40" height="50" rx="3" stroke={activeMarker === 1 ? '#F97316' : '#64748B'} />
+                <rect x="388" y="240" width="40" height="50" rx="3" stroke={activeMarker === 1 ? '#F97316' : '#64748B'} />
+              </g>
+
+              {/* 15,000 SQ.FT CLUBHOUSE BUILDING GEOMETRY */}
+              <rect 
+                x="740" 
+                y="210" 
+                width="120" 
+                height="85" 
+                fill={activeMarker === 2 ? '#F97316' : '#0F172A'} 
+                rx="6" 
+                stroke="#0F172A" 
+                strokeWidth="2"
+                className="transition-colors duration-300"
+              />
+              <rect x="760" y="230" width="80" height="45" fill="#38BDF8" rx="4" />
+              <text x="800" y="257" fill="#FFFFFF" fontSize="10" fontWeight="900" textAnchor="middle">15K CLUBHOUSE</text>
+
+              {/* PEDESTRIAN WALKWAYS ROUTE LINE (05 WALKWAYS) */}
+              <path 
+                d="M 180 390 Q 280 250 430 180 Q 630 220 780 240 Q 630 430 280 120" 
+                stroke="#F97316" 
+                strokeWidth={activeMarker === 4 ? '3' : '2'} 
+                strokeDasharray="6 4" 
+              />
+            </svg>
+
+            {/* 5 NUMBERED INTERACTIVE LOCATION MARKERS */}
+            {zones.map((z) => {
+              const isActive = activeMarker === z.id;
+
+              return (
+                <div
+                  key={z.num}
+                  style={{ left: `${z.x}%`, top: `${z.y}%` }}
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-30"
+                >
                   <button
-                    onClick={() => setActiveMarker(isActive ? null : m.id)}
-                    onMouseEnter={() => setActiveMarker(m.id)}
-                    onMouseLeave={() => setActiveMarker(null)}
+                    onClick={() => setActiveMarker(z.id)}
+                    onMouseEnter={() => setActiveMarker(z.id)}
                     className={`px-2.5 py-1 rounded-full flex items-center gap-1.5 transition-all duration-300 cursor-pointer shadow-md border ${
                       isActive
-                        ? 'bg-[#F97316] text-white border-[#F97316] scale-110 shadow-orange-500/40 ring-4 ring-orange-200/50'
-                        : 'bg-white/95 text-[#0F172A] border-white/80 hover:bg-[#F97316] hover:text-white hover:scale-105'
+                        ? 'bg-[#F97316] text-white border-[#F97316] scale-110 shadow-orange-500/30 ring-4 ring-orange-200'
+                        : 'bg-[#0F172A] text-white border-slate-700 hover:bg-[#F97316]'
                     }`}
                   >
                     <span className={`w-4 h-4 rounded-full flex items-center justify-center font-black text-[10px] ${
                       isActive ? 'bg-white text-[#F97316]' : 'bg-[#F97316] text-white'
                     }`}>
-                      {m.num}
+                      {z.num}
                     </span>
                     <span className="text-[10px] font-extrabold uppercase tracking-wider">
-                      {m.code.replace(/^\d+\s*/, '')}
+                      {z.code.replace(/^\d+\s*—\s*/, '')}
                     </span>
                   </button>
-
-                  {/* Gentle Illuminated Callout Tag when Active */}
-                  <AnimatePresence>
-                    {isActive && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 4, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 4, scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
-                        className="mt-2 bg-slate-950/90 backdrop-blur-md text-white px-3 py-1.5 rounded-lg border border-orange-400/80 shadow-xl whitespace-nowrap text-center pointer-events-none"
-                      >
-                        <div className="text-[9px] font-extrabold text-[#F97316] uppercase tracking-widest">
-                          {m.code}
-                        </div>
-                        <div className="text-[11px] font-extrabold text-white">
-                          {m.title}
-                        </div>
-                        <div className="text-[10px] text-slate-300 font-medium">
-                          {m.badge}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
 
-          {/* ACTIVE HOVER ILLUMINATION BADGE AT BOTTOM LEFT */}
-          <div className="absolute bottom-4 left-4 z-10">
-            {activeMarker !== null ? (
-              <div className="bg-slate-950/90 backdrop-blur-md text-white px-4 py-2.5 rounded-xl border border-orange-400/80 shadow-md max-w-sm">
-                <span className="text-[10px] font-extrabold text-[#F97316] uppercase tracking-wider block">
-                  ✦ {markers[activeMarker].code}
-                </span>
-                <h4 className="text-xs font-extrabold text-white">
-                  {markers[activeMarker].title}
-                </h4>
-                <p className="text-[11px] text-slate-300 font-medium">
-                  {markers[activeMarker].badge}
-                </p>
+            {/* FLOATING MAP LEGEND (BOTTOM RIGHT) */}
+            <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-md p-2.5 rounded-xl border border-slate-200 shadow-sm text-[10px] space-y-1 z-20 hidden sm:block">
+              <div className="font-extrabold text-[#0F172A] uppercase tracking-wider mb-1">
+                ARCHITECTURAL LEGEND
               </div>
-            ) : (
-              <div className="bg-slate-950/75 backdrop-blur-md text-white px-3.5 py-1.5 rounded-full border border-white/20 text-[10px] font-extrabold uppercase tracking-wider flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#F97316] animate-pulse" />
-                <span>Hover markers 01–05 to inspect zones</span>
+              <div className="flex items-center gap-2 text-slate-700 font-semibold">
+                <span className="w-2.5 h-2.5 rounded-xs bg-[#0F172A]" />
+                <span>15K Sq.Ft Clubhouse &amp; Pool</span>
               </div>
-            )}
+              <div className="flex items-center gap-2 text-slate-700 font-semibold">
+                <span className="w-2.5 h-2.5 rounded-xs bg-emerald-100 border border-emerald-400" />
+                <span>70% Open Landscape</span>
+              </div>
+              <div className="flex items-center gap-2 text-slate-700 font-semibold">
+                <span className="w-2.5 h-2.5 rounded-xs bg-orange-100 border border-orange-400" />
+                <span>189 Villa Enclaves</span>
+              </div>
+            </div>
+
           </div>
-        </motion.div>
+
+          {/* ACTIVE ZONE CONNECTED INFORMATION CALLOUT PANEL */}
+          <div className="bg-white rounded-xl p-4 border border-slate-200/90 shadow-2xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#F97316]" />
+                <span className="text-[10px] font-extrabold text-[#F97316] uppercase tracking-wider">
+                  {activeZone.code}
+                </span>
+                <span className="text-[10px] font-extrabold text-slate-400">
+                  • {activeZone.stats}
+                </span>
+              </div>
+
+              <h3 className="text-base sm:text-lg font-extrabold text-[#0F172A] tracking-tight">
+                {activeZone.title}
+              </h3>
+
+              <p className="text-xs text-slate-600 font-medium leading-relaxed max-w-3xl">
+                {activeZone.desc}
+              </p>
+            </div>
+
+            <button
+              onClick={onOpenBooking}
+              className="text-xs font-extrabold text-[#F97316] hover:text-[#EA580C] inline-flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 uppercase tracking-wider bg-orange-50 px-4 py-2 rounded-full border border-orange-200/80"
+            >
+              <span>Explore the Masterplan</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+        </div>
 
         {/* ================================================================= */}
-        {/* COMPACT BOTTOM INFORMATION BAR                                    */}
+        {/* SMALL INFORMATION STRIP BELOW THE MASTERPLAN                      */}
         {/* ================================================================= */}
         <motion.div 
           initial={{ opacity: 0, y: 6 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.3, delay: 0.2 }}
-          className="w-full bg-slate-50 rounded-xl px-4 py-2.5 border border-slate-200/90 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-3"
+          className="w-full bg-slate-50 rounded-xl px-4 py-2.5 border border-slate-200/90 shadow-2xs flex items-center justify-between gap-4"
         >
-          <div className="grid grid-cols-2 sm:flex items-center gap-4 sm:gap-8 text-[11px] font-extrabold text-[#0F172A] uppercase tracking-wider w-full sm:w-auto">
+          <div className="flex items-center justify-between sm:justify-start gap-4 sm:gap-8 text-[11px] font-extrabold text-[#0F172A] uppercase tracking-wider w-full sm:w-auto">
             <div className="flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-[#F97316]" />
               <span>10+ ACRES</span>
-              <span className="text-slate-300 hidden sm:inline">•</span>
+              <span className="text-slate-300 hidden sm:inline">|</span>
             </div>
 
             <div className="flex items-center gap-2">
               <Home className="w-3.5 h-3.5 text-[#F97316]" />
               <span>189 VILLAS</span>
-              <span className="text-slate-300 hidden sm:inline">•</span>
+              <span className="text-slate-300 hidden sm:inline">|</span>
             </div>
 
             <div className="flex items-center gap-2">
               <Trees className="w-3.5 h-3.5 text-[#F97316]" />
               <span>70% OPEN</span>
-              <span className="text-slate-300 hidden sm:inline">•</span>
+              <span className="text-slate-300 hidden sm:inline">|</span>
             </div>
 
             <div className="flex items-center gap-2">
@@ -267,14 +379,6 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
               <span>15K SQ.FT CLUBHOUSE</span>
             </div>
           </div>
-
-          <button
-            onClick={onOpenBooking}
-            className="w-full sm:w-auto text-center py-2 px-4 rounded-full bg-[#F97316] hover:bg-[#EA580C] text-white text-[11px] font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer shrink-0"
-          >
-            <span>EXPLORE THE COMMUNITY</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
         </motion.div>
 
       </div>
