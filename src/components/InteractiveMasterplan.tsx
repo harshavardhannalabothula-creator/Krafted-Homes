@@ -15,21 +15,19 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
     {
       id: 0,
       num: '01',
-      code: '01 — ARRIVAL',
+      tag: 'ARRIVAL',
       title: 'ARRIVAL',
-      subtitle: 'Grand gated entrance & landscaped boulevard',
-      desc: '40ft wide boulevard with 24/7 RFID security portal.',
+      subtitle: 'Grand gated entrance & boulevard with landscaped approach.',
       image: '/images/hero_community.png',
-      x: 20, // percentage X position on masterplan board
-      y: 68, // percentage Y position on masterplan board
+      x: 16, // percentage X position on masterplan board
+      y: 72, // percentage Y position on masterplan board
     },
     {
       id: 1,
       num: '02',
-      code: '02 — VILLA NEIGHBOURHOODS',
+      tag: 'VILLA NEIGHBOURHOODS',
       title: 'VILLA NEIGHBOURHOODS',
-      subtitle: 'Thoughtfully planned villa clusters surrounded by greenery',
-      desc: '189 split-level vastu-compliant 3 & 4 BHK residences.',
+      subtitle: 'Thoughtfully planned villa clusters surrounded by greenery.',
       image: '/images/hero_villa_facade.png',
       x: 42,
       y: 34,
@@ -37,52 +35,47 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
     {
       id: 2,
       num: '03',
-      code: '03 — CLUBHOUSE',
+      tag: 'CLUBHOUSE',
       title: 'CLUBHOUSE',
-      subtitle: 'Community, recreation and wellness destination',
-      desc: '15,000 sq.ft clubhouse with resort swimming pool.',
+      subtitle: '15,000 sq.ft community and wellness destination.',
       image: '/images/hero_resort_clubhouse.png',
-      x: 78,
-      y: 45,
+      x: 74,
+      y: 44,
     },
     {
       id: 3,
       num: '04',
-      code: '04 — OPEN LANDSCAPE',
+      tag: 'OPEN LANDSCAPE',
       title: 'OPEN LANDSCAPE',
-      subtitle: 'Large green spaces, gardens and community areas',
-      desc: '70% open green environment with reflection ponds.',
+      subtitle: '70% open green environment with gardens and community spaces.',
       image: '/images/journey_03_masterplan.jpg',
-      x: 62,
-      y: 76,
+      x: 58,
+      y: 74,
     },
     {
       id: 4,
       num: '05',
-      code: '05 — WALKWAYS',
+      tag: 'WALKWAYS',
       title: 'WALKWAYS',
-      subtitle: 'Connected pedestrian paths through landscape and gardens',
-      desc: 'Car-free walking loops, jogging trails & shaded pergolas.',
+      subtitle: 'Connected pedestrian paths and gardens.',
       image: '/images/clubhouse.jpg',
-      x: 28,
-      y: 22,
+      x: 25,
+      y: 24,
     },
   ];
 
-  const current = guideItems[activeItem];
-
   return (
-    <section id="masterplan" className="w-full bg-white py-6 md:py-8 relative overflow-hidden border-t border-slate-100 text-[#0F172A]">
+    <section id="masterplan" className="w-full bg-white py-8 sm:py-10 text-[#0F172A] relative overflow-hidden border-t border-slate-100">
       
-      {/* Background Ambient Glow */}
+      {/* Background Subtle Ambient Glow */}
       <div className="absolute top-1/4 right-10 w-72 h-72 bg-orange-100/30 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
         
         {/* ================================================================= */}
         {/* TOP ROW: HEADING & TOP-RIGHT ARCHITECTURAL COMPASS / STATS         */}
         {/* ================================================================= */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-3 border-b border-slate-200/80">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-4 border-b border-slate-200/80">
           
           {/* LEFT: INTRO HEADING */}
           <div className="max-w-2xl">
@@ -91,7 +84,7 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-orange-50 text-[#F97316] text-[10px] font-extrabold uppercase tracking-widest border border-orange-200/80 mb-2"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 text-[#F97316] text-[11px] font-extrabold uppercase tracking-widest border border-orange-200/80 mb-2.5"
             >
               <span>02 — THE MASTERPLAN</span>
             </motion.div>
@@ -101,7 +94,7 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 0.1 }}
-              className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold leading-[1.16] tracking-tight mb-1.5"
+              className="text-3xl sm:text-4xl lg:text-[38px] font-extrabold leading-[1.15] tracking-tight mb-2"
             >
               <span className="text-[#0F172A] block">Designed as a Community.</span>
               <span className="text-[#F97316] block">Planned as a Landscape.</span>
@@ -112,29 +105,44 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 0.15 }}
-              className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed"
+              className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed max-w-xl"
             >
               Explore how 10 acres of villas, open landscape, roads, gardens and shared spaces come together as one connected living environment.
             </motion.p>
           </div>
 
           {/* RIGHT: COMPACT ARCHITECTURAL COMPASS & QUICK STATS */}
-          <div className="flex items-center gap-4 shrink-0 bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-            <div className="flex items-center gap-2 text-xs font-extrabold text-[#0F172A]">
-              <Compass className="w-4 h-4 text-[#F97316] animate-spin-slow" />
-              <div className="flex flex-col text-[10px] leading-tight">
-                <span className="text-[#F97316] font-black">N ✦ 10 ACRES</span>
-                <span className="text-slate-500 font-bold">189 VILLAS</span>
-              </div>
+          <div className="flex items-center gap-4 sm:gap-6 shrink-0 pt-2 lg:pt-0">
+            {/* Compass Icon */}
+            <div className="relative w-10 h-10 rounded-full border border-slate-300 flex items-center justify-center text-slate-700 bg-white shadow-2xs shrink-0">
+              <Compass className="w-5 h-5 text-[#0F172A] animate-spin-slow" />
+              <span className="absolute -top-1.5 text-[9px] font-black text-[#F97316]">N</span>
             </div>
 
-            <div className="h-6 w-px bg-slate-200" />
+            <div className="h-8 w-px bg-slate-200" />
 
+            {/* 10 ACRES */}
+            <div className="text-center">
+              <span className="text-lg font-black text-[#0F172A] block leading-none">10</span>
+              <span className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider">ACRES</span>
+            </div>
+
+            <div className="h-8 w-px bg-slate-200" />
+
+            {/* 189 VILLAS */}
+            <div className="text-center">
+              <span className="text-lg font-black text-[#0F172A] block leading-none">189</span>
+              <span className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider">VILLAS</span>
+            </div>
+
+            <div className="h-8 w-px bg-slate-200 hidden sm:block" />
+
+            {/* EXPLORE THE MASTERPLAN BUTTON */}
             <button
               onClick={onOpenBooking}
-              className="text-[11px] font-extrabold text-[#F97316] hover:text-[#EA580C] inline-flex items-center gap-1 cursor-pointer uppercase tracking-wider bg-white px-3 py-1.5 rounded-full border border-orange-200 shadow-2xs hover:shadow-xs transition-colors"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-[#F97316] hover:text-[#EA580C] uppercase tracking-wider bg-white px-4 py-2 rounded-full border border-orange-200 shadow-2xs hover:shadow-xs transition-colors cursor-pointer"
             >
-              <span>EXPLORE</span>
+              <span>EXPLORE THE MASTERPLAN</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -142,41 +150,30 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
         </div>
 
         {/* ================================================================= */}
-        {/* MAIN COMPOSITION (DESKTOP: 72% MASTERPLAN BOARD + 28% GUIDE PANEL) */}
+        {/* MAIN CONTENT ROW (LEFT: 3D MASTERPLAN VISUAL, RIGHT: GUIDE PANEL) */}
         {/* ================================================================= */}
-        <div className="flex flex-col lg:flex-row items-stretch gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           
-          {/* LEFT 72% — 3D REALISTIC MASTERPLAN VISUALIZATION BOARD */}
-          <div className="w-full lg:w-[72%] relative rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-slate-950 group select-none min-h-[340px] sm:min-h-[420px] lg:min-h-[450px] flex flex-col justify-between p-4">
+          {/* LEFT COLUMN (Span 8) — 3D ISOMETRIC AERIAL MASTERPLAN VISUAL */}
+          <div className="lg:col-span-8 relative rounded-2xl overflow-hidden border border-slate-200/90 bg-slate-900 shadow-sm aspect-[16/10] sm:aspect-[16/9] lg:aspect-[16/10] group select-none">
             
-            {/* Aerial Masterplan Render */}
+            {/* Aerial Masterplan Cutout Visual Rendering */}
             <img 
               src="/images/hero_main_aerial.png" 
-              alt="Antelia Groves 10-Acre Masterplan Visual Presentation" 
-              className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-700 ease-out"
+              alt="Antelia Groves 3D Masterplan Layout" 
+              className="w-full h-full object-cover object-center group-hover:scale-101 transition-transform duration-700 ease-out"
             />
 
             {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-slate-950/40 pointer-events-none" />
-
-            {/* Top Board Tag */}
-            <div className="relative z-10 flex items-center justify-between">
-              <span className="bg-slate-950/80 backdrop-blur-md text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full border border-white/20">
-                10-ACRE AERIAL MASTERPLAN VISUALIZATION
-              </span>
-
-              <span className="bg-[#F97316] text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-2xs">
-                RERA APPROVED
-              </span>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-slate-950/20 pointer-events-none" />
 
             {/* SUBTLE SVG CONNECTOR ROUTE LINE (01 -> 02 -> 03 -> 04 -> 05) */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none z-20" fill="none">
               <motion.path 
-                d="M 20% 68% L 42% 34% L 78% 45% L 62% 76% L 28% 22%" 
+                d="M 16% 72% Q 30% 65% 42% 34% Q 55% 42% 74% 44% Q 65% 65% 58% 74% Q 40% 50% 25% 24%" 
                 stroke="#F97316" 
-                strokeWidth="2" 
-                strokeDasharray="5 4"
+                strokeWidth="2.5" 
+                strokeDasharray="6 4"
                 initial={{ pathLength: 0 }}
                 whileInView={{ pathLength: 1 }}
                 viewport={{ once: true }}
@@ -184,9 +181,9 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
               />
             </svg>
 
-            {/* 5 ELEGANT NUMBERED ORANGE MARKERS PLACED DIRECTLY OVER RELEVANT LOCATIONS */}
-            {guideItems.map((item) => {
-              const isActive = activeItem === item.id;
+            {/* 5 NUMBERED PILL MARKERS DIRECTLY ON MASTERPLAN AERIAL VISUAL */}
+            {guideItems.map((item, idx) => {
+              const isActive = activeItem === idx;
 
               return (
                 <div
@@ -194,144 +191,94 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
                   style={{ left: `${item.x}%`, top: `${item.y}%` }}
                   className="absolute -translate-x-1/2 -translate-y-1/2 z-30"
                 >
-                  <div className="relative flex flex-col items-center">
-                    
-                    {/* Marker Button with Orange Circle + White Label + Navy Text */}
-                    <button
-                      onClick={() => setActiveItem(item.id)}
-                      onMouseEnter={() => setActiveItem(item.id)}
-                      className={`px-2.5 py-1 rounded-full flex items-center gap-1.5 transition-all duration-300 cursor-pointer shadow-md border ${
-                        isActive
-                          ? 'bg-[#F97316] text-white border-[#F97316] scale-110 shadow-orange-500/30 ring-4 ring-orange-200'
-                          : 'bg-white/95 text-[#0F172A] border-white/80 hover:bg-[#F97316] hover:text-white hover:scale-105'
-                      }`}
-                    >
-                      <span className={`w-4 h-4 rounded-full flex items-center justify-center font-black text-[10px] ${
-                        isActive ? 'bg-white text-[#F97316]' : 'bg-[#F97316] text-white'
-                      }`}>
-                        {item.num}
-                      </span>
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider">
-                        {item.title}
-                      </span>
-                    </button>
-
-                    {/* Popover Callout Tooltip */}
-                    <AnimatePresence>
-                      {isActive && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 5, scale: 0.95 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 5, scale: 0.95 }}
-                          transition={{ duration: 0.2 }}
-                          className={`absolute z-40 w-56 bg-white rounded-xl p-3 border border-slate-200 shadow-xl pointer-events-auto ${
-                            item.x > 60 ? 'right-0 text-right' : 'left-0 text-left'
-                          } ${item.y > 60 ? 'bottom-9' : 'top-9'}`}
-                        >
-                          <div className="text-[10px] font-extrabold text-[#F97316] uppercase tracking-wider mb-0.5">
-                            {item.code}
-                          </div>
-                          <h4 className="text-xs font-extrabold text-[#0F172A] mb-1">
-                            {item.subtitle}
-                          </h4>
-                          <p className="text-[11px] text-slate-600 font-medium leading-relaxed">
-                            {item.desc}
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-
-                  </div>
+                  <button
+                    onClick={() => setActiveItem(idx)}
+                    onMouseEnter={() => setActiveItem(idx)}
+                    className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider transition-all duration-300 shadow-md cursor-pointer border ${
+                      isActive
+                        ? 'bg-[#F97316] text-white border-[#F97316] scale-110 shadow-orange-500/40 ring-4 ring-orange-200'
+                        : 'bg-white text-[#0F172A] border-white/90 hover:bg-[#F97316] hover:text-white'
+                    }`}
+                  >
+                    <span className={`w-4 h-4 rounded-full flex items-center justify-center font-black text-[10px] ${
+                      isActive ? 'bg-white text-[#F97316]' : 'bg-[#F97316] text-white'
+                    }`}>
+                      {item.num}
+                    </span>
+                    <span className="truncate">{item.tag}</span>
+                  </button>
                 </div>
               );
             })}
 
-            {/* Bottom Floating Visual Caption */}
-            <div className="relative z-10 bg-slate-950/85 backdrop-blur-md p-3 rounded-xl border border-white/15 text-white mt-auto max-w-sm flex items-center justify-between">
-              <div>
-                <span className="text-[9px] font-extrabold text-[#F97316] uppercase tracking-wider block">
-                  SELECTED ZONE
-                </span>
-                <span className="text-xs font-extrabold text-white">
-                  {current.code} — {current.subtitle}
-                </span>
-              </div>
-
-              <button
-                onClick={onOpenBooking}
-                className="text-[10px] font-extrabold text-[#F97316] hover:text-white uppercase tracking-wider inline-flex items-center gap-1 transition-colors cursor-pointer bg-white/10 px-2.5 py-1 rounded-full border border-white/20"
-              >
-                <span>EXPLORE</span>
-                <ArrowRight className="w-3 h-3" />
-              </button>
+            {/* Active Marker Floating Caption */}
+            <div className="absolute bottom-3 left-3 z-10 bg-slate-950/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 text-white flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#F97316] animate-pulse" />
+              <span className="text-[11px] font-extrabold uppercase tracking-wider">
+                0{activeItem + 1} — {guideItems[activeItem].tag}
+              </span>
             </div>
 
           </div>
 
-          {/* RIGHT 28% — NARROW MASTERPLAN GUIDE PANEL */}
-          <div className="w-full lg:w-[28%] bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
-                <span className="text-[11px] font-extrabold text-[#0F172A] uppercase tracking-wider">
-                  MASTERPLAN GUIDE
-                </span>
-                <span className="text-[10px] font-extrabold text-[#F97316] uppercase tracking-wider">
-                  01 — 05
-                </span>
-              </div>
+          {/* RIGHT COLUMN (Span 4) — MASTERPLAN GUIDE PANEL */}
+          <div className="lg:col-span-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs space-y-3">
+            
+            <div className="flex items-center justify-between pb-2 border-b border-slate-200">
+              <span className="text-xs font-extrabold text-[#0F172A] uppercase tracking-wider">
+                MASTERPLAN GUIDE
+              </span>
+              <span className="text-[10px] font-extrabold text-[#F97316] uppercase tracking-wider">
+                01 — 05
+              </span>
+            </div>
 
-              {/* 5 COMPACT GUIDE LIST ITEMS WITH PREMIUM THUMBNAILS */}
-              <div className="space-y-2">
-                {guideItems.map((item) => {
-                  const isSelected = activeItem === item.id;
+            {/* 5 COMPACT GUIDE ITEMS WITH THUMBNAILS */}
+            <div className="space-y-2.5">
+              {guideItems.map((item, idx) => {
+                const isSelected = activeItem === idx;
 
-                  return (
-                    <div
-                      key={item.num}
-                      onClick={() => setActiveItem(item.id)}
-                      onMouseEnter={() => setActiveItem(item.id)}
-                      className={`p-2.5 rounded-xl border transition-all duration-300 cursor-pointer flex items-center gap-3 ${
-                        isSelected 
-                          ? 'bg-white border-[#F97316] shadow-sm ring-1 ring-[#F97316]' 
-                          : 'bg-white/60 hover:bg-white border-slate-200/80 hover:border-slate-300'
-                      }`}
-                    >
-                      {/* Premium Thumbnail */}
-                      <img 
-                        src={item.image} 
-                        alt={item.title} 
-                        className="w-11 h-11 rounded-lg object-cover shrink-0 border border-slate-200"
-                      />
+                return (
+                  <div
+                    key={item.num}
+                    onClick={() => setActiveItem(idx)}
+                    onMouseEnter={() => setActiveItem(idx)}
+                    className={`p-2.5 rounded-xl border transition-all duration-300 cursor-pointer flex items-center gap-3 ${
+                      isSelected 
+                        ? 'bg-white border-[#F97316] shadow-sm ring-1 ring-[#F97316]' 
+                        : 'bg-slate-50/70 hover:bg-white border-slate-200/80 hover:border-slate-300'
+                    }`}
+                  >
+                    {/* Thumbnail Image */}
+                    <img 
+                      src={item.image} 
+                      alt={item.title} 
+                      className="w-14 h-12 rounded-lg object-cover shrink-0 border border-slate-200"
+                    />
 
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-1.5 mb-0.5">
-                          <span className={`text-[10px] font-black ${
-                            isSelected ? 'text-[#F97316]' : 'text-slate-400'
-                          }`}>
-                            {item.num}
-                          </span>
-                          <span className={`text-[11px] font-extrabold uppercase tracking-tight truncate ${
-                            isSelected ? 'text-[#F97316]' : 'text-[#0F172A]'
-                          }`}>
-                            {item.title}
-                          </span>
-                        </div>
-
-                        <p className="text-[10px] text-slate-500 font-medium leading-tight line-clamp-1">
-                          {item.subtitle}
-                        </p>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-1.5 mb-0.5">
+                        <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-black shrink-0 ${
+                          isSelected ? 'bg-[#F97316] text-white' : 'bg-orange-50 text-[#F97316]'
+                        }`}>
+                          {item.num}
+                        </span>
+                        <span className={`text-[11px] font-extrabold uppercase tracking-tight truncate ${
+                          isSelected ? 'text-[#F97316]' : 'text-[#0F172A]'
+                        }`}>
+                          {item.title}
+                        </span>
                       </div>
+
+                      <p className="text-[10px] text-slate-500 font-semibold leading-tight line-clamp-2">
+                        {item.subtitle}
+                      </p>
                     </div>
-                  );
-                })}
-              </div>
+                  </div>
+                );
+              })}
             </div>
 
-            {/* Bottom Helper Note */}
-            <div className="pt-3 mt-3 border-t border-slate-200/80 text-[10px] font-semibold text-slate-500 flex items-center justify-between">
-              <span>Hover markers to inspect zones</span>
-              <span className="text-[#F97316] font-bold">5 KEY ZONES</span>
-            </div>
           </div>
 
         </div>
@@ -339,59 +286,64 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
         {/* ================================================================= */}
         {/* BOTTOM HORIZONTAL STATISTICS STRIP                                */}
         {/* ================================================================= */}
-        <motion.div 
-          initial={{ opacity: 0, y: 6 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: 0.2 }}
-          className="w-full bg-slate-50 rounded-xl px-4 py-3 border border-slate-200/90 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4"
-        >
-          <div className="grid grid-cols-2 sm:grid-cols-4 items-center gap-4 sm:gap-8 w-full sm:w-auto">
-            <div>
-              <div className="text-xs sm:text-sm font-extrabold text-[#0F172A] tracking-tight">
-                <span className="text-[#F97316]">10+</span> ACRES
+        <div className="w-full bg-slate-50/90 rounded-2xl p-3 sm:p-4 border border-slate-200/90 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 items-center gap-4 sm:gap-6 w-full sm:w-auto">
+            
+            {/* 10+ ACRES */}
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200/80 flex items-center justify-center text-[#F97316] shrink-0">
+                <MapPin className="w-4 h-4" />
               </div>
-              <div className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider">
-                Total Project Area
+              <div>
+                <div className="text-xs sm:text-sm font-black text-[#0F172A] tracking-tight">10+ ACRES</div>
+                <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider">Total Project Area</div>
               </div>
             </div>
 
-            <div>
-              <div className="text-xs sm:text-sm font-extrabold text-[#0F172A] tracking-tight">
-                <span className="text-[#F97316]">189</span> VILLAS
+            {/* 189 VILLAS */}
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200/80 flex items-center justify-center text-[#F97316] shrink-0">
+                <Home className="w-4 h-4" />
               </div>
-              <div className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider">
-                Premium Residences
-              </div>
-            </div>
-
-            <div>
-              <div className="text-xs sm:text-sm font-extrabold text-[#0F172A] tracking-tight">
-                <span className="text-[#F97316]">70%</span> OPEN
-              </div>
-              <div className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider">
-                Green &amp; Landscape
+              <div>
+                <div className="text-xs sm:text-sm font-black text-[#0F172A] tracking-tight">189 VILLAS</div>
+                <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider">Premium Residences</div>
               </div>
             </div>
 
-            <div>
-              <div className="text-xs sm:text-sm font-extrabold text-[#0F172A] tracking-tight">
-                <span className="text-[#F97316]">15K</span> SQ.FT
+            {/* 70% OPEN */}
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200/80 flex items-center justify-center text-[#F97316] shrink-0">
+                <Trees className="w-4 h-4" />
               </div>
-              <div className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider">
-                Clubhouse &amp; Wellness
+              <div>
+                <div className="text-xs sm:text-sm font-black text-[#0F172A] tracking-tight">70% OPEN</div>
+                <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider">Green &amp; Landscape</div>
               </div>
             </div>
+
+            {/* 15K SQ.FT CLUBHOUSE */}
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200/80 flex items-center justify-center text-[#F97316] shrink-0">
+                <Sparkles className="w-4 h-4" />
+              </div>
+              <div>
+                <div className="text-xs sm:text-sm font-black text-[#0F172A] tracking-tight">15K SQ.FT CLUBHOUSE</div>
+                <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider">Recreation &amp; Wellness</div>
+              </div>
+            </div>
+
           </div>
 
+          {/* RIGHT LINK */}
           <button
             onClick={onOpenBooking}
-            className="text-xs font-extrabold text-[#F97316] hover:text-[#EA580C] inline-flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 uppercase tracking-wider bg-white px-4 py-2 rounded-full border border-orange-200 shadow-2xs hover:shadow-xs"
+            className="text-xs font-black text-[#F97316] hover:text-[#EA580C] inline-flex items-center gap-1.5 transition-colors cursor-pointer uppercase tracking-wider bg-white px-4 py-2 rounded-full border border-orange-200 shadow-2xs hover:shadow-xs shrink-0"
           >
             <span>EXPLORE THE MASTERPLAN</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
-        </motion.div>
+        </div>
 
       </div>
     </section>
