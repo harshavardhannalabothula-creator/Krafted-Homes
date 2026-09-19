@@ -2,89 +2,74 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Home, Trees, Sparkles, ArrowRight, Compass } from 'lucide-react';
+import { MapPin, Home, Trees, Sparkles, Compass, ArrowRight } from 'lucide-react';
 
 interface InteractiveMasterplanProps {
   onOpenBooking?: () => void;
 }
 
 export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMasterplanProps) {
-  const [activeItem, setActiveItem] = useState<number>(0);
+  const [activeMarker, setActiveMarker] = useState<number | null>(null);
 
-  const guideItems = [
+  const markers = [
     {
       id: 0,
       num: '01',
-      code: '01 — ARRIVAL',
-      title: 'ARRIVAL',
-      subtitle: 'Grand gated entrance & main boulevard',
-      desc: '40ft wide boulevard with 24/7 RFID security entrance & visitor plaza.',
-      image: '/images/hero_community.png',
-      x: 20, // percentage X position on masterplan board
-      y: 68, // percentage Y position on masterplan board
-      icon: MapPin,
+      code: '01 ARRIVAL',
+      title: 'GRAND GATED ENTRANCE & BOULEVARD',
+      badge: '40ft Wide Boulevard & 24/7 RFID Portal',
+      x: 20, // Percentage X
+      y: 68, // Percentage Y
     },
     {
       id: 1,
       num: '02',
-      code: '02 — VILLA NEIGHBOURHOODS',
-      title: 'VILLA NEIGHBOURHOODS',
-      subtitle: 'Private villa clusters surrounded by greenery',
-      desc: '189 split-level vastu-compliant 3 & 4 BHK luxury residences.',
-      image: '/images/hero_villa_facade.png',
+      code: '02 VILLAS',
+      title: '189 LUXURY VILLA PLOTS',
+      badge: 'Split-Level 3 & 4 BHK Vastu Residences',
       x: 42,
       y: 32,
-      icon: Home,
     },
     {
       id: 2,
       num: '03',
-      code: '03 — CLUBHOUSE',
-      title: 'CLUBHOUSE',
-      subtitle: '15,000 sq.ft community & wellness destination',
-      desc: 'Resort swimming pool, banquet hall, fitness wing & café terrace.',
-      image: '/images/hero_resort_clubhouse.png',
+      code: '03 CLUBHOUSE',
+      title: '15,000 SQ.FT CLUBHOUSE',
+      badge: 'Resort Swimming Pool & Wellness Wing',
       x: 78,
       y: 44,
-      icon: Sparkles,
     },
     {
       id: 3,
       num: '04',
-      code: '04 — OPEN LANDSCAPE',
-      title: 'OPEN LANDSCAPE',
-      subtitle: '70% open green environment',
-      desc: 'Central botanical parks, lotus reflection ponds & natural buffers.',
-      image: '/images/journey_03_masterplan.jpg',
+      code: '04 LANDSCAPE',
+      title: '70% OPEN GREENERY',
+      badge: 'Botanical Gardens & Lotus Reflection Ponds',
       x: 62,
       y: 76,
-      icon: Trees,
     },
     {
       id: 4,
       num: '05',
-      code: '05 — WALKWAYS',
-      title: 'WALKWAYS',
-      subtitle: 'Connected pedestrian paths & gardens',
-      desc: 'Car-free walking loops, rubberized jogging tracks & shaded pergolas.',
-      image: '/images/clubhouse.jpg',
+      code: '05 WALKWAYS',
+      title: 'PEDESTRIAN TRAILS & JOGGING LOOPS',
+      badge: 'Car-Free Shaded Walkability Network',
       x: 28,
       y: 22,
-      icon: Compass,
     },
   ];
 
-  const current = guideItems[activeItem];
-
   return (
-    <section id="masterplan" className="w-full bg-white py-6 md:py-8 relative overflow-hidden border-t border-slate-100">
+    <section id="masterplan" className="w-full bg-white py-6 md:py-9 relative overflow-hidden border-t border-slate-100 text-[#0F172A]">
       
-      {/* Background Subtle Ambient Light */}
-      <div className="absolute top-1/4 right-10 w-72 h-72 bg-orange-100/30 rounded-full blur-3xl pointer-events-none" />
+      {/* Ambient Background Light */}
+      <div className="absolute top-1/3 right-12 w-80 h-80 bg-orange-100/25 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
         
-        {/* COMPACT SECTION HEADER & SUBTEXT */}
+        {/* ================================================================= */}
+        {/* COMPACT LEFT-ALIGNED SECTION INTRO                                 */}
+        {/* ================================================================= */}
         <div className="max-w-3xl">
           <motion.div 
             initial={{ opacity: 0, y: 6 }}
@@ -103,7 +88,7 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
             transition={{ duration: 0.3, delay: 0.1 }}
             className="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-[#0F172A] leading-[1.16] tracking-tight mb-1.5"
           >
-            Designed as a Community. <span className="text-[#F97316]">Planned as a Landscape.</span>
+            One Community. <span className="text-[#F97316]">Everything Connected.</span>
           </motion.h2>
 
           <motion.p 
@@ -113,214 +98,143 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
             transition={{ duration: 0.3, delay: 0.15 }}
             className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed max-w-2xl"
           >
-            Explore how villas, open landscapes, roads, gardens, the clubhouse and community spaces come together across the 10-acre Antelia Groves community.
+            Antelia Groves brings villas, landscape, wellness and everyday experiences together across 10 thoughtfully planned acres.
           </motion.p>
         </div>
 
         {/* ================================================================= */}
-        {/* MAIN COMPOSITION (DESKTOP: 72% MASTERPLAN BOARD + 28% GUIDE PANEL) */}
+        {/* HERO VISUAL — THE 10-ACRE WORLD PANORAMIC 3D AERIAL MASTERPLAN    */}
         {/* ================================================================= */}
-        <div className="flex flex-col lg:flex-row items-stretch gap-4">
-          
-          {/* LEFT 72% — TOP-DOWN 3D REALISTIC MASTERPLAN VISUAL BOARD */}
-          <div className="w-full lg:w-[72%] relative rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-slate-950 group select-none min-h-[340px] sm:min-h-[420px] lg:min-h-[450px] flex flex-col justify-between p-4">
-            
-            {/* Base Aerial Architectural Visual */}
-            <img 
-              src="/images/hero_main_aerial.png" 
-              alt="Antelia Groves 10-Acre Masterplan Layout" 
-              className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-700 ease-out"
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.99 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative w-full rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-slate-950 group select-none min-h-[360px] sm:min-h-[460px] lg:min-h-[490px]"
+        >
+          {/* Panoramic Aerial Photography */}
+          <img 
+            src="/images/hero_main_aerial.png" 
+            alt="Antelia Groves 10-Acre World Aerial Masterplan"
+            className={`w-full h-full object-cover transition-all duration-700 ease-out ${
+              activeMarker !== null ? 'scale-102 brightness-95' : 'group-hover:scale-101'
+            }`}
+          />
+
+          {/* Dark Overlay Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/15 to-slate-950/30 pointer-events-none" />
+
+          {/* TOP CONCEPT LABEL */}
+          <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between">
+            <span className="bg-slate-950/80 backdrop-blur-md text-white text-[10px] font-extrabold uppercase px-3.5 py-1 rounded-full border border-white/20 tracking-wider">
+              THE 10-ACRE WORLD • PANORAMIC MASTERPLAN
+            </span>
+
+            <span className="bg-[#F97316] text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-xs">
+              RERA APPROVED
+            </span>
+          </div>
+
+          {/* CINEMATIC JOURNEY LINE OVERLAY (01 ARRIVAL -> 02 VILLAS -> 03 CLUBHOUSE -> 04 LANDSCAPE -> 05 WALKWAYS) */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none z-20" fill="none">
+            <motion.path 
+              d="M 20% 68% L 42% 32% L 78% 44% L 62% 76% L 28% 22%" 
+              stroke="#F97316" 
+              strokeWidth="2" 
+              strokeDasharray="6 4"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 0.85 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.8, ease: 'easeInOut' }}
             />
+          </svg>
 
-            {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-slate-950/40 pointer-events-none" />
+          {/* 5 ELEGANT NUMBERED LOCATION MARKERS DIRECTLY ON AERIAL SCENE */}
+          {markers.map((m) => {
+            const isActive = activeMarker === m.id;
 
-            {/* Top Board Tag */}
-            <div className="relative z-10 flex items-center justify-between">
-              <span className="bg-slate-950/80 backdrop-blur-md text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full border border-white/20">
-                10-ACRE MASTERPLAN • REALISTIC TOP-DOWN VIEW
-              </span>
-
-              <span className="bg-[#F97316] text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-xs">
-                RERA APPROVED
-              </span>
-            </div>
-
-            {/* Subtle On-Map Zone Labels */}
-            <div className="absolute inset-0 pointer-events-none z-10 p-5 flex flex-col justify-between">
-              <div className="mt-10 flex items-center justify-between">
-                <span className={`text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded backdrop-blur-xs transition-colors ${
-                  activeItem === 0 ? 'bg-[#F97316] text-white' : 'bg-slate-950/70 text-slate-300 border border-white/10'
-                }`}>
-                  MAIN GATED ENTRY
-                </span>
-                <span className={`text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded backdrop-blur-xs transition-colors ${
-                  activeItem === 1 ? 'bg-[#F97316] text-white' : 'bg-slate-950/70 text-slate-300 border border-white/10'
-                }`}>
-                  NORTH &amp; SOUTH VILLA GROVES
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between mb-8">
-                <span className={`text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded backdrop-blur-xs transition-colors ${
-                  activeItem === 3 ? 'bg-[#F97316] text-white' : 'bg-slate-950/70 text-slate-300 border border-white/10'
-                }`}>
-                  70% OPEN GREENERY
-                </span>
-                <span className={`text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded backdrop-blur-xs transition-colors ${
-                  activeItem === 2 ? 'bg-[#F97316] text-white' : 'bg-slate-950/70 text-slate-300 border border-white/10'
-                }`}>
-                  15K SQ.FT CLUBHOUSE
-                </span>
-              </div>
-            </div>
-
-            {/* 5 ELEGANT NUMBERED ORANGE MARKERS DIRECTLY ON MASTERPLAN */}
-            {guideItems.map((item) => {
-              const isActive = activeItem === item.id;
-
-              return (
-                <div
-                  key={item.num}
-                  style={{ left: `${item.x}%`, top: `${item.y}%` }}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 z-30"
-                >
+            return (
+              <div
+                key={m.num}
+                style={{ left: `${m.x}%`, top: `${m.y}%` }}
+                className="absolute -translate-x-1/2 -translate-y-1/2 z-30"
+              >
+                <div className="relative flex flex-col items-center">
+                  
+                  {/* Numbered Marker Button (White Label + Orange Number) */}
                   <button
-                    onClick={() => setActiveItem(item.id)}
-                    onMouseEnter={() => setActiveItem(item.id)}
-                    className={`relative w-7 h-7 rounded-full flex items-center justify-center font-black text-xs transition-all duration-300 cursor-pointer ${
-                      isActive 
-                        ? 'bg-[#F97316] text-white scale-125 shadow-lg ring-4 ring-orange-200' 
-                        : 'bg-[#0F172A] text-white hover:bg-[#F97316] hover:scale-110 shadow-md border-2 border-white'
+                    onClick={() => setActiveMarker(isActive ? null : m.id)}
+                    onMouseEnter={() => setActiveMarker(m.id)}
+                    onMouseLeave={() => setActiveMarker(null)}
+                    className={`px-2.5 py-1 rounded-full flex items-center gap-1.5 transition-all duration-300 cursor-pointer shadow-md border ${
+                      isActive
+                        ? 'bg-[#F97316] text-white border-[#F97316] scale-110 shadow-orange-500/40 ring-4 ring-orange-200/50'
+                        : 'bg-white/95 text-[#0F172A] border-white/80 hover:bg-[#F97316] hover:text-white hover:scale-105'
                     }`}
                   >
-                    <span>{item.num}</span>
-
-                    {isActive && (
-                      <span className="absolute inset-0 rounded-full bg-[#F97316] animate-ping opacity-40 pointer-events-none" />
-                    )}
+                    <span className={`w-4 h-4 rounded-full flex items-center justify-center font-black text-[10px] ${
+                      isActive ? 'bg-white text-[#F97316]' : 'bg-[#F97316] text-white'
+                    }`}>
+                      {m.num}
+                    </span>
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider">
+                      {m.code.replace(/^\d+\s*/, '')}
+                    </span>
                   </button>
 
-                  {/* Connected Information Callout Tooltip */}
+                  {/* Gentle Illuminated Callout Tag when Active */}
                   <AnimatePresence>
                     {isActive && (
                       <motion.div
-                        initial={{ opacity: 0, y: 5, scale: 0.95 }}
+                        initial={{ opacity: 0, y: 4, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 5, scale: 0.95 }}
+                        exit={{ opacity: 0, y: 4, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className={`absolute z-40 w-56 bg-white rounded-xl p-3 border border-slate-200 shadow-xl pointer-events-auto ${
-                          item.x > 60 ? 'right-0 text-right' : 'left-0 text-left'
-                        } ${item.y > 60 ? 'bottom-9' : 'top-9'}`}
+                        className="mt-2 bg-slate-950/90 backdrop-blur-md text-white px-3 py-1.5 rounded-lg border border-orange-400/80 shadow-xl whitespace-nowrap text-center pointer-events-none"
                       >
-                        <div className="text-[10px] font-extrabold text-[#F97316] uppercase tracking-wider mb-0.5">
-                          {item.code}
+                        <div className="text-[9px] font-extrabold text-[#F97316] uppercase tracking-widest">
+                          {m.code}
                         </div>
-                        <h4 className="text-xs font-extrabold text-[#0F172A] mb-1">
-                          {item.title}
-                        </h4>
-                        <p className="text-[11px] text-slate-600 font-medium leading-relaxed">
-                          {item.subtitle}
-                        </p>
+                        <div className="text-[11px] font-extrabold text-white">
+                          {m.title}
+                        </div>
+                        <div className="text-[10px] text-slate-300 font-medium">
+                          {m.badge}
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
+
                 </div>
-              );
-            })}
-
-            {/* Bottom Floating Visual Caption */}
-            <div className="relative z-10 bg-slate-950/85 backdrop-blur-md p-3 rounded-xl border border-white/15 text-white mt-auto max-w-sm flex items-center justify-between">
-              <div>
-                <span className="text-[9px] font-extrabold text-[#F97316] uppercase tracking-wider block">
-                  SELECTED ZONE
-                </span>
-                <span className="text-xs font-extrabold text-white">
-                  {current.code} — {current.title}
-                </span>
               </div>
+            );
+          })}
 
-              <button
-                onClick={onOpenBooking}
-                className="text-[10px] font-extrabold text-[#F97316] hover:text-white uppercase tracking-wider inline-flex items-center gap-1 transition-colors cursor-pointer bg-white/10 px-2.5 py-1 rounded-full border border-white/20"
-              >
-                <span>EXPLORE</span>
-                <ArrowRight className="w-3 h-3" />
-              </button>
-            </div>
-
+          {/* ACTIVE HOVER ILLUMINATION BADGE AT BOTTOM LEFT */}
+          <div className="absolute bottom-4 left-4 z-10">
+            {activeMarker !== null ? (
+              <div className="bg-slate-950/90 backdrop-blur-md text-white px-4 py-2.5 rounded-xl border border-orange-400/80 shadow-md max-w-sm">
+                <span className="text-[10px] font-extrabold text-[#F97316] uppercase tracking-wider block">
+                  ✦ {markers[activeMarker].code}
+                </span>
+                <h4 className="text-xs font-extrabold text-white">
+                  {markers[activeMarker].title}
+                </h4>
+                <p className="text-[11px] text-slate-300 font-medium">
+                  {markers[activeMarker].badge}
+                </p>
+              </div>
+            ) : (
+              <div className="bg-slate-950/75 backdrop-blur-md text-white px-3.5 py-1.5 rounded-full border border-white/20 text-[10px] font-extrabold uppercase tracking-wider flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#F97316] animate-pulse" />
+                <span>Hover markers 01–05 to inspect zones</span>
+              </div>
+            )}
           </div>
-
-          {/* RIGHT 28% — SLIM VERTICAL MASTERPLAN GUIDE PANEL */}
-          <div className="w-full lg:w-[28%] bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
-                <span className="text-[11px] font-extrabold text-[#0F172A] uppercase tracking-wider">
-                  MASTERPLAN GUIDE
-                </span>
-                <span className="text-[10px] font-extrabold text-[#F97316] uppercase tracking-wider">
-                  01 — 05
-                </span>
-              </div>
-
-              {/* 5 COMPACT GUIDE LIST ITEMS WITH THUMBNAILS */}
-              <div className="space-y-2">
-                {guideItems.map((item) => {
-                  const isSelected = activeItem === item.id;
-
-                  return (
-                    <div
-                      key={item.num}
-                      onClick={() => setActiveItem(item.id)}
-                      onMouseEnter={() => setActiveItem(item.id)}
-                      className={`p-2.5 rounded-xl border transition-all duration-300 cursor-pointer flex items-center gap-3 ${
-                        isSelected 
-                          ? 'bg-white border-[#F97316] shadow-sm ring-1 ring-[#F97316]' 
-                          : 'bg-white/60 hover:bg-white border-slate-200/80 hover:border-slate-300'
-                      }`}
-                    >
-                      {/* Supporting Thumbnail Image */}
-                      <img 
-                        src={item.image} 
-                        alt={item.title} 
-                        className="w-11 h-11 rounded-lg object-cover shrink-0 border border-slate-200"
-                      />
-
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-1.5 mb-0.5">
-                          <span className={`text-[10px] font-black ${
-                            isSelected ? 'text-[#F97316]' : 'text-slate-400'
-                          }`}>
-                            {item.num}
-                          </span>
-                          <span className={`text-[11px] font-extrabold uppercase tracking-tight truncate ${
-                            isSelected ? 'text-[#F97316]' : 'text-[#0F172A]'
-                          }`}>
-                            {item.title}
-                          </span>
-                        </div>
-
-                        <p className="text-[10px] text-slate-500 font-medium leading-tight line-clamp-1">
-                          {item.subtitle}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Quick Helper Note */}
-            <div className="pt-3 mt-3 border-t border-slate-200/80 text-[10px] font-semibold text-slate-500 flex items-center justify-between">
-              <span>Hover markers to inspect zones</span>
-              <span className="text-[#F97316] font-bold">5 KEY ZONES</span>
-            </div>
-          </div>
-
-        </div>
+        </motion.div>
 
         {/* ================================================================= */}
-        {/* BOTTOM INTEGRATED PROJECT FACTS STRIP                              */}
+        {/* COMPACT BOTTOM INFORMATION BAR                                    */}
         {/* ================================================================= */}
         <motion.div 
           initial={{ opacity: 0, y: 6 }}
@@ -333,19 +247,19 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
             <div className="flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-[#F97316]" />
               <span>10+ ACRES</span>
-              <span className="text-slate-300 hidden sm:inline">|</span>
+              <span className="text-slate-300 hidden sm:inline">•</span>
             </div>
 
             <div className="flex items-center gap-2">
               <Home className="w-3.5 h-3.5 text-[#F97316]" />
               <span>189 VILLAS</span>
-              <span className="text-slate-300 hidden sm:inline">|</span>
+              <span className="text-slate-300 hidden sm:inline">•</span>
             </div>
 
             <div className="flex items-center gap-2">
               <Trees className="w-3.5 h-3.5 text-[#F97316]" />
               <span>70% OPEN</span>
-              <span className="text-slate-300 hidden sm:inline">|</span>
+              <span className="text-slate-300 hidden sm:inline">•</span>
             </div>
 
             <div className="flex items-center gap-2">
@@ -356,9 +270,9 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
 
           <button
             onClick={onOpenBooking}
-            className="text-[11px] font-extrabold text-[#F97316] hover:text-[#EA580C] inline-flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 uppercase tracking-wider bg-white px-4 py-1.5 rounded-full border border-orange-200 shadow-2xs hover:shadow-xs"
+            className="w-full sm:w-auto text-center py-2 px-4 rounded-full bg-[#F97316] hover:bg-[#EA580C] text-white text-[11px] font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer shrink-0"
           >
-            <span>BOOK A SITE VISIT</span>
+            <span>EXPLORE THE COMMUNITY</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </motion.div>
