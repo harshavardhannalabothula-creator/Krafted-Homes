@@ -2,33 +2,31 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Compass, ArrowRight, MapPin, Home, Trees, Sparkles } from 'lucide-react';
+import { ArrowRight, MapPin, Home, Trees, Sparkles } from 'lucide-react';
 
 interface InteractiveMasterplanProps {
   onOpenBooking?: () => void;
 }
 
 export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMasterplanProps) {
-  const [activeItem, setActiveItem] = useState<number>(0);
+  const [activeHotspot, setActiveHotspot] = useState<number>(0);
 
-  const guideItems = [
+  const hotspots = [
     {
       id: 0,
       num: '01',
       tag: 'ARRIVAL',
-      title: 'ARRIVAL',
-      subtitle: 'Grand gated entrance & boulevard with landscaped approach.',
-      image: '/images/hero_community.png',
-      x: 16, // percentage X position on masterplan board
-      y: 72, // percentage Y position on masterplan board
+      title: '01 — ARRIVAL',
+      desc: 'Grand gated entrance with landscaped approach.',
+      x: 16, // percentage X on masterplan canvas
+      y: 72, // percentage Y on masterplan canvas
     },
     {
       id: 1,
       num: '02',
       tag: 'VILLA NEIGHBOURHOODS',
-      title: 'VILLA NEIGHBOURHOODS',
-      subtitle: 'Thoughtfully planned villa clusters surrounded by greenery.',
-      image: '/images/hero_villa_facade.png',
+      title: '02 — VILLA NEIGHBOURHOODS',
+      desc: 'Thoughtfully arranged villa clusters surrounded by greenery.',
       x: 42,
       y: 34,
     },
@@ -36,9 +34,8 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
       id: 2,
       num: '03',
       tag: 'CLUBHOUSE',
-      title: 'CLUBHOUSE',
-      subtitle: '15,000 sq.ft community and wellness destination.',
-      image: '/images/hero_resort_clubhouse.png',
+      title: '03 — CLUBHOUSE',
+      desc: '15,000 sq.ft community and wellness destination.',
       x: 74,
       y: 44,
     },
@@ -46,9 +43,8 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
       id: 3,
       num: '04',
       tag: 'OPEN LANDSCAPE',
-      title: 'OPEN LANDSCAPE',
-      subtitle: '70% open green environment with gardens and community spaces.',
-      image: '/images/journey_03_masterplan.jpg',
+      title: '04 — OPEN LANDSCAPE',
+      desc: '70% open environment with gardens and shared spaces.',
       x: 58,
       y: 74,
     },
@@ -56,37 +52,36 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
       id: 4,
       num: '05',
       tag: 'WALKWAYS',
-      title: 'WALKWAYS',
-      subtitle: 'Connected pedestrian paths and gardens.',
-      image: '/images/clubhouse.jpg',
+      title: '05 — WALKWAYS',
+      desc: 'Connected pedestrian paths through gardens and community spaces.',
       x: 25,
       y: 24,
     },
   ];
 
-  const current = guideItems[activeItem];
+  const currentHotspot = hotspots[activeHotspot];
 
   return (
-    <section id="masterplan" className="w-full bg-white py-6 sm:py-8 text-[#0F172A] relative overflow-hidden border-t border-slate-100">
+    <section id="masterplan" className="w-full bg-white py-6 md:py-8 text-[#0F172A] relative overflow-hidden border-t border-slate-100">
       
       {/* Background Subtle Ambient Glow */}
       <div className="absolute top-1/4 right-10 w-72 h-72 bg-orange-100/30 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
         
         {/* ================================================================= */}
-        {/* TOP ROW: HEADING & TOP-RIGHT ARCHITECTURAL COMPASS / STATS         */}
+        {/* 1. COMPACT TIGHT HEADER (HEADING ON LEFT, QUICK STATS ON FAR RIGHT) */}
         {/* ================================================================= */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-3 border-b border-slate-200/80">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-3 border-b border-slate-200/80">
           
-          {/* LEFT: INTRO HEADING */}
+          {/* LEFT: COMPACT INTRO */}
           <div className="max-w-2xl">
             <motion.div 
               initial={{ opacity: 0, y: 6 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
-              className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-orange-50 text-[#F97316] text-[11px] font-extrabold uppercase tracking-widest border border-orange-200/80 mb-2"
+              className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-orange-50 text-[#F97316] text-[10px] font-extrabold uppercase tracking-widest border border-orange-200/80 mb-1.5"
             >
               <span>02 — THE MASTERPLAN</span>
             </motion.div>
@@ -96,7 +91,7 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 0.1 }}
-              className="text-3xl sm:text-4xl lg:text-[38px] font-extrabold leading-[1.15] tracking-tight mb-1.5"
+              className="text-2xl sm:text-3xl lg:text-[32px] font-extrabold leading-[1.15] tracking-tight mb-1"
             >
               <span className="text-[#0F172A] block">Designed as a Community.</span>
               <span className="text-[#F97316] block">Planned as a Landscape.</span>
@@ -107,95 +102,92 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 0.15 }}
-              className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed max-w-xl"
+              className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed"
             >
-              Explore how 10 acres of villas, open landscape, roads, gardens and shared spaces come together as one connected living environment.
+              10 acres where villas, landscape, movement and community spaces are planned as one connected environment.
             </motion.p>
           </div>
 
-          {/* RIGHT: COMPACT ARCHITECTURAL COMPASS & QUICK STATS */}
-          <div className="flex items-center gap-4 sm:gap-6 shrink-0 pt-2 lg:pt-0">
-            {/* Compass Icon */}
-            <div className="relative w-10 h-10 rounded-full border border-slate-300 flex items-center justify-center text-slate-700 bg-white shadow-2xs shrink-0">
-              <Compass className="w-5 h-5 text-[#0F172A] animate-spin-slow" />
-              <span className="absolute -top-1.5 text-[9px] font-black text-[#F97316]">N</span>
-            </div>
-
-            <div className="h-8 w-px bg-slate-200" />
-
-            {/* 10 ACRES */}
+          {/* FAR RIGHT: TIGHT HEADER STATS ROW */}
+          <div className="flex items-center gap-4 sm:gap-6 shrink-0 bg-slate-50 px-4 py-2 rounded-xl border border-slate-200/90 text-xs font-extrabold text-[#0F172A]">
             <div className="text-center">
-              <span className="text-lg font-black text-[#0F172A] block leading-none">10</span>
-              <span className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider">ACRES</span>
+              <span className="text-base sm:text-lg font-black text-[#0F172A] block leading-none">10</span>
+              <span className="text-[9px] font-extrabold uppercase text-slate-400 tracking-wider">ACRES</span>
             </div>
 
-            <div className="h-8 w-px bg-slate-200" />
+            <div className="h-6 w-px bg-slate-200" />
 
-            {/* 189 VILLAS */}
             <div className="text-center">
-              <span className="text-lg font-black text-[#0F172A] block leading-none">189</span>
-              <span className="text-[10px] font-extrabold uppercase text-slate-400 tracking-wider">VILLAS</span>
+              <span className="text-base sm:text-lg font-black text-[#0F172A] block leading-none">189</span>
+              <span className="text-[9px] font-extrabold uppercase text-slate-400 tracking-wider">VILLAS</span>
             </div>
 
-            <div className="h-8 w-px bg-slate-200 hidden sm:block" />
+            <div className="h-6 w-px bg-slate-200" />
 
-            {/* EXPLORE THE MASTERPLAN BUTTON */}
-            <button
-              onClick={onOpenBooking}
-              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-extrabold text-[#F97316] hover:text-[#EA580C] uppercase tracking-wider bg-white px-4 py-2 rounded-full border border-orange-200 shadow-2xs hover:shadow-xs transition-colors cursor-pointer"
-            >
-              <span>EXPLORE THE MASTERPLAN</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            <div className="text-center">
+              <span className="text-base sm:text-lg font-black text-[#F97316] block leading-none">70%</span>
+              <span className="text-[9px] font-extrabold uppercase text-slate-400 tracking-wider">OPEN</span>
+            </div>
           </div>
 
         </div>
 
         {/* ================================================================= */}
-        {/* MAIN CONTENT ROW (LEFT: 74% 3D MASTERPLAN VISUAL, RIGHT: GUIDE PANEL) */}
+        {/* 2. MAIN MASTERPLAN VISUAL CANVAS (FULL WIDTH IMMERSIVE 3D VIEW)   */}
         {/* ================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+        <div className="w-full relative rounded-2xl overflow-hidden border border-slate-200/90 bg-slate-950 shadow-md aspect-[16/10] sm:aspect-[16/9] lg:aspect-[16/8] group select-none flex flex-col justify-between p-4">
           
-          {/* LEFT COLUMN (Span 8 or ~74% width) — 3D AERIAL MASTERPLAN VISUAL */}
-          <div className="lg:col-span-8 relative rounded-2xl overflow-hidden border border-slate-200/90 bg-slate-900 shadow-sm aspect-[16/10] sm:aspect-[16/9] lg:aspect-[16/10] group select-none">
-            
-            {/* Aerial Masterplan Cutout Visual Rendering */}
-            <img 
-              src="/images/hero_main_aerial.png" 
-              alt="Antelia Groves 3D Masterplan Layout" 
-              className="w-full h-full object-cover object-center group-hover:scale-101 transition-transform duration-700 ease-out"
+          {/* Aerial 3D Top-Down Architectural Render */}
+          <img 
+            src="/images/hero_main_aerial.png" 
+            alt="Antelia Groves Community Seen From Above" 
+            className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-101 transition-transform duration-700 ease-out"
+          />
+
+          {/* Subtle Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/15 to-slate-950/30 pointer-events-none" />
+
+          {/* TOP CONCEPT BADGE */}
+          <div className="relative z-10 flex items-center justify-between">
+            <span className="bg-slate-950/80 backdrop-blur-md text-white text-[10px] font-extrabold uppercase px-3.5 py-1 rounded-full border border-white/20 tracking-wider">
+              THE COMMUNITY, SEEN FROM ABOVE • 10-ACRE AERIAL VIEW
+            </span>
+
+            <span className="bg-[#F97316] text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-2xs">
+              RERA APPROVED
+            </span>
+          </div>
+
+          {/* SUBTLE DASHED CONNECTOR ROUTE LINE (01 -> 02 -> 03 -> 04 -> 05) */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none z-20" fill="none">
+            <motion.path 
+              d="M 16% 72% Q 30% 65% 42% 34% Q 55% 42% 74% 44% Q 65% 65% 58% 74% Q 40% 50% 25% 24%" 
+              stroke="#F97316" 
+              strokeWidth="2.5" 
+              strokeDasharray="6 4"
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.6, ease: 'easeInOut' }}
             />
+          </svg>
 
-            {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-slate-950/20 pointer-events-none" />
+          {/* 3. FIVE NUMBERED HOTSPOTS DIRECTLY ON THE MASTERPLAN CANVAS */}
+          {hotspots.map((item, idx) => {
+            const isActive = activeHotspot === idx;
 
-            {/* SUBTLE SVG CONNECTOR ROUTE LINE (01 -> 02 -> 03 -> 04 -> 05) */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none z-20" fill="none">
-              <motion.path 
-                d="M 16% 72% Q 30% 65% 42% 34% Q 55% 42% 74% 44% Q 65% 65% 58% 74% Q 40% 50% 25% 24%" 
-                stroke="#F97316" 
-                strokeWidth="2.5" 
-                strokeDasharray="6 4"
-                initial={{ pathLength: 0 }}
-                whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.6, ease: 'easeInOut' }}
-              />
-            </svg>
-
-            {/* 5 NUMBERED PILL MARKERS DIRECTLY ON MASTERPLAN AERIAL VISUAL */}
-            {guideItems.map((item, idx) => {
-              const isActive = activeItem === idx;
-
-              return (
-                <div
-                  key={item.num}
-                  style={{ left: `${item.x}%`, top: `${item.y}%` }}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 z-30"
-                >
+            return (
+              <div
+                key={item.num}
+                style={{ left: `${item.x}%`, top: `${item.y}%` }}
+                className="absolute -translate-x-1/2 -translate-y-1/2 z-30"
+              >
+                <div className="relative flex flex-col items-center">
+                  
+                  {/* Hotspot White Pill with Orange Number Circle + Navy Text */}
                   <button
-                    onClick={() => setActiveItem(idx)}
-                    onMouseEnter={() => setActiveItem(idx)}
+                    onClick={() => setActiveHotspot(idx)}
+                    onMouseEnter={() => setActiveHotspot(idx)}
                     className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider transition-all duration-300 shadow-md cursor-pointer border ${
                       isActive
                         ? 'bg-[#F97316] text-white border-[#F97316] scale-110 shadow-orange-500/40 ring-4 ring-orange-200'
@@ -209,84 +201,75 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
                     </span>
                     <span className="truncate">{item.tag}</span>
                   </button>
-                </div>
-              );
-            })}
 
-            {/* Active Marker Floating Caption */}
-            <div className="absolute bottom-3 left-3 z-10 bg-slate-950/80 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-white/20 text-white flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#F97316] animate-pulse" />
-              <span className="text-[11px] font-extrabold uppercase tracking-wider">
-                0{activeItem + 1} — {guideItems[activeItem].tag}
-              </span>
-            </div>
-
-          </div>
-
-          {/* RIGHT COLUMN (Span 4) — MASTERPLAN GUIDE PANEL */}
-          <div className="lg:col-span-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs space-y-2.5">
-            
-            <div className="flex items-center justify-between pb-2 border-b border-slate-200">
-              <span className="text-xs font-extrabold text-[#0F172A] uppercase tracking-wider">
-                MASTERPLAN GUIDE
-              </span>
-              <span className="text-[10px] font-extrabold text-[#F97316] uppercase tracking-wider">
-                01 — 05
-              </span>
-            </div>
-
-            {/* 5 COMPACT GUIDE ITEMS WITH THUMBNAILS */}
-            <div className="space-y-2">
-              {guideItems.map((item, idx) => {
-                const isSelected = activeItem === idx;
-
-                return (
-                  <div
-                    key={item.num}
-                    onClick={() => setActiveItem(idx)}
-                    onMouseEnter={() => setActiveItem(idx)}
-                    className={`p-2.5 rounded-xl border transition-all duration-300 cursor-pointer flex items-center gap-3 ${
-                      isSelected 
-                        ? 'bg-white border-[#F97316] shadow-sm ring-1 ring-[#F97316]' 
-                        : 'bg-slate-50/70 hover:bg-white border-slate-200/80 hover:border-slate-300'
-                    }`}
-                  >
-                    {/* Thumbnail Image */}
-                    <img 
-                      src={item.image} 
-                      alt={item.title} 
-                      className="w-14 h-12 rounded-lg object-cover shrink-0 border border-slate-200"
-                    />
-
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-1.5 mb-0.5">
-                        <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-black shrink-0 ${
-                          isSelected ? 'bg-[#F97316] text-white' : 'bg-orange-50 text-[#F97316]'
-                        }`}>
-                          {item.num}
-                        </span>
-                        <span className={`text-[11px] font-extrabold uppercase tracking-tight truncate ${
-                          isSelected ? 'text-[#F97316]' : 'text-[#0F172A]'
-                        }`}>
+                  {/* FLOATING DESCRIPTION TOOLTIP APPEARING CLOSE TO ACTUAL LOCATION */}
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 5, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 5, scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                        className={`absolute z-40 w-56 bg-white rounded-xl p-3 border border-slate-200 shadow-xl text-left pointer-events-auto ${
+                          item.x > 60 ? 'right-0 text-right' : 'left-0 text-left'
+                        } ${item.y > 60 ? 'bottom-9' : 'top-9'}`}
+                      >
+                        <div className="text-[10px] font-extrabold text-[#F97316] uppercase tracking-wider mb-0.5">
                           {item.title}
-                        </span>
-                      </div>
+                        </div>
+                        <p className="text-[11px] text-slate-600 font-semibold leading-relaxed">
+                          &ldquo;{item.desc}&rdquo;
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
-                      <p className="text-[10px] text-slate-500 font-semibold leading-tight line-clamp-2">
-                        {item.subtitle}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
+                </div>
+              </div>
+            );
+          })}
+
+          {/* ACTIVE HOTSPOT CALLOUT CAPTION AT BOTTOM LEFT */}
+          <div className="relative z-10 bg-slate-950/85 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20 text-white max-w-sm flex items-center justify-between">
+            <div>
+              <span className="text-[9px] font-extrabold text-[#F97316] uppercase tracking-wider block">
+                ACTIVE ZONE HOTSPOT
+              </span>
+              <span className="text-xs font-extrabold text-white">
+                {currentHotspot.title}
+              </span>
             </div>
 
+            <button
+              onClick={onOpenBooking}
+              className="text-[10px] font-extrabold text-[#F97316] hover:text-white uppercase tracking-wider inline-flex items-center gap-1 transition-colors cursor-pointer bg-white/10 px-2.5 py-1 rounded-full border border-white/20"
+            >
+              <span>INQUIRE</span>
+              <ArrowRight className="w-3 h-3" />
+            </button>
           </div>
 
         </div>
 
+        {/* MOBILE HORIZONTAL HOTSPOT CONTROLS (VISIBLE ON MOBILE & TABLET) */}
+        <div className="flex lg:hidden items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+          {hotspots.map((h, idx) => (
+            <button
+              key={h.num}
+              onClick={() => setActiveHotspot(idx)}
+              className={`px-3 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider transition-all shrink-0 cursor-pointer ${
+                activeHotspot === idx
+                  ? 'bg-[#F97316] text-white shadow-xs'
+                  : 'bg-slate-100 text-[#0F172A] border border-slate-200'
+              }`}
+            >
+              {h.num} {h.tag}
+            </button>
+          ))}
+        </div>
+
         {/* ================================================================= */}
-        {/* BOTTOM HORIZONTAL STATISTICS STRIP                                */}
+        {/* 4. BOTTOM ARCHITECTURAL DATA STRIP (SLIM HORIZONTAL STRIP)        */}
         {/* ================================================================= */}
         <div className="w-full bg-slate-50/90 rounded-2xl p-3 sm:p-4 border border-slate-200/90 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="grid grid-cols-2 sm:grid-cols-4 items-center gap-4 sm:gap-6 w-full sm:w-auto">
@@ -330,14 +313,14 @@ export default function InteractiveMasterplan({ onOpenBooking }: InteractiveMast
                 <Sparkles className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-xs sm:text-sm font-black text-[#0F172A] tracking-tight">15K SQ.FT CLUBHOUSE</div>
-                <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider">Recreation &amp; Wellness</div>
+                <div className="text-xs sm:text-sm font-black text-[#0F172A] tracking-tight">15K SQ.FT</div>
+                <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider">Clubhouse &amp; Wellness</div>
               </div>
             </div>
 
           </div>
 
-          {/* RIGHT LINK */}
+          {/* OUTLINED CTA BUTTON */}
           <button
             onClick={onOpenBooking}
             className="text-xs font-black text-[#F97316] hover:text-[#EA580C] inline-flex items-center gap-1.5 transition-colors cursor-pointer uppercase tracking-wider bg-white px-4 py-2 rounded-full border border-orange-200 shadow-2xs hover:shadow-xs shrink-0"
